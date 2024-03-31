@@ -23,7 +23,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 
 <br>
 
-<h2> 💻 Tecnologias Utilizadas </h2><a name="tecnologias"></a>
+<h2> Tecnologias Utilizadas </h2><a name="tecnologias"></a>
 
 Essas foram as Tecnologias Utilizadas para produção do projeto.
 
@@ -42,3 +42,19 @@ Essas foram as Tecnologias Utilizadas para produção do projeto.
   <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-4a1fa8?style=for-the-badge&logo=mysql&logoColor=white&color=00046D">
  
 <br>
+
+<h2> MVP </h2><a name="mvp"></a>
+
+<h2> Sprints </h2><a name="sprints"></a>
+
+| Sprint |   Início   |  Entrega   |                                      Relatório                                      | Status |
+| :----: | :--------: | :--------: | :---------------------------------------------------------------------------------: | :----: |
+|   01   | 25/03/2024 | 14/04/2024 | 1° Relatório </a> |    🔁   |
+|   02   | 15/05/2024 | 05/05/2024 | 2° Relatório </a> |  🔁  |
+|   03   | 06/05/2023 | 26/06/2024 | 3° Relatório </a> |    🔁   |
+|   04   | 27/05/2023 | 06/06/2023 | 4° Relatório </a> |   🔁   |
+
+<br>
+
+
+
