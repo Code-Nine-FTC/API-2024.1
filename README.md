@@ -45,6 +45,34 @@ Essas foram as Tecnologias Utilizadas para produção do projeto.
 
 <h2> MVP </h2><a name="mvp"></a>
 
+<br>
+
+<h2> Product Backlog </h2><a name="productbacklog"></a>
+
+ | Rank | Prioridade | Tarefa | Estimativa | Sprint | Requisito do Cliente |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Alta | Como cliente, desejo utilizar um sistema de cadastro para acessar os recursos disponíveis do website. | 8 | 2 | 2 |
+| 2 | Alta | Como administrador, desejo registrar atendentes com seu tipo de serviço prestado. | 8 | 2 | 1 |
+| 3 | Médio | Como cliente, desejo ter a possibilidade de visualizar e editar as informações de minha conta para manter atualizada. | 6 | 2 | 2 |
+| 4 | Alta | Como administrador, desejo poder visualizar e gerenciar todos os atendentes cadastrados no sistema, incluindo a capacidade de editar informações. | 6 | 2 | 1 |
+| 5 | Médio | Como cliente, desejo realizar login no sistema utilizando e-mail e senha. | 3 | 2 | 2 |
+| 6 | Médio  | Como atendente, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
+| 7 | Médio | Como administrador, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
+| 8 | Alta | Como cliente, desejo selecionar um tópico em que se encaixa o meu problema para realizar o atendimento de forma mais específica. | 5 | 2 | 3 |
+| 9 | Alta | Como cliente, desejo visualizar todos os meus chamados e seus status. | 5 | 3 | 4 |
+| 10  | Alta  | Como atendente, desejo visualizar os chamados que não foram resolvidos por ordem de prioridade para solucionar o mais rápido. | 5 | 3 | 4 |
+| 11  | Alta  | Como atendente, desejo visualizar os atendimentos realizados por mim e seus status. | 5 | 3 | 4 |
+| 12 | Alta | Como cliente, quero abrir um chat para me comunicar com o atendente. | 5 | 3 | 3 |
+| 13 | Alta | Como atendente, quero abrir um chat para me comunicar com o cliente. | 5 | 3 | 3 |
+| 14 | Alta | Como administrador, quero que cada problema tenha um tempo de resposta definido para saber qual deve ser priorizado. | 5 | 3 | 6 |
+| 15 | Média | Como cliente, desejo um FAQ com possíveis soluções para poder resolver problemas frequentes. | 2 | 3 | 7 |
+| 16 | Alta | Como atendente, desejo poder alterar o status de um chamado entre "aberto", "em atendimento" e "finalizado", para acompanhar e gerenciar o progresso dos chamados de forma eficiente. | 5 | 3 | 4 |
+| 17 | Alta | Como administrador, desejo gerar relatórios sobre tópicos mais abordados para poder gerenciar da melhor forma. | 5 | 4 | 2 |
+| 18 |  Alta | Como administrador, desejo direcionar um atendimento para o suporte que esteja disponível. | 5 | 4 | 4 |
+| 19 | Alta | Como administrador, quero poder cadastrar soluções para problemas comuns. | 3 | 4 | 5 |
+
+<br>
+
 <h2> Sprints </h2><a name="sprints"></a>
 
 | Sprint |   Início   |  Entrega   |                                      Relatório                                      | Status |
@@ -55,6 +83,19 @@ Essas foram as Tecnologias Utilizadas para produção do projeto.
 |   04   | 27/05/2023 | 06/06/2023 | 4° Relatório </a> |   🔁   |
 
 <br>
+
+<h2> ❄️Integrantes do Grupo </h2><a name="integrantes"></a>
+
+|          |   Nome   |  Função  |  GitHub  | LinKedin |
+| :------: | :------: | :------: | :------: | :------: |
+| <img src="https://avatars.githubusercontent.com/u/104574671?v=4" alt="foto de perfil" height="64px" width="64px">         |   Davi Maciel  |  Scrum Master     | <a href="https://github.com/DfMaciel"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/dfmaciel"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>          |
+| <img src="https://avatars.githubusercontent.com/u/142221848?v=4" alt="foto de perfil" height="64px" width="64px">         |   Jonas Miguel |  Developer        | <a href="https://github.com/Jonasoliver"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/jonas-miguel-ol"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>          |
+| <img src="https://avatars.githubusercontent.com/u/142221546?v=4" alt="foto de perfil" height="64px" width="64px">         | Leonardo Parra       |  Developer        | <a href="https://github.com/LeonardoParraGodoi"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/leonardo-parra-81824828b/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
+| <img src="https://avatars.githubusercontent.com/u/79583088?v=4"  alt="foto de perfil" height="64px" width="64px">         |   Yuri Braga  |   Developer     | <a href="https://github.com/yuribragga"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/yuri-braga/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
+| <img src="https://avatars.githubusercontent.com/u/142221456?v=4" alt="foto de perfil" height="64px" width="64px">         |   Pedro Oliveira |  Developer        | <a href="https://github.com/OliveiraPedro09"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/pedrooliv9"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>          | 
+| <img src="https://avatars.githubusercontent.com/u/142221532?v=4" alt="foto de perfil" height="64px" width="64px">         |   Renato Júnior |  Developer        | <a href="https://github.com/Renato-Cruz-Jr"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/renato-fernandes-da-cruz-junior-798582204/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
+| <img src="https://media.licdn.com/dms/image/D4D03AQECpQ1TjLb7mQ/profile-displayphoto-shrink_200_200/0/1696098623322?e=2147483647&v=beta&t=DLisI-vHChLbCiEQ88konsGhNkt2i_LQhYzaJjjEeg4" alt="foto de perfil" height="64px" width="64px">         |   Eduardo Namiuti  |  Developer        | <a href="https://github.com/Renato-Cruz-Jr"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://br.linkedin.com/in/eduardo-namiuti-5641b627b"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
+| <img src="https://avatars.githubusercontent.com/u/142221695?v=4" alt="foto de perfil" height="64px" width="64px">         |   Joyce Silva |  Product Owner       | <a href="https://github.com/joycesilvaaa"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/joyce-silva-79a4b9287/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
 
 
 
