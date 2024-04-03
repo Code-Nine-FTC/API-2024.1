@@ -6,6 +6,12 @@
 <h2> Índice </h2>
 
 - [Sobre o Projeto](#sobre)
+- [Metodologia Utilizada](#metodologias)
+- [Tecnologias Utilizadas](#tecnologias)
+- [MVP](#mvp)
+- [Product Backlog](#productbacklog)
+- [Sprints](#sprints)
+- [Integrantes do grupo](#integrantes)
 
 <br>
 
@@ -19,16 +25,18 @@
 <h2> Metodologia Utilizada </h2><a name="metodologias"></a>
 
 <p> O framework de Metodologia Ágil utilizado no produto foi o Scrum, um método ágil adaptativo, iterativo, flexível e eficaz.
-Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprints. Para selecionar quais seriam as entregas das nossas Sprints, primeiro definimos nosso MVP, priorizando as tarefas que trariam maior entrega de valor para o cliente. Então, a partir das Tarefas foi construído o Backlog do Produto,  o qual foi aprovado pelo cliente e dividido em 4 Backlogs de Sprint. </p
+Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprints. Para selecionar quais seriam as entregas das nossas Sprints, primeiro definimos nosso MVP, priorizando as tarefas que trariam maior entrega de valor para o cliente. Então, a partir das Tarefas foi construído o Backlog do Produto,  o qual foi aprovado pelo cliente e dividido em 4 Backlogs de Sprint. </p>
 
 <br>
 
 <h2> Tecnologias Utilizadas </h2><a name="tecnologias"></a>
 
-Essas foram as Tecnologias Utilizadas para produção do projeto.
+<p> Essas foram as Tecnologias Utilizadas para produção do projeto. </p>
+
+<br>
 
 <div align="center">
-  <a href="https://discord.com/"><img src="https://img.shields.io/badge/Discord-4a1fa8?style=for-the-badge&logo=discord&logoColor=white&color=00046D">
+  <a href="https://discord.com/"><img src="https://img.shields.io/badge/Discord-4a1fa8?style=for-the-badge&logo=discord&logoColor=white&color=00046D"/>
   <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-3ad6b2?style=for-the-badge&logo=figma&logoColor=c41f1f&color=00046D"/>
   <a href="https://github.com/"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=00046D"/>
   <a href="https://www.w3schools.com/html/"><img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=da5d1e&color=00046D"/>
@@ -39,17 +47,20 @@ Essas foram as Tecnologias Utilizadas para produção do projeto.
   <a href= "https://slack.com/intl/pt-br"><img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white&color=00046D"/>
   <a href="https://www.microsoft.com/pt-br/microsoft-365/excel/?rtc=1"><img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white&color=00046D"/>
   <a href="https://www.microsoft.com/pt-br/microsoft-teams/log-in"><img src="https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white&color=00046D"/>
-  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-4a1fa8?style=for-the-badge&logo=mysql&logoColor=white&color=00046D">
- 
+  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-4a1fa8?style=for-the-badge&logo=mysql&logoColor=white&color=00046D"/>
+
+<br>
 <br>
 
 <h2> MVP </h2><a name="mvp"></a>
+
+<p> Em desenvolvimento </p>
 
 <br>
 
 <h2> Product Backlog </h2><a name="productbacklog"></a>
 
- | Rank | Prioridade | Tarefa | Estimativa | Sprint | Requisito do Cliente |
+| Rank | Prioridade | Tarefa | Estimativa | Sprint | Requisito do Cliente |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Alta | Como cliente, desejo utilizar um sistema de cadastro para acessar os recursos disponíveis do website. | 8 | 2 | 2 |
 | 2 | Alta | Como administrador, desejo registrar atendentes com seu tipo de serviço prestado. | 8 | 2 | 1 |
@@ -58,17 +69,17 @@ Essas foram as Tecnologias Utilizadas para produção do projeto.
 | 5 | Médio | Como cliente, desejo realizar login no sistema utilizando e-mail e senha. | 3 | 2 | 2 |
 | 6 | Médio  | Como atendente, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
 | 7 | Médio | Como administrador, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
-| 8 | Alta | Como cliente, desejo selecionar um tópico em que se encaixa o meu problema para realizar o atendimento de forma mais específica. | 5 | 2 | 3 |
-| 9 | Alta | Como cliente, desejo visualizar todos os meus chamados e seus status. | 5 | 3 | 4 |
-| 10  | Alta  | Como atendente, desejo visualizar os chamados que não foram resolvidos por ordem de prioridade para solucionar o mais rápido. | 5 | 3 | 4 |
+| 8 | Alta | Como cliente, desejo selecionar um categoria em que se encaixa o meu problema para realizar o atendimento de forma mais específica. | 5 | 2 | 3 |
+| 9 | Alta | Como cliente, desejo visualizar todos os meus chamados e seus status. | 5 | 3 | 3 |
+| 10  | Alta  | Como atendente, desejo visualizar os chamados que não foram resolvidos por ordem de prioridade para solucionar o mais rápido. | 5 | 3 | 3 |
 | 11  | Alta  | Como atendente, desejo visualizar os atendimentos realizados por mim e seus status. | 5 | 3 | 4 |
 | 12 | Alta | Como cliente, quero abrir um chat para me comunicar com o atendente. | 5 | 3 | 3 |
 | 13 | Alta | Como atendente, quero abrir um chat para me comunicar com o cliente. | 5 | 3 | 3 |
 | 14 | Alta | Como administrador, quero que cada problema tenha um tempo de resposta definido para saber qual deve ser priorizado. | 5 | 3 | 6 |
 | 15 | Média | Como cliente, desejo um FAQ com possíveis soluções para poder resolver problemas frequentes. | 2 | 3 | 7 |
 | 16 | Alta | Como atendente, desejo poder alterar o status de um chamado entre "aberto", "em atendimento" e "finalizado", para acompanhar e gerenciar o progresso dos chamados de forma eficiente. | 5 | 3 | 4 |
-| 17 | Alta | Como administrador, desejo gerar relatórios sobre tópicos mais abordados para poder gerenciar da melhor forma. | 5 | 4 | 2 |
-| 18 |  Alta | Como administrador, desejo direcionar um atendimento para o suporte que esteja disponível. | 5 | 4 | 4 |
+| 17 | Alta | Como administrador, desejo gerar relatórios sobre tópicos mais abordados para poder gerenciar da melhor forma. | 5 | 4 | 5 |
+| 18 |  Alta | Como administrador, desejo direcionar um atendimento para o suporte que esteja disponível. | 5 | 4 | 3 |
 | 19 | Alta | Como administrador, quero poder cadastrar soluções para problemas comuns. | 3 | 4 | 5 |
 
 <br>
@@ -77,14 +88,14 @@ Essas foram as Tecnologias Utilizadas para produção do projeto.
 
 | Sprint |   Início   |  Entrega   |                                      Relatório                                      | Status |
 | :----: | :--------: | :--------: | :---------------------------------------------------------------------------------: | :----: |
-|   01   | 25/03/2024 | 14/04/2024 | 1° Relatório </a> |    🔁   |
+|   01   | 25/03/2024 | 14/04/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-1"> 1° Relatório </a> |    🔁   |
 |   02   | 15/05/2024 | 05/05/2024 | 2° Relatório </a> |  🔁  |
 |   03   | 06/05/2023 | 26/06/2024 | 3° Relatório </a> |    🔁   |
 |   04   | 27/05/2023 | 06/06/2023 | 4° Relatório </a> |   🔁   |
 
 <br>
 
-<h2> ❄️Integrantes do Grupo </h2><a name="integrantes"></a>
+<h2> Integrantes do Grupo </h2><a name="integrantes"></a>
 
 |          |   Nome   |  Função  |  GitHub  | LinKedin |
 | :------: | :------: | :------: | :------: | :------: |
