@@ -9,6 +9,7 @@
 - [Metodologia Utilizada](#metodologias)
 - [Tecnologias Utilizadas](#tecnologias)
 - [MVP](#mvp)
+- [Requisitos do Cliente](#requisitoscliente)
 - [Product Backlog](#productbacklog)
 - [Sprints](#sprints)
 - [Integrantes do grupo](#integrantes)
@@ -55,6 +56,18 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 <h2> MVP </h2><a name="mvp"></a>
 
 <p> Em desenvolvimento </p>
+
+<h2> Requisitos do Cliente </h2><a name="requisitoscliente"></a>
+
+| Número	| Requisito do Cliente |
+| --- | --- |
+| 1 | Cadastros de Usuários, Técnicos, Equipamentos e Horários |
+| 2	| Usuários devem ter perfis diferentes (administrador, suporte, cliente) |
+| 3	| Registro de chamados |
+| 4	| Acompanhamento de chamados (Aberto, Em processo, finalizado e Concluído) |
+| 5	| Cadastro de soluções para problemas conhecidos |
+| 6	| SLA (Acordo de Nível de Serviço) |
+| 7	| Base de conhecimento (FAQ) |
 
 <br>
 
