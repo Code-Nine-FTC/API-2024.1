@@ -1,6 +1,6 @@
-<h1>Primeira Sprint</h1>
+<h1> Segunda Sprint </h1>
 
-<h2>  Índice</h2>
+<h2> Índice </h2>
 
 - [Valor da Sprint](#valor)
 - [DoR (Definition of Ready)](#dor)
