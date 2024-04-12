@@ -6,6 +6,7 @@
 - [DoR (Definition of Ready)](#dor)
 - [DoD (Definition of Done)](#dod)
 - [Sprint Backlog](#backlog)
+- [Banco de Dados](#bancodedados)
 - [Burndown](#burndown)
 - [Tasks](#tasks)
 - [Vídeo demonstrativo do Wireframe](#video)
@@ -65,11 +66,11 @@ Levantar requisitos e mostrar uma prévia do produto para que o cliente acompanh
 
 ### Conceitual
 
-![Modelo Conceitual](/Relatorio/bdconceitual.jpeg)
+![Modelo Conceitual](Relatorio/ModeloConteitualAPI.jpg)
 
 ### Lógico
 
-![Modelo Lógico](/Relatorio/bdlogico.jpeg)
+![Modelo Lógico](Relatorio/ModeloLogicoAPI1.jpg)
 
 <h2> Tarefas </h2><a name="tasks"></a>
 
