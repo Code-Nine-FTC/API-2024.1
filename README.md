@@ -3,7 +3,7 @@
  com o objetivo de produzir um sistema de gerênciamento de chamados e serviços. </p>
 <br>
 
-<h2> Índice </h2>
+<h2> 🗂️ Índice </h2>
 
 - [Sobre o Projeto](#sobre)
 - [Metodologia Utilizada](#metodologias)
@@ -16,21 +16,21 @@
 
 <br>
 
-<h2> Sobre o Projeto </h2><a name="sobre"></a>
+<h2> 📚 Sobre o Projeto </h2><a name="sobre"></a>
 <p> Com o objetivo de desenvolver um sistema capaz de implementar melhorias no sistema de chamados e serviços, possuindo sistema de cadastro, criação de chamados 
   a serem atendidos, registro de conclusão dos atendimentos e sistema de relátorios para análise. <br>
   Atendendo no ramo de entregas, visando solucionar problemas relacionados a frete, rastreamento, dentre outros.</p>
 
 <br>
 
-<h2> Metodologia Utilizada </h2><a name="metodologias"></a>
+<h2> 📋 Metodologia Utilizada </h2><a name="metodologias"></a>
 
 <p> O framework de Metodologia Ágil utilizado no produto foi o Scrum, um método ágil adaptativo, iterativo, flexível e eficaz.
 Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprints. Para selecionar quais seriam as entregas das nossas Sprints, primeiro definimos nosso MVP, priorizando as tarefas que trariam maior entrega de valor para o cliente. Então, a partir das Tarefas foi construído o Backlog do Produto,  o qual foi aprovado pelo cliente e dividido em 4 Backlogs de Sprint. </p>
 
 <br>
 
-<h2> Tecnologias Utilizadas </h2><a name="tecnologias"></a>
+<h2> 🖥️ Tecnologias Utilizadas </h2><a name="tecnologias"></a>
 
 <p> Essas foram as Tecnologias Utilizadas para produção do projeto. </p>
 
@@ -53,11 +53,11 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 <br>
 <br>
 
-<h2> MVP </h2><a name="mvp"></a>
+<h2> 🏆 MVP </h2><a name="mvp"></a>
 
 <p> Em desenvolvimento </p>
 
-<h2> Requisitos do Cliente </h2><a name="requisitoscliente"></a>
+<h2> 📖 Requisitos do Cliente </h2><a name="requisitoscliente"></a>
 
 | Número	| Requisito do Cliente |
 | --- | --- |
@@ -71,7 +71,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 
 <br>
 
-<h2> Product Backlog </h2><a name="productbacklog"></a>
+<h2> 📒 Product Backlog </h2><a name="productbacklog"></a>
 
 | Rank | Prioridade | Tarefa | Estimativa | Sprint | Requisito do Cliente |
 | --- | --- | --- | --- | --- | --- |
@@ -97,7 +97,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 
 <br>
 
-<h2> Sprints </h2><a name="sprints"></a>
+<h2> 📑 Sprints </h2><a name="sprints"></a>
 
 | Sprint |   Início   |  Entrega   |                                      Relatório                                      | Status |
 | :----: | :--------: | :--------: | :---------------------------------------------------------------------------------: | :----: |
@@ -108,7 +108,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 
 <br>
 
-<h2> Integrantes do Grupo </h2><a name="integrantes"></a>
+<h2> 🙎 Integrantes do Grupo </h2><a name="integrantes"></a>
 
 |          |   Nome   |  Função  |  GitHub  | LinKedin |
 | :------: | :------: | :------: | :------: | :------: |
