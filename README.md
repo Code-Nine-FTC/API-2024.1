@@ -461,6 +461,6 @@ Levantar requisitos e mostrar uma prévia do produto para que o cliente acompanh
      - Se necessário, o administrador pode editar ou excluir uma solução cadastrada.
      - Os atendentes e clientes podem acessar a lista de soluções cadastradas para encontrar ajuda na resolução de problemas comuns.
 
-<h2> Vídeo demonstrativo </h2>
-<!--  <a name="video"></a> -->
-<p> Em desenvolvimento </p>
+<h2> Vídeo demonstrativo </h2><a name="video"></a>
+
+
