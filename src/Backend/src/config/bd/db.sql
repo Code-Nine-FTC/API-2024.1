@@ -18,19 +18,7 @@ create table funcionario(
     func_nivel varchar(20)
     );
     
-    
-/* create table relatorio(
-	rel_id int primary key auto_increment,
-    rel_tipo varchar(20),
-    rel_titulo varchar(40),
-    rel_corpo_texto varchar(500),
-    atd_email varchar(255) unique,
-    chm_id int,
-    foreign key(atd_email) references atendente(atd_email),
-    foreign key(chm_id) references chamado(chm_id)
-    );
-    */
-    
+
 create table resposta(
 	resp_id int primary key auto_increment,
     resp_mensagem_resposta varchar(300),
