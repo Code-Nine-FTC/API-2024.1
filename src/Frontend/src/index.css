@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.container {
+  display: flex;
+  
+}
+.bemvindo {
+  background-color: #00046D;
+  color: white;
+  padding: 20px;
+  width: 35%;
+  border-radius: 5%;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form {
+  background-color: white;
+  color: #00046D;
+  padding: 20px;
+  width: 60%; /* Metade da largura da tela */
+  border-radius: 5%;
+}
