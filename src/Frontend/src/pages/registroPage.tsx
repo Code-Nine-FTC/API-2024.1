@@ -1,3 +1,5 @@
+import '../component/registro/registro.css'
+
 const Registro = () => {
     return (
         <>
@@ -5,11 +7,14 @@ const Registro = () => {
             <section className="bemvindo">
                 <h1>Bem-vindo !</h1>
                 <p>Já tem uma conta ? Faça login no sistema para obter o suporte necessário. </p>
-                <button>Entre !</button>
+                <div className='custom-button'>
+                    Entre !
+                </div>
             </section>
             <section className="form">
-                <h1>Criar Nova Conta</h1>
+                <h1>Criar Nova Conta</h1><br></br>
                 <form action ='' method="POST">
+                    
                     <label>Nome Completo:</label><br></br>
                     <input type="text" id='nome' name="nome" required></input><br></br>
 

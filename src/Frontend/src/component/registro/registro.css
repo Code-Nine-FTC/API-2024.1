@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    
+  }
+  .bemvindo {
+    background-color: #00046D;
+    color: white;
+    padding: 20px;
+    width: 35%;
+    border-radius: 5%;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form {
+    background-color: white;
+    color: #00046D;
+    padding: 20px;
+    width: 60%; /* Metade da largura da tela */
+    border-radius: 5%;
+  }
+
+  .form label {
+    display: block; /* Define os rótulos em uma nova linha */
+    margin-bottom: 10px; /* Adiciona espaço entre os rótulos */
+    font-weight: bold; /* Deixa o texto do rótulo em negrito */
+  }
+  
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"] {
+    width: 100%; /* Ocupa toda a largura do container pai */
+    padding: 5px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Adiciona espaço entre os campos */
+    border: 1px solid #ccc; /* Borda com cor cinza */
+    border-radius: 5px; /* Arredondamento dos cantos */
+  }
+  
+  /* Estilo para o botão de enviar */
+  .form input[type="submit"] {
+    width: 100%; /* Ocupa toda a largura do container pai */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #00046D; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Arredondamento dos cantos */
+    cursor: pointer; /* Cursor de mão ao passar por cima */
+  }
+  
+  /* Estilizando o placeholder (texto de exemplo) nos campos de entrada */
+  .form input::placeholder {
+    color: #777; /* Cor do texto do placeholder */
+  }
+  
+  .form form {
+    border: none; /* Remove a borda do formulário */
+  }
+
+  .custom-button {
+    display: inline-block; /* Exibe a div como um bloco */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    background-color: white; /* Cor de fundo */
+    color: #00046D; /* Cor do texto */
+    border: 2px solid #00046D; /* Borda sólida com a cor do texto */
+    border-radius: 5px; /* Arredondamento dos cantos */
+    cursor: pointer; /* Cursor de mão ao passar por cima */
+  }
+  
+  .custom-button:hover {
+    background-color: #0018A8; /* Altera a cor de fundo ao passar o mouse */
+    color: white; /* Altera a cor do texto ao passar o mouse */
+  }
