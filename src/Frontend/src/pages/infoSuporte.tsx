@@ -34,7 +34,9 @@ const Editinfosuport: React.FC = () => {
   return (
     
     <div className='ficacerto'>
+      <div id='SidebarSuporte'>
       <Sidebar userTipo={userLogado}/>
+      </div>
       <div className='titulo'>
         
         

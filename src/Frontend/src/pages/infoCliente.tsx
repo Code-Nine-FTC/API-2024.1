@@ -1,6 +1,8 @@
 import React, { useState, FormEvent } from 'react';
 import ".././component/infoCliente/infoCliente.css"
 import ImageComponent from '../component/imagemPerfil/imagemperfil';
+import Sidebar from '../component/sidebar/sidebar';
+const userLogado = 'getDefaultNavigationItems'
 
 
 
@@ -25,7 +27,7 @@ const Editinfocli: React.FC = () => {
   return (
     
     <div className='ficacerto'>
-
+      <Sidebar userTipo={userLogado}/>
       <div className='titulo'>
           <h1>Minha Conta</h1>
       </div>
