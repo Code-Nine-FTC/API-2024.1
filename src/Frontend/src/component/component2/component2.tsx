@@ -1,6 +1,6 @@
 import React from 'react';
-import '../faq.css';
-import delivery from '../../assets/faq/delivery.png'
+import '../faq/faq.css';
+import delivery from '../../assets/faq/Ellipse.png'
 
 
 function Component2(){

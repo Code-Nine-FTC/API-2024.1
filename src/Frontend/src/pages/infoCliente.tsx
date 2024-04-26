@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
-import ".././component/alterinfocliente/altdeinfocliente.css"
-import ImageComponent from '../component/imagemperfil/imagemperfil';
+import ".././component/infoCliente/infoCliente.css"
+import ImageComponent from '../component/imagemPerfil/imagemperfil';
 
 
 

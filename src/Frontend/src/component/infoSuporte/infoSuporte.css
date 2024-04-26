@@ -4,16 +4,16 @@
 
 .conjunto {
     display: flex;
-    justify-content: space-between; /* Isso faz com que as duas divs fiquem espaçadas uma da outra */
+    justify-content: space-between; 
   }
   
-  .Dados, .Dados2 {
+  .Dados1, .Dados2 {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 2vh;
-    width: 49%; /* Defina a largura desejada para cada div para deixá-las lado a lado */
+    width: 49%; 
   }
   
 

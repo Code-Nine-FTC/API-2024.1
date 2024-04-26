@@ -1,5 +1,5 @@
 import React from 'react';
-import myImage from '../../assets/perfil.svg';
+import myImage from '../../assets/fotoperfil/perfil.svg';
 import './imagemperfil.css'; 
 
 interface ImageComponentProps {

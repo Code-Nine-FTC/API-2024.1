@@ -1,5 +1,5 @@
 import React from 'react';
-import '../faq.css';
+import '../faq/faq.css';
 import map from '../../assets/faq/map.png';
 
 function Component() {

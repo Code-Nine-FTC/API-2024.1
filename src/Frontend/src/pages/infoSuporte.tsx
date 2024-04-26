@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
-import ".././component/alterinfosup/altdeinfosuporte.css"
-import ImageComponent from '.././component/imagemperfil/imagemperfil';
+import "../component/infoSuporte/infoSuporte.css"
+import ImageComponent from '../component/imagemPerfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
 const userLogado = 'getAtendenteNavigationItems'
 
@@ -49,7 +49,7 @@ const Editinfosuport: React.FC = () => {
       
       
     <form className='conjunto' onSubmit={handleSubmit}>
-      <div className='Dados'>
+      <div className='Dados1'>
       <label>
        
         <input className='' type="text" value={nome} placeholder='Altere seu nome' onChange={e => setNome(e.target.value)} />

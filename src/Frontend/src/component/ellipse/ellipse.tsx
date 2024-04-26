@@ -1,5 +1,5 @@
 import React from 'react';
-import '../faq.css';
+import '../faq/faq.css';
 import ellipse from '../../assets/faq/Ellipse.png'
 
 function Ellipse(){

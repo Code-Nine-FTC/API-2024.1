@@ -1,5 +1,5 @@
 import React from 'react';
-import '../faq.css';
+import '../faq/faq.css';
 import orange from '../../assets/faq/rectangle.png'
 
 function Status(){

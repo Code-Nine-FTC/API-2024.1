@@ -1,4 +1,4 @@
-import './App.css';
+import '.././component/faq/faq.css';
 import Component from '../component/component1/component';
 import Component2 from '../component/component2/component2';
 import Component3 from '../component/component3/component3';
