@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './sidebar.css';
+import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
 import perfilicone from '../../assets/sidebar/iconperfil.png'
 import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigationItems } from './navitens'
@@ -17,7 +17,7 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
     sua classe também */
     const abrirSidebar = () => {
         setIsSidebarAberta(!isSidebarAberta);
-        const button = document.querySelector('.sidebar-button');
+        const button = document.querySelector('.sidebarButton');
         const sidebar = document.querySelector('.sidebar');
         if (button) {
             button.classList.toggle('open');
@@ -58,7 +58,7 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
 
     return (
         <>
-        <div className="sidebar-container">
+        <div className={styles.sidebarContainer}>
             <button onClick={abrirSidebar} className="sidebar-button">
                 <span></span>
                 <span></span>
@@ -68,7 +68,7 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
                 <div className="userinfo">
                     <img src="" alt="Foto de perfil"/>
                     <div className="infouser">
-                        <Link to="/perfil}" id="linkperfil"> Eu </Link>
+                        <Link to="/perfil" id="linkperfil"> Eu </Link>
                         <h2> {userTipo.charAt(0).toUpperCase() + userTipo.slice(1)} </h2>
                         {/* Deixa a primeira letra do nome maiúscula */}
                     </div>
