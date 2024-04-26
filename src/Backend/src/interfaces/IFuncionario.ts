@@ -22,6 +22,11 @@ export interface IFuncionarioInput {
     func_is_admin: boolean
 }
 
+export interface IFuncionarioLoggin{
+    func_cpf: string
+    func_senha: string
+}
+
 export interface IFuncionarioUpdate{
     func_nome?: string
     func_cpf?: string
