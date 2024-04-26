@@ -1,10 +1,14 @@
-* {
-    font-family: "Inter", sans-serif;
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    height: 100vh;
 }
 
-.conjunto {
+.conteudoform {
     display: flex;
     justify-content: space-between; 
+    width: 70vw;
   }
   
   .Dados1, .Dados2 {
@@ -13,7 +17,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 2vh;
-    width: 49%; 
+    min-width: max-content; 
   }
   
 
@@ -62,12 +66,12 @@ input{
 }
 
 .Container{
-        padding: 20vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
+    padding: 0;
+    margin-left: 0vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -75,7 +79,6 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -15vh;
     padding: 5%;
     
     
@@ -96,14 +99,25 @@ input{
 
 
 .titulo{
-    position: relative;
-    display: flex;
     margin-top: 10%;
-    margin-left: 20.9%;
-    text-align: flex;
-    display: flex;
+    margin-left: 14%;
     margin-bottom: 20px;
     border-bottom: 1px solid black;
     width: 73%;
 }
 
+@media (max-width: 900px) {
+    input {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 1440px) {
+    .conteudoform {
+        flex-direction: column;
+        width: max-content;
+    }
+    .Dados1, .Dados2{
+        margin-bottom: 3%;
+    }
+}

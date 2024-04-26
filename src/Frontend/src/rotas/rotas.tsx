@@ -1,11 +1,10 @@
-import { Route, BrowserRouter, Routes as Switch } from "react-router-dom";
+  import { Route, BrowserRouter, Routes as Switch } from "react-router-dom";
 import NotFound from "../pages/notFound";
 import React from "react";
-import Home from '../pages/homePage'
 import Registro from "../pages/registroPage";
 import Editinfocli from "../pages/infoCliente";
 import Editinfosuport from "../pages/infoSuporte";
-import Faq from "../pages/faq";
+import Home from "../pages/homePage";
 import LoginPage from "../pages/loginPage";
 
 const Rotas = () => {
@@ -16,7 +15,8 @@ const Rotas = () => {
             <Route path="/registro" element={<Registro />} />
             <Route path="/editarsuporte" element={<Editinfosuport/>}/>
             <Route path="/editarcliente" element={<Editinfocli/>}/>
-            <Route path="/login" element={<LoginPage/>}></Route>
+            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="*" element={<NotFound/>}/>
           </Switch>
         </BrowserRouter>
     )

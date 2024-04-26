@@ -2,9 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import ".././component/infoCliente/infoCliente.css"
 import ImageComponent from '../component/imagemperfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
-const userLogado = 'getDefaultNavigationItems'
-
-
+const userLogado = 'user'
 
 interface User {
   nome: string;

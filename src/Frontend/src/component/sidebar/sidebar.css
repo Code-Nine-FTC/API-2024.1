@@ -202,12 +202,15 @@ a {
 @media (min-width: 769px) {
     .sidebar.open {
         transform: translateX(0);
+        position: absolute;
+        min-width: 17vw;
     }
 }
 
 @media (max-width: 768px) {
     .sidebar-button {
         display: flex;
+        position: fixed;
     }
     .sidebar {
         transform: translateX(-100%);
@@ -223,6 +226,10 @@ a {
     .navitemdiv li {
         margin-left: 3vw;
         margin-right: 3vw;
+    }
+    .sidebar-container {
+        position: fixed;
+        z-index: 1;
     }
 }
 

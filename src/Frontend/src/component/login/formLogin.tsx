@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from "./projeto9999.png"
-import '../login/Login.css'
+import './login.css'
 
 function LoginForm() {
   return ( 
-  <>
-    <img src={logo} className="logo" alt="logo" />
-      <form className="Content">
+    <div className='conteudo'>
+      <form className="conteudointerno">
+        <img src={logo} className="logo" alt="logo" />
         <div className="Labels">
           <h1>Faça o seu Login</h1>
           <label htmlFor="label1">CPF</label>
@@ -17,9 +17,7 @@ function LoginForm() {
           <div className="Title">Voltar</div>
         </div>
       </form>
-      
-      </>
-
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@
   justify-content: center;
   flex-direction: row;
   margin-left: 10%;
+  width: 100%;
 }
 .bemvindo {
   display: flex;
