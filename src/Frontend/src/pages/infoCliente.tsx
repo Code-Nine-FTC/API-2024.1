@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import ".././component/infoCliente/infoCliente.css"
-import ImageComponent from '../component/imagemPerfil/imagemperfil';
+import ImageComponent from '../component/imagemperfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
 const userLogado = 'getDefaultNavigationItems'
 
