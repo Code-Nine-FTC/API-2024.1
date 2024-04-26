@@ -5,9 +5,7 @@ const Home = () => {
     return (
         <>
             <Sidebar userTipo={userLogado}/>
-            <main>
-                <h1> Teste </h1>
-            </main>
+
         </>
     )
 }
