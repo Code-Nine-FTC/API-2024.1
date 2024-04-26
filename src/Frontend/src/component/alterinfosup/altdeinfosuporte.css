@@ -93,17 +93,16 @@ input{
     transform: scale(1.1);
     
 }
-h1{
-    text-align: flex;
-    display: flex;
-    margin-bottom: 20px;
-    border-bottom: 1px solid black;
-    width: 73%;
-}
+
+
 .titulo{
     position: relative;
     display: flex;
     margin-top: 10%;
     margin-left: 20.9%;
-    
+    text-align: flex;
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    width: 73%;
 }
