@@ -10,6 +10,7 @@ ul {
 .navItens {
     margin-top: 10vh;
     font-weight: bold;
+    flex-grow: 1;
 }
 
 a {
@@ -21,8 +22,7 @@ a {
 
 #logout {
     margin-top: auto;
-    margin-bottom: 0;
-    position: sticky;
+    margin-bottom: 5%;
 }
 
 .sidebar {
@@ -34,6 +34,8 @@ a {
     min-height: 100vh;
     max-height: max-content;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-container {
@@ -173,10 +175,6 @@ a {
     transition: left 0.3s ease-in-out;
 }
 
-.sidebar.open .sidebar-button {
-    left: 18vw;
-}
-
 .sidebar-button span {
     width: 2rem;
     height: 0.25rem;
@@ -217,7 +215,7 @@ a {
     }
     .navitemdiv {
         margin-bottom: 10px;
-        min-width: 89%;
+        min-width: 100%;
         width: inherit;
         color: white;
         font-size: 1.1em;
@@ -230,6 +228,6 @@ a {
 
 @media (max-width: 1186px) {
     .sidebar {
-        width: 18vw;
+        min-width: 17vw;
     }
 }

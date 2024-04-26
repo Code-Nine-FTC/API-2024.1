@@ -112,9 +112,9 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
                             </li>
                         </div>
                     ))}
-                     <li id="logout">
+                     <div id="logout">
                         <Link to="/registro">Logout →</Link>
-                    </li>
+                    </div>
                 </ul>
             </section>
         </div>
