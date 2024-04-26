@@ -8,7 +8,7 @@ ul {
 }
 
 .navItens {
-    margin-top: 50%;
+    margin-top: 10vh;
     font-weight: bold;
 }
 
@@ -20,9 +20,9 @@ a {
 }
 
 #logout {
-    position: absolute;
-    bottom: 2%;
-    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: 0;
+    position: sticky;
 }
 
 .sidebar {
@@ -31,13 +31,16 @@ a {
     /* position: absolute; */
     min-width: max-content;
     min-width: 14vw;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: max-content;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .sidebar-container {
     position: relative;
     display: flex;
+    max-width: max-content;
+    max-height: max-content;
 }
 
 .sidebar.open {

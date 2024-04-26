@@ -5,10 +5,8 @@ import Routes from './rotas/rotas'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Routes />
-      </header>
+    <div>
+      <Routes />
     </div>
   );
 }
