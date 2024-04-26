@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--branco);
+}
+
+main {
+    margin: 0 auto;
+    max-width: 800px;
+    min-width: none;
+    max-width: auto;
+    min-height: calc(100vh - 95px);
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding: 40px 20px;
+}

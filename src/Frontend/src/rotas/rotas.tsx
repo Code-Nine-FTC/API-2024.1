@@ -9,7 +9,8 @@ const Rotas = () => {
     return (
         <BrowserRouter>
           <Switch>
-            <Route path="/" element={<Registro />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/registro" element={<Registro />} />
             <Route path="*" element={<NotFound />} />
           </Switch>
         </BrowserRouter>
