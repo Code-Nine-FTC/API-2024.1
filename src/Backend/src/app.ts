@@ -5,6 +5,7 @@ import { Connection } from './config/data-source'
 import dotenv from 'dotenv';
 import path from 'path';
 import clienteRoutes from './routes/clienteRoutes'
+import funcionarioRoutes from './routes/funcionarioRoutes'
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
@@ -15,6 +16,7 @@ const app = express()
 app.use(cors())
 app.use(express.json()) 
 app.use(clienteRoutes)
+app.use(funcionarioRoutes)
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(async () => {
