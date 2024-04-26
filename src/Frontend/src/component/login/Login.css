@@ -1,0 +1,122 @@
+.header {
+    background-color: #0036a3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+  }
+  
+.logo {
+    max-width: 22%; /* Define o tamanho máximo da imagem como 20% da largura da tela */
+    position: absolute; /* Permite mover a imagem livremente */
+    top: 23%; /* Posiciona a imagem a 10% da altura da tela */
+    left: 23%; /* Posiciona a imagem a 10% da largura da tela */
+  }
+  
+  /* Media query para telas menores */
+  @media (max-width: 768px) {
+    .logo {
+      max-width: 50%; /* Reduz o tamanho máximo da imagem para telas menores */
+      top: 3%; /* Posiciona a imagem a 5% da altura da tela */
+      left: 25%; /* Posiciona a imagem a 5% da largura da tela */
+    }
+  }
+/* Estilos para o conteúdo */
+.Content {
+    background-color: white;
+    width: 80%;
+    max-width: 950px;
+    height: 70vh; /* Altura padrão da section */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5%;
+  }
+  
+  /* Media query para telas menores */
+  @media (max-width: 768px) {
+    .Content {
+      height: 120vh; /* Define a altura da section para telas menores */
+    }
+  }
+  
+  /* Estilos para as labels */
+  .Labels {
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Ajuste a margem superior conforme necessário */
+    padding-left: 400px;
+    color: #0036a3;
+  }
+  
+  .Labels label {
+    margin-bottom: 2px; /* Ajuste o espaçamento entre as labels conforme necessário */
+  }
+  
+  #label1,
+  #label2 {
+    width: 90%; /* Isso fará com que os inputs ocupem toda a largura da sua seção */
+    padding: 9px; /* Adiciona espaço interno dentro do input */
+    border-radius: 8px; /* Borda arredondada */
+    border: 2px solid #ccc; /* Borda com cor cinza */
+    font-size: 16px; /* Tamanho da fonte */
+    background-color: #f5f5f5; /* Cor de fundo */
+    transition: border-color 0.3s ease; /* Transição suave para a mudança de cor da borda */
+  }
+  
+  #label1:focus,
+  #label2:focus {
+    border-color: #0036a3; /* Cor da borda ao receber foco */
+    outline: none; /* Remove a borda de foco padrão */
+  }
+  
+  /* Media query para telas menores */
+  @media (max-width: 768px) {
+    .Labels {
+      padding-left: 0; /* Remove o padding-left para telas menores */
+      padding-top: 50%;
+      align-items: center; /* Centraliza verticalmente as labels */
+      justify-content: center; /* Centraliza horizontalmente as labels */
+    }
+  
+    .Labels h1 {
+      text-align: center; /* Alinha o título no centro para telas menores */
+    }
+  
+    .Labels label {
+      margin-bottom: 10px; /* Reduz o espaçamento entre as labels para telas menores */
+    }
+  }
+  
+  .EntrarButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0036a3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 300px;
+  }
+  
+  .EntrarButton:hover {
+    background-color: #002578; /* Escurece um pouco ao passar o mouse */
+  }
+  
+  /* Estilos para o título clicável */
+  .Title {
+    margin-top: 20px; /* Espaço entre o botão e o título */
+    font-size: 18px; /* Tamanho da fonte do título */
+    color: blue; /* Cor do texto do título */
+    cursor: pointer; /* Transforma o cursor em uma mãozinha quando passa sobre o título */
+  }
+  
+  .Title:hover {
+    text-decoration: underline; /* Sublinha o texto do título ao passar o mouse */
+  }
+
