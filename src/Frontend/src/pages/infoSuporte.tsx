@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import "../component/infoSuporte/infoSuporte.css"
+import styles from "../component/infoSuporte/InfoSuporte.module.css"
 import ImageComponent from '../component/imagemperfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
 const userLogado = 'atendente'
@@ -29,18 +29,18 @@ const Editinfosuport: React.FC = () => {
   
 
   return (
-  <>
+    <>
       <Sidebar userTipo={userLogado}/>
-      <div className='conteudo'>
-        <div className='titulo'>
+      <div className={styles.conteudo}>
+        <div className={styles.titulo}>
           <h1>Editar Usuário</h1>
         </div>
-        <div className='Container'>
-          <div className='perfil'>
+        <div className={styles.Container}>
+          <div className={styles.perfil}>
               <ImageComponent nome={nome}/>
           </div>
-          <form className='conteudoform' onSubmit={handleSubmit}>
-            <div className='Dados1'>
+          <form className={styles.conteudoform} onSubmit={handleSubmit}>
+            <div className={styles.Dados1}>
               <label>
                 <input className='' type="text" value={nome} placeholder='Altere seu nome' onChange={e => setNome(e.target.value)} />
               </label>
@@ -51,23 +51,23 @@ const Editinfosuport: React.FC = () => {
                 <input type="password" value={senha} placeholder='Altere sua senha' onChange={e => setSenha(e.target.value)} />
               </label>
             </div>
-            <div className='Dados2'>
+            <div className={styles.Dados2}>
               <label>
-                <input className='' type="text" value={tiposuport} placeholder='Altere seu nome' onChange={e => setTiposuport(e.target.value)} />
+                <input type="text" value={tiposuport} placeholder='Suporte' onChange={e => setTiposuport(e.target.value)} />
               </label>
               <label>
-                <input type="" readOnly value={cpf} placeholder={cpf} onChange={e => setCPF(e.target.value)} />
+                <input type="cpf" readOnly value={cpf} placeholder={cpf} onChange={e => setCPF(e.target.value)} />
               </label>
               <label>
                 <input type="tel" value={telefone} placeholder='Altere seu número de telefone' onChange={e => setTelefone(e.target.value)} />
               </label>
             </div>
           </form>
-          <div className='button'>
-                <div id='Editar'>
+          <div className={styles.button}>
+                <div id={styles.Editar}>
                   Editar Perfil
                 </div>
-                <div id='Deletar'>
+                <div id={styles.Deletar}>
                   Deletar Conta
                 </div> 
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import myImage from '../../assets/fotoperfil/perfil.svg';
-import './imagemperfil.css'; 
+import styles from './Imagemperfil.module.css'; 
 
 interface ImageComponentProps {
   nome: string;
@@ -8,7 +8,7 @@ interface ImageComponentProps {
 
 const ImageComponent: React.FC<ImageComponentProps> = ({ nome }) => {
   return (
-    <div className="image-container">
+    <div className={styles.imagecontainer}>
       <img src={myImage} alt="Imagem do perfil" />
       <h3>{nome}</h3>
     </div>
