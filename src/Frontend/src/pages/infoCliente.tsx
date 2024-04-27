@@ -22,8 +22,9 @@ const Editinfocli: React.FC = () => {
   };
 
   return (
-    <div className={styles.ficacerto}>
+    <>
       <Sidebar userTipo={userLogado}/>
+      <div className={styles.conteudo}>
       <div className={styles.titulo}>
         <h1>Minha Conta</h1>
       </div>
@@ -53,7 +54,8 @@ const Editinfocli: React.FC = () => {
           </div> 
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

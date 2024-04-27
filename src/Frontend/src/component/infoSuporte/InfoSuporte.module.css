@@ -1,14 +1,14 @@
 .conteudo {
     display: flex;
     flex-direction: column;
-    width: 80vw;
-    height: 100vh;
+    width: 80%;
+    height: 90%;
 }
 
 .conteudoform {
     display: flex;
     justify-content: space-between; 
-    width: 70vw;
+    width: 70%;
   }
   
   .Dados1, .Dados2 {
@@ -113,6 +113,15 @@ input{
 }
 
 @media (max-width: 1440px) {
+    .conteudoform {
+        flex-direction: column;
+        width: max-content;
+    }
+    .Dados1, .Dados2{
+        margin-bottom: 3%;
+    }
+}
+@media (max-width: 1920px) {
     .conteudoform {
         flex-direction: column;
         width: max-content;

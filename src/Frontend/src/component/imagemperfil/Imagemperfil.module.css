@@ -1,8 +1,9 @@
-.image-container {
+.imagecontainer {
     text-align: center; 
   }
   
-  .image-container h3 {
-    margin-top: 5px; 
+  .imagecontainer h3 {
+    margin-top: 1vh;
+    float:unset;
   }
   
