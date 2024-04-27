@@ -1,12 +1,16 @@
 import React from 'react';
+<<<<<<< Updated upstream
 import styles from '../faq/Faq.module.css';
+=======
+import styles from '../faq/Faq.module.css'
+>>>>>>> Stashed changes
 import map from '../../assets/faq/map.png';
 
 function Component() {
     return (
-        <div className='item'>
-            <img src={map} className='react-icon' alt='Map Icon' />
-            <h3 className='item-title'>Localizar encomenda</h3>
+        <div className={styles.item}>
+            <img src={map} className={styles.reactIcon} alt='Map Icon' />
+            <h3 className={styles.itemTitle}>Localizar encomenda</h3>
         </div>
     );
 }

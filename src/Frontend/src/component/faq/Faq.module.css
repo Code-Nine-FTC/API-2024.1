@@ -11,7 +11,7 @@
   
   }
   
-  .flex-baseText{
+  .flexBaseText{
     display: flex;
     align-items: center;
     gap: 10px;
@@ -36,7 +36,7 @@
     font-weight: normal;
   }
   
-  .carrousel-control{
+  .carrouselControl{
     display: flex;
     gap: 20px;
     justify-content: center;
@@ -46,7 +46,7 @@
     color: #00046D;
   }
   
-  .status-box{
+  .statusBox{
     background-color: rgb(238, 238, 238);
     justify-content: flex-start;
     width: 1000px;
@@ -95,15 +95,4 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-  }
-  
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
   }

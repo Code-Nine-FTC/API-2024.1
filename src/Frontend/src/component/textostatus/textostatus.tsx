@@ -1,16 +1,16 @@
 import React from 'react';
-import '../faq/faq.css';
+import styles from '../faq/Faq.module.css'
 import circle from '../../assets/faq/circle.png'
 
 
 function Textostatus(){
     return(
-        <div className='flex-baseText'>
+        <div className={styles.flexBaseText}>
             <div>
-                <img src={circle} className='circle'/>
+                <img src={circle} className={styles.circle}/>
             </div>
             <div>
-                <h2 className='statusMain'>Status: Em andamento</h2>
+                <h2 className={styles.statusMain}>Status: Em andamento</h2>
             </div>
         </div>
     )

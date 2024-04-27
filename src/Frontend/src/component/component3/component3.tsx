@@ -1,13 +1,17 @@
 import React from 'react';
+<<<<<<< Updated upstream
 import styles from '../faq/Faq.module.css';
+=======
+import styles from '../faq/Faq.module.css'
+>>>>>>> Stashed changes
 import trolley from '../../assets/faq/trolley.png'
 
 
 function Component3(){
     return(
-        <div className='item'>
-            <img src={trolley} className='react-icon'/>
-            <h3 className='item-title'>Danos à encomenda</h3>
+        <div className={styles.item}>
+            <img src={trolley} className={styles.reactIcon}/>
+            <h3 className={styles.itemTitle}>Danos à encomenda</h3>
         </div>
     )
 }

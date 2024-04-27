@@ -1,4 +1,4 @@
-import '.././component/faq/faq.css';
+import styles from '../component/faq/Faq.module.css'
 import Component from '../component/component1/component';
 import Component2 from '../component/component2/component2';
 import Component3 from '../component/component3/component3';
@@ -15,23 +15,23 @@ function Home() {
   return (
   <>
   <Sidebar userTipo={userLogado}/>
-  <div className='conteudo'>
-    <div className="status">
+  <div className={styles.conteudo}>
+    <div className={styles.status}>
         <Textostatus/>
         <Status/>
     </div>
     <div>
-      <p className='blueText'>Ver todos os meus tickets abertos</p>
+      <p className={styles.blueText}>Ver todos os meus tickets abertos</p>
     </div>
     <br/>
-        <h1 className='title'>Perguntas Frequentes</h1>
-        <div className='carrousel'>
+        <h1 className={styles.title}>Perguntas Frequentes</h1>
+        <div className={styles.carrousel}>
             <Component/>
             <Component2/>
             <Component3/>
         </div>
         <br/>
-      <div className='carrousel-control'>
+      <div className={styles.carrouselControl}>
         <Ellipse/>
         <Ellipse/>
         <Ellipse/>
@@ -40,8 +40,8 @@ function Home() {
         <Ellipse/>
       </div>
       <br/>
-      <div className='support-control'>
-        <p className='blueText'>Não encontrou a solução para o seu problema?</p>
+      <div className={styles.supportControl}>
+        <p className={styles.blueText}>Não encontrou a solução para o seu problema?</p>
         <br/>
         <Support/>
       </div>

@@ -1,20 +1,20 @@
 import React from 'react';
-import '../faq/faq.css';
+import styles from '../faq/Faq.module.css'
 import orange from '../../assets/faq/rectangle.png'
 
 function Status(){
     return(
-        <div className='status-box'>
-            <div className='main-text'>
-                <div className='buttonAlign'>
-                    <img src={orange} className='orangeRectangle'/>
-                    <div className='alignDistance'>
-                    <div className='align01'>
-                        <p className='ticketText'>Ticket#0001</p>
+        <div className={styles.statusBox}>
+            <div className={styles.mainText}>
+                <div className={styles.buttonAlign}>
+                    <img src={orange} className={styles.orangeRectangle}/>
+                    <div className={styles.alignDistance}>
+                    <div className={styles.align}>
+                        <p className={styles.ticketTex}>Ticket#0001</p>
                         <p>Não consigo acessar minha encomenda</p>
                     </div>
-                    <div className='button-nav'>
-                        <button className='chatButton' type='button'>Entrar no chat</button>
+                    <div className={styles.buttonNav}>
+                        <button className={styles.chatButton} type='button'>Entrar no chat</button>
                      </div>
                 </div>
                     </div>

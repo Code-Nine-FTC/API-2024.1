@@ -1,9 +1,9 @@
 import React from 'react';
-import '../faq/faq.css';
+import styles from '../faq/Faq.module.css'
 
 function Support(){
     return(
-        <button className='supportButton'>Converse com um atendente</button>
+        <button className={styles.supportButton}>Converse com um atendente</button>
     )
 }
 
