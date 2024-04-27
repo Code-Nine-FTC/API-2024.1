@@ -1,66 +1,171 @@
 import { IClienteInput, IClienteLoggin, IClienteUpdate, IClienteView } from "../interfaces/ICliente";
 import Cliente from "../entities/cliente";
 import { Connection } from "../config/data-source";
+import * as bcrypt from 'bcrypt';
 
 export class ClienteService {
-    public async cadastrarCliente(dadosCliente: IClienteInput) {
-        const clienteRepository = Connection.getRepository(Cliente)
+    public async cadastrarCliente(dadosCliente: IClienteInput) :Promise<{ success: boolean, message: string, cliente?: Cliente[]}>{
         try {
-            const novoCliente = clienteRepository.create(dadosCliente)
-            await clienteRepository.save(novoCliente)
-            return { success: true, message: "Cliente cadastrado com sucesso", cliente: novoCliente.cli_nome };
+            const clienteRepository = Connection.getRepository(Cliente)
+            // Procura se o e-mail ou o cpf já são cadastrados
+            const cliente = await clienteRepository.findOne({ where: [
+                    { cli_email: dadosCliente.cli_email },
+                    { cli_cpf: dadosCliente.cli_cpf }
+                ]
+            })
+            if (!cliente){
+                // Validação de CPF
+                const cpfValidado = this.validarCpf(dadosCliente.cli_cpf)
+                if (!cpfValidado){
+                    return { success: false, message: `CPF inválido`}
+                }
+                // Criptografia de Senha
+                const senhaCriptografada = await bcrypt.hash(dadosCliente.cli_senha, 10)
+                dadosCliente.cli_senha = senhaCriptografada
+                // Criando novo usario
+                const novoCliente = clienteRepository.create(dadosCliente)
+                // Salvando novo cliente
+                await clienteRepository.save(novoCliente)
+                return { success: true, message: `Cliente cadastrado com sucesso`};
+            }
+            return {success: false, message: `Usuario já cadastrado`}
+            
         } catch (error) {
-            console.error("Erro ao cadastrar cliente:", error);
-            return { success: false, message: "Erro ao cadastrar cliente!" };
+            console.error(`Erro ao cadastrar cliente:`, error);
+            return { success: false, message: `Erro ao cadastrar cliente` };
         }
     }
-    public async logarCliente(dadosLogin: IClienteLoggin){
-        const {cli_email, cli_senha} = dadosLogin
-        const clienteRepository = Connection.getRepository(Cliente)
+    public async logginCliente(dadosLogin: IClienteLoggin){
         try{
-            const cliente = clienteRepository.findOne({ where: { cli_email }})
-            if(cliente){
-                if (cli_senha === (await cliente).cli_senha){
-                    return { sucess: true, message: `Logging realizado com sucesso! :)`}
-                }else{
-                    return { sucess: false, message: `Senha incorreta!Tente novamente.`}
-                }
-            }else{
-                return { sucess: false, message: `Cliente não encontrado! :(`}
+            const clienteRepository = Connection.getRepository(Cliente)
+            const cliente = await clienteRepository.findOne({ where: { cli_email: dadosLogin.cli_email }})
+            if(!cliente){
+                return { sucess: false, message: `Cliente não encontrado`}
             }
+            if (!bcrypt.compareSync(dadosLogin.cli_senha, cliente.cli_senha)){
+                return { success: false, message: `Dados invalidos`}
+            }
+            return { success: true, message: `Login bem sucedido`}
         }catch (error){
             console.error(`Erro ao logar cliente: ${error}`)
-            return {sucess: false, message: `Erro ao logar cliente!`}
+            return {sucess: false, message: `Erro ao logar cliente`}
         }
     }
-    public async editarCliente(id: number, dadosUpdate: IClienteUpdate){
-        const clienteRepository = Connection.getRepository(Cliente)
-        try{
-            const cliente = await clienteRepository.findOne({ where: { cli_id:id }})
-            if (cliente){
-                const clienteUpdate = {...cliente, ...dadosUpdate}
-                await clienteRepository.update(id, clienteUpdate)
-                return { sucess: true, message: `Cliente atualizado com sucesso :)`}
-            }else{
-                return { sucess: false, message: `Cliente não encontrado! :(`}
+    public async editarCliente(id: number, dadosUpdate: IClienteUpdate) {
+        try {
+            const clienteRepository = Connection.getRepository(Cliente);
+            const cliente = await clienteRepository.findOne({ where: { cli_id: id } });
+            
+            if (!cliente) {
+                return { success: false, message: `Cliente não encontrado` };
             }
-        }catch(error){
-            console.error(`Erro ao editar cliente: ${error}`)
-            return {sucess: false, message: `Erro ao editar cliente!`}
+            if (dadosUpdate.cli_cpf) {
+                const cpfValidado = this.validarCpf(dadosUpdate.cli_cpf);
+                if(cpfValidado) {
+                    const cpfExistente = await clienteRepository.findOne({ where: { cli_cpf: dadosUpdate.cli_cpf } });
+                    if (cpfExistente && cpfExistente.cli_id !== id) {
+                        return { success: false, message: `CPF já cadastrado` };                    
+                        }
+                }else{
+                    return { success: false, message: `CPF inválido` };
+                }
+                }
+                if (dadosUpdate.cli_email) {
+                    const emailExistente = await clienteRepository.findOne({ where: { cli_email: dadosUpdate.cli_email } });
+                    
+                    if (emailExistente && emailExistente.cli_id !== id) {
+                        return { success: false, message: `E-mail já cadastrado` };
+                    } 
+                }
+                if (dadosUpdate.cli_senha) {
+                    const senhaCriptografada = await bcrypt.hash(dadosUpdate.cli_senha, 10);
+                    dadosUpdate.cli_senha = senhaCriptografada;
+                }
+
+            const clienteUpdate = { ...cliente, ...dadosUpdate };
+            await clienteRepository.update(id, clienteUpdate);
+            return { success: true, message: `Cliente atualizado com sucesso`,cliente };
+        } catch (error) {
+            console.error(`Erro ao editar cliente: ${error}`);
+            return { success: false, message: `Erro ao editar cliente` };
         }
     }
     public async visualizarCliente(id: number){
-        const clienteRepository = Connection.getRepository(Cliente)
         try{
+            const clienteRepository = Connection.getRepository(Cliente)
             const cliente = await clienteRepository.findOne({where: {cli_id: id}})
-            if (cliente){
-                return { success: true, message: 'Cliente encontrado!', cliente }
-            }else{
-                return {sucess: false, message: `Cliente não entrado! :(`}
+            if (!cliente){
+                return {success: false, message: `Cliente não entrado`}
             }
+            return { success: true, message: `Cliente encontrado`, cliente}
         }catch(error){
             console.error(`Erro ao encontrar cliente: ${error}`)
-            return {sucess: false, message: `Erro ao encontrar o cliente!`}            
+            return {success: false, message: `Erro ao encontrar o cliente`}            
         }
+    }
+    public async desativarCliente(id: number){
+        try{
+            const clienteRepository = Connection.getRepository(Cliente)
+            const cliente = await clienteRepository.findOne({ where: {cli_id: id}})
+            if (!cliente){
+                return {success: false, message: `Cliente não entrado`}
+            }
+            cliente.ativo = false
+            await clienteRepository.save(cliente)
+            return {success: true, message: `Cliente desativado com sucesso`, cliente}
+        }catch (error){
+            console.error(`Erro ao encontrar cliente: ${error}`)
+            return {success: false, message: `Erro ao encontrar o cliente`}      
+        }
+    }
+    private validarCpf(cpf: string): boolean{
+        // Remove todos os elementos que não seja númerico
+        cpf = cpf.replace(/\D/g, '')
+        // Verifica se o cpf tem tamanho igual a 11
+        if(cpf.length !== 11){
+            return false
+        }
+        // Verifica se todos os numeros são iguais
+        if(/^(\d)\1{10}$/.test(cpf)){
+            return false
+        }
+
+        // Calculando o primeiro digito verificador cpf[10]
+        let soma = 0
+        for (let i = 0; i < 9; i++){
+            soma += parseInt(cpf.charAt(i)) * (10 - i)
+        }
+        let resto = soma % 11
+        let digitoVerificador1: number
+        if (resto < 2){
+            digitoVerificador1 = 0
+        }else{
+            digitoVerificador1 = 11 - resto
+        }       
+
+        // Verifica se o primeiro digito verificador é diferente do que foi calulado
+        if (parseInt(cpf.charAt(9)) !== digitoVerificador1){
+            return false
+        } 
+        // Calcula o segundo digito vereficador
+        soma = 0
+        resto = 0
+        for (let i= 0; i < 10; i++ ){
+            soma += parseInt(cpf.charAt(i)) * (11 - i)
+        }
+        resto = soma % 11
+        let digitoVerificador2: number
+        if (resto < 2){
+            digitoVerificador2 = 0
+        }else{
+            digitoVerificador2 = 11 - resto
+        }
+
+        // Verifica se o segundo digito verificador é diferente do que foi calculado 
+        if(parseInt(cpf.charAt(10)) !== digitoVerificador2){
+            return false
+        }
+        // CPF Valido
+        return true
     }
 }
