@@ -24,15 +24,15 @@ export default class ClienteController{
     async logginCliente(req: Request, res: Response){
         try{
             const dadosLogin: IClienteLoggin = req.body
-            const resultado = await this.clienteService.logarCliente(dadosLogin)
-            if(resultado.sucess){
-                return res.status(201).json(resultado)
+            const resultado = await this.clienteService.logginCliente(dadosLogin)
+            if(resultado.success){
+                return res.status(200).json(resultado)
             }else{
                 return res.status(400).json(resultado)
             }
         }catch (error){
             console.error(`Erro no logging do cliente: ${error}`)
-            return res.status(500).json({sucess: false, message: `Erro interno do servidor`})
+            return res.status(500).json({success: false, message: `Erro interno do servidor`})
         }
     }
     async editarCliente(req: Request, res: Response){
@@ -43,14 +43,14 @@ export default class ClienteController{
             }
             const dadosUpdate: IClienteUpdate = req.body
             const resultado = await this.clienteService.editarCliente(id, dadosUpdate)
-            if (resultado.sucess){
-                return res.status(201).json(resultado)
+            if (resultado.success){
+                return res.status(200).json(resultado)
             }else{
                 return res.status(400).json(resultado)
             }
         }catch(error){
             console.error(`Erro em editar o cliente: ${error}`)
-            return res.status(500).json({sucess: false, message: `Erro interno do servidor`})
+            return res.status(500).json({success: false, message: `Erro interno do servidor`})
         }
     }
     async visualizarCliente(req: Request, res: Response){
@@ -61,14 +61,31 @@ export default class ClienteController{
             }
             const resultado = await this.clienteService.visualizarCliente(id)
             if(resultado.success){
-                return res.status(201).json(resultado)
+                return res.status(200).json(resultado)
             }else{
                 return res.status(400).json(resultado)
             }
         }
         catch(error){
             console.error(`Erro em visualizar o cliente: ${error}`)
-            return res.status(500).json({sucess: false, message: `Erro interno do servidor`})
+            return res.status(500).json({success: false, message: `Erro interno do servidor`})
+        }
+    }
+    async desativarCliente(req: Request ,res: Response ){
+        try{
+            const id: number = Number(req.params.id)
+            if (isNaN(id) || id <= 0) {
+                return res.status(400).json({ success: false, message: 'ID do cliente inválido' });
+            }
+            const resultado = await this.clienteService.desativarCliente(id)
+                if(resultado.success){
+                    return res.status(200).json(resultado)
+                }else{
+                    return res.status(400).json(resultado)
+                }
+        }catch(error){
+            console.error(`Erro em desativar cliente: ${error}`)
+            return res.status(500).json({success: false, message: `Erro interno do servidor`})
         }
     }
 }
