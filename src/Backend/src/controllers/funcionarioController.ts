@@ -12,7 +12,7 @@ export default class FuncionarioController {
             const dadosFuncionario: IFuncionarioInput = req.body;
             const resultado = await this.funcionarioService.cadastrarFuncionario(dadosFuncionario);
             if (resultado.success) {
-                return res.status(200).json(resultado);
+                return res.status(201).json(resultado);
             } else {
                 return res.status(400).json(resultado);
             }
@@ -72,6 +72,23 @@ export default class FuncionarioController {
         } catch (error) {
             console.error(`Erro no login do funcionário: ${error}`);
             return res.status(500).json({ success: false, message: 'Erro interno do servidor' });
+        }
+    }
+    async desativarFuncionario(req: Request, res: Response) {
+        try {
+            const id: number = Number(req.params.id)
+            if (isNaN(id) || id <= 0) {
+                return res.status(400).json({ success: false, message: 'ID do funcionário inválido' });
+            }
+            const resultado = await this.funcionarioService.desativarFuncionario(id)
+            if (resultado.success) {
+                return res.status(200).json(resultado)
+            } else {
+                return res.status(400).json(resultado)
+            }
+        } catch (error) {
+            console.error(`Erro em desativar funcionário: ${error}`)
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
 }
