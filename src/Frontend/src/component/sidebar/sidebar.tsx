@@ -1,6 +1,6 @@
-import React, { useState} from 'react';
+import React, { useState, useRef} from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './sidebar.css';
+import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
 import perfilicone from '../../assets/sidebar/iconperfil.png'
 import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigationItems } from './navitens'
@@ -8,6 +8,8 @@ import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigat
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
 // Define os States para verificar se a Sidebar esta aberte ou fechada, e o mesmo para o menu Dropdown
 const Sidebar = ({ userTipo }: { userTipo: string }) => { 
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
     const [isSidebarAberta, setIsSidebarAberta] = useState(false);
     const [isDropdownAberto, setIsDropdownAberto] = useState<number | null>(null);
     const [ativoNavItem, setAtivoNavItem] = useState('');
@@ -17,11 +19,11 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
     sua classe também */
     const abrirSidebar = () => {
         setIsSidebarAberta(!isSidebarAberta);
-        const button = document.querySelector('.sidebar-button');
-        const sidebar = document.querySelector('.sidebar');
-        if (button) {
-            button.classList.toggle('open');
-            sidebar?.classList.toggle('open');
+        if (buttonRef.current) {
+            buttonRef.current.classList.toggle(styles.open);
+        }
+        if (sidebarRef.current) {
+            sidebarRef.current.classList.toggle(styles.open);
         }
     };
 
@@ -44,9 +46,9 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
 
     // Função que altera o nome da classe para ativo quando está em sua rota respectiva
     const getClassNames = (item: any) => {  
-        let classNames = `navitemdiv ${ativoNavItem === item.label ? 'ativo' : ''}`;
+        let classNames = `${styles.navitemdiv} ${ativoNavItem === item.label ? styles.ativo : ''}`;
         if (item.path && item.path === location.pathname) {
-            classNames += ' ativo';
+            classNames += ` ${styles.ativo}`;
         }
         if ('dropdownItems' in item && item.dropdownItems !== undefined){
             if (item.dropdownItems.some((dropdownItem: any) => dropdownItem.path === location.pathname)) {
@@ -58,22 +60,22 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
 
     return (
         <>
-        <div className="sidebar-container">
-            <button onClick={abrirSidebar} className="sidebar-button">
+        <div className={styles.sidebarContainer}>
+            <button ref={buttonRef} onClick={abrirSidebar} className={styles.sidebarButton}>
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <section className="sidebar">
-                <div className="userinfo">
+            <section ref={sidebarRef} className={styles.sidebar}>
+                <div className={styles.userinfo}>
                     <img src="" alt="Foto de perfil"/>
-                    <div className="infouser">
-                        <Link to="/perfil}" id="linkperfil"> Eu </Link>
+                    <div className={styles.infouser}>
+                        <Link to="/perfil" id={styles.linkperfil}> Eu </Link>
                         <h2> {userTipo.charAt(0).toUpperCase() + userTipo.slice(1)} </h2>
                         {/* Deixa a primeira letra do nome maiúscula */}
                     </div>
                 </div>
-                <ul className="navItens">
+                <ul className={styles.navItens}>
                     {/* Percorre cada valor retornado pela função de receber
                     os itens da navegação */}
                     {getNavigationItems().map((item, index) => (
@@ -87,19 +89,19 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
                                 /* Se possui, a função toggleDropdown é chamada, utilizando o index
                                 do elemento para abrir apenas ele */
                                 setAtivoNavItem(item.label); // Atualiza qual item está ativo
-                                }} className={ativoNavItem === item.label ? 'active' : ''}>
+                                }} className={ativoNavItem === item.label ? styles.active : ''}>
                                 {/* Caso seja um item comum de navegação, ele possui uma rota, a sua existência
                                 é verificada e definida em link */}
                                 {'path' in item ?(
                                     <Link to={item.path || '/*'}>
                                         <img src={item.imageUrl} alt={item.label}></img>
-                                        <div className="alignlabel">{item.label} </div>
+                                        <div className={styles.alignlabel}>{item.label} </div>
                                     </Link>
                                 ) : (
                                     // Caso não possua uma rota, o nome do item de dropdown é renderizado
-                                    <span id="alignspan">
+                                    <span id={styles.alignspan}>
                                         <img src={item.imageUrl} alt={item.label}></img>
-                                        <div className="alignlabel">
+                                        <div className={styles.alignlabel}>
                                             {item.label}
                                         </div>
                                     </span>
@@ -112,7 +114,7 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
                             </li>
                         </div>
                     ))}
-                     <div id="logout">
+                     <div id={styles.logout}>
                         <Link to="/registro">Logout →</Link>
                     </div>
                 </ul>

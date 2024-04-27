@@ -38,7 +38,7 @@ a {
     flex-direction: column;
 }
 
-.sidebar-container {
+.sidebarContainer {
     position: relative;
     display: flex;
     max-width: max-content;
@@ -102,10 +102,6 @@ a {
     max-height: 60px;
 }
 
-.navitemdiv li {
-    width: 100%;
-}
-
 .navitemdiv a {
     margin-left: 3vw;
     margin-right: 3vw;
@@ -115,6 +111,7 @@ a {
     background-color: #111686;
     transition: max-height 0.3s ease-in-out;
     max-height: 300px;
+    width: 100%;
 }
 
 .alignlabel {
@@ -138,29 +135,29 @@ a {
     margin-bottom: 90%;
 } */
 
-.dropdown-menu {
+.dropdownMenu {
     margin-bottom: 10%;
 }
 
-.dropdown-menu.ativo {
+.dropdownMenu.ativo {
     background-color: #111686;
 }   
 
-.dropdown-item{
+.dropdownItem{
     margin-top: 15%;
     display: flex;
     justify-content: center;
 }
 
-.dropdown-item a {
+.dropdownItem a {
     text-align: center;
 }
 
-.dropdown-item.ativo a{
+.dropdownItem.ativo a{
     text-decoration: underline;
 }
 
-.sidebar-button {
+.sidebarButton {
     background: none;
     border: none;
     cursor: pointer;
@@ -175,7 +172,7 @@ a {
     transition: left 0.3s ease-in-out;
 }
 
-.sidebar-button span {
+.sidebarButton span {
     width: 2rem;
     height: 0.25rem;
     background: currentColor;
@@ -187,27 +184,30 @@ a {
     /* border: 1px solid #000000; */
 }
 
-.sidebar-button.open span:nth-child(1) {
+.sidebarButton.open span:nth-child(1) {
     transform: rotate(45deg);
 }
   
-.sidebar-button.open span:nth-child(2) {
+.sidebarButton.open span:nth-child(2) {
     opacity: 0;
 }
   
-.sidebar-button.open span:nth-child(3) {
+.sidebarButton.open span:nth-child(3) {
     transform: rotate(-45deg);
 }
 
 @media (min-width: 769px) {
     .sidebar.open {
         transform: translateX(0);
+        position: absolute;
+        min-width: 17vw;
     }
 }
 
 @media (max-width: 768px) {
-    .sidebar-button {
+    .sidebarButton {
         display: flex;
+        position: fixed;
     }
     .sidebar {
         transform: translateX(-100%);
@@ -215,7 +215,7 @@ a {
     }
     .navitemdiv {
         margin-bottom: 10px;
-        min-width: 100%;
+        /* min-width: 100%; */
         width: inherit;
         color: white;
         font-size: 1.1em;
@@ -223,6 +223,10 @@ a {
     .navitemdiv li {
         margin-left: 3vw;
         margin-right: 3vw;
+    }
+    .sidebarContainer {
+        position: fixed;
+        z-index: 1;
     }
 }
 

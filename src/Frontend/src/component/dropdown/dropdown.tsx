@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation} from 'react-router-dom';
 import DropdownInterface from './dropdown.interface';
+import styles from '../sidebar/Sidebar.module.css'
 
 const Dropdown: React.FC<DropdownInterface> = ({items }) => {
     const location = useLocation() 
@@ -15,9 +16,10 @@ const Dropdown: React.FC<DropdownInterface> = ({items }) => {
     
 
     return (
-        <ul className={`dropdown-menu ${isAtivo ? 'ativo' : ''}`}>
+        // let classNames = `${styles.navitemdiv} ${ativoNavItem === item.label ? styles.ativo : ''}`;
+        <ul className={`${styles.dropdownMenu} ${isAtivo ? styles.ativo : ''}`}>
             {items.map(item => (
-                <li className={`dropdown-item ${telaAtiva === item.path ? 'ativo' : ''}`}>
+                <li className={`${styles.dropdownItem} ${telaAtiva === item.path ? styles.ativo : ''}`}>
                     <NavLink to={item.path}>{item.label}</NavLink>
                 </li>
             ))}

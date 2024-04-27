@@ -1,4 +1,4 @@
-import '../component/registro/registro.css'
+import styles from '../component/registro/Registro.module.css'
 
 const Registro = () => {
     return (

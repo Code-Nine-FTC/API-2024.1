@@ -1,18 +1,22 @@
-.header {
+main {
     background-color: #0036a3;
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
+    padding: 0;
   }
   
 .logo {
-    max-width: 22%; /* Define o tamanho máximo da imagem como 20% da largura da tela */
-    position: absolute; /* Permite mover a imagem livremente */
-    top: 23%; /* Posiciona a imagem a 10% da altura da tela */
-    left: 23%; /* Posiciona a imagem a 10% da largura da tela */
+    max-width: 35%;
+    margin-left: 5%;
+    flex: 1 /* Define o tamanho máximo da imagem como 20% da largura da tela */
+     /* Permite mover a imagem livremente */
+    /* top: 23%; /* Posiciona a imagem a 10% da altura da tela
+    left: 23%; Posiciona a imagem a 10% da largura da tela */
   }
   
   /* Media query para telas menores */
@@ -24,13 +28,19 @@
     }
   }
 /* Estilos para o conteúdo */
-.Content {
+
+.conteudo {
+    width: 80vw;
+    display: flex;
+
+}
+
+.conteudointerno {
+    flex: 2;
     background-color: white;
     width: 80%;
-    max-width: 950px;
     height: 70vh; /* Altura padrão da section */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     border-radius: 5%;
@@ -38,8 +48,8 @@
   
   /* Media query para telas menores */
   @media (max-width: 768px) {
-    .Content {
-      height: 120vh; /* Define a altura da section para telas menores */
+    .conteudointerno {
+      height: 100vh; /* Define a altura da section para telas menores */
     }
   }
   
@@ -47,10 +57,9 @@
   .Labels {
     display: grid;
     flex-direction: column;
-    align-items: center;
-    margin-top: 20px; /* Ajuste a margem superior conforme necessário */
-    padding-left: 400px;
+    align-items: center;/* Ajuste a margem superior conforme necessário */
     color: #0036a3;
+    margin-left: 10vw;
   }
   
   .Labels label {
@@ -60,10 +69,10 @@
   #label1,
   #label2 {
     width: 90%; /* Isso fará com que os inputs ocupem toda a largura da sua seção */
-    padding: 9px; /* Adiciona espaço interno dentro do input */
+    padding: 3%; /* Adiciona espaço interno dentro do input */
     border-radius: 8px; /* Borda arredondada */
     border: 2px solid #ccc; /* Borda com cor cinza */
-    font-size: 16px; /* Tamanho da fonte */
+    font-size: 0.6em; /* Tamanho da fonte */
     background-color: #f5f5f5; /* Cor de fundo */
     transition: border-color 0.3s ease; /* Transição suave para a mudança de cor da borda */
   }
@@ -76,6 +85,14 @@
   
   /* Media query para telas menores */
   @media (max-width: 768px) {
+    .conteudointerno {
+      flex-direction: column;
+    }
+
+    .logo{
+      display: none;
+    }
+
     .Labels {
       padding-left: 0; /* Remove o padding-left para telas menores */
       padding-top: 50%;
@@ -88,7 +105,7 @@
     }
   
     .Labels label {
-      margin-bottom: 10px; /* Reduz o espaçamento entre as labels para telas menores */
+      margin-bottom: 2%; /* Reduz o espaçamento entre as labels para telas menores */
     }
   }
   
@@ -120,3 +137,12 @@
     text-decoration: underline; /* Sublinha o texto do título ao passar o mouse */
   }
 
+@media (max-width: 1000px) {
+  .logo {
+    margin-left: 5%;
+  }
+
+  .Labels {
+    margin-left: 5%;
+  }
+}

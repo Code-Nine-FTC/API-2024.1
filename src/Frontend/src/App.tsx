@@ -5,7 +5,7 @@ import Routes from './rotas/rotas'
 
 function App() {
   return (
-    <div>
+    <div className="divtotal">
       <Routes />
     </div>
   );
