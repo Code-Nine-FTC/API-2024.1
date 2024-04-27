@@ -102,10 +102,6 @@ a {
     max-height: 60px;
 }
 
-.navitemdiv li {
-    width: 100%;
-}
-
 .navitemdiv a {
     margin-left: 3vw;
     margin-right: 3vw;
@@ -115,6 +111,7 @@ a {
     background-color: #111686;
     transition: max-height 0.3s ease-in-out;
     max-height: 300px;
+    width: 100%;
 }
 
 .alignlabel {
@@ -218,7 +215,7 @@ a {
     }
     .navitemdiv {
         margin-bottom: 10px;
-        min-width: 100%;
+        /* min-width: 100%; */
         width: inherit;
         color: white;
         font-size: 1.1em;

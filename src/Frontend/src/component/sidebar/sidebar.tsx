@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useRef} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
@@ -8,6 +8,8 @@ import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigat
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
 // Define os States para verificar se a Sidebar esta aberte ou fechada, e o mesmo para o menu Dropdown
 const Sidebar = ({ userTipo }: { userTipo: string }) => { 
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
     const [isSidebarAberta, setIsSidebarAberta] = useState(false);
     const [isDropdownAberto, setIsDropdownAberto] = useState<number | null>(null);
     const [ativoNavItem, setAtivoNavItem] = useState('');
@@ -17,11 +19,11 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
     sua classe também */
     const abrirSidebar = () => {
         setIsSidebarAberta(!isSidebarAberta);
-        const button = document.querySelector('styles.sidebarButton');
-        const sidebar = document.querySelector('styles.sidebar');
-        if (button) {
-            button.classList.toggle('open');
-            sidebar?.classList.toggle('open');
+        if (buttonRef.current) {
+            buttonRef.current.classList.toggle(styles.open);
+        }
+        if (sidebarRef.current) {
+            sidebarRef.current.classList.toggle(styles.open);
         }
     };
 
@@ -59,12 +61,12 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
     return (
         <>
         <div className={styles.sidebarContainer}>
-            <button onClick={abrirSidebar} className={styles.sidebarButton}>
+            <button ref={buttonRef} onClick={abrirSidebar} className={styles.sidebarButton}>
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <section className={styles.sidebar}>
+            <section ref={sidebarRef} className={styles.sidebar}>
                 <div className={styles.userinfo}>
                     <img src="" alt="Foto de perfil"/>
                     <div className={styles.infouser}>

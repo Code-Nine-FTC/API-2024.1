@@ -1,7 +1,14 @@
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto 5% auto;
+  align-items: center;
+}
+
 .item{
     background-color: rgb(238, 238, 238);
     padding: 30px;
-    width: 200px;
+    width: 14vw;
   
   }
   
@@ -16,12 +23,12 @@
     align-items: center;
     gap: 10px;
     justify-content: center;
-    margin-right: 720px;
+    align-self: flex-start;
   }
   
   .supportButton{
-    width: 320px;
-    height: 60px;
+    width: 22vw;
+    height: 8vh;
     font-size: 16px;
     background-color: #111686;
     color: white;
@@ -30,7 +37,6 @@
     border-radius: 3%;
   
   }
-  
   
   .statusMain{
     font-weight: normal;
@@ -49,7 +55,7 @@
   .statusBox{
     background-color: rgb(238, 238, 238);
     justify-content: flex-start;
-    width: 1000px;
+    width: 67vw;
     margin: 0 auto 0 auto;
   }
   
@@ -62,13 +68,18 @@
     justify-content: flex-start;
     align-items: center;
     gap: 50px;
+    margin-right: 2%;
   
   }
   
+  .alignTicket {
+    flex-grow: 1;
+  }
+
   .alignDistance{
     display: flex;
-    gap: 450px;
     align-items: last baseline;
+    flex-grow: 1;
   }
   
   .chatButton{
@@ -79,6 +90,8 @@
     font-weight: bold;
     border: none;
     border-radius: 3%;
+    margin-left: auto;
+    /* margin-right: 20%; */
   }
   
   
@@ -96,3 +109,15 @@
     justify-content: center;
     gap: 1rem;
   }
+
+@media (max-width: 769px) {
+  .conteudo {
+    margin-top: 15%;
+  }
+}
+
+@media (max-width: 950px) {
+  .buttonAlign {}
+}
+
+/* @media (max-width: 769) */

@@ -9,8 +9,8 @@ function Status(){
                 <div className={styles.buttonAlign}>
                     <img src={orange} className={styles.orangeRectangle}/>
                     <div className={styles.alignDistance}>
-                    <div className={styles.align}>
-                        <p className={styles.ticketTex}>Ticket#0001</p>
+                    <div className={styles.alignTicket}>
+                        <p className={styles.ticketText}>Ticket#0001</p>
                         <p>Não consigo acessar minha encomenda</p>
                     </div>
                     <div className={styles.buttonNav}>

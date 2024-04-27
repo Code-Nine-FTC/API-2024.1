@@ -9,7 +9,7 @@ import Support from '../component/supportbutton/suportbutton';
 import React from 'react';
 import Sidebar from '../component/sidebar/sidebar';
 
-const userLogado = 'admin'
+const userLogado = 'user'
 
 function Home() {
   return (
@@ -21,7 +21,7 @@ function Home() {
         <Status/>
     </div>
     <div>
-      <p className={styles.blueText}>Ver todos os meus tickets abertos</p>
+      <p className={styles.blueText}>Ver todos os meus tickets abertos →</p>
     </div>
     <br/>
         <h1 className={styles.title}>Perguntas Frequentes</h1>
