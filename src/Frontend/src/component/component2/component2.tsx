@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< Updated upstream
-import styles from '../faq/Faq.module.css';
-=======
 import styles from '../faq/Faq.module.css'
->>>>>>> Stashed changes
 import delivery from '../../assets/faq/Ellipse.png'
 
 
