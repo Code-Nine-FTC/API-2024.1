@@ -16,7 +16,7 @@ export default class Cliente {
     @Column({ type: 'varchar', length: 11, unique: true, nullable: false})
     public cli_cpf: string
 
-    @Column({ type: 'varchar', length: 20, nullable: false})
+    @Column({ type: 'varchar', length: 255, nullable: false})
     public cli_senha: string
 
     @Column({ type: 'boolean', default: true }) 

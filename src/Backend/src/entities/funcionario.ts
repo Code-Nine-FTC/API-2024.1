@@ -13,13 +13,10 @@ export default class Funcionario{
     @Column({type: 'varchar', length: 11})
     public func_cpf: string
 
-    @Column({type:'varchar', length: 20})
+    @Column({type:'varchar', length: 100})
     public func_email:string
 
-    @Column({type:'int'})
-    public func_telefone: number
-
-    @Column({type:'varchar', length: 20})
+    @Column({type:'varchar', length: 255})
     public func_senha: string
 
     @Column({type: 'time'})
