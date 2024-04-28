@@ -6,6 +6,8 @@ import Editinfocli from "../pages/infoCliente";
 import Editinfosuport from "../pages/infoSuporte";
 import Home from "../pages/homePage";
 import LoginPage from "../pages/loginPage";
+import RegistroSup from "../pages/registroSupp";
+
 
 const Rotas = () => {
     return (
@@ -16,6 +18,7 @@ const Rotas = () => {
             <Route path="/editarsuporte" element={<Editinfosuport/>}/>
             <Route path="/editarcliente" element={<Editinfocli/>}/>
             <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/registrosuporte" element={<RegistroSup/>}></Route>
             <Route path="*" element={<NotFound/>}/>
           </Switch>
         </BrowserRouter>

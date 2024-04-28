@@ -75,3 +75,89 @@
 .form form {
   border: none; 
 }
+
+
+#Editar {
+    background-color: #0202c4;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;  
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: bold;
+    width: 150px; 
+    
+}
+
+#Editar2 {
+  background-color: #ffffff;
+  color: #0202c4;
+  padding: 10px 20px;
+  text-decoration: none;
+  outline: none;
+  border-radius: 5px;
+  text-align: center;
+  user-select: none;  
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+  width: 150px; 
+}
+
+.seletor{
+  width: 82%; /* largura do seletor */
+  padding: 5px; /* espaçamento interno */
+  font-size: 16px; /* tamanho da fonte */
+  border: 1px solid #ccc; /* borda */
+  border-radius: 5px; /* arredondamento dos cantos */
+  background-color: #d6d4d4; /* cor de fundo */
+  color: #555; /* cor do texto */
+  font-weight: lighter;
+}
+
+/* Estilizando as opções */
+.seletor option {
+  font-size: 16px; /* tamanho da fonte */
+  font-weight: lighter;
+}
+
+/* Estilizando a opção selecionada */
+.seletor option:checked {
+  background-color: #ddd; /* cor de fundo quando selecionado */
+  color: #000; /* cor do texto quando selecionado */
+}
+
+#Editar:hover {
+  background-color: #030350;
+}
+
+#Editar2:hover {
+  background-color: #d4d4d4;
+}
+
+@media (max-width: 900px) {
+  input {
+      width: 40vw;
+  }
+}
+
+@media (max-width: 1440px) {
+  .container {
+      flex-direction: column;
+      width: max-content;
+  }
+
+}
+@media (max-width: 1920px) {
+  .container {
+    display: flex;  
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 10%;
+    width: 100%;
+  }
+}
