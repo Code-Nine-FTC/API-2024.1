@@ -8,29 +8,19 @@ main {
     justify-content: center;
     font-size: calc(10px + 2vmin);
     padding: 0;
+    margin: 0;
   }
   
-.logo {
-    max-width: 35%;
-    margin-left: 5%;
-    flex: 1 /* Define o tamanho máximo da imagem como 20% da largura da tela */
-     /* Permite mover a imagem livremente */
-    /* top: 23%; /* Posiciona a imagem a 10% da altura da tela
-    left: 23%; Posiciona a imagem a 10% da largura da tela */
+.logo{
+    max-width: 30%;
+    margin-left: 7%;
   }
   
-  /* Media query para telas menores */
-  @media (max-width: 768px) {
-    .logo {
-      max-width: 50%; /* Reduz o tamanho máximo da imagem para telas menores */
-      top: 3%; /* Posiciona a imagem a 5% da altura da tela */
-      left: 25%; /* Posiciona a imagem a 5% da largura da tela */
-    }
-  }
+
 /* Estilos para o conteúdo */
 
 .conteudo {
-    width: 80vw;
+    width: 70vw;
     display: flex;
 
 }
@@ -42,28 +32,25 @@ main {
     height: 70vh; /* Altura padrão da section */
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    border-radius: 5%;
-  }
-  
-  /* Media query para telas menores */
-  @media (max-width: 768px) {
-    .conteudointerno {
-      height: 100vh; /* Define a altura da section para telas menores */
-    }
+    justify-content: center;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    padding: 20px;
   }
   
   /* Estilos para as labels */
   .Labels {
     display: grid;
-    flex-direction: column;
+    
+  
     align-items: center;/* Ajuste a margem superior conforme necessário */
     color: #0036a3;
-    margin-left: 10vw;
+    margin-block-start: 10px;
+    margin-inline-start: 10vw;
   }
   
   .Labels label {
-    margin-bottom: 2px; /* Ajuste o espaçamento entre as labels conforme necessário */
+    margin-bottom: 15px; /* Ajuste o espaçamento entre as labels conforme necessário */
   }
   
   #label1,
@@ -75,6 +62,7 @@ main {
     font-size: 0.6em; /* Tamanho da fonte */
     background-color: #f5f5f5; /* Cor de fundo */
     transition: border-color 0.3s ease; /* Transição suave para a mudança de cor da borda */
+    margin-bottom: 5px;
   }
   
   #label1:focus,
@@ -87,24 +75,39 @@ main {
   @media (max-width: 768px) {
     .conteudointerno {
       flex-direction: column;
+      align-items: center;
+      height: 120vh;
+    }
+    .Labels{
+      margin-top: 1px;
     }
 
-    .logo{
-      display: none;
-    }
+  .logo {
+    width: 80%; /* Reduz o tamanho máximo da imagem para telas menores */
+    max-width: 300px;
+    margin-bottom: 5px;
+    top: 3%; /* Posiciona a imagem a 5% da altura da tela */
+    left: 25%; /* Posiciona a imagem a 5% da largura da tela */
+    display: block; /* Garante que a foto seja exibida em telas menores */
+  }
+
 
     .Labels {
       padding-left: 0; /* Remove o padding-left para telas menores */
-      padding-top: 50%;
+      padding-top: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
       align-items: center; /* Centraliza verticalmente as labels */
       justify-content: center; /* Centraliza horizontalmente as labels */
     }
   
     .Labels h1 {
+      padding-bottom: 10px;
       text-align: center; /* Alinha o título no centro para telas menores */
     }
   
     .Labels label {
+      padding-bottom: 5px;
       margin-bottom: 2%; /* Reduz o espaçamento entre as labels para telas menores */
     }
   }
@@ -118,7 +121,7 @@ main {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    width: 300px;
+    width: 97%;
   }
   
   .EntrarButton:hover {
