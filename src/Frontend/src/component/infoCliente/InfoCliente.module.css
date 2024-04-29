@@ -4,7 +4,8 @@
 .conteudo{
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    /* width: 80vw; */
+    flex-grow: 2;
     height: 100vh;
     
 }
@@ -70,7 +71,7 @@ input{
 }
 
 .Container{
-        padding: 20vh;
+        margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -107,10 +108,10 @@ input{
     position: relative;
     display: flex;
     margin-top: 5%;
-    margin-left: 28.5%;
+    margin-left: auto;
+    margin-right: auto;
     text-align: flex;
     display: flex;
-    margin-bottom: -15%;
     border-bottom: 1px solid black;
     width: 44%;
 }
