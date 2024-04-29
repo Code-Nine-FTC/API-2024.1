@@ -53,7 +53,7 @@ const Editinfosuport: React.FC = () => {
             </div>
             <div className={styles.Dados2}>
               <label>
-                <input type="text" value={tiposuport} placeholder='Suporte' onChange={e => setTiposuport(e.target.value)} />
+                <input type="text" readOnly value={tiposuport} placeholder='Suporte' onChange={e => setTiposuport(e.target.value)} />
               </label>
               <label>
                 <input type="cpf" readOnly value={cpf} placeholder={cpf} onChange={e => setCPF(e.target.value)} />

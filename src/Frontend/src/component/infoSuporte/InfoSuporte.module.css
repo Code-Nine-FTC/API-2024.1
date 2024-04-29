@@ -1,8 +1,8 @@
 .conteudo {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: 90%;
+    /* width: 85%; */
+    margin: auto;
 }
 
 .conteudoform {
@@ -66,9 +66,9 @@ input{
 }
 
 .Container{
-    padding: 0;
-    margin-left: 0vw;
+    margin: auto;
     display: flex;
+    /* max-width: 70vw; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -128,5 +128,12 @@ input{
     }
     .Dados1, .Dados2{
         margin-bottom: 3%;
+    }
+}
+
+@media (max-width: 720px) {
+    .conteudo {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
