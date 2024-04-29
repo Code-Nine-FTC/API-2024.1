@@ -40,13 +40,13 @@ main {
   
   /* Estilos para as labels */
   .Labels {
-    display: grid;
+    display: flex;
     
-  
+    flex-direction: column;
     align-items: center;/* Ajuste a margem superior conforme necessário */
     color: #0036a3;
-    margin-block-start: 10px;
-    margin-inline-start: 10vw;
+    margin: 10px 0 0 10vw;
+    
   }
   
   .Labels label {
@@ -55,9 +55,9 @@ main {
   
   #label1,
   #label2 {
-    width: 90%; /* Isso fará com que os inputs ocupem toda a largura da sua seção */
+    width: 80%; /* Isso fará com que os inputs ocupem toda a largura da sua seção */
     padding: 3%; /* Adiciona espaço interno dentro do input */
-    border-radius: 8px; /* Borda arredondada */
+    border-radius: 5px; /* Borda arredondada */
     border: 2px solid #ccc; /* Borda com cor cinza */
     font-size: 0.6em; /* Tamanho da fonte */
     background-color: #f5f5f5; /* Cor de fundo */
@@ -93,17 +93,20 @@ main {
 
 
     .Labels {
-      padding-left: 0; /* Remove o padding-left para telas menores */
+      padding-left: 0px; /* Remove o padding-left para telas menores */
+      padding-right: 20px;
       padding-top: 10px;
       margin-top: 5px;
       margin-bottom: 5px;
       align-items: center; /* Centraliza verticalmente as labels */
       justify-content: center; /* Centraliza horizontalmente as labels */
+      
     }
   
     .Labels h1 {
-      padding-bottom: 10px;
+      justify-content: center;
       text-align: center; /* Alinha o título no centro para telas menores */
+      padding-bottom: 20px;
     }
   
     .Labels label {
@@ -114,14 +117,15 @@ main {
   
   .EntrarButton {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 3%;
     background-color: #0036a3;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    width: 97%;
+    width: 85%;
+    margin-left: 7%;
   }
   
   .EntrarButton:hover {
@@ -134,6 +138,7 @@ main {
     font-size: 18px; /* Tamanho da fonte do título */
     color: blue; /* Cor do texto do título */
     cursor: pointer; /* Transforma o cursor em uma mãozinha quando passa sobre o título */
+    margin-left: 12.5%;
   }
   
   .Title:hover {
