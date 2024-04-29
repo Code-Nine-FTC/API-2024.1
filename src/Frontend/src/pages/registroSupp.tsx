@@ -1,4 +1,4 @@
-import logo from '../component/registro/Man creating a website.png'
+import logo from '../component/registro/log.png'
 import styles from '../component/registro/Registro.module.css'
 
 
@@ -42,7 +42,7 @@ const RegistroSup = () => {
                             Adicionar Suporte
                         </div>
                     </div>
-                    <div className={styles.Title}>Voltar</div>
+                    <div className={styles.Title}>Voltar →</div>
                 </form>
             </section>
         </section>

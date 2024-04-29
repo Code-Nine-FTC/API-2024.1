@@ -14,7 +14,7 @@ function LoginForm() {
           <label htmlFor="label2">Senha</label>
           <input type="text" id={styles.label2} placeholder="Insira sua senha" />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
-          <div className={styles.Title}>Voltar</div>
+          <div className={styles.Title}>Voltar  →</div>
         </div>
       </form>
     </div>
