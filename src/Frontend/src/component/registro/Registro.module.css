@@ -90,7 +90,7 @@
     transition: 0.5s;
     font-weight: bold;
     width: 150px; 
-    
+    margin-left: 25%;
 }
 
 #Editar2 {
@@ -107,29 +107,46 @@
   font-weight: bold;
   width: 150px; 
 }
+.logo{
+  width: 90%;
+  height: 80%;
+}
 
 .seletor{
-  width: 82%; /* largura do seletor */
-  padding: 5px; /* espaçamento interno */
-  font-size: 16px; /* tamanho da fonte */
-  border: 1px solid #ccc; /* borda */
-  border-radius: 5px; /* arredondamento dos cantos */
-  background-color: #d6d4d4; /* cor de fundo */
-  color: #555; /* cor do texto */
+  width: 82%; 
+  padding: 5px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  background-color: #d6d4d4; 
+  color: #555;
   font-weight: lighter;
 }
 
-/* Estilizando as opções */
+
 .seletor option {
-  font-size: 16px; /* tamanho da fonte */
+  font-size: 16px; 
   font-weight: lighter;
 }
 
-/* Estilizando a opção selecionada */
+
 .seletor option:checked {
-  background-color: #ddd; /* cor de fundo quando selecionado */
-  color: #000; /* cor do texto quando selecionado */
+  background-color: #ddd; 
+  color: #000; 
 }
+
+.Title {
+  margin-top: 20px; 
+  font-size: 18px;
+  color: blue;
+  cursor: pointer; 
+  margin-left: 40%;
+}
+
+.Title:hover {
+  text-decoration: underline; 
+}
+
 
 #Editar:hover {
   background-color: #030350;
@@ -142,6 +159,26 @@
 @media (max-width: 900px) {
   input {
       width: 40vw;
+  }
+  .bemvindo{
+    display: none;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form{
+    width: fit-content;
+    margin-left: 30%;
+  }
+  #Editar{
+    width: 100px;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-left: 15%;
   }
 }
 
