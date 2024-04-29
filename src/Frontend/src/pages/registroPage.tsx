@@ -10,14 +10,20 @@ const Registro = () => {
         senha: '',
     })
     
+    const handleChange = (e:any)=> {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+
     const handleSubmit = async (e:any) => {
         e.preventDefault();
         try {
+            console.log(formData)
             const resultado = await CadastroClienteFunc(formData)
-            console.log('Cadastro realizado com sucesso', resultado)
+            alert(`Cadastro realizado com sucesso ${resultado}`)
+            // console.log('Cadastro realizado com sucesso', resultado)
         }
         catch (error) {
-            console.error('Erro de cadastro', error)
+            alert(`Erro ao realizar o cadastro ${error}`)
         }
     }
     return (
@@ -37,24 +43,24 @@ const Registro = () => {
                 <form onSubmit={handleSubmit} method="POST">
                     
                     <label>Nome Completo:</label>
-                    <input type="text" id='nome' name="nome" value={formData.nome} placeholder='Digite seu nome aqui ' required></input><br></br>
+                    <input type="text" id='nome' name="nome" value={formData.nome} placeholder='Digite seu nome aqui ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu E-mail:</label>
-                    <input type="email" id="email" name="email" value={formData.email} placeholder='Example@example.com' required></input><br></br>
+                    <input type="email" id="email" name="email" value={formData.email} placeholder='Example@example.com' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu CPF:</label>
-                    <input type="text" id="cpf" name="cpf" value={formData.cpf} pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00 " required></input><br></br>
+                    <input type="text" id="cpf" name="cpf" value={formData.cpf} pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onChange={handleChange} placeholder="000.000.000-00 " required></input><br></br>
                     <br></br>
                     <label>Senha:</label>
-                    <input type='password' id='senha' name="senha" value={formData.senha} placeholder='Digite até 8 caracteres ' required></input><br></br>
+                    <input type='password' id='senha' name="senha" value={formData.senha} placeholder='Digite até 8 caracteres ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     {/* <label>Confirmar Senha:</label>
                     <input type="password" id="confirmarsenha" name="senha" placeholder='Confirme sua senha' required></input><br></br>
                     <br></br> */}
                     <div className={styles.button}>
-                        <div id={styles.Editar}>
+                        <button type="submit" id={styles.Editar}>
                             Cadastrar-se
-                        </div>
+                        </button>
                     </div>
                 </form>
             </section>
