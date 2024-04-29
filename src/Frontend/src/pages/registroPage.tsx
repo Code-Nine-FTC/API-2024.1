@@ -18,19 +18,19 @@ const Registro = () => {
                 <h1 className={styles.title}>Criar Nova Conta</h1><br></br>
                 <form action ='' method="POST">
                     
-                    <label>Nome Completo:</label><br></br>
+                    <label>Nome Completo:</label>
                     <input type="text" id='nome' name="nome" placeholder='Digite seu nome aqui ' required></input><br></br>
                     <br></br>
-                    <label>Seu E-mail:</label><br></br>
+                    <label>Seu E-mail:</label>
                     <input type="email" id="email" name="email" placeholder='Example@example.com' required></input><br></br>
                     <br></br>
-                    <label>Seu CPF:</label><br></br>
+                    <label>Seu CPF:</label>
                     <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00 " required></input><br></br>
                     <br></br>
-                    <label>Senha:</label><br></br>
+                    <label>Senha:</label>
                     <input type='password' id='senha' name="senha" placeholder='Digite até 8 caracteres ' required></input><br></br>
                     <br></br>
-                    <label>Confirmar Senha:</label><br></br>
+                    <label>Confirmar Senha:</label>
                     <input type="password" id="confirmarsenha" name="senha" placeholder='Confirme sua senha' required></input><br></br>
                     <br></br>
                     <div className={styles.button}>

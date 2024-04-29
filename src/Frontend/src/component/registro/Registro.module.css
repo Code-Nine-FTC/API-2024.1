@@ -34,6 +34,15 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transform: translate(-26%);
 }
+label{
+  margin-left: 7%;
+}
+input{
+  margin-left: 7%;
+}
+select{
+  margin-left: 7%;
+}
 
 .title{
   font-size: xx-large;
@@ -90,7 +99,7 @@
     transition: 0.5s;
     font-weight: bold;
     width: 150px; 
-    margin-left: 25%;
+    margin-left: 28%;
 }
 
 #Editar2 {
@@ -140,7 +149,7 @@
   font-size: 18px;
   color: blue;
   cursor: pointer; 
-  margin-left: 40%;
+  margin-left: 43%;
 }
 
 .Title:hover {
@@ -155,6 +164,7 @@
 #Editar2:hover {
   background-color: #d4d4d4;
 }
+
 
 @media (max-width: 900px) {
   input {
