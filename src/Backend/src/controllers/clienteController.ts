@@ -8,8 +8,12 @@ export default class ClienteController{
         this.clienteService = new ClienteService()
     }
     async cadastrarCliente(req: Request, res: Response){
+        console.log('Received POST request to /cadastroCliente');
         try{
             const dadosCliente: IClienteInput = req.body
+            console.log('Request body:', req.body);
+            console.log('Primeiros dados fodas')
+            console.log(dadosCliente.cli_cpf)
             const resultado = await this.clienteService.cadastrarCliente(dadosCliente)
             if(resultado.success){
                 return res.status(201).json(resultado)

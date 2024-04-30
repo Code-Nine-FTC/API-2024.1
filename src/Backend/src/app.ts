@@ -20,6 +20,15 @@ app.use(express.json())
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
 
+app.use((req, res, next) => {
+    console.log('Incoming request:');
+    console.log('Method:', req.method);
+    console.log('URL:', req.url);
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+    next();
+});
+
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
     console.log(`Conexão com o banco de dados bem sucedida! :)`)
