@@ -129,7 +129,6 @@ export class ClienteService {
         }
         // console.log(cpf)
         // Remove todos os elementos que não seja númerico
-        cpf = cpf.replace(/\/D/g, '')
         // Verifica se o cpf tem tamanho igual a 11
         if(cpf.length !== 11){
             console.log('Deu erro no length')

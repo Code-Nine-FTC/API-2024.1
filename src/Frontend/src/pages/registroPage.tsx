@@ -10,6 +10,7 @@ import CadastroClienteFunc from '../functions/cadastroClienteFunc';
 //   cli_senha?: string;
 
 const Registro = () => {
+
     const [formDataSenha, setFormData] = useState({
         cli_email: '',
         cli_nome: '',
@@ -19,6 +20,13 @@ const Registro = () => {
     })
     const [erro, setErro] = useState ('')
     
+    const handleCpfChange = (event: any) => {
+        const cpfFinal = event.target.value.replace(/\D/g, '')
+        setFormData({ ...formDataSenha, cli_cpf: cpfFinal});
+    }
+
+    const cpfFormatado = formDataSenha.cli_cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+
     const handleChange = (e:any)=> {
         setFormData({ ...formDataSenha, [e.target.name]: e.target.value });
     }
@@ -32,11 +40,10 @@ const Registro = () => {
             const { senha2, ...formData } = formDataSenha
             try {
                 const resultado = await CadastroClienteFunc(formData)
-                if (resultado.ok) {
+                if (resultado.sucess) {
                     setErro('')
                 }
-                alert(`Cadastro realizado com sucesso ${resultado}`)
-                // console.log('Cadastro realizado com sucesso', resultado)
+                alert(`Cadastro realizado com sucesso`) 
             }
             catch (error) {
                 setErro(error.message)
@@ -66,7 +73,7 @@ const Registro = () => {
                     <input type="text" id='nome' name="cli_nome" value={formDataSenha.cli_nome} placeholder='Digite seu nome aqui ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu CPF:</label>
-                    <input type="text" id="cpf" name="cli_cpf" value={formDataSenha.cli_cpf} pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onChange={handleChange} placeholder="000.000.000-00 " required></input><br></br>
+                    <input type="text" id="cpf" name="cli_cpf" value={cpfFormatado} onChange={handleCpfChange} placeholder="000.000.000-00 " required></input><br></br>
                     <br></br>
                     <label>Senha:</label>
                     <input type='password' id='senha' name="cli_senha" value={formDataSenha.cli_senha} placeholder='Digite até 8 caracteres ' onChange={handleChange} required></input><br></br>
