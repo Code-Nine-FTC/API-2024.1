@@ -6,7 +6,7 @@ import * as bcrypt from 'bcrypt';
 export class ClienteService {
     public async cadastrarCliente(dadosCliente: IClienteInput) :Promise<{ success: boolean, message: string, cliente?: Cliente[]}>{
         try {
-            console.log('Dados fodas')
+            console.log('Recebendo dados no clienteService')
             console.log(dadosCliente)
             const clienteRepository = Connection.getRepository(Cliente)
             // Procura se o e-mail ou o cpf já são cadastrados
@@ -17,9 +17,9 @@ export class ClienteService {
             })
             if (!cliente){
                 // Validação de CPF
-                console.log('Chegou até a validação')
                 const cpfValidado = this.validarCpf(dadosCliente.cli_cpf)
                 if (!cpfValidado){
+                    console.log('CPF invalido')
                     return { success: false, message: `CPF inválido`}
                 }
                 // Criptografia de Senha

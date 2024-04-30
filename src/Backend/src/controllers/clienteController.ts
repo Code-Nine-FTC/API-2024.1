@@ -13,11 +13,6 @@ import { IClienteInput, IClienteLoggin, IClienteUpdate } from "../interfaces/ICl
             try{
                 const dadosCliente: IClienteInput = req.body
                 console.log('Request body:', dadosCliente);
-                console.log(dadosCliente.cli_cpf)
-                console.log(dadosCliente.cli_email)
-                console.log(dadosCliente.cli_nome)
-                console.log(dadosCliente.cli_senha)
-                console.log('Primeiros dados fodas')
                 const resultado = await this.clienteService.cadastrarCliente(dadosCliente)
                 if(resultado.success){
                     return res.status(201).json(resultado)
