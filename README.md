@@ -82,7 +82,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 | 5 | Médio | Como cliente, desejo realizar login no sistema utilizando e-mail e senha. | 3 | 2 | 2 |
 | 6 | Médio  | Como atendente, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
 | 7 | Médio | Como administrador, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
-| 8 | Alta | Como cliente, desejo selecionar um categoria em que se encaixa o meu problema para realizar o atendimento de forma mais específica. | 5 | 2 | 3 |
+| 8 | Alta | Como cliente, desejo selecionar um categoria em que se encaixa o meu problema para realizar o atendimento de forma mais específica. | 5 | 3 | 3 |
 | 9 | Alta | Como cliente, desejo visualizar todos os meus chamados e seus status. | 5 | 3 | 3 |
 | 10  | Alta  | Como atendente, desejo visualizar os chamados que não foram resolvidos por ordem de prioridade para solucionar o mais rápido. | 5 | 3 | 3 |
 | 11  | Alta  | Como atendente, desejo visualizar os atendimentos realizados por mim e seus status. | 5 | 3 | 4 |
