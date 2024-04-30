@@ -9,8 +9,8 @@ function LoginForm() {
         <img src={logo} className={styles.logo} alt="logo" />
         <div className={styles.Labels}>
           <h1>Faça o seu Login</h1>
-          <label htmlFor="label1">Email</label>
-          <input type="text" id={styles.label1} placeholder="Insira seu Email" />
+          <label htmlFor="label1">CPF</label>
+          <input type="text" id={styles.label1} placeholder="000.000.000-00" />
           <label htmlFor="label2">Senha</label>
           <input type="text" id={styles.label2} placeholder="Insira sua senha" />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
