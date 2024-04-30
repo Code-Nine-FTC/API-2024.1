@@ -10,7 +10,7 @@ import LoginAdmPage from "../pages/loginAdmPage"
 import RegistroSup from "../pages/registroSupp";
 import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup"
-
+import Listagem from "../pages/listasuporte";
 
 const Rotas = () => {
     return (
@@ -26,6 +26,7 @@ const Rotas = () => {
             <Route path="*" element={<NotFound/>}/>
             <Route path="/ticket" element={<Ticket/>}></Route>
             <Route path="/homesup" element={<HomeSup/>}></Route>
+            <Route path="/listarsuporte" element={<Listagem/>}></Route>
           </Switch>
         </BrowserRouter>
     )
