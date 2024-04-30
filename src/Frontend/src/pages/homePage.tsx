@@ -18,6 +18,7 @@ function Home() {
   <div className={styles.conteudo}>
     <div className={styles.status}>
         <Textostatus/>
+        <br></br>
         <Status/>
     </div>
     <div>
