@@ -11,10 +11,10 @@ import CadastroClienteFunc from '../functions/cadastroClienteFunc';
 
 const Registro = () => {
     const [formDataSenha, setFormData] = useState({
-        email: '',
-        nome: '',
-        cpf: '',
-        senha: '',
+        cli_email: '',
+        cli_nome: '',
+        cli_cpf: '',
+        cli_senha: '',
         senha2: '',
     })
     const [erro, setErro] = useState ('')
@@ -25,13 +25,12 @@ const Registro = () => {
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
-        if (formDataSenha.senha != formDataSenha.senha2) {
+        if (formDataSenha.cli_senha != formDataSenha.senha2) {
             setErro('Senhas não coincidem')
         }
         else{
             const { senha2, ...formData } = formDataSenha
             try {
-                console.log(formData.cpf)
                 const resultado = await CadastroClienteFunc(formData)
                 if (resultado.ok) {
                     setErro('')
@@ -61,16 +60,16 @@ const Registro = () => {
                 <form onSubmit={handleSubmit} method="POST">
                     
                     <label>Seu E-mail:</label>
-                    <input type="email" id="email" name="email" value={formDataSenha.email} placeholder='Example@example.com' onChange={handleChange} required></input><br></br>
+                    <input type="email" id="email" name="cli_email" value={formDataSenha.cli_email} placeholder='Example@example.com' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Nome Completo:</label>
-                    <input type="text" id='nome' name="nome" value={formDataSenha.nome} placeholder='Digite seu nome aqui ' onChange={handleChange} required></input><br></br>
+                    <input type="text" id='nome' name="cli_nome" value={formDataSenha.cli_nome} placeholder='Digite seu nome aqui ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu CPF:</label>
-                    <input type="text" id="cpf" name="cpf" value={formDataSenha.cpf} pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onChange={handleChange} placeholder="000.000.000-00 " required></input><br></br>
+                    <input type="text" id="cpf" name="cli_cpf" value={formDataSenha.cli_cpf} pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onChange={handleChange} placeholder="000.000.000-00 " required></input><br></br>
                     <br></br>
                     <label>Senha:</label>
-                    <input type='password' id='senha' name="senha" value={formDataSenha.senha} placeholder='Digite até 8 caracteres ' onChange={handleChange} required></input><br></br>
+                    <input type='password' id='senha' name="cli_senha" value={formDataSenha.cli_senha} placeholder='Digite até 8 caracteres ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Confirmar Senha:</label>
                     <input type="password" id="confirmarsenha" name="senha2" value={formDataSenha.senha2} placeholder='Confirme sua senha' onChange={handleChange} required></input><br></br>

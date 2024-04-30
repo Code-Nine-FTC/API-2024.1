@@ -8,7 +8,6 @@ export class ClienteService {
         try {
             console.log('Dados fodas')
             console.log(dadosCliente)
-            console.log(dadosCliente.cli_cpf)
             const clienteRepository = Connection.getRepository(Cliente)
             // Procura se o e-mail ou o cpf já são cadastrados
             const cliente = await clienteRepository.findOne({ where: [
@@ -19,8 +18,6 @@ export class ClienteService {
             if (!cliente){
                 // Validação de CPF
                 console.log('Chegou até a validação')
-                console.log(dadosCliente)
-                console.log(dadosCliente.cli_cpf)
                 const cpfValidado = this.validarCpf(dadosCliente.cli_cpf)
                 if (!cpfValidado){
                     return { success: false, message: `CPF inválido`}
@@ -126,15 +123,16 @@ export class ClienteService {
     }
     private validarCpf(cpf: string): boolean{
         if (!cpf) {
+            console.log('Deu erro na verificação do CPF')
             console.log(cpf)
-            console.error('fodeu');
             return false;
         }
-        console.log(cpf)
+        // console.log(cpf)
         // Remove todos os elementos que não seja númerico
-        cpf = cpf.replace(/\\D/g, '')
+        cpf = cpf.replace(/\/D/g, '')
         // Verifica se o cpf tem tamanho igual a 11
         if(cpf.length !== 11){
+            console.log('Deu erro no length')
             return false
         }
         // Verifica se todos os numeros são iguais
@@ -178,6 +176,7 @@ export class ClienteService {
             return false
         }
         // CPF Valido
+        console.log('CPF Validado')
         return true
     }
 }

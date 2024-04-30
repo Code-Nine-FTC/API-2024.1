@@ -19,6 +19,8 @@ app.use(cors())
 app.use(express.json()) 
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     console.log('Incoming request:');
