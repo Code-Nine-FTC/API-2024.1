@@ -1,0 +1,20 @@
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.success {
+    color: #21cd7d;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}  
+
+.closebtn:hover {
+    color: black;
+  }
+  .hide {
+    display: none;
+  }
