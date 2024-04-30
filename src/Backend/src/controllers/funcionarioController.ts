@@ -58,7 +58,18 @@ export default class FuncionarioController {
             return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
-    
+
+    async visualizarTodosFuncionarios(req: Request, res: Response): Promise<Response> {
+        const funcionarioService = new FuncionarioService();
+        const result = await funcionarioService.visualizarTodosFuncionarios();
+
+        if (result.success) {
+            return res.status(200).json(result);
+        } else {
+            return res.status(404).json(result);
+        }
+    }
+
     async logginFuncionario(req: Request, res: Response) {
         try {
             const dadosLoggin: IFuncionarioLoggin = req.body;

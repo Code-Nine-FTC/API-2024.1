@@ -8,6 +8,7 @@ import clienteRoutes from './routes/clienteRoutes'
 import funcionarioRoutes from './routes/funcionarioRoutes'
 import Funcionario from './entities/funcionario';
 import * as bcrypt from 'bcrypt';
+import { FuncionarioService } from './services/funcionarioService';
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
@@ -37,17 +38,18 @@ async function insertAdmin(){
         const funcionarioRepository = await Connection.getRepository(Funcionario)
         const count = await funcionarioRepository.count()
         const admin = await funcionarioRepository.findOne({where: {func_is_admin: true}})
+        const cadastroAdministrador = new FuncionarioService()
         if (count === 0 || !admin)  {
-            const administrador = new Funcionario()
-            administrador.func_nome ='CodeNine'
-            administrador.func_cpf ='41094483877'
-            administrador.func_email='nine.codek9@gmail.com'
-            administrador.func_expediente_inicio ='00:00:00'
-            administrador.func_expediente_final ='00:00:00'
-            administrador.func_is_admin =true
-            let senha = bcrypt.hash('CodeNine', 10)
-            administrador.func_senha = senha
-            await funcionarioRepository.save(administrador)
+            const dadosFuncionario ={
+                func_nome: 'CodeNine',
+                func_cpf :'41094483877',
+                func_email :'nine.codek9@gmail.com',
+                func_senha : 'CodeNine',
+                func_expediente_inicio :'00:00:00',
+                func_expediente_final :'00:00:00',
+                func_is_admin :true
+            }
+            cadastroAdministrador.cadastrarFuncionario(dadosFuncionario)
             console.log(`Administrador inserido com sucesso`)
         }    
     }

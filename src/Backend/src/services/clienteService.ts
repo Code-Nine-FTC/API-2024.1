@@ -6,17 +6,20 @@ import * as bcrypt from 'bcrypt';
 export class ClienteService {
     public async cadastrarCliente(dadosCliente: IClienteInput) :Promise<{ success: boolean, message: string, cliente?: Cliente[]}>{
         try {
+            console.log('Recebendo dados no clienteService')
+            console.log(dadosCliente)
             const clienteRepository = Connection.getRepository(Cliente)
             // Procura se o e-mail ou o cpf já são cadastrados
             const cliente = await clienteRepository.findOne({ where: [
                     { cli_email: dadosCliente.cli_email },
-                    { cli_cpf: dadosCliente.cli_cpf }
+                    { cli_cpf: dadosCliente.cli_cpf },
                 ]
             })
             if (!cliente){
                 // Validação de CPF
                 const cpfValidado = this.validarCpf(dadosCliente.cli_cpf)
                 if (!cpfValidado){
+                    console.log('CPF invalido')
                     return { success: false, message: `CPF inválido`}
                 }
                 // Criptografia de Senha
@@ -119,10 +122,16 @@ export class ClienteService {
         }
     }
     private validarCpf(cpf: string): boolean{
+        if (!cpf) {
+            console.log('Deu erro na verificação do CPF')
+            console.log(cpf)
+            return false;
+        }
+        // console.log(cpf)
         // Remove todos os elementos que não seja númerico
-        cpf = cpf.replace(/\D/g, '')
         // Verifica se o cpf tem tamanho igual a 11
         if(cpf.length !== 11){
+            console.log('Deu erro no length')
             return false
         }
         // Verifica se todos os numeros são iguais
@@ -166,6 +175,7 @@ export class ClienteService {
             return false
         }
         // CPF Valido
+        console.log('CPF Validado')
         return true
     }
 }
