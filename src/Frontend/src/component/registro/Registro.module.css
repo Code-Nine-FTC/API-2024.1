@@ -76,15 +76,17 @@ select{
 }
   
   
-.form input::placeholder {
+.form::placeholder {
   color: #b3b1b1;
-  margin-left: 5%; 
+  padding-left: 10px; 
 }
   
 .form form {
   border: none; 
 }
-
+.form input{
+  padding-left: 10px;
+}
 
 #Editar {
     background-color: #0202c4;
