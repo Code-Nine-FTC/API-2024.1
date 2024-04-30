@@ -3,7 +3,7 @@ import styles from '../faq/Faq.module.css'
 import delivery from '../../assets/faq/deli.png'
 
 
-function Component2(){
+function Delivery(){
     return(
         <div className={styles.item}>
             <img src={delivery} className={styles.reactIcon}/>
@@ -12,4 +12,4 @@ function Component2(){
     )
 }
 
-export default Component2;
+export default Delivery;
