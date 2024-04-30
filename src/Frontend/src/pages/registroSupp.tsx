@@ -1,29 +1,98 @@
+import React, {useState} from 'react'
 import logo from '../component/registro/log.png'
 import styles from '../component/registro/Registro.module.css'
-
+import CadastroFuncionarioFunc from '../functions/cadastroFuncionarioFunc';
+import { toast, Toaster } from 'react-hot-toast';
 
 const RegistroSup = () => {
+
+    const [formDataSenha, setFormData] = useState({
+        func_nome: '',
+        func_cpf: '',
+        func_email: '',
+        func_senha: '',
+        func_expediente_inicio: '',
+        func_expedinete_final: '',
+        func_is_admin: false, 
+        senha2: ''
+    });
+
+    const [erro, setErro] = useState ('')
+
+    const selecionarHorario = (event: any) => {
+        const horario = event.target.value
+        switch(horario) {
+            case 'valor1':
+                formDataSenha.func_expediente_inicio = '08:00'
+                formDataSenha.func_expedinete_final = '16:00'
+                return
+            case 'valor2':
+                formDataSenha.func_expediente_inicio = '10:00'
+                formDataSenha.func_expedinete_final = '18:00'
+                return
+            case 'valor3':
+                formDataSenha.func_expediente_inicio = '13:00'
+                formDataSenha.func_expedinete_final = '21:00'
+                return
+        }
+    }
+
+    const handleCpfChange = (event: any) => {
+        const cpfFinal = event.target.value.replace(/\D/g, '')
+        setFormData({ ...formDataSenha, func_cpf: cpfFinal});
+    }
+
+    const cpfFormatado = formDataSenha.func_cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+
+    const handleChange = (e:any)=> {
+        setFormData({ ...formDataSenha, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = async (e:any) => {
+        e.preventDefault();
+        if (formDataSenha.func_senha !== formDataSenha.senha2) {
+            setErro('Senhas não coincidem')
+        }
+        else{
+            const { senha2, ...formData } = formDataSenha
+            try {
+                const resultado = await CadastroFuncionarioFunc(formData)
+                if (resultado.success) {
+                    setErro('')
+                }
+                toast.success('Cadastro concluído')
+                
+            }
+            catch (error:any) {
+                setErro(error.message)
+            }
+        }}
+
     return (
-        <>
+        <> 
+        <div><Toaster 
+        position="top-center"
+        reverseOrder={false}/>
+        </div>
         <section className={styles.container}>
             <section className={styles.bemvindo}>
                 <img src={logo} className={styles.logo} alt="logo" />
             </section>
             <section className={styles.form}>
                 <h1 className={styles.title}>Criar Nova Conta</h1><br></br>
-                <form action ='' method="POST">
+                <form onSubmit={handleSubmit} method="POST">
                     
                     <label>Nome Completo:</label>
-                    <input type="text" id='nome' name="nome" placeholder='Digite seu nome aqui ' required></input><br></br>
+                    <input type="text" id='nome' name="func_nome" value={formDataSenha.func_nome} placeholder='Digite seu nome aqui ' required></input><br></br>
                     <br></br>
                     <label>Seu E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder='Example@example.com' required></input><br></br>
+                    <input type="email" id="email" name="func_email" value={formDataSenha.func_email} placeholder='Example@example.com' required></input><br></br>
                     <br></br>
                     <label>Seu CPF:</label>
-                    <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00 " required></input><br></br>
+                    <input type="text" id="cpf" name="func_cpf" value={cpfFormatado} onChange={handleCpfChange} placeholder="000.000.000-00 " required></input><br></br>
                     <br></br>
                     <label>Horário de Atendimento :</label>
-                    <select className={styles.seletor} required>
+                    <select className={styles.seletor} onChange={selecionarHorario} required>
                         <option disabled selected>Selecione um horário</option>
                         <option value="valor1">8:00 -- 16:00</option>
                         <option value="valor2">10:00 -- 18:00 </option>
@@ -32,10 +101,10 @@ const RegistroSup = () => {
                     <br></br>
                     <br></br>
                     <label>Senha:</label>
-                    <input type='password' id='senha' name="senha" placeholder='Digite até 8 caracteres ' required></input><br></br>
+                    <input type='password' id='senha' name="func_senha" placeholder='Digite até 8 caracteres ' required></input><br></br>
                     <br></br>
                     <label>Confirmar Senha:</label>
-                    <input type="password" id="confirmarsenha" name="senha" placeholder='Confirme sua senha' required></input><br></br>
+                    <input type="password" id="confirmarsenha" name="senha2" placeholder='Confirme sua senha' required></input><br></br>
                     <br></br>
                     <div className={styles.button}>
                         <div id={styles.Editar}>

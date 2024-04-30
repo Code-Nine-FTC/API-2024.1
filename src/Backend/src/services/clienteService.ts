@@ -1,10 +1,10 @@
-import { IClienteInput, IClienteLoggin, IClienteUpdate, IClienteView } from "../interfaces/ICliente";
+import { IClienteInput, IClienteLoggin, IClienteUpdate} from "../interfaces/ICliente";
 import Cliente from "../entities/cliente";
 import { Connection } from "../config/data-source";
 import * as bcrypt from 'bcrypt';
 
 export class ClienteService {
-    public async cadastrarCliente(dadosCliente: IClienteInput) :Promise<{ success: boolean, message: string, cliente?: Cliente[]}>{
+    public async cadastrarCliente(dadosCliente: IClienteInput) {
         try {
             console.log('Recebendo dados no clienteService')
             console.log(dadosCliente)
@@ -87,7 +87,7 @@ export class ClienteService {
 
             const clienteUpdate = { ...cliente, ...dadosUpdate };
             await clienteRepository.update(id, clienteUpdate);
-            return { success: true, message: `Cliente atualizado com sucesso`,cliente };
+            return { success: true, message: `Cliente atualizado com sucesso`,clienteUpdate };
         } catch (error) {
             console.error(`Erro ao editar cliente: ${error}`);
             return { success: false, message: `Erro ao editar cliente` };
