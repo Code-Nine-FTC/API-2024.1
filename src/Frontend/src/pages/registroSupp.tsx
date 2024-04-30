@@ -12,7 +12,7 @@ const RegistroSup = () => {
         func_email: '',
         func_senha: '',
         func_expediente_inicio: '',
-        func_expedinete_final: '',
+        func_expediente_final: '',
         func_is_admin: false, 
         senha2: ''
     });
@@ -24,15 +24,15 @@ const RegistroSup = () => {
         switch(horario) {
             case 'valor1':
                 formDataSenha.func_expediente_inicio = '08:00'
-                formDataSenha.func_expedinete_final = '16:00'
+                formDataSenha.func_expediente_final = '16:00'
                 return
             case 'valor2':
                 formDataSenha.func_expediente_inicio = '10:00'
-                formDataSenha.func_expedinete_final = '18:00'
+                formDataSenha.func_expediente_final = '18:00'
                 return
             case 'valor3':
                 formDataSenha.func_expediente_inicio = '13:00'
-                formDataSenha.func_expedinete_final = '21:00'
+                formDataSenha.func_expediente_final = '21:00'
                 return
         }
     }
@@ -83,10 +83,10 @@ const RegistroSup = () => {
                 <form onSubmit={handleSubmit} method="POST">
                     
                     <label>Nome Completo:</label>
-                    <input type="text" id='nome' name="func_nome" value={formDataSenha.func_nome} placeholder='Digite seu nome aqui ' required></input><br></br>
+                    <input type="text" id='nome' name="func_nome" value={formDataSenha.func_nome} placeholder='Digite seu nome aqui 'onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu E-mail:</label>
-                    <input type="email" id="email" name="func_email" value={formDataSenha.func_email} placeholder='Example@example.com' required></input><br></br>
+                    <input type="email" id="email" name="func_email" value={formDataSenha.func_email} placeholder='Example@example.com' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu CPF:</label>
                     <input type="text" id="cpf" name="func_cpf" value={cpfFormatado} onChange={handleCpfChange} placeholder="000.000.000-00 " required></input><br></br>
@@ -101,17 +101,19 @@ const RegistroSup = () => {
                     <br></br>
                     <br></br>
                     <label>Senha:</label>
-                    <input type='password' id='senha' name="func_senha" placeholder='Digite até 8 caracteres ' required></input><br></br>
+                    <input type='password' id='senha' name="func_senha" value={formDataSenha.func_senha} placeholder='Digite até 8 caracteres ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Confirmar Senha:</label>
-                    <input type="password" id="confirmarsenha" name="senha2" placeholder='Confirme sua senha' required></input><br></br>
+                    <input type="password" id="confirmarsenha" name="senha2" value={formDataSenha.senha2} placeholder='Confirme sua senha' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <div className={styles.button}>
-                        <div id={styles.Editar}>
+                        <button type='submit' id={styles.Editar}>
                             Adicionar Suporte
-                        </div>
+                        </button>
                     </div>
                     <div className={styles.Title}>Voltar →</div>
+
+                    {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}
                 </form>
             </section>
         </section>

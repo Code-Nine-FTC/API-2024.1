@@ -8,6 +8,8 @@ export default class FuncionarioController {
         this.funcionarioService = new FuncionarioService()
     }
     async cadastrarFuncionario(req: Request, res: Response) {
+        console.log('Received POST request to /cadastroFuncinario');
+        console.log(req.body)
         try {
             const dadosFuncionario: IFuncionarioInput = req.body;
             const resultado = await this.funcionarioService.cadastrarFuncionario(dadosFuncionario);

@@ -4,7 +4,7 @@ import axios from "axios";
 const CadastroFuncionarioFunc = async (formData: any) => {
     console.log(formData)
     try {
-        const resultado = await axios.post(`${rotaBase}/cadastroUsuario`, formData)
+        const resultado = await axios.post(`${rotaBase}/cadastroFuncionario`, formData)
         return resultado.data
     }
     catch (error) {

@@ -7,6 +7,8 @@ export class FuncionarioService {
     public async cadastrarFuncionario(dadosFuncionario: IFuncionarioInput):Promise<{ success: boolean, message: string, funcionario?: Funcionario[]}> {
         const funcionarioRepository = Connection.getRepository(Funcionario);
         try {
+            console.log('Recebendo dados no clienteService')
+            console.log(dadosFuncionario)
             const funcionarioExistente = await funcionarioRepository.findOne({where: [
                 {func_cpf: dadosFuncionario.func_cpf},
                 {func_email: dadosFuncionario.func_email}
@@ -15,6 +17,7 @@ export class FuncionarioService {
            if (!funcionarioExistente){
                 const cpfValidado = this.validarCpf(dadosFuncionario.func_cpf)
                 if (!cpfValidado){
+                    console.log('CPF invalido')
                     return { success: false, message: `CPF inválido`}
                 }
                 // Criptografia
