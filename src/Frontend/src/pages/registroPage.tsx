@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../component/registro/Registro.module.css';
 import CadastroClienteFunc from '../functions/cadastroClienteFunc';
+import { toast, Toaster } from 'react-hot-toast';
 
 const Registro = () => {
 
@@ -26,25 +27,30 @@ const Registro = () => {
 
     const handleSubmit = async (e:any) => {
         e.preventDefault();
-        if (formDataSenha.cli_senha != formDataSenha.senha2) {
+        if (formDataSenha.cli_senha !== formDataSenha.senha2) {
             setErro('Senhas não coincidem')
         }
         else{
             const { senha2, ...formData } = formDataSenha
             try {
                 const resultado = await CadastroClienteFunc(formData)
-                if (resultado.sucess) {
+                if (resultado.success) {
                     setErro('')
                 }
-                alert(`Cadastro realizado com sucesso`) 
+                toast.success('Cadastro concluído')
+                
             }
-            catch (error) {
+            catch (error:any) {
                 setErro(error.message)
             }
         }
     }
     return (
         <>
+        <div><Toaster
+        position="top-center"
+        reverseOrder={false}/>
+        </div>
         <section className={styles.container}>
             <section className={styles.bemvindo}>
                 <h1 className={styles.title}>Bem-vindo !</h1><br></br>
@@ -80,7 +86,7 @@ const Registro = () => {
                         </button>
                     </div>
 
-                    {erro && <p style={{ color: 'red' }}>{erro}</p>}
+                    {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}
                 </form>
             </section>
         </section>

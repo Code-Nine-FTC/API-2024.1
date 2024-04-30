@@ -4,11 +4,7 @@ import axios from "axios";
 const CadastroClienteFunc = async (formData: any) => {
     console.log(formData)
     try {
-        const resultado = await axios.post(`${rotaBase}/cadastroCliente`, formData, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        const resultado = await axios.post(`${rotaBase}/cadastroCliente`, formData,)
         return resultado.data;
     }
     catch (error) {
