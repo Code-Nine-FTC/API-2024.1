@@ -4,7 +4,6 @@ import './global.css';
 import Routes from './rotas/rotas'
 import axios from 'axios';
 
-
 function App() {
   axios.interceptors.request.use((request) => {
     console.log('Request:', request);
