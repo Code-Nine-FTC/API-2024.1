@@ -2,7 +2,7 @@ import React, { useState, useRef} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
-import perfilicone from '../../assets/sidebar/iconperfil.png'
+import perfilicone from '../../assets/fotoperfil/perfil.svg'
 import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigationItems } from './navitens'
 
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
@@ -68,7 +68,7 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
             </button>
             <section ref={sidebarRef} className={styles.sidebar}>
                 <div className={styles.userinfo}>
-                    <img src="" alt="Foto de perfil"/>
+                    <img src={perfilicone} alt="Foto de perfil"/>
                     <div className={styles.infouser}>
                         <Link to="/perfil" id={styles.linkperfil}> Eu </Link>
                         <h2> {userTipo.charAt(0).toUpperCase() + userTipo.slice(1)} </h2>

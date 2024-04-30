@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1%;
+    margin-left: 4%;
+}
+
+.linha{
+    border-bottom: 1px solid #ddd;
+    width: 400%;
+}
+
+.container header{
+    margin-bottom: 1%;
+}
+ 
+.status{
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    margin: 5% auto 5% auto;
+    align-items: center;
+}

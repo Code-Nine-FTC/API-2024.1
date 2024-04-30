@@ -9,6 +9,8 @@ import LoginPage from "../pages/loginPage";
 import LoginAdmPage from "../pages/loginAdmPage"
 import RegistroSup from "../pages/registroSupp";
 import Ticket from "../pages/envTicket";
+import HomeSup from "../pages/homeSup"
+
 
 const Rotas = () => {
     return (
@@ -23,6 +25,7 @@ const Rotas = () => {
             <Route path="/registrosuporte" element={<RegistroSup/>}></Route>
             <Route path="*" element={<NotFound/>}/>
             <Route path="/ticket" element={<Ticket/>}></Route>
+            <Route path="/homesup" element={<HomeSup/>}></Route>
           </Switch>
         </BrowserRouter>
     )
