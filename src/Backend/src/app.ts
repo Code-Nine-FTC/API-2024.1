@@ -19,6 +19,17 @@ app.use(cors())
 app.use(express.json()) 
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    console.log('Incoming request:');
+    console.log('Method:', req.method);
+    console.log('URL:', req.url);
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+    next();
+});
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
