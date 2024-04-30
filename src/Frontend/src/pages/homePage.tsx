@@ -1,7 +1,7 @@
 import styles from '../component/faq/Faq.module.css'
-import Component from '../component/component1/component';
-import Component2 from '../component/component2/component2';
-import Component3 from '../component/component3/component3';
+import Map from '../component/map/map';
+import Delivery from '../component/delivery/delivery';
+import Trolley from '../component/trolley/trolley';
 import Status from '../component/status/status';
 import Textostatus from '../component/textostatus/textostatus';
 import Ellipse from '../component/ellipse/ellipse';
@@ -26,9 +26,9 @@ function Home() {
     <br/>
         <h1 className={styles.title}>Perguntas Frequentes</h1>
         <div className={styles.carrousel}>
-            <Component/>
-            <Component2/>
-            <Component3/>
+            <Map/>
+            <Delivery/>
+            <Trolley/>
         </div>
         <br/>
       <div className={styles.carrouselControl}>

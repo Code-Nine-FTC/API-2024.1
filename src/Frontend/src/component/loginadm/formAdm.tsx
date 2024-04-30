@@ -2,7 +2,7 @@ import React from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
 
-function LoginForm() {
+function LoginAdmForm() {
   return ( 
     <div className={styles.conteudo}>
       <form className={styles.conteudointerno}>
@@ -15,10 +15,11 @@ function LoginForm() {
           <input type="text" id={styles.label2} placeholder="Insira sua senha" />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
           <div className={styles.Title}>Voltar  →</div>
+          <div className={styles.Title}>É administrador?</div>
         </div>
       </form>
     </div>
   );
 }
 
-export default LoginForm;
+export default LoginAdmForm;

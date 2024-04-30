@@ -6,6 +6,7 @@ import Editinfocli from "../pages/infoCliente";
 import Editinfosuport from "../pages/infoSuporte";
 import Home from "../pages/homePage";
 import LoginPage from "../pages/loginPage";
+import LoginAdmPage from "../pages/loginAdmPage"
 import RegistroSup from "../pages/registroSupp";
 import Ticket from "../pages/envTicket";
 
@@ -17,7 +18,8 @@ const Rotas = () => {
             <Route path="/registro" element={<Registro />} />
             <Route path="/editarsuporte" element={<Editinfosuport/>}/>
             <Route path="/editarcliente" element={<Editinfocli/>}/>
-            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/loginadm" element={<LoginPage/>}/>
+            <Route path="/login" element={<LoginAdmPage/>}/>
             <Route path="/registrosuporte" element={<RegistroSup/>}></Route>
             <Route path="*" element={<NotFound/>}/>
             <Route path="/ticket" element={<Ticket/>}></Route>

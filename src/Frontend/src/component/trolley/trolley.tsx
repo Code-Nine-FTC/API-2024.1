@@ -3,7 +3,7 @@ import styles from '../faq/Faq.module.css'
 import trolley from '../../assets/faq/trolley.png'
 
 
-function Component3(){
+function Trolley(){
     return(
         <div className={styles.item}>
             <img src={trolley} className={styles.reactIcon}/>
@@ -12,4 +12,4 @@ function Component3(){
     )
 }
 
-export default Component3;
+export default Trolley;
