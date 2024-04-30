@@ -106,6 +106,20 @@ export class FuncionarioService {
             return {success: false, message: `Erro ao encontrar o funcionário!`}            
         }
     }
+    public async visualizarTodosFuncionarios(){
+        try{
+            const funcionarioRepository = Connection.getRepository(Funcionario)
+            const funcionarios = await funcionarioRepository.find()
+            if (!funcionarios || funcionarios.length === 0){
+               return {success: false, message: `Nenhum funcionário encontrado!`}
+            }
+            return { success: true, message: 'Funcionários encontrados!', funcionarios }
+        }catch(error){
+            console.error(`Erro ao encontrar funcionários: ${error}`)
+            return {success: false, message: `Erro ao encontrar os funcionários!`}            
+        }
+    }
+    
     public async desativarFuncionario(id:number){
         try{
             const funcionarioRepository = Connection.getRepository(Funcionario)

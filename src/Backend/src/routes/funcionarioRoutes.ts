@@ -9,6 +9,7 @@ router.put('/updateFuncionario/:id', funcionarioController.editarFuncionario.bin
 router.get('/viewFuncionario/:id', funcionarioController.visualizarFuncionario.bind(funcionarioController))
 router.post('/logginFuncionario', funcionarioController.logginFuncionario.bind(funcionarioController))
 router.get('/desativarFuncionario/:id', funcionarioController.desativarFuncionario.bind(funcionarioController))
+router.get('/visualizarTodosFuncionarios', funcionarioController.visualizarTodosFuncionarios.bind(funcionarioController))
 
 export default router
 
