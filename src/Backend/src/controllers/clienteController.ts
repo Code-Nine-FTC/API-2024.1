@@ -58,7 +58,9 @@ import { insertInvalidToken} from "./authMiddleware";
     }
     async editarCliente(req: Request, res: Response){
         try{
-            const id = Number(req.params.id)
+            const clienteLogado = res.locals.cliente;
+            console.log(clienteLogado)
+            const id = Number(clienteLogado.cli_id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' });
             }
@@ -76,7 +78,9 @@ import { insertInvalidToken} from "./authMiddleware";
     }
     async visualizarCliente(req: Request, res: Response){
         try{
-            const id: number = Number(req.params.id)
+            const clienteLogado = res.locals.cliente;
+            console.log(clienteLogado)
+            const id = Number(clienteLogado.cli_id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' });
             }
@@ -94,7 +98,9 @@ import { insertInvalidToken} from "./authMiddleware";
     }
     async desativarCliente(req: Request ,res: Response ){
         try{
-            const id: number = Number(req.params.id)
+            const clienteLogado = res.locals.cliente;
+            console.log(clienteLogado)
+            const id = Number(clienteLogado.cli_id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' });
             }
