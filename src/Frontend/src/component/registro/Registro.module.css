@@ -101,7 +101,7 @@ select{
     transition: 0.5s;
     font-weight: bold;
     width: 150px; 
-    margin-left: 28%;
+    /* margin-left: 28%; */
 }
 
 #Editar2 {
@@ -146,12 +146,25 @@ select{
   color: #000; 
 }
 
+.button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .Title {
   margin-top: 20px; 
   font-size: 18px;
   color: blue;
   cursor: pointer; 
   margin-left: 43%;
+}
+
+.button a {
+  font-size: 18px; /* Tamanho da fonte do título */
+  color: blue; /* Cor do texto do título */
+  cursor: pointer; /* Transforma o cursor em uma mãozinha quando passa sobre o título */
+  margin-top: 5%;
 }
 
 .Title:hover {
@@ -190,7 +203,6 @@ select{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    margin-left: 15%;
   }
 }
 

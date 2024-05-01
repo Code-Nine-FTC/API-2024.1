@@ -135,13 +135,19 @@ main {
   /* Estilos para o título clicável */
   .Title {
     margin-top: 20px; /* Espaço entre o botão e o título */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Title a {
     font-size: 18px; /* Tamanho da fonte do título */
     color: blue; /* Cor do texto do título */
     cursor: pointer; /* Transforma o cursor em uma mãozinha quando passa sobre o título */
-    margin-left: 12.5%;
+    margin-bottom: 2%;
   }
-  
-  .Title:hover {
+
+  .Title a:hover {
     text-decoration: underline; /* Sublinha o texto do título ao passar o mouse */
   }
 

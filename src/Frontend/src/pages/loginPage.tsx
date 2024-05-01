@@ -5,7 +5,7 @@ import styles from '../component/login/Login.module.css'
 function LoginPage() {
   return (
     <main>
-      <LoginForm/>
+      <LoginForm tipoCadastro={'usuario'}/>
     </main>
   );
 }
