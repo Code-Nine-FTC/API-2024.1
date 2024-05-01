@@ -2,6 +2,7 @@ import { IClienteInput, IClienteLoggin, IClienteUpdate} from "../interfaces/ICli
 import Cliente from "../entities/cliente";
 import { Connection } from "../config/data-source";
 import * as bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 
 export class ClienteService {
     public async cadastrarCliente(dadosCliente: IClienteInput) {
@@ -40,15 +41,17 @@ export class ClienteService {
     }
     public async logginCliente(dadosLogin: IClienteLoggin){
         try{
+            const secret = process.env.SECRET
             const clienteRepository = Connection.getRepository(Cliente)
             const cliente = await clienteRepository.findOne({ where: { cli_email: dadosLogin.cli_email }})
             if(!cliente){
-                return { sucess: false, message: `Cliente não encontrado`}
+                return { success: false, message: `Cliente não encontrado`}
             }
             if (!bcrypt.compareSync(dadosLogin.cli_senha, cliente.cli_senha)){
                 return { success: false, message: `Dados invalidos`}
             }
-            return { success: true, message: `Login bem sucedido`}
+            const token = jwt.sign({cli_id: cliente.cli_id}, secret)
+            return { success: true, message: `Autenticação realizada com sucesso`, token}
         }catch (error){
             console.error(`Erro ao logar cliente: ${error}`)
             return {sucess: false, message: `Erro ao logar cliente`}
