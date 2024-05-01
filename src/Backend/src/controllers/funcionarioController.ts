@@ -1,11 +1,12 @@
 import { Response, Request } from "express";
 import { FuncionarioService } from "../services/funcionarioService";
 import { IFuncionarioInput, IFuncionarioUpdate, IFuncionarioLoggin } from "../interfaces/IFuncionario";
+import { insertInvalidToken} from "./authMiddleware";
 
 export default class FuncionarioController {
-    private funcionarioService: FuncionarioService
-    constructor() {
-        this.funcionarioService = new FuncionarioService()
+    private funcionarioService : FuncionarioService
+    constructor (){
+        this.funcionarioService=new FuncionarioService()
     }
     async cadastrarFuncionario(req: Request, res: Response) {
         console.log('Received POST request to /cadastroFuncinario');
@@ -75,6 +76,7 @@ export default class FuncionarioController {
     async logginFuncionario(req: Request, res: Response) {
         try {
             const dadosLoggin: IFuncionarioLoggin = req.body;
+            console.log(dadosLoggin)
             const resultado = await this.funcionarioService.logginFuncionario(dadosLoggin);
     
             if (resultado.success) {
@@ -84,6 +86,23 @@ export default class FuncionarioController {
             }
         } catch (error) {
             console.error(`Erro no login do funcionário: ${error}`);
+            return res.status(500).json({ success: false, message: 'Erro interno do servidor' });
+        }
+    }
+    logoutFuncionario(req: Request, res: Response) {
+        try {
+            const authHeader = req.headers['authorization'];
+            console.log(authHeader)
+            const token = authHeader && authHeader.split(' ')[1];
+
+            if (!token) {
+                return res.status(400).json({ success: false, message: 'Token não fornecido' });
+            }
+            // Adicione o token inválido ao conjunto de tokens inválidos 
+            insertInvalidToken(token)
+            return res.status(200).json({success: true, message: 'Logout realizado'})
+        } catch (error) {
+            console.error(`Erro no logout do funcionário: ${error}`);
             return res.status(500).json({ success: false, message: 'Erro interno do servidor' });
         }
     }
@@ -104,4 +123,5 @@ export default class FuncionarioController {
             return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
+
 }
