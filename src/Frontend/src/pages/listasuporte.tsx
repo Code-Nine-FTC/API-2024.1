@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import VisualizarFuncionarios from '../functions/visualizarFunc';
+// import VisualizarFuncionarios from '../functions/visualizarFunc';
 import {IFuncionarioView} from '../../../Backend/src/interfaces/IFuncionario'
 
 
@@ -9,23 +9,23 @@ const ListagemFuncionarios = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
-  useEffect(() => {
-    const fetchFuncionarios = async () => {
-      try {
+  // useEffect(() => {
+  //   const fetchFuncionarios = async () => {
+  //     try {
         
-        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`);
+  //       const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`);
         
-        setFuncionarios(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError('Erro ao buscar funcionários. Por favor, tente novamente mais tarde.');
-        setLoading(false);''
-      }
-    };
+  //       setFuncionarios(response.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setError('Erro ao buscar funcionários. Por favor, tente novamente mais tarde.');
+  //       setLoading(false);''
+  //     }
+  //   };
 
  
-    fetchFuncionarios();
-  }, []);
+  //   fetchFuncionarios();
+  // }, []);
 
   return (
     <div>
