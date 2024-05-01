@@ -2,9 +2,10 @@ import { IFuncionarioInput, IFuncionarioUpdate, IFuncionarioLoggin } from "../in
 import Funcionario from "../entities/funcionario";
 import { Connection } from "../config/data-source";
 import * as bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 
 export class FuncionarioService {
-    public async cadastrarFuncionario(dadosFuncionario: IFuncionarioInput):Promise<{ success: boolean, message: string, funcionario?: Funcionario[]}> {
+    public async cadastrarFuncionario(dadosFuncionario: IFuncionarioInput){
         const funcionarioRepository = Connection.getRepository(Funcionario);
         try {
             console.log('Recebendo dados no clienteService')
@@ -34,11 +35,14 @@ export class FuncionarioService {
     }
     public async logginFuncionario(dadosLoggin: IFuncionarioLoggin) {
         try {
+            const secret2 = process.env.SECRET02
+            const secret3 = process.env.SECRET03
             const funcionarioRepository = Connection.getRepository(Funcionario);
             const funcionario = await funcionarioRepository.findOne({ where: { func_cpf: dadosLoggin.func_cpf } });
             if (!funcionario) { 
                 return { success: false, message: 'Funcionário não encontrado!' };
             } 
+            console.log(funcionario)
             // Verifica se o funcionario está ativo
             if(!funcionario.ativo){
                 return { success: false, message: 'Entrada negada' };
@@ -48,13 +52,16 @@ export class FuncionarioService {
                 if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
                     return { success: false, message: 'Dados inválidos!' };
                 }
-                return { success: true, message: 'Login bem sucedido!', funcionario };
+               
+                const token = jwt.sign({func_id: funcionario.func_id}, secret2) 
+                return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
             }
             // Admin
             if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)){
                 return { success: false, message: 'Dados inválidos!' };
             }
-            return { success: true, message: 'Login bem sucedido!', funcionario };
+            const token = jwt.sign({func_id: funcionario.func_id}, secret3)
+            return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
         } catch (error) {
             console.error(`Erro ao fazer login: ${error}`);
             return { success: false, message: 'Erro ao fazer login!' };
@@ -185,4 +192,5 @@ export class FuncionarioService {
         // CPF Valido
         return true
     }
+
 }
