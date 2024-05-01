@@ -7,10 +7,10 @@ const funcionarioController = new FuncionarioController()
 const authAdmin =  AuthMiddleware.authTokenAdmin
 const authAdminOrAtendente =AuthMiddleware.authTokenAdminOrAtendente
 
-// Rotas sem Autenticação
-router.post('/cadastroFuncionario', authAdmin,funcionarioController.cadastrarFuncionario.bind(funcionarioController))
+// Rota sem Autenticação
 router.post('/logginFuncionario', funcionarioController.logginFuncionario.bind(funcionarioController))
 // Rotas com autenticação
+router.post('/cadastroFuncionario', authAdmin,funcionarioController.cadastrarFuncionario.bind(funcionarioController))
 router.put('/updateFuncionario', authAdmin, funcionarioController.editarFuncionario.bind(funcionarioController))
 router.post('/viewFuncionario', authAdminOrAtendente, funcionarioController.visualizarFuncionario.bind(funcionarioController))
 router.get('/logoutFuncionario', authAdminOrAtendente,funcionarioController.logoutFuncionario.bind(funcionarioController))
