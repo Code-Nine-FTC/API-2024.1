@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import styles from "../component/infoSuporte/InfoSuporte.module.css"
-import ImageComponent from '../component/imagemperfil/imagemperfil';
+import ImageComponent from '../component/imagemPerfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
 const userLogado = 'atendente'
 
