@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
-import {Link} from 'react-router-dom';
-import { text } from 'stream/consumers';
+import {Link, useHistory} from 'react-router-dom';
+import {toast, Toaster} from 'react-hot-toast';
+import LoginClienteFunc from '../../functions/loginClienteFunc';
+import LoginFuncionarioFunc from '../../functions/loginFuncionarioFunc';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
   const [identificacao, setIdentificacao] = useState('');
@@ -12,8 +14,9 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
   const [formDataPadrao, setFormDataPadrao] = useState({
     email: '',
     senha: '',
-    type: '',
   })
+
+  const [erro, setErro] = useState ('')
 
   useEffect(() => {
     switch (tipoCadastro) {
@@ -30,25 +33,53 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
     }
   }, [tipoCadastro]);
 
-  const handleChange = (e:any)=> {
-    setFormDataPadrao({e.target.name: e.target.value });
-  }
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = target;
+    setFormDataPadrao((prevFormDataPadrao) => ({
+        ...prevFormDataPadrao,
+        [name]: value,
+    }));
+}
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
-          const resultado = await CadastroClienteFunc(formData)
-          if (resultado.success) {
-              setErro('')
-          }
-          toast.success('Cadastro concluído')
-          
+        switch (tipoCadastro) {
+          case 'usuario':
+            const formDataUser = {
+              cli_email: tipoCadastro === 'usuario' ? formDataPadrao.email : '',
+              cli_senha: tipoCadastro === 'usuario' ? formDataPadrao.senha : '',
+            }
+            const resultadoUsuario = await LoginClienteFunc(formDataUser);
+            if (resultadoUsuario.success) {
+              setErro('');
+              toast.success('Login concluído');
+              return <Redirect to="/" />
+            }
+            break;
+          case 'funcionario':
+            const formDataFunc = {
+              func_cpf: tipoCadastro === 'funcionario' ? formDataPadrao.email : '',
+              func_senha: tipoCadastro === 'funcionario' ? formDataPadrao.senha : ''
+            }
+            const resultadoFuncionario = await LoginFuncionarioFunc(formDataFunc);
+            if (resultadoFuncionario.success) {
+              setErro('');
+              toast.success('Login concluído');
+            }
+            break;
+        }
+      } catch (error: any) {
+        setErro(error.message);
       }
-      catch (error:any) {
-          setErro(error.message)
-      }
-  }
+    };
+
   return ( 
+    <>
+    <div><Toaster
+        position="top-center"
+        reverseOrder={false}/>
+        </div>
     <div className={styles.conteudo}>
       <form onSubmit={handleSubmit} method="POST" className={styles.conteudointerno}>
         <img src={logo} className={styles.logo} alt="logo" />
@@ -57,7 +88,7 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
           <label htmlFor="label1">{identificacao}</label>
           <input type={type} name="email" id={styles.label1} value={formDataPadrao.email} placeholder={placeholder} onChange={handleChange} />
           <label htmlFor="label2">Senha</label>
-          <input type={type} id={styles.label2} value={formDataPadrao.senha} placeholder="Insira sua senha" onChange={handleChange} />
+          <input type="password" name="senha" id={styles.label2} value={formDataPadrao.senha} placeholder="Insira sua senha" onChange={handleChange} />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
           <div className={styles.Title}>
             {tipoCadastro === 'usuario' && (
@@ -65,9 +96,11 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               )}
             <Link to="/registro">Não tem uma conta? </Link>
           </div>
+          {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%', fontSize: '0.8em'}}>{erro}</p>}
         </div>
       </form>
     </div>
+    </>
   );
 }
 

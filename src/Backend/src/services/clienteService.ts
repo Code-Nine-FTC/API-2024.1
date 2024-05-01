@@ -44,17 +44,23 @@ export class ClienteService {
         try {
             const secret = process.env.SECRET
             const clienteRepository = Connection.getRepository(Cliente)
+            console.log("Dados recebidos no backend")
+            console.log(dadosLogin)
             const cliente = await clienteRepository.findOne({ where: { cli_email: dadosLogin.cli_email } })
             if (!cliente) {
+                console.log("Cliente não encontrado")
                 return { success: false, message: `Cliente não encontrado` }
             }
             if (!bcrypt.compareSync(dadosLogin.cli_senha, cliente.cli_senha)) {
+                console.log("Dados invalidos")
                 return { success: false, message: `Dados invalidos` }
             }
             const token = jwt.sign({ cli_id: cliente.cli_id }, secret)
+            console.log("Autenticação realizada com sucesso")
             return { success: true, message: `Autenticação realizada com sucesso`, token }
         } catch (error) {
             console.error(`Erro ao logar cliente: ${error}`)
+            console.log("Erro ao logar cliente", error)
             return { success: false, message: `Erro ao logar cliente` }
         }
     }

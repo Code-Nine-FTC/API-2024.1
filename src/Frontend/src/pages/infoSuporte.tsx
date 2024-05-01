@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import styles from "../component/infoSuporte/InfoSuporte.module.css"
-import ImageComponent from '../component/imagemPerfil/imagemperfil';
+// import ImageComponent from '../component/imagemPerfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
 import SalvarDadosFunc from '../functions/editarFunc'; // Importe a função de salvar dados
 
@@ -49,7 +49,7 @@ const Editinfosuport: React.FC = () => {
         </div>
         <div className={styles.Container}>
           <div className={styles.perfil}>
-              <ImageComponent nome={nome}/>
+              {/* <ImageComponent nome={nome}/> */}
           </div>
           <form className={styles.conteudoform} onSubmit={handleSubmit}>
             <div className={styles.Dados1}>

@@ -36,32 +36,40 @@ export class FuncionarioService {
     }
     public async logginFuncionario(dadosLoggin: IFuncionarioLoggin) {
         try {
+            console.log('Recebendo dados em /logginFuncionario')
+            console.log(dadosLoggin)
             const secret2 = process.env.SECRET02
             const secret3 = process.env.SECRET03
             const funcionarioRepository = Connection.getRepository(Funcionario);
             const funcionario = await funcionarioRepository.findOne({ where: { func_cpf: dadosLoggin.func_cpf } });
             if (!funcionario) {
+                console.log('Funcionário não encontrado')
                 return { success: false, message: 'Funcionário não encontrado!' };
             }
             console.log(funcionario)
             // Verifica se o funcionario está ativo
             if (!funcionario.ativo) {
+                console.log('Entrada negada')
                 return { success: false, message: 'Entrada negada' };
             }
             // Funcionario
             if (!funcionario.func_is_admin) {
+                console.log('Dados invalidos')
                 if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
                     return { success: false, message: 'Dados inválidos!' };
                 }
 
                 const token = jwt.sign({ func_id: funcionario.func_id }, secret2)
+                console.log('Autenticação realizada com sucesso')
                 return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
             }
             // Admin
             if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
+                console.log('Dados invalidos (ADM)')
                 return { success: false, message: 'Dados inválidos!' };
             }
             const token = jwt.sign({ func_id: funcionario.func_id }, secret3)
+            console.log('Autenticação realizada com sucesso (ADM')
             return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
         } catch (error) {
             console.error(`Erro ao fazer login: ${error}`);

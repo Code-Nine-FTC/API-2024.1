@@ -28,6 +28,8 @@ export default class ClienteController {
     async logginCliente(req: Request, res: Response) {
         try {
             const dadosLogin: IClienteLoggin = req.body
+            console.log('Recebendo dados em /loginCliente')
+            console.log(dadosLogin)
             const resultado = await this.clienteService.logginCliente(dadosLogin)
             if (resultado.success) {
                 return res.status(200).json(resultado)

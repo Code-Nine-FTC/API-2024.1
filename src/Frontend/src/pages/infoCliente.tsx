@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import styles from "../component/infoCliente/InfoCliente.module.css"
-import ImageComponent from '../component/imagemPerfil/imagemperfil';
+// import ImageComponent from '../component/imagemPerfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
 const userLogado = 'user'
 
@@ -30,7 +30,7 @@ const Editinfocli: React.FC = () => {
       </div>
       <div className={styles.Container}>
         <div className={styles.perfil}>
-          <ImageComponent nome={nome}/>
+          {/* <ImageComponent nome={nome}/> */}
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.Dados}>
