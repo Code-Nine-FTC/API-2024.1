@@ -1,38 +1,46 @@
-// import React, { useState, useEffect } from 'react';
-// import VisualizarFuncionarios from '../functions/visualizarFunc';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import VisualizarFuncionarios from '../functions/visualizarFunc';
+import {IFuncionarioView} from '../../../Backend/src/interfaces/IFuncionario'
 
 
+const ListagemFuncionarios = () => {
+  const [funcionarios, setFuncionarios] = useState<IFuncionarioView[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>('');
 
-// const ListagemFuncionarios = () => {
-//     const [formDataSenha, setFormData] = useState({
-//     func_id: '',
-//     func_nome: '',
-//     cli_cpf: '',
-    
-// })
+  useEffect(() => {
+    const fetchFuncionarios = async () => {
+      try {
+        
+        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`);
+        
+        setFuncionarios(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Erro ao buscar funcionários. Por favor, tente novamente mais tarde.');
+        setLoading(false);''
+      }
+    };
 
+ 
+    fetchFuncionarios();
+  }, []);
 
-//   return (
-//     <div>
-//       <h2>Lista de Funcionários</h2>
-      
-//       {/* Exibe uma mensagem de carregamento enquanto os dados estão sendo carregados */}
-//       {loading && <p>Carregando...</p>}
-      
-//       {/* Exibe uma mensagem de erro caso ocorra algum erro na requisição */}
-//       {error && <p>{error}</p>}
-      
-//       {/* Exibe a lista de funcionários */}
-//       <ul>
-//         {funcionarios.map(funcionario => (
-//           <li key={funcionario.func_id}>
-//             Nome: {funcionario.func_nome}, CPF: {funcionario.func_cpf}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <h2>Lista de Funcionários</h2>
+      {loading && <p>Carregando...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <ul>
+        {funcionarios.map(funcionario => (
+          <li key={funcionario.func_cpf}>
+            <strong>Nome:</strong> {funcionario.func_nome}, <strong>CPF:</strong> {funcionario.func_cpf}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-
-// export default Listar;
+export default ListagemFuncionarios;
