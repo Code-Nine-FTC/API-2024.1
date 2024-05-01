@@ -20,8 +20,8 @@ const Rotas = () => {
             <Route path="/registro" element={<Registro />} />
             <Route path="/editarsuporte" element={<Editinfosuport/>}/>
             <Route path="/editarcliente" element={<Editinfocli/>}/>
-            <Route path="/loginadm" element={<LoginPage/>}/>
-            <Route path="/login" element={<LoginAdmPage/>}/>
+            <Route path="/loginadm" element={<LoginAdmPage/>}/>
+            <Route path="/login" element={<LoginPage/>}/>
             <Route path="/registrosuporte" element={<RegistroSup/>}></Route>
             <Route path="*" element={<NotFound/>}/>
             <Route path="/ticket" element={<Ticket/>}></Route>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../component/registro/Registro.module.css';
 import CadastroClienteFunc from '../functions/cadastroClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const Registro = () => {
 
@@ -72,7 +73,7 @@ const Registro = () => {
                     <input type="text" id='nome' name="cli_nome" value={formDataSenha.cli_nome} placeholder='Digite seu nome aqui ' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <label>Seu CPF:</label>
-                    <input type="text" id="cpf" name="cli_cpf" value={cpfFormatado} onChange={handleCpfChange} placeholder="000.000.000-00 " required></input><br></br>
+                    <input type="text" id="cpf" name="cli_cpf" value={cpfFormatado} onChange={handleCpfChange} placeholder="00000000000" required></input><br></br>
                     <br></br>
                     <label>Senha:</label>
                     <input type='password' id='senha' name="cli_senha" value={formDataSenha.cli_senha} placeholder='Digite até 8 caracteres ' onChange={handleChange} required></input><br></br>
@@ -84,6 +85,7 @@ const Registro = () => {
                         <button type="submit" id={styles.Editar}>
                             Cadastrar-se
                         </button>
+                        <Link to='/login'> Já tem uma conta? </Link>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}

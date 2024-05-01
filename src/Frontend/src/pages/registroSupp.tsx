@@ -3,6 +3,7 @@ import logo from '../component/registro/log.png'
 import styles from '../component/registro/Registro.module.css'
 import CadastroFuncionarioFunc from '../functions/cadastroFuncionarioFunc';
 import { toast, Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const RegistroSup = () => {
 
@@ -111,7 +112,9 @@ const RegistroSup = () => {
                             Adicionar Suporte
                         </button>
                     </div>
-                    <div className={styles.Title}>Voltar →</div>
+                    <div className={styles.Title}>
+                        <Link to='/listasup'> Voltar → </Link>
+                    </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}
                 </form>
