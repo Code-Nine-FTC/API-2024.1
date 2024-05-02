@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { rotaBase } from '../functions/rotaBase'; // Importe a rotaBase do arquivo correto
-import { IFuncionarioView } from '../../../Backend/src/interfaces/IFuncionario'; // Certifique-se de importar a interface correta
+import { rotaBase } from '../functions/rotaBase';
+import { IFuncionarioView } from '../../../Backend/src/interfaces/IFuncionario';
 import Sidebar from '../component/sidebar/sidebar';
+import styles from '../component/listarSuporte/listarSuporte.module.css'; // Importe o arquivo de estilos CSS
 
 const ListagemFuncionarios = () => {
   const [funcionarios, setFuncionarios] = useState<IFuncionarioView[]>([]);
@@ -26,14 +27,15 @@ const ListagemFuncionarios = () => {
 
   return (
     <div>
-      <Sidebar userTipo='Admin'/>
       <h2>Lista de Funcionários</h2>
       {loading && <p>Carregando...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ul>
+      <ul className={styles.listaFuncionarios}> 
         {funcionarios.map(funcionario => (
           <li key={funcionario.func_cpf}>
-            <strong>Nome:</strong> {funcionario.func_nome}, <strong>CPF:</strong> {funcionario.func_cpf}
+            <a href={`//${funcionario.func_id}`}>
+              <strong>Nome:</strong> {funcionario.func_nome}, <strong>CPF:</strong> {funcionario.func_cpf}
+            </a>
           </li>
         ))}
       </ul>
@@ -42,8 +44,3 @@ const ListagemFuncionarios = () => {
 };
 
 export default ListagemFuncionarios;
-
-
-
-
-
