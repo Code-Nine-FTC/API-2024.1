@@ -19,15 +19,15 @@ const Rotas = () => {
           <Switch>
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
-            <RotaProtegida routeProps={{ path: "/editarsuporte" }} element={<Editinfosuport/>}/>
-            <RotaProtegida routeProps={{ path: "/editarcliente" }} element={<Editinfocli/>}/>
+            <Route path="editarsuporte" element={<RotaProtegida><Editinfosuport/></RotaProtegida>}/>
+            <Route path= "/editarcliente" element={<RotaProtegida><Editinfocli/></RotaProtegida>}/>
             <Route path="/loginadm" element={<LoginAdmPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
-            <RotaProtegida routeProps={{ path: "/registrosuporte" }} element={<RegistroSup/>}/>
+            <Route path= "/registrosuporte" element={<RotaProtegida><RegistroSup/></RotaProtegida>}/>
             <Route path="*" element={<NotFound/>}/>
-            <RotaProtegida routeProps={{ path: "/ticket" }} element={<Ticket/>}/>
-            <RotaProtegida routeProps={{ path: "/homesup" }} element={<HomeSup/>}/>
-            <RotaProtegida routeProps={{ path: "/listarsuporte" }} element={<Listagem/>}/>
+            <Route path= "/ticket" element={<RotaProtegida><Ticket/></RotaProtegida>}/>
+            <Route path= "/homesup" element={<RotaProtegida><HomeSup/></RotaProtegida>}/>
+            <Route path= "/listarsuporte" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
           </Switch>
         </BrowserRouter>
     )

@@ -1,40 +1,40 @@
 import React, { useEffect, useState, ReactElement} from 'react';
-import { Route, Navigate, RouteProps } from 'react-router-dom';
-import AutenticarToken from './autenticarToken';
+import { Route, Navigate, RouteProps, useLocation } from 'react-router-dom';
+import useAutenticarToken from './autenticarToken';
 
 interface RotaProtegidaProps {
-    element: ReactElement;
-    routeProps: RouteProps;
+    children: any;
 }
 
-const RotaProtegida: React.FC<RotaProtegidaProps> = ({ element, ...rest }) => {
-    const [carregando, setCarregando] = useState(true);
+const RotaProtegida: React.FC<RotaProtegidaProps> = ({ children }) => {
+    const location = useLocation();  
+    const token = localStorage.getItem('token') || ''
     const [autenticado, setAutenticado] = useState(false);
-    const [token, setToken] = useState('');
+
+    const autenticarToken = useAutenticarToken(token);
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('token');
-        setToken(storedToken || '');
-    }, []);
-    
-    useEffect(() => {
-        const verificarAutenticacao = async () => {
-            const isAutenticado = await AutenticarToken(token)
-            if (isAutenticado === undefined) {
-                setAutenticado(false)
-            }
-            else {
-                setAutenticado(isAutenticado)
-            }
-            setCarregando(false);
-        }
-        verificarAutenticacao()
-    }, [token]);
+        autenticarToken.then(isAutenticado => {
+            setAutenticado(isAutenticado || false);
+        });
+    }, [autenticarToken]);
 
-    if (carregando) {
-        return null; 
-    }
-    return autenticado ? <Route {...rest} element={element}/> : <Navigate to={'/login'}/>;
+    return autenticado ? children : <Navigate to="/login" replace state={{ from: location }} />;
+
+    // useEffect(() => {
+    //     const verificarAutenticacao = async () => {
+    //         const isAutenticado = await useAutenticarToken(token)
+    //         if (isAutenticado === undefined) {
+    //             setAutenticado(false)
+    //         }
+    //         else {
+    //             setAutenticado(isAutenticado)
+    //         }
+    //     }
+    //     verificarAutenticacao()
+    // }, [token]);
+
+    // return autenticado ? children : <Navigate to="/login" replace state={{ from: location }} />;
 }
 
 export default RotaProtegida

@@ -12,8 +12,6 @@ import { Modal } from '../component/modal/modal';
 import { useEffect, useState } from 'react';
 import AutenticarToken from '../rotas/autenticarToken';
 
-const userLogado = 'user'
-
 function Home() {
   const [modalOpen, setModalOpen] = useState(false)
   const [token, setToken] = useState('');
@@ -38,6 +36,7 @@ function Home() {
           console.error('Erro ao autenticar', error)
         }
       };
+      validar()
   }, [token]);
 
   return (

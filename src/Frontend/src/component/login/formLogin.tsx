@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, redirect} from 'react-router-dom';
 import {toast, Toaster} from 'react-hot-toast';
 import LoginClienteFunc from '../../functions/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/loginFuncionarioFunc';
@@ -13,10 +13,16 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
   const [type, setType] = useState('');
   const [token, setToken] = useState(localStorage.getItem('token') || '');
 
+  console.log(token)
   const [formDataPadrao, setFormDataPadrao] = useState({
     email: '',
     senha: '',
   })
+  
+  if (token !== ''){
+    console.log('teste')
+    redirect('/')
+  }
 
   const [erro, setErro] = useState ('')
 
@@ -58,7 +64,12 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               toast.success('Login concluído');
               const tokenCliente = resultadoUsuario.token;
               setToken(tokenCliente)
-              localStorage.setItem('token', token);
+              localStorage.setItem('token', tokenCliente);
+              console.log('Token')
+              console.log(tokenCliente)
+              console.log(token)
+              console.log('localstorage')
+              console.log(localStorage.getItem('token'))
               return navigate('/')
             }
             break;
@@ -72,7 +83,12 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               setErro('');
               const tokenFunc= resultadoFuncionario.token;
               setToken(tokenFunc)
-              localStorage.setItem('token', token);
+              localStorage.setItem('token', tokenFunc);
+              console.log('token')
+              console.log(tokenFunc)
+              console.log(token)
+              console.log('localstorage')
+              console.log(localStorage.getItem('token'))
               return navigate('/listarsuporte')
             }
             break;

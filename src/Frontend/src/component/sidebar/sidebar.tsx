@@ -4,6 +4,7 @@ import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
 import perfilicone from '../../assets/fotoperfil/perfil.svg'
 import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigationItems } from './navitens'
+import LogoutFunc from '../../functions/logoutFunc';
 
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
 // Define os States para verificar se a Sidebar esta aberte ou fechada, e o mesmo para o menu Dropdown
@@ -120,7 +121,7 @@ const Sidebar = () => {
                         </div>
                     ))}
                      <div id={styles.logout}>
-                        <Link to="/registro">Logout →</Link>
+                        <button onClick={LogoutFunc}>Logout → </button>
                     </div>
                 </ul>
                 </>
