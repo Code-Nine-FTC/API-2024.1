@@ -7,7 +7,8 @@ import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigat
 
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
 // Define os States para verificar se a Sidebar esta aberte ou fechada, e o mesmo para o menu Dropdown
-const Sidebar = ({ userTipo }: { userTipo: string }) => { 
+const Sidebar = () => { 
+    const userTipo = localStorage.getItem('level') || '';
     const buttonRef = useRef<HTMLButtonElement>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
     const [isSidebarAberta, setIsSidebarAberta] = useState(false);
@@ -35,12 +36,14 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
     // Função que importa os itens de navegação do modulo navitens, de acordo com o usuário logado
     const getNavigationItems = () => {
         switch (userTipo) {
-            case 'admin':
+            case 'administrador':
                 return getAdminNavigationItems();
             case 'atendente':
                 return getAtendenteNavigationItems();
-            default:
+            case 'usuario':
                 return getDefaultNavigationItems();
+            default:
+                return []
         }
     };
 
@@ -67,7 +70,9 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
                 <span></span>
             </button>
             <section ref={sidebarRef} className={styles.sidebar}>
-                <div className={styles.userinfo}>
+                {userTipo !== '' && (
+                <> 
+                    <div className={styles.userinfo}>
                     <img src={perfilicone} alt="Foto de perfil"/>
                     <div className={styles.infouser}>
                         <Link to="/perfil" id={styles.linkperfil}> Eu </Link>
@@ -118,6 +123,11 @@ const Sidebar = ({ userTipo }: { userTipo: string }) => {
                         <Link to="/registro">Logout →</Link>
                     </div>
                 </ul>
+                </>
+                )}
+                <div>
+                    <Link to="/login"> Faça Login </Link>
+                </div>
             </section>
         </div>
         </>

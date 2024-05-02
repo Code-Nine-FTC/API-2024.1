@@ -55,7 +55,7 @@ export class ClienteService {
                 console.log("Dados invalidos")
                 return { success: false, message: `Dados invalidos` }
             }
-            const token = jwt.sign({ cli_id: cliente.cli_id }, secret)
+            const token = jwt.sign({ cli_id: cliente.cli_id, nivelAcesso: 'usuario'}, secret)
             console.log("Autenticação realizada com sucesso")
             return { success: true, message: `Autenticação realizada com sucesso`, token }
         } catch (error) {

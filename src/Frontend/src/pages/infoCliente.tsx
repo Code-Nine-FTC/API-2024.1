@@ -23,7 +23,7 @@ const Editinfocli: React.FC = () => {
 
   return (
     <>
-      <Sidebar userTipo={userLogado}/>
+      <Sidebar/>
       <div className={styles.conteudo}>
       <div className={styles.titulo}>
         <h1>Minha Conta</h1>

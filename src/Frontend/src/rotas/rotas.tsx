@@ -1,4 +1,4 @@
-  import { Route, BrowserRouter, Routes as Switch } from "react-router-dom";
+import { Route, BrowserRouter, Routes as Switch } from "react-router-dom";
 import NotFound from "../pages/notFound";
 import React from "react";
 import Registro from "../pages/registroPage";
@@ -11,6 +11,7 @@ import RegistroSup from "../pages/registroSupp";
 import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup"
 import Listagem from "../pages/listasuporte";
+import RotaProtegida from "./rotaProtegida";
 
 const Rotas = () => {
     return (
@@ -18,15 +19,15 @@ const Rotas = () => {
           <Switch>
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
-            <Route path="/editarsuporte" element={<Editinfosuport/>}/>
-            <Route path="/editarcliente" element={<Editinfocli/>}/>
+            <RotaProtegida routeProps={{ path: "/editarsuporte" }} element={<Editinfosuport/>}/>
+            <RotaProtegida routeProps={{ path: "/editarcliente" }} element={<Editinfocli/>}/>
             <Route path="/loginadm" element={<LoginAdmPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/registrosuporte" element={<RegistroSup/>}></Route>
+            <RotaProtegida routeProps={{ path: "/registrosuporte" }} element={<RegistroSup/>}/>
             <Route path="*" element={<NotFound/>}/>
-            <Route path="/ticket" element={<Ticket/>}></Route>
-            <Route path="/homesup" element={<HomeSup/>}></Route>
-            <Route path="/listarsuporte" element={<Listagem/>}></Route>
+            <RotaProtegida routeProps={{ path: "/ticket" }} element={<Ticket/>}/>
+            <RotaProtegida routeProps={{ path: "/homesup" }} element={<HomeSup/>}/>
+            <RotaProtegida routeProps={{ path: "/listarsuporte" }} element={<Listagem/>}/>
           </Switch>
         </BrowserRouter>
     )

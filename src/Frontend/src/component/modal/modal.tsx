@@ -1,7 +1,12 @@
 import React from 'react';
 import "./modal.css"
 
-export const Modal = ({onClose, children}) => {
+interface ModalInterface {
+    onClose: () => void,
+    children: React.ReactNode,
+}
+
+export const Modal: React.FC<ModalInterface> = ({onClose, children}) => {
     return (
         <div className='modal-container'>
             <div className='modal'>

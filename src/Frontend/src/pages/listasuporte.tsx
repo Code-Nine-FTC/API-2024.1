@@ -26,7 +26,7 @@ const ListagemFuncionarios = () => {
 
   return (
     <div>
-      <Sidebar userTipo='Admin'/>
+      <Sidebar/>
       <h2>Lista de Funcionários</h2>
       {loading && <p>Carregando...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}

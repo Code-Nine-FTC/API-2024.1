@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {toast, Toaster} from 'react-hot-toast';
 import LoginClienteFunc from '../../functions/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/loginFuncionarioFunc';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
+  const navigate = useNavigate();
   const [identificacao, setIdentificacao] = useState('');
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
 
   const [formDataPadrao, setFormDataPadrao] = useState({
     email: '',
@@ -54,7 +56,10 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
             if (resultadoUsuario.success) {
               setErro('');
               toast.success('Login concluído');
-              return <Redirect to="/" />
+              const tokenCliente = resultadoUsuario.token;
+              setToken(tokenCliente)
+              localStorage.setItem('token', token);
+              return navigate('/')
             }
             break;
           case 'funcionario':
@@ -65,7 +70,10 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
             const resultadoFuncionario = await LoginFuncionarioFunc(formDataFunc);
             if (resultadoFuncionario.success) {
               setErro('');
-              toast.success('Login concluído');
+              const tokenFunc= resultadoFuncionario.token;
+              setToken(tokenFunc)
+              localStorage.setItem('token', token);
+              return navigate('/listarsuporte')
             }
             break;
         }

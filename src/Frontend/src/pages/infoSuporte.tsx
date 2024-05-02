@@ -42,7 +42,7 @@ const Editinfosuport: React.FC = () => {
 
   return (
     <>
-      <Sidebar userTipo={userLogado}/>
+      <Sidebar/>
       <div className={styles.conteudo}>
         <div className={styles.titulo}>
           <h1>Editar Usuário</h1>

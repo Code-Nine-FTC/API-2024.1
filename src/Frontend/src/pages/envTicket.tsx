@@ -1,12 +1,11 @@
 import Sidebar from "../component/sidebar/sidebar"
 import styles from '../component/envioticket/EnvioTicket.module.css'
-const userLogado = 'user'
 
 const Ticket = () => {
     
     return(
     <>
-        <Sidebar userTipo={userLogado}/>
+        <Sidebar/>
         <div className={styles.container}>
             <header className={styles.title}>
                 <h1>Envie sua solicitação</h1>
