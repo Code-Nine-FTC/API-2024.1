@@ -59,7 +59,9 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               cli_senha: tipoCadastro === 'usuario' ? formDataPadrao.senha : '',
             }
             const resultadoUsuario = await LoginClienteFunc(formDataUser);
+            console.log('Tentando login')
             if (resultadoUsuario.success) {
+              console.log('Login concluído')
               setErro('');
               toast.success('Login concluído');
               const tokenCliente = resultadoUsuario.token;
@@ -75,7 +77,9 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               func_senha: tipoCadastro === 'funcionario' ? formDataPadrao.senha : ''
             }
             const resultadoFuncionario = await LoginFuncionarioFunc(formDataFunc);
+            console.log('Tentando login')
             if (resultadoFuncionario.success) {
+              console.log('Login concluído')
               setErro('');
               const tokenFunc= resultadoFuncionario.token;
               setToken(tokenFunc)

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { rotaBase } from '../functions/rotaBase';
 
-const useAutenticarToken = async (token: string) => {
-    // const [previousToken, setPreviousToken] = useState<string | null> (null);
+const useAutenticarToken = (token: string) => {
     const [autenticado, setAutenticado] = useState(false);
+    const [loading, setLoading] = useState(true); // Add loading state
+
     useEffect(() => {
         const autenticarToken = async () => {
             try {
@@ -22,21 +22,25 @@ const useAutenticarToken = async (token: string) => {
                     localStorage.setItem('id', iduser)
                     localStorage.setItem('nivel', leveluser)
                     setAutenticado(true);
-                    return autenticado
                 }
                 else {
                     setAutenticado(false);
                 }
             } catch (error: any) {
-                // setErro(error.message);
                 console.error('Erro na verificação de Token')
-              }
+            } finally {
+                setLoading(false); // Set loading to false regardless of success or failure
+            }
+            
+            if (!loading) { // Check loading state before making the request
+                autenticarToken();
+            }
+
         };
         autenticarToken();
-    }, [token]);
+    }, []);
 
-    return autenticado
-
+    return { autenticado, loading };
 };
 
-export default useAutenticarToken
+export default useAutenticarToken;

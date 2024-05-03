@@ -1,51 +1,25 @@
-import React, { useEffect, useState, ReactElement} from 'react';
-import { Route, Navigate, RouteProps, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 import useAutenticarToken from './autenticarToken';
 
 interface RotaProtegidaProps {
-    children: any;
+    children: React.ReactNode;
 }
 
 const RotaProtegida: React.FC<RotaProtegidaProps> = ({ children }) => {
     const location = useLocation();  
-    const token = localStorage.getItem('token') || ''
+    const token = localStorage.getItem('token') || '';
+    const { autenticado, loading } = useAutenticarToken(token);
 
-    const verificarAutenticacao = async () => {
-        const autenticado = await useAutenticarToken(token)
-        return autenticado
-    };
+    if (loading) {
+        return <div>Loading...</div>; // You can render a loading indicator here
+    }
 
-    useEffect(() => {
-        verificarAutenticacao().then((autenticado) => {
-            if(!autenticado) {
-                <Navigate to="/login" replace state={{ from: location }} />
-                console.log('Usuario não autenticado')
-            }
-        });
-    }, [token])
-    
-    // useEffect(() => {
-    //     autenticarToken.then(isAutenticado => {
-    //         setAutenticado(isAutenticado || false);
-    //     });
-    // }, []);
+    if (!autenticado) {
+        return <Navigate to="/login" replace state={{ from: location }} />;
+    }
 
-    return children 
+    return <>{children}</>;
+};
 
-    // useEffect(() => {
-    //     const verificarAutenticacao = async () => {
-    //         const isAutenticado = await useAutenticarToken(token)
-    //         if (isAutenticado === undefined) {
-    //             setAutenticado(false)
-    //         }
-    //         else {
-    //             setAutenticado(isAutenticado)
-    //         }
-    //     }
-    //     verificarAutenticacao()
-    // }, [token]);
-
-    // return autenticado ? children : <Navigate to="/login" replace state={{ from: location }} />;
-}
-
-export default RotaProtegida
+export default RotaProtegida;
