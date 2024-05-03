@@ -4,16 +4,22 @@ import { rotaBase } from '../functions/rotaBase';
 import { IFuncionarioView } from '../../../Backend/src/interfaces/IFuncionario';
 import Sidebar from '../component/sidebar/sidebar';
 import styles from '../component/listarSuporte/listarSuporte.module.css'; // Importe o arquivo de estilos CSS
+import { Link } from 'react-router-dom';
 
 const ListagemFuncionarios = () => {
   const [funcionarios, setFuncionarios] = useState<IFuncionarioView[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     const fetchFuncionarios = async () => {
       try {
-        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`);
+        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+        }
+      });      
         setFuncionarios(response.data.funcionarios);
         setLoading(false);
       } catch (error) {
@@ -49,8 +55,8 @@ const ListagemFuncionarios = () => {
           </div>
         </div>
         <div className={styles.buttonContainer}>
-  <button type="button">Cadastrar atendente</button>
-</div>
+          <Link to="/registrosuporte"> Cadastrar atendente </Link>
+      </div>
 
       </div>
     </div>

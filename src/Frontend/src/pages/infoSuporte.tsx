@@ -4,8 +4,6 @@ import styles from "../component/infoSuporte/InfoSuporte.module.css"
 import Sidebar from '../component/sidebar/sidebar';
 import SalvarDadosFunc from '../functions/editarFunc'; // Importe a função de salvar dados
 
-const userLogado = 'atendente';
-
 interface User {
   nome: string;
   email: string;

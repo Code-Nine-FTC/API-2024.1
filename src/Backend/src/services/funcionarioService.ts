@@ -8,7 +8,7 @@ export class FuncionarioService {
     public async cadastrarFuncionario(dadosFuncionario: IFuncionarioInput) {
         const funcionarioRepository = Connection.getRepository(Funcionario);
         try {
-            console.log('Recebendo dados no clienteService')
+            console.log('Recebendo dados no funcionarioService')
             console.log(dadosFuncionario)
             const funcionarioExistente = await funcionarioRepository.findOne({
                 where: [
@@ -27,6 +27,7 @@ export class FuncionarioService {
                 dadosFuncionario.func_senha = senhaCriptografada
                 const novoFuncionario = funcionarioRepository.create(dadosFuncionario);
                 await funcionarioRepository.save(novoFuncionario);
+                console.log('Cadastro de funcionário concluído')
                 return { success: true, message: "Funcionário cadastrado com sucesso" };
             } return { success: false, message: "CPF já cadastrado." };
         } catch (error) {

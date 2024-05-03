@@ -49,7 +49,7 @@
   padding-top: 5vw;
 }
 
-.buttonContainer button {
+.buttonContainer a {
   padding: 10px 20px;
   background-color: blue; 
   color: white; 
@@ -59,7 +59,7 @@
   cursor: pointer; 
 }
 
-.buttonContainer button:hover {
+.buttonContainer a:hover {
   background-color: darkblue; 
   border-color: darkblue; 
 }

@@ -160,7 +160,7 @@ select{
   margin-left: 43%;
 }
 
-.button a {
+.Title a {
   font-size: 18px; /* Tamanho da fonte do título */
   color: blue; /* Cor do texto do título */
   cursor: pointer; /* Transforma o cursor em uma mãozinha quando passa sobre o título */

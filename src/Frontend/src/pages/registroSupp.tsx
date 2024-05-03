@@ -60,9 +60,8 @@ const RegistroSup = () => {
                 const resultado = await CadastroFuncionarioFunc(formData)
                 if (resultado.success) {
                     setErro('')
+                    toast.success('Cadastro concluído')
                 }
-                toast.success('Cadastro concluído')
-                
             }
             catch (error:any) {
                 setErro(error.message)
@@ -113,7 +112,7 @@ const RegistroSup = () => {
                         </button>
                     </div>
                     <div className={styles.Title}>
-                        <Link to='/listasup'> Voltar → </Link>
+                        <Link to='/listarsuporte'> Voltar → </Link>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}
