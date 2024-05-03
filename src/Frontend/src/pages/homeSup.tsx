@@ -8,7 +8,7 @@ const userLogado = 'atendente'
 const HomeSup = () =>{
     return(
         <>
-            <Sidebar userTipo={userLogado}/>
+            <Sidebar/>
             <div className={styles.container}>
                 <header className={styles.title}>
                     <h1>Bem-Vindo !</h1>

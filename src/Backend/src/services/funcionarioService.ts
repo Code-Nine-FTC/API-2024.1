@@ -59,7 +59,7 @@ export class FuncionarioService {
                     return { success: false, message: 'Dados inválidos!' };
                 }
 
-                const token = jwt.sign({ func_id: funcionario.func_id }, secret2)
+                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret2)
                 console.log('Autenticação realizada com sucesso')
                 return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
             }
@@ -68,7 +68,7 @@ export class FuncionarioService {
                 console.log('Dados invalidos (ADM)')
                 return { success: false, message: 'Dados inválidos!' };
             }
-            const token = jwt.sign({ func_id: funcionario.func_id }, secret3)
+            const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'administrador' }, secret3)
             console.log('Autenticação realizada com sucesso (ADM')
             return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
         } catch (error) {

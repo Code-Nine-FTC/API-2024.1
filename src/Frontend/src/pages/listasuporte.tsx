@@ -27,7 +27,7 @@ const ListagemFuncionarios = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar userTipo='Admin' />
+      <Sidebar/>
       <div className={styles.content}>
       <h2 className={`${styles.center} ${styles.titleLine}`}>Suportes cadastrados</h2>
         {loading && <p>Carregando...</p>}

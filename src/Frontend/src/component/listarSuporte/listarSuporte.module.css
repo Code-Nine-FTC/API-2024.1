@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  display: flex;;
 }
 
 .content {
@@ -16,16 +16,18 @@
 .customLayout {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  margin-left: 2vw;
 }
 
 .nomeColumn, .cpfColumn {
   flex: 1;
-  padding-right: 19vw;
+  padding-left: 2vw;
 }
 
 .nomeColumn > p, .cpfColumn > p {
   text-align: flex;
-  padding-right: 40vw;
+  padding-right: 0vw;
 }
 
 
@@ -36,14 +38,14 @@
 
 .titleLine {
   border-bottom: 1px solid rgb(82, 82, 82); 
-  width: 30vw;
+  width: 25vw;
   padding-bottom: 1vw;
   color: blue;
 }
 .buttonContainer {
   display: flex;
   justify-content: center;
-  padding-right: 22vw;
+  align-items: center;
   padding-top: 5vw;
 }
 
@@ -81,5 +83,12 @@
   }
   .titleLine {
     width: 60vw;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    padding-right: 29vw;
+    padding-top: 5vw;
   }
 }

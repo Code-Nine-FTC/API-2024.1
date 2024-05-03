@@ -2,7 +2,6 @@ import React, { useState, FormEvent } from 'react';
 import styles from "../component/infoCliente/InfoCliente.module.css"
 // import ImageComponent from '../component/imagemPerfil/imagemperfil';
 import Sidebar from '../component/sidebar/sidebar';
-const userLogado = 'user'
 
 interface User {
   nome: string;
@@ -23,7 +22,7 @@ const Editinfocli: React.FC = () => {
 
   return (
     <>
-      <Sidebar userTipo={userLogado}/>
+      <Sidebar/>
       <div className={styles.conteudo}>
       <div className={styles.titulo}>
         <h1>Minha Conta</h1>

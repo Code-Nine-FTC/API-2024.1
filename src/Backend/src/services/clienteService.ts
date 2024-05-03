@@ -42,7 +42,8 @@ export class ClienteService {
     }
     public async logginCliente(dadosLogin: IClienteLoggin) {
         try {
-            const secret = process.env.SECRET
+            const secret = process.env.SECRET01
+            const secret3 = process.env.SECRET03
             const clienteRepository = Connection.getRepository(Cliente)
             console.log("Dados recebidos no backend")
             console.log(dadosLogin)
@@ -55,7 +56,7 @@ export class ClienteService {
                 console.log("Dados invalidos")
                 return { success: false, message: `Dados invalidos` }
             }
-            const token = jwt.sign({ cli_id: cliente.cli_id }, secret)
+            const token = jwt.sign({ id: cliente.cli_id, nivelAcesso: 'usuario'}, secret3)
             console.log("Autenticação realizada com sucesso")
             return { success: true, message: `Autenticação realizada com sucesso`, token }
         } catch (error) {
