@@ -25,6 +25,13 @@ a {
     margin-bottom: 5%;
 }
 
+#logout button {
+    display: flex;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
 .sidebar {
     background-color: #00046D;
     transform: translateX(0);

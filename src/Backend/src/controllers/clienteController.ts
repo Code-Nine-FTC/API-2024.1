@@ -1,7 +1,6 @@
 import { Response, Request } from "express"
 import { ClienteService } from "../services/clienteService"
 import { IClienteInput, IClienteLoggin, IClienteUpdate } from "../interfaces/ICliente"
-import { insertInvalidToken } from "./authMiddleware"
 
 export default class ClienteController {
     private clienteService: ClienteService
@@ -41,23 +40,7 @@ export default class ClienteController {
             return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
-    logoutCliente(req: Request, res: Response) {
-        try {
-            const authHeader = req.headers['authorization']
-            console.log(authHeader)
-            const token = authHeader && authHeader.split(' ')[1]
-
-            if (!token) {
-                return res.status(400).json({ success: false, message: 'Token não fornecido' })
-            }
-            // Adicione o token inválido ao conjunto de tokens inválidos 
-            insertInvalidToken(token)
-            return res.status(200).json({ success: true, message: 'Logout realizado' })
-        } catch (error) {
-            console.error(`Erro no logout do funcionário: ${error}`)
-            return res.status(500).json({ success: false, message: 'Erro interno do servidor' })
-        }
-    }
+    
     async editarCliente(req: Request, res: Response) {
         try {
             const clienteLogado = res.locals.cliente

@@ -4,117 +4,128 @@ import { Connection } from "../config/data-source";
 import Cliente from "../entities/cliente";
 import Funcionario from "../entities/funcionario";
 
-export const invalidToken = []
-export function insertInvalidToken(token: string) {
-    invalidToken.push(token)
-}
 type JwtPayload = {
     id: number
+    nivelAcesso: string;
 }
-console.log(invalidToken)
+
 export class AuthMiddleware {
-    static async authTokenCliente(req: Request, res: Response, next: NextFunction) {
+    static async authTokenCliente(req: Request, res: Response, next: NextFunction): Promise<JwtPayload | null> {
         try {
             const authHeader = req.headers['authorization']
-            const user = await Connection.getRepository(Cliente)
             const token = authHeader && authHeader.split(' ')[1]
-            const secret = process.env.SECRET
+            const secret = process.env.SECRET01
+            const secret3 = process.env.SECRET03
 
             if (!token) {
-                return res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                return null
             }
 
-            if (!secret) {
-                return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            if (!secret3) {
+                res.status(500).json({ success: false, message: `Erro interno do servidor` })
+                return null
             }
 
-            if (invalidToken.includes(token)) {
-                return res.status(403).json({ success: false, message: `Token Inválido` })
-            }
-
-            const clienteTocken = jwt.verify(token, secret) as JwtPayload
-            console.log(clienteTocken)
-
-            const cliente = await user.findOne({ where: { cli_id: clienteTocken.id } })
+            const clienteToken = jwt.verify(token, secret3) as JwtPayload
+            // console.log(clienteToken)
+            
+            const cliente = await Connection.getRepository(Cliente).findOne({ where: { cli_id: clienteToken.id } });
+            // const cliente = await user.findOne({ where: { cli_id: clienteToken.id } })
 
             if (!cliente) {
-                return res.status(403).json({ success: false, message: `Não Autorizado` })
+                res.status(403).json({ success: false, message: `Não Autorizado` })
+                return null
             }
 
-            const { cli_senha: _, ...clienteLogado } = cliente
-            res.locals.cliente = clienteLogado
+            // return res.status(200).json({
+            //     success: true,
+            //     id: clienteTocken.id,
+            //     nivelAcesso: clienteTocken.nivelAcesso
+            
             next()
+            return clienteToken
+            
         } catch (error) {
             console.error('Erro ao verificar token:', error)
-            return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            return null
+        }  
         }
-    }
 
-    static async authTokenAdmin(req: Request, res: Response, next: NextFunction) {
+    static async authTokenAdmin(req: Request, res: Response, next: NextFunction): Promise<JwtPayload | null> {
         try {
-            const authHeader = req.headers['authorization']
-            const token = authHeader && authHeader.split(' ')[1]
-            const secret3 = process.env.SECRET03
+            const authHeader = req.headers['authorization'];
+            const token = authHeader && authHeader.split(' ')[1];
+            const secret3 = process.env.SECRET03;
 
             if (!token) {
-                return res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                res.status(401).json({ success: false, message: `Token de autenticação não fornecido` });
+                return null
             }
 
             if (!secret3) {
-                return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+                res.status(500).json({ success: false, message: `Erro interno do servidor` });
+                return null;
             }
 
-            if (invalidToken.includes(token)) {
-                return res.status(403).json({ success: false, message: `Token Inválido` })
-            }
-            const admToken = jwt.verify(token, secret3) as JwtPayload
-            const admin = await Connection.getMongoRepository(Funcionario).findOne({ where: { func_id: admToken.id } })
+            const admToken = jwt.verify(token, secret3) as JwtPayload;
+            // console.log(admToken)
+
+            const admin = await Connection.getRepository(Funcionario).findOne({ where: { func_id: admToken.id } });
 
             if (!admin) {
-                return res.status(403).json({ success: false, message: `Token Inválido` })
+                res.status(403).json({ success: false, message: `Token Inválido` });
+                return null 
             }
-            const { func_senha: _, ...funcionarioLogado } = admin
-            res.locals.funcionario = funcionarioLogado
+            // const { func_senha: _, ...funcionarioLogado } = admin;
+            // res.locals.funcionario = funcionarioLogado;
+
             next()
+            return admToken
         } catch (error) {
-            console.error('Erro ao verificar token:', error)
-            return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            console.error('Erro ao verificar token:', error);
+            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return null
         }
     }
 
-    static async authTokenAtendente(req: Request, res: Response, next: NextFunction) {
+    static async authTokenAtendente(req: Request, res: Response, next: NextFunction): Promise<JwtPayload | null> {
         try {
             const authHeader = req.headers['authorization']
             const token = authHeader && authHeader.split(' ')[1]
-            const secret3 = process.env.SECRET03
+            const secret2 = process.env.SECRET02
 
             if (!token) {
-                return res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                return null;
             }
 
-            if (!secret3) {
-                return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            if (!secret2) {
+                res.status(500).json({ success: false, message: `Erro interno do servidor` })
+                return null
             }
 
-            if (invalidToken.includes(token)) {
-                return res.status(403).json({ success: false, message: `Token Inválido` })
-            }
-            const atendenteToken = jwt.verify(token, secret3) as JwtPayload
-            const atendente = await Connection.getMongoRepository(Funcionario).findOne({ where: { func_id: atendenteToken.id } })
+            const atendenteToken = jwt.verify(token, secret2) as JwtPayload
+            const atendente = await Connection.getRepository(Funcionario).findOne({ where: { func_id: atendenteToken.id } })
 
             if (!atendente) {
-                return res.status(403).json({ success: false, message: `Token Inválido` })
+                res.status(403).json({ success: false, message: `Token Inválido` })
+                return null
             }
-            const { func_senha: _, ...funcionarioLogado } = atendente
-            res.locals.funcionario = funcionarioLogado
+            // const { func_senha: _, ...funcionarioLogado } = atendente
+            // res.locals.funcionario = funcionarioLogado
             next()
+            return atendenteToken
+
         } catch (error) {
             console.error('Erro ao verificar token:', error)
-            return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            return null
         }
     }
 
-    static async authTokenAdminOrAtendente(req: Request, res: Response, next: NextFunction) {
+    static async authTokenAdminOrAtendente(req: Request, res: Response, next: NextFunction): Promise<JwtPayload | null> {
         try {
             const authHeader = req.headers['authorization']
             const token = authHeader && authHeader.split(' ')[1]
@@ -122,42 +133,44 @@ export class AuthMiddleware {
             const secret3 = process.env.SECRET03
 
             if (!token) {
-                return res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                return null
             }
 
             if (!secret2 || !secret3) {
-                return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+                res.status(500).json({ success: false, message: `Erro interno do servidor` })
+                return null
             }
 
-            if (invalidToken.includes(token)) {
-                return res.status(403).json({ success: false, message: `Token Inválido` })
-            }
             jwt.verify(token, secret2, async (err: any, decoded: any) => {
                 if (err) {
                     jwt.verify(token, secret3, async (err: any, decoded: any) => {
                         if (err) {
-                            return res.status(403).json({ success: false, message: `Token Inválido` })
+                            res.status(403).json({ success: false, message: `Token Inválido` })
+                            return null
                         }
-
                         const funcionario = await Connection.getRepository(Funcionario).findOne({ where: { func_id: decoded.id } })
                         if (!funcionario) {
-                            return res.status(403).json({ success: false, message: `Não Autorizado` })
+                            res.status(403).json({ success: false, message: `Não Autorizado` })
+                            return null
                         }
-                        res.locals.funcionario = funcionario
                         next()
+                        return decoded
                     }) as JwtPayload
                 } else {
                     const funcionario = await Connection.getRepository(Funcionario).findOne({ where: { func_id: decoded.id } })
                     if (!funcionario) {
-                        return res.status(403).json({ success: false, message: `Não Autorizado` })
+                        res.status(403).json({ success: false, message: `Não Autorizado` })
+                        return null
                     }
-                    res.locals.funcionario = funcionario
                     next()
+                    return decoded
                 }
             }) as JwtPayload
         } catch (error) {
             console.error('Erro ao verificar token:', error)
-            return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            return null
         }
     }
 

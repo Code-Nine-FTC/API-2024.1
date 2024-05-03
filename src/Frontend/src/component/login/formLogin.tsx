@@ -1,20 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useNavigate, redirect} from 'react-router-dom';
 import {toast, Toaster} from 'react-hot-toast';
 import LoginClienteFunc from '../../functions/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/loginFuncionarioFunc';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
+
+  const navigate = useNavigate();
   const [identificacao, setIdentificacao] = useState('');
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
 
   const [formDataPadrao, setFormDataPadrao] = useState({
     email: '',
     senha: '',
   })
+  
+  // if (token !== ''){
+  //   console.log('teste')
+  //   redirect('/')
+  // }
 
   const [erro, setErro] = useState ('')
 
@@ -51,10 +59,16 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               cli_senha: tipoCadastro === 'usuario' ? formDataPadrao.senha : '',
             }
             const resultadoUsuario = await LoginClienteFunc(formDataUser);
+            console.log('Tentando login')
             if (resultadoUsuario.success) {
+              console.log('Login concluído')
               setErro('');
               toast.success('Login concluído');
-              return <Redirect to="/" />
+              const tokenCliente = resultadoUsuario.token;
+              setToken(tokenCliente)
+              localStorage.setItem('token', tokenCliente);
+              console.log(localStorage.getItem('token'))
+              return navigate('/')
             }
             break;
           case 'funcionario':
@@ -63,9 +77,15 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               func_senha: tipoCadastro === 'funcionario' ? formDataPadrao.senha : ''
             }
             const resultadoFuncionario = await LoginFuncionarioFunc(formDataFunc);
+            console.log('Tentando login')
             if (resultadoFuncionario.success) {
+              console.log('Login concluído')
               setErro('');
-              toast.success('Login concluído');
+              const tokenFunc= resultadoFuncionario.token;
+              setToken(tokenFunc)
+              localStorage.setItem('token', tokenFunc);
+              console.log(localStorage.getItem('token'))
+              return navigate('/listarsuporte')
             }
             break;
         }
