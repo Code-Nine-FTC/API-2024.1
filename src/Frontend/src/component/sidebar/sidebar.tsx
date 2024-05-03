@@ -9,7 +9,7 @@ import LogoutFunc from '../../functions/logoutFunc';
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
 // Define os States para verificar se a Sidebar esta aberte ou fechada, e o mesmo para o menu Dropdown
 const Sidebar = () => { 
-    const userTipo = localStorage.getItem('level') || '';
+    const userTipo = localStorage.getItem('nivel') || '';
     const buttonRef = useRef<HTMLButtonElement>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
     const [isSidebarAberta, setIsSidebarAberta] = useState(false);
