@@ -28,7 +28,7 @@ export class AuthMiddleware {
             }
 
             const clienteToken = jwt.verify(token, secret) as JwtPayload
-            console.log(clienteToken)
+            // console.log(clienteToken)
 
             const cliente = await user.findOne({ where: { cli_id: clienteToken.id } })
 
