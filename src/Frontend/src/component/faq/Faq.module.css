@@ -57,6 +57,7 @@
   .carrouselControl{
     display: flex;
     gap: 20px;
+    margin-top: 2rem;
     justify-content: center;
   }
   
@@ -171,4 +172,6 @@
     }
 }
 
-/* @media (max-width: 769) */
+.carrousel-button{
+  border: none;
+}

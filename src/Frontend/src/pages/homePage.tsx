@@ -38,7 +38,6 @@ function Home() {
     </div>
     <br/>
         <h1 className={styles.title}>Perguntas Frequentes</h1>
-        <button onClick = {() => setModalOpen(true)}>Open</button>
         <div className={styles.carrousel}>
             <Map/>
             <Delivery/>
