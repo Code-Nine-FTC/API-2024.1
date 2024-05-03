@@ -4,9 +4,11 @@ import { rotaBase } from '../functions/rotaBase';
 import { IFuncionarioView } from '../../../Backend/src/interfaces/IFuncionario';
 import Sidebar from '../component/sidebar/sidebar';
 import styles from '../component/listarSuporte/listarSuporte.module.css'; // Importe o arquivo de estilos CSS
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const ListagemFuncionarios = () => {
+  const navigate = useNavigate();
   const [funcionarios, setFuncionarios] = useState<IFuncionarioView[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
@@ -31,11 +33,17 @@ const ListagemFuncionarios = () => {
     fetchFuncionarios();
   }, []);
 
+  const handleClick = (funcionarioId: string) => {
+    navigate(`/editarsuporte/${funcionarioId}`);
+  };
+
   return (
     <div className={styles.container}>
+
       <Sidebar/>
+     
       <div className={styles.content}>
-      <h2 className={`${styles.center} ${styles.titleLine}`}>Suportes cadastrados</h2>
+        <h2 className={`${styles.center} ${styles.titleLine}`}>Suportes cadastrados</h2>
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div className={styles.customLayout}>
@@ -43,7 +51,7 @@ const ListagemFuncionarios = () => {
             <h3>Nome</h3>
             <div className={styles.nameAndCpfLine}></div>
             {funcionarios.map(funcionario => (
-              <div key={funcionario.func_cpf}>{funcionario.func_nome}</div>
+              <div key={funcionario.func_cpf} onClick={() => handleClick(funcionario.func_id)}>{funcionario.func_nome}</div>
             ))}
           </div>
           <div className={styles.cpfColumn}>
@@ -62,7 +70,5 @@ const ListagemFuncionarios = () => {
     </div>
   );
 };
-
-
 
 export default ListagemFuncionarios;

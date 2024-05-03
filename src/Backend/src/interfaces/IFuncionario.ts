@@ -1,4 +1,5 @@
 export interface IFuncionarioView {
+    func_id: string
     func_nome: string
     func_cpf: string
     func_email: string
