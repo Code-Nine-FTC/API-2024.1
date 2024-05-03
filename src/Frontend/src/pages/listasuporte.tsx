@@ -26,21 +26,37 @@ const ListagemFuncionarios = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Lista de Funcionários</h2>
-      {loading && <p>Carregando...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ul className={styles.listaFuncionarios}> 
-        {funcionarios.map(funcionario => (
-          <li key={funcionario.func_cpf}>
-            <a href={`//${funcionario.func_id}`}>
-              <strong>Nome:</strong> {funcionario.func_nome}, <strong>CPF:</strong> {funcionario.func_cpf}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <div className={styles.container}>
+      <Sidebar userTipo='Admin' />
+      <div className={styles.content}>
+      <h2 className={`${styles.center} ${styles.titleLine}`}>Suportes cadastrados</h2>
+        {loading && <p>Carregando...</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className={styles.customLayout}>
+          <div className={styles.nomeColumn}>
+            <h3>Nome</h3>
+            <div className={styles.nameAndCpfLine}></div>
+            {funcionarios.map(funcionario => (
+              <div key={funcionario.func_cpf}>{funcionario.func_nome}</div>
+            ))}
+          </div>
+          <div className={styles.cpfColumn}>
+            <h3>CPF</h3>
+            <div className={styles.nameAndCpfLine1}></div>
+            {funcionarios.map(funcionario => (
+              <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
+            ))}
+          </div>
+        </div>
+        <div className={styles.buttonContainer}>
+  <button type="button">Cadastrar atendente</button>
+</div>
+
+      </div>
     </div>
   );
 };
+
+
 
 export default ListagemFuncionarios;

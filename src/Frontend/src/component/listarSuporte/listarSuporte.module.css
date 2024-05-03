@@ -1,9 +1,85 @@
-
-ul li a {
-  color: black;
-  text-decoration: none; 
+.container {
+  display: flex;
 }
 
-ul li a:hover {
-  text-decoration: underline; 
+.content {
+  flex: 1;
+  margin: auto;
+  padding-left: 20vw;
+  padding-bottom: 20vw; 
+}
+
+.center {
+  text-align: center;
+}
+
+.customLayout {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nomeColumn, .cpfColumn {
+  flex: 1;
+  padding-right: 19vw;
+}
+
+.nomeColumn > p, .cpfColumn > p {
+  text-align: flex;
+  padding-right: 40vw;
+}
+
+
+.nomeColumn > p, .cpfColumn > p {
+  margin-bottom: 5px; 
+  margin-top:5px;
+}
+
+.titleLine {
+  border-bottom: 1px solid rgb(82, 82, 82); 
+  width: 30vw;
+  padding-bottom: 1vw;
+  color: blue;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding-right: 22vw;
+  padding-top: 5vw;
+}
+
+.buttonContainer button {
+  padding: 10px 20px;
+  background-color: blue; 
+  color: white; 
+  border: 1px solid blue; 
+  border-radius: 5px; 
+  font-size: 16px;
+  cursor: pointer; 
+}
+
+.buttonContainer button:hover {
+  background-color: darkblue; 
+  border-color: darkblue; 
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 90vw; 
+    padding: px; 
+  }
+  .customLayout {
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  .nomeColumn, .cpfColumn {
+    width: 45vw; 
+    max-width: none; 
+    padding-left: 0; 
+    padding-right: 0; 
+    margin-bottom: 0;
+  }
+  .titleLine {
+    width: 60vw;
+  }
 }
