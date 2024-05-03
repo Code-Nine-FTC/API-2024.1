@@ -14,7 +14,7 @@ const getAdminNavigationItems = () : NavigationItemInterface[] => {
             { label: 'Em atendimento', path: '/ticketsatendimento' },
             { label: 'Em espera ', path: '/ticketsespera' }
             ], imageUrl: tickets},
-        { label: 'Gerenciar', path: '/teste', imageUrl: gerenciar},
+        { label: 'Gerenciar', path: '/listarsuporte', imageUrl: gerenciar},
         { label: 'FAQ', path: '/faq', imageUrl: faq},
         { label: 'Categorias', dropdownItems: [
             { label: 'Editar', path: '/categoriaeditar' },

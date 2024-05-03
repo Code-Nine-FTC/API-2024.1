@@ -1,5 +1,5 @@
 import React, { useState, useRef} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
 import perfilicone from '../../assets/fotoperfil/perfil.svg'
@@ -16,6 +16,8 @@ const Sidebar = () => {
     const [isDropdownAberto, setIsDropdownAberto] = useState<number | null>(null);
     const [ativoNavItem, setAtivoNavItem] = useState('');
     const location = useLocation()
+    const navigate = useNavigate();
+
 
     /* Função para abrir a Sidebar, alterando a classe dela para sidebar.open, utilizando um botão, alterando
     sua classe também */
@@ -46,6 +48,13 @@ const Sidebar = () => {
             default:
                 return []
         }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('id');
+        localStorage.removeItem('nivel');
+        navigate('/registro');
     };
 
     // Função que altera o nome da classe para ativo quando está em sua rota respectiva
@@ -120,15 +129,17 @@ const Sidebar = () => {
                             </li>
                         </div>
                     ))}
-                     <div id={styles.logout}>
-                        <button onClick={LogoutFunc}>Logout → </button>
+                     <div id={styles.logout} onClick={handleLogout}>
+                        <h1>Logout → </h1>
                     </div>
                 </ul>
                 </>
                 )}
-                <div>
+                {userTipo === '' && (
+                    <div>
                     <Link to="/login"> Faça Login </Link>
                 </div>
+                )}
             </section>
         </div>
         </>

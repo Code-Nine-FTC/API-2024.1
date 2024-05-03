@@ -10,23 +10,22 @@ import React from 'react';
 import Sidebar from '../component/sidebar/sidebar';
 import { Modal } from '../component/modal/modal';
 import { useEffect, useState } from 'react';
-import AutenticarToken from '../rotas/autenticarToken';
+import useAutenticarToken from '../rotas/autenticarToken';
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false)
-  const [token, setToken] = useState('');
-  const [autenticado, setAutenticado] = useState(false)
+  const [autenticacao, setAutenticacao] = useState(false)
 
   const handleButtonClick = () => {
     setModalOpen(false)
   }
-    useEffect(() => {
-      const storedToken = localStorage.getItem('token');
-      if (storedToken !== ''){
-        setAutenticado(true)
-      }
-  }, []);
+  const { autenticado, loading } = useAutenticarToken(localStorage.getItem('token') || '');
 
+  useEffect(() => {
+    if (autenticado) {
+      setAutenticacao(true);
+    }
+  }, [autenticado]);
   // useEffect(() => {
   //     const validar = async  () => {
   //       try {
@@ -50,7 +49,7 @@ function Home() {
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque obcaecati eius pariatur nulla, quaerat architecto necessitatibus id aliquam voluptatem quasi nisi molestiae labore incidunt amet. Maiores totam consequuntur dicta temporibus?</p>
   </Modal>)}
   <div className={styles.conteudo}>
-  {autenticado && (
+  {autenticacao && (
     <>
     <div className={styles.status}>
         <Textostatus/>
@@ -82,7 +81,7 @@ function Home() {
       <div className={styles.supportControl}>
         <p className={styles.blueText}>Não encontrou a solução para o seu problema?</p>
         <br/>
-        <Support autenticado={autenticado} />
+        <Support autenticado={autenticacao} />
       </div>
     </div>
   </>
