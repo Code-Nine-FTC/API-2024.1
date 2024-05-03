@@ -9,17 +9,28 @@ interface RotaProtegidaProps {
 const RotaProtegida: React.FC<RotaProtegidaProps> = ({ children }) => {
     const location = useLocation();  
     const token = localStorage.getItem('token') || ''
-    const [autenticado, setAutenticado] = useState(false);
 
-    const autenticarToken = useAutenticarToken(token);
+    const verificarAutenticacao = async () => {
+        const autenticado = await useAutenticarToken(token)
+        return autenticado
+    };
 
     useEffect(() => {
-        autenticarToken.then(isAutenticado => {
-            setAutenticado(isAutenticado || false);
+        verificarAutenticacao().then((autenticado) => {
+            if(!autenticado) {
+                <Navigate to="/login" replace state={{ from: location }} />
+                console.log('Usuario não autenticado')
+            }
         });
-    }, [autenticarToken]);
+    }, [token])
+    
+    // useEffect(() => {
+    //     autenticarToken.then(isAutenticado => {
+    //         setAutenticado(isAutenticado || false);
+    //     });
+    // }, []);
 
-    return autenticado ? children : <Navigate to="/login" replace state={{ from: location }} />;
+    return children 
 
     // useEffect(() => {
     //     const verificarAutenticacao = async () => {

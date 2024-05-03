@@ -19,7 +19,7 @@ const Rotas = () => {
           <Switch>
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
-            <Route path="editarsuporte" element={<RotaProtegida><Editinfosuport/></RotaProtegida>}/>
+            <Route path="/editarsuporte" element={<RotaProtegida><Editinfosuport/></RotaProtegida>}/>
             <Route path= "/editarcliente" element={<RotaProtegida><Editinfocli/></RotaProtegida>}/>
             <Route path="/loginadm" element={<LoginAdmPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>

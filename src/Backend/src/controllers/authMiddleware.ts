@@ -4,15 +4,10 @@ import { Connection } from "../config/data-source";
 import Cliente from "../entities/cliente";
 import Funcionario from "../entities/funcionario";
 
-export const invalidToken = []
-export function insertInvalidToken(token: string) {
-    invalidToken.push(token)
-}
 type JwtPayload = {
     id: number
     nivelAcesso: string;
 }
-console.log(invalidToken)
 
 export class AuthMiddleware {
     static async authTokenCliente(req: Request, res: Response, next: NextFunction): Promise<JwtPayload | null> {
@@ -30,11 +25,6 @@ export class AuthMiddleware {
             if (!secret) {
                 res.status(500).json({ success: false, message: `Erro interno do servidor` })
                 return null
-            }
-
-            if (invalidToken.includes(token)) {
-                res.status(403).json({ success: false, message: `Token Inválido` })
-                return 
             }
 
             const clienteToken = jwt.verify(token, secret) as JwtPayload
@@ -75,17 +65,13 @@ export class AuthMiddleware {
 
             if (!secret3) {
                 res.status(500).json({ success: false, message: `Erro interno do servidor` });
-                return;
+                return null;
             }
 
-            if (invalidToken.includes(token)) {
-                res.status(403).json({ success: false, message: `Token Inválido` });
-                return null
-            }
             const admToken = jwt.verify(token, secret3) as JwtPayload;
             console.log(admToken)
 
-            const admin = await Connection.getMongoRepository(Funcionario).findOne({ where: { func_id: admToken.id } });
+            const admin = await Connection.getRepository(Funcionario).findOne({ where: { func_id: admToken.id } });
 
             if (!admin) {
                 res.status(403).json({ success: false, message: `Token Inválido` });
@@ -119,12 +105,8 @@ export class AuthMiddleware {
                 return null
             }
 
-            if (invalidToken.includes(token)) {
-               res.status(403).json({ success: false, message: `Token Inválido` })
-               return null
-            }
             const atendenteToken = jwt.verify(token, secret3) as JwtPayload
-            const atendente = await Connection.getMongoRepository(Funcionario).findOne({ where: { func_id: atendenteToken.id } })
+            const atendente = await Connection.getRepository(Funcionario).findOne({ where: { func_id: atendenteToken.id } })
 
             if (!atendente) {
                 res.status(403).json({ success: false, message: `Token Inválido` })
@@ -159,10 +141,6 @@ export class AuthMiddleware {
                 return null
             }
 
-            if (invalidToken.includes(token)) {
-                res.status(403).json({ success: false, message: `Token Inválido` })
-                return null
-            }
             jwt.verify(token, secret2, async (err: any, decoded: any) => {
                 if (err) {
                     jwt.verify(token, secret3, async (err: any, decoded: any) => {
@@ -196,7 +174,3 @@ export class AuthMiddleware {
     }
 
 }
-function next() {
-    throw new Error("Function not implemented.");
-}
-

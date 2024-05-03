@@ -22,22 +22,24 @@ function Home() {
   }
     useEffect(() => {
       const storedToken = localStorage.getItem('token');
-      setToken(storedToken || '');
+      if (storedToken !== ''){
+        setAutenticado(true)
+      }
   }, []);
 
-  useEffect(() => {
-      const validar = async  () => {
-        try {
-          const resultado = await AutenticarToken(token);
-          if (resultado != undefined) {
-            setAutenticado(resultado)
-          }
-        }catch (error) {
-          console.error('Erro ao autenticar', error)
-        }
-      };
-      validar()
-  }, [token]);
+  // useEffect(() => {
+  //     const validar = async  () => {
+  //       try {
+  //         const resultado = await AutenticarToken(token);
+  //         if (resultado != undefined) {
+  //           setAutenticado(resultado)
+  //         }
+  //       }catch (error) {
+  //         console.error('Erro ao autenticar', error)
+  //       }
+  //     };
+  //     validar()
+  // }, [token]);
 
   return (
   <>

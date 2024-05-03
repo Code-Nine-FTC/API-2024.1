@@ -7,22 +7,22 @@ import LoginClienteFunc from '../../functions/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/loginFuncionarioFunc';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
+
   const navigate = useNavigate();
   const [identificacao, setIdentificacao] = useState('');
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('');
   const [token, setToken] = useState(localStorage.getItem('token') || '');
 
-  console.log(token)
   const [formDataPadrao, setFormDataPadrao] = useState({
     email: '',
     senha: '',
   })
   
-  if (token !== ''){
-    console.log('teste')
-    redirect('/')
-  }
+  // if (token !== ''){
+  //   console.log('teste')
+  //   redirect('/')
+  // }
 
   const [erro, setErro] = useState ('')
 
@@ -65,10 +65,6 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               const tokenCliente = resultadoUsuario.token;
               setToken(tokenCliente)
               localStorage.setItem('token', tokenCliente);
-              console.log('Token')
-              console.log(tokenCliente)
-              console.log(token)
-              console.log('localstorage')
               console.log(localStorage.getItem('token'))
               return navigate('/')
             }
@@ -84,10 +80,6 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               const tokenFunc= resultadoFuncionario.token;
               setToken(tokenFunc)
               localStorage.setItem('token', tokenFunc);
-              console.log('token')
-              console.log(tokenFunc)
-              console.log(token)
-              console.log('localstorage')
               console.log(localStorage.getItem('token'))
               return navigate('/listarsuporte')
             }
