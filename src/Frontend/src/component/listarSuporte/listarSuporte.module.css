@@ -30,9 +30,7 @@
   padding-right: 0vw;
 }
 
-.nomeColumn div, .cpfColumn div {
-  font-size: 1.4em; 
-}
+
 .nomeColumn > p, .cpfColumn > p {
   margin-bottom: 5px; 
   margin-top:5px;
@@ -51,7 +49,7 @@
   padding-top: 5vw;
 }
 
-.buttonContainer a {
+.buttonContainer button {
   padding: 10px 20px;
   background-color: blue; 
   color: white; 
@@ -61,7 +59,7 @@
   cursor: pointer; 
 }
 
-.buttonContainer a:hover {
+.buttonContainer button:hover {
   background-color: darkblue; 
   border-color: darkblue; 
 }
