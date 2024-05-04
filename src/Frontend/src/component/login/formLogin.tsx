@@ -111,10 +111,14 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
           <input type="password" name="senha" id={styles.label2} value={formDataPadrao.senha} placeholder="Insira sua senha" onChange={handleChange} />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
           <div className={styles.Title}>
+            <Link to="/login">Voltar  →</Link>
+          </div>
+
+          <div className={styles.Title}>
             {tipoCadastro === 'usuario' && (
               <Link to="/loginadm">É funcionário? </Link>
-              )}
-            <Link to="/registro">Não tem uma conta? </Link>
+              
+              )}  
           </div>
           {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%', fontSize: '0.8em'}}>{erro}</p>}
         </div>

@@ -138,6 +138,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 4vw;
   }
 
   .Title a {
@@ -159,4 +160,12 @@ main {
   .Labels {
     margin-left: 5%;
   }
+  .Title {
+    margin-top: 20px; /* Espaço entre o botão e o título */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 7vw;
+  }
 }
+
