@@ -35,6 +35,10 @@
   align-items: center;
 }
   
+.item button {
+  border: none;
+}
+
   .status{
     display: flex;
     flex-direction: column;

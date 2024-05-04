@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import logo from '../component/registro/log.png'
 import styles from '../component/registro/Registro.module.css'
-import CadastroFuncionarioFunc from '../functions/cadastroFuncionarioFunc';
+import CadastroFuncionarioFunc from '../functions/Cadastro/cadastroFuncionarioFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { rotaBase } from '../functions/rotaBase';
+import { rotaBase } from '../functions/RotaBase/rotaBase';
 
 const useAutenticarToken = (token: string) => {
     const [autenticado, setAutenticado] = useState(false);

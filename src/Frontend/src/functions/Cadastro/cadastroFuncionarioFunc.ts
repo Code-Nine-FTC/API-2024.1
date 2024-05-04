@@ -1,4 +1,4 @@
-import { rotaBase } from "./rotaBase";
+import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
 
 const CadastroFuncionarioFunc = async (formData: any) => {
@@ -8,8 +8,9 @@ const CadastroFuncionarioFunc = async (formData: any) => {
         const resultado = await axios.post(`${rotaBase}/cadastroFuncionario`, formData, {
             headers: {
                 Authorization: `Bearer ${token}`
-            }
-          });      
+              }
+        })
+
         return resultado.data
     }
     catch (error) {

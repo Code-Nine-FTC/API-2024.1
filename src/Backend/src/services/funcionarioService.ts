@@ -60,7 +60,7 @@ export class FuncionarioService {
                     return { success: false, message: 'Dados inválidos!' };
                 }
 
-                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret2)
+                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret3)
                 console.log('Autenticação realizada com sucesso')
                 return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
             }
@@ -96,7 +96,7 @@ export class FuncionarioService {
                 }
             }
             if (dadosUpdate.func_email) {
-                const emailExistente = await funcionarioRepository.findOne({ where: { func_email: dadosUpdate.func_cpf } })
+                const emailExistente = await funcionarioRepository.findOne({ where: { func_email: dadosUpdate.func_email } })
                 if (emailExistente && emailExistente.func_id !== id) {
                     return { success: false, message: `E-mail já cadastrado` };
                 }
@@ -106,6 +106,7 @@ export class FuncionarioService {
                 dadosUpdate.func_senha = senhaCriptografada;
             }
             const funcionarioUpdate = { ...funcionario, ...dadosUpdate }
+            delete funcionarioUpdate.func_id;
             await funcionarioRepository.update(id, funcionarioUpdate)
             return { success: true, message: `Funcionário atualizado com sucesso!`, funcionarioUpdate }
         } catch (error) {
@@ -113,14 +114,15 @@ export class FuncionarioService {
             return { success: false, message: `Erro ao editar funcionário!` }
         }
     }
-    public async visualizarFuncionario(id: number) {
+    public async visualizarFuncionario(id: string) {
         try {
             console.log('Recebendo chamado em funcionarioService')
             const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
+            const funcionario = await funcionarioRepository.findOne({ where: { func_cpf: id } })
             if (!funcionario) {
                 return { success: false, message: `Funcionário não encontrado!` }
             }
+            console.log(funcionario)
             return { success: true, message: 'Funcionário encontrado!', funcionario }
         } catch (error) {
             console.error(`Erro ao encontrar funcionário: ${error}`)

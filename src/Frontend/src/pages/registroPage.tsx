@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../component/registro/Registro.module.css';
-import CadastroClienteFunc from '../functions/cadastroClienteFunc';
+import CadastroClienteFunc from '../functions/Cadastro/cadastroClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 

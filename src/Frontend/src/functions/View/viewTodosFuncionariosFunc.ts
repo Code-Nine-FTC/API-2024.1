@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { rotaBase } from './rotaBase';
+import { rotaBase } from '../RotaBase/rotaBase';
 
-const buscarFuncionarios = async () => {
+const visualizarTodosFuncionarios = async () => {
   try {
     const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`);
     return response.data.funcionarios;
@@ -10,4 +10,4 @@ const buscarFuncionarios = async () => {
   }
 };
 
-export default buscarFuncionarios;
+export default visualizarTodosFuncionarios;
