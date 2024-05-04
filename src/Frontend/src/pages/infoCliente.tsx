@@ -10,7 +10,7 @@ interface User {
 }
 
 const Editinfocli: React.FC = () => {
-  const [nome, setNome] = useState<string>('Yuri');
+  const [nome, setNome] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
 

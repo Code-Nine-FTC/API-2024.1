@@ -12,6 +12,7 @@ import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup"
 import Listagem from "../pages/listasuporte";
 import RotaProtegida from "./rotaProtegida";
+import VisualizarFuncionario from "../pages/viewFuncionario";
 
 const Rotas = () => {
     return (
@@ -28,6 +29,7 @@ const Rotas = () => {
             <Route path= "/ticket" element={<RotaProtegida><Ticket/></RotaProtegida>}/>
             <Route path= "/homesup" element={<RotaProtegida><HomeSup/></RotaProtegida>}/>
             <Route path= "/listarsuporte" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
+            <Route path="/visualizarfuncionario/:id" element={<RotaProtegida><VisualizarFuncionario/></RotaProtegida>}/>
           </Switch>
         </BrowserRouter>
     )
