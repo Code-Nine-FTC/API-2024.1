@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react';
-import styles from "../component/infoCliente/InfoCliente.module.css"
-import ImageComponent from '../component/imagemperfil/imagemperfil';
-import Sidebar from '../component/sidebar/sidebar';
+import styles from "../../component/infoCliente/InfoCliente.module.css"
+// import ImageComponent from '../component/imagemPerfil/imagemperfil';
+import Sidebar from '../../component/sidebar/sidebar';
 
 interface User {
   nome: string;
@@ -10,7 +10,7 @@ interface User {
 }
 
 const Editinfocli: React.FC = () => {
-  const [nome, setNome] = useState<string>('Yuri');
+  const [nome, setNome] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
 
@@ -29,7 +29,7 @@ const Editinfocli: React.FC = () => {
       </div>
       <div className={styles.Container}>
         <div className={styles.perfil}>
-          <ImageComponent nome={nome}/>
+          {/* <ImageComponent nome={nome}/> */}
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.Dados}>
