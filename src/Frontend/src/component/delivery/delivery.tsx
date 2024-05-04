@@ -21,7 +21,7 @@ function Delivery(){
                     <p> Pedimos desculpas pelo inconveniente. Se sua encomenda não chegou dentro do prazo estimado, recomendamos que você verifique o status da sua encomenda utilizando o número de rastreamento fornecido em nosso site. Em caso de atraso, entre em contato conosco para que possamos investigar e resolver a situação o mais rápido possível. Nosso objetivo é garantir que suas encomendas sejam entregues dentro do prazo e faremos o possível para resolver qualquer problema de entrega.</p>
                 </Modal>)}
             <div className={styles.item}>
-                <button onClick={() => setModalOpen(true)} className=''>
+                <button className={styles.button1} onClick={() => setModalOpen(true)}>
                     <img src={delivery} className={styles.reactIcon}/>
                     <h3 className={styles.itemTitle}>Destinário ausente</h3>
                 </button>

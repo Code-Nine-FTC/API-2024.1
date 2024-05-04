@@ -80,7 +80,7 @@ function Home() {
       </div>
       <br/>
       <div className={styles.supportControl}>
-        <p className={styles.blueText}>Não encontrou a solução para o seu problema?</p>
+        <p className={styles.blueText1}>Não encontrou a solução para o seu problema?</p>
         <br/>
         <Support autenticado={autenticacao} />
       </div>

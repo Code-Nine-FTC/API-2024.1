@@ -20,7 +20,7 @@ function Map() {
                 </Modal>)}
 
             <div className={styles.item}>
-                <button type="button" onClick={() => setModalOpen(true)}>
+                <button className={styles.button1} type="button" onClick={() => setModalOpen(true)}>
                     <img src={map} className={styles.reactIcon} alt='Map Icon' />
                     <h3 className={styles.itemTitle}>Localizar encomenda</h3>
                 </button>

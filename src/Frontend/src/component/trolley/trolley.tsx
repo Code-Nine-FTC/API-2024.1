@@ -21,7 +21,7 @@ function Trolley(){
             </Modal>)}
 
             <div className={styles.item}>
-                <button onClick={() => setModalOpen(true)}>
+                <button className={styles.button1} onClick={() => setModalOpen(true)}>
                     <img src={trolley} className={styles.reactIcon}/>
                     <h3 className={styles.itemTitle}>Danos à encomenda</h3>
                 </button>
