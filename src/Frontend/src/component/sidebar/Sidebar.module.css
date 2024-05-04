@@ -206,6 +206,29 @@ a {
     transform: rotate(-45deg);
 }
 
+.button{
+    background-color: #ffffff;
+    color: #0202c4;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;  
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: bold;
+    width: 100px; 
+    margin-left: 28%;
+}
+
+.x{
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+
 @media (min-width: 769px) {
     .sidebar.open {
         transform: translateX(0);
@@ -238,10 +261,16 @@ a {
         position: fixed;
         z-index: 1;
     }
+    .button{
+        margin-left: 20%;
+    }
 }
 
 @media (max-width: 1186px) {
     .sidebar {
         min-width: 17vw;
+    }
+    .button{
+        margin-left: 20%;
     }
 }

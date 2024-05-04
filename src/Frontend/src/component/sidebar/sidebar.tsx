@@ -136,9 +136,13 @@ const Sidebar = () => {
                 </>
                 )}
                 {userTipo === '' && (
-                    <div>
-                    <Link to="/login"> Faça Login </Link>
-                </div>
+                    <div className={styles.x}>
+                        <h1>Tem uma conta ?</h1><br></br>
+                        <Link to="/login" className={styles.button}> Faça Login </Link>
+                        <br></br>
+                        <h2>Ainda não possui uma conta ?</h2><br></br>
+                        <Link to="/registro" className={styles.button}>Registre-se</Link>
+                    </div>
                 )}
             </section>
         </div>

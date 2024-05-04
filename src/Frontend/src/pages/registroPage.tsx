@@ -57,9 +57,9 @@ const Registro = () => {
                 <h1 className={styles.title}>Bem-vindo !</h1><br></br>
                 <p className={styles.texto}>Já tem uma conta ? Faça login no sistema para obter o suporte necessário. </p>
                 <div className={styles.button}><br></br>
-                 <div id={styles.Editar2}>
-                 Entrar !
-                </div>
+                    <div>
+                        <Link to='/login' id={styles.Editar2}>Entrar !</Link>
+                    </div>
                 </div>
             </section>
             <section className={styles.form}>

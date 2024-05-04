@@ -116,8 +116,10 @@ select{
   cursor: pointer;
   transition: 0.5s;
   font-weight: bold;
-  width: 150px; 
+  width: 150px;
+  justify-content: center;
 }
+
 .logo{
   width: 90%;
   height: 80%;
