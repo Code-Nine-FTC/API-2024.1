@@ -30,7 +30,9 @@
   padding-right: 0vw;
 }
 
-
+.nomeColumn div, .cpfColumn div {
+  font-size: 1.4em; 
+}
 .nomeColumn > p, .cpfColumn > p {
   margin-bottom: 5px; 
   margin-top:5px;
