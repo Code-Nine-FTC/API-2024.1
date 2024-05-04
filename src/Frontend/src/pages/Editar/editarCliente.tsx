@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react';
-import styles from "../component/infoCliente/InfoCliente.module.css"
+import styles from "../../component/infoCliente/InfoCliente.module.css"
 // import ImageComponent from '../component/imagemPerfil/imagemperfil';
-import Sidebar from '../component/sidebar/sidebar';
+import Sidebar from '../../component/sidebar/sidebar';
 
 interface User {
   nome: string;

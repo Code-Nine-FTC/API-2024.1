@@ -1,15 +1,7 @@
-import { rotaBase } from "./rotaBase";
+import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
+import  IFuncionarioUpdate  from "./Interface/IFuncionarioUpdate";
 
-export interface IFuncionarioUpdate{
-    func_nome?: string
-    func_cpf?: string
-    func_email?: string
-    func_senha?: string
-    func_expediente_inicio?: string
-    func_expediente_final?: string
-    ativo?: boolean
-}
 const updateFuncionario = async (func_id: number, dadosUpdate: IFuncionarioUpdate) => {
     try {
         const resultado = await axios.put(`${rotaBase}/updateFuncionario`,{func_id, dadosUpdate}); 

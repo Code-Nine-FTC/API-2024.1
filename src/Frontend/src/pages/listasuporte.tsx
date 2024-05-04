@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { rotaBase } from "../functions/rotaBase";
+import { rotaBase } from "../functions/RotaBase/rotaBase";
 import Sidebar from "../component/sidebar/sidebar";
 import styles from "../component/listarSuporte/listarSuporte.module.css";
 import { Link } from "react-router-dom";

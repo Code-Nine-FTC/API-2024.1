@@ -3,8 +3,8 @@ import logo from "./projeto9999.png"
 import styles from './Login.module.css'
 import {Link, useNavigate, redirect} from 'react-router-dom';
 import {toast, Toaster} from 'react-hot-toast';
-import LoginClienteFunc from '../../functions/loginClienteFunc';
-import LoginFuncionarioFunc from '../../functions/loginFuncionarioFunc';
+import LoginClienteFunc from '../../functions/Login/loginClienteFunc';
+import LoginFuncionarioFunc from '../../functions/Login/loginFuncionarioFunc';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
 

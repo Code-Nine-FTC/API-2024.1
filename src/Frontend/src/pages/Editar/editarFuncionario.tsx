@@ -1,20 +1,10 @@
 import React, { useState, FormEvent } from 'react';
-import styles from "../component/infoSuporte/InfoSuporte.module.css";
+import styles from "../../component/infoSuporte/InfoSuporte.module.css";
 // import ImageComponent from '../component/imagemPerfil/imagemperfil';
-import Sidebar from '../component/sidebar/sidebar';
-import updateFuncionario from '../functions/editarFunc'; // Corrigi a importação da função de atualização
+import Sidebar from '../../component/sidebar/sidebar';
+import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; // Corrigi a importação da função de atualização
 import { useNavigate, useParams } from 'react-router-dom';
-
-// Definindo a interface para os dados de atualização do funcionário
-interface IFuncionarioUpdate {
-  func_nome?: string;
-  func_cpf?: string;
-  func_email?: string;
-  func_senha?: string;
-  func_expediente_inicio?: string;
-  func_expediente_final?: string;
-  ativo?: boolean;
-}
+import IFuncionarioUpdate from '../../functions/Editar/Interface/IFuncionarioUpdate';
 
 const EditarFuncionario: React.FC = () => {
   const navigate = useNavigate();

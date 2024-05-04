@@ -2,8 +2,7 @@ import { Route, BrowserRouter, Routes as Switch } from "react-router-dom";
 import NotFound from "../pages/notFound";
 import React from "react";
 import Registro from "../pages/registroPage";
-import Editinfocli from "../pages/infoCliente";
-import Editinfosuport from "../pages/infoSuporte";
+import Editinfocli from "../pages/Editar/editarCliente";
 import Home from "../pages/homePage";
 import LoginPage from "../pages/loginPage";
 import LoginAdmPage from "../pages/loginAdmPage"
@@ -12,8 +11,8 @@ import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup"
 import Listagem from "../pages/listasuporte";
 import RotaProtegida from "./rotaProtegida";
-import VisualizarFuncionario from "../pages/viewFuncionario";
-import EditarFuncionario from "../pages/infoSuporte";
+import VisualizarFuncionario from "../pages/View/viewFuncionario";
+import EditarFuncionario from "../pages/Editar/editarFuncionario";
 
 const Rotas = () => {
     return (
@@ -29,7 +28,7 @@ const Rotas = () => {
             <Route path="*" element={<NotFound/>}/>
             <Route path= "/ticket" element={<RotaProtegida><Ticket/></RotaProtegida>}/>
             <Route path= "/homesup" element={<RotaProtegida><HomeSup/></RotaProtegida>}/>
-            <Route path= "/listarsuporte" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
+            <Route path= "/visualizarTodosFuncionarios" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
             <Route path="/visualizarfuncionario/:id" element={<RotaProtegida><VisualizarFuncionario/></RotaProtegida>}/>
           </Switch>
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import { rotaBase } from "./rotaBase";
+import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
 
 const CadastroFuncionarioFunc = async (formData: any) => {
