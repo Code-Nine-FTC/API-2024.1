@@ -21,11 +21,6 @@ const ListagemFuncionarios = () => {
       return
   }
 
-    if (nivelAcesso !== 'administrador') {
-      navigate('/homesup');
-      return
-  }
-
     const fetchFuncionarios = async () => {
       try {
         const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
@@ -34,8 +29,6 @@ const ListagemFuncionarios = () => {
         }
       });
         setFuncionarios(response.data.funcionarios);
-
-
         setLoading(false);
       } catch (error) {
         setError("Erro ao carregar os dados dos funcionários");
@@ -64,12 +57,6 @@ const ListagemFuncionarios = () => {
                     Ver detalhes
                   </Link>
                 </div>
-                <div className={styles.nameAndCpfLine}>
-                  <span>{funcionario.func_nome}</span>
-                  <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
-                    Ver detalhes
-                  </Link>
-                </div>
               </div>
             ))}
           </div>
@@ -87,11 +74,6 @@ const ListagemFuncionarios = () => {
           </div>
           {/* Add more columns for other details like password, working hours, etc. */}
         </div>
-        <Link to="/registrosuporte">
-          <div className={styles.buttonContainer}>
-            <button type="button">Cadastrar Atendente</button>
-          </div>
-        </Link>
         <Link to="/registrosuporte">
           <div className={styles.buttonContainer}>
             <button type="button">Cadastrar Atendente</button>

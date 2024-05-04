@@ -14,7 +14,7 @@ const getAdminNavigationItems = () : NavigationItemInterface[] => {
             { label: 'Em atendimento', path: '/ticketsatendimento' },
             { label: 'Em espera ', path: '/ticketsespera' }
             ], imageUrl: tickets},
-        { label: 'Gerenciar', path: '/listarsuporte', imageUrl: gerenciar},
+        { label: 'Gerenciar', path: '/visualizarTodosFuncionarios', imageUrl: gerenciar},
         { label: 'FAQ', path: '/faq', imageUrl: faq},
         { label: 'Categorias', dropdownItems: [
             { label: 'Editar', path: '/categoriaeditar' },
@@ -26,7 +26,7 @@ const getAdminNavigationItems = () : NavigationItemInterface[] => {
 const getAtendenteNavigationItems = () => {
     return [
         { label: 'Tickets', dropdownItems: [
-            { label: 'Em atendimento', path: '/ematendimento' },
+            { label: 'Em atendimento', path: '/homesup' },
             { label: 'Finalizados', path: '/ticketstodos' },
             { label: 'Não atendidos', path: '/naoatendidos' }
             ], imageUrl: tickets},
