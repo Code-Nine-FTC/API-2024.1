@@ -8,6 +8,7 @@ export default function VisualizarFuncionario() {
     const navigate = useNavigate();
     const { id } = useParams<{ id?: string }>();
     const [funcionario, setFuncionario] = useState<any>(null);
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
         if (!id) {
@@ -19,7 +20,7 @@ export default function VisualizarFuncionario() {
 
         const fetchFuncionario = async () => {
             try {
-                const funcionarioData = await viewFuncionario(func_id);
+                const funcionarioData = await viewFuncionario(func_id, token);
                 setFuncionario(funcionarioData);
                 console.log(funcionarioData.ativo)
             } catch (error) {
@@ -37,7 +38,7 @@ export default function VisualizarFuncionario() {
     return (
         <>
             <Sidebar />
-            {funcionario && <DetalhesFuncionario id={id} funcionario={funcionario} navigate={navigate}/>}
+            {funcionario && <DetalhesFuncionario funcionario={funcionario} navigate={navigate}/>}
         </>
     );
 }

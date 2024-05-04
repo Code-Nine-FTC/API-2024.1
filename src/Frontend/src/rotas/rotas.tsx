@@ -21,7 +21,7 @@ const Rotas = () => {
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/editarfuncionario/:id" element={<RotaProtegida><EditarFuncionario/></RotaProtegida>}/>
-            <Route path= "/editarcliente" element={<RotaProtegida><Editinfocli/></RotaProtegida>}/>
+            <Route path= "/visualizarcliente" element={<RotaProtegida><Editinfocli/></RotaProtegida>}/>
             <Route path="/loginadm" element={<LoginAdmPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path= "/registrosuporte" element={<RotaProtegida><RegistroSup/></RotaProtegida>}/>

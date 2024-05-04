@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { rotaBase } from "../functions/RotaBase/rotaBase";
 import Sidebar from "../component/sidebar/sidebar";
 import styles from "../component/listarSuporte/listarSuporte.module.css";
@@ -10,12 +11,25 @@ const ListagemFuncionarios = () => {
   const [funcionarios, setFuncionarios] = useState<IFuncionarioView[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
+  const token = localStorage.getItem('token')
+  const nivelAcesso = localStorage.getItem('nivel')
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (nivelAcesso !== 'administrador') {
+      navigate('/homesup');
+      return
+  }
+
     const fetchFuncionarios = async () => {
       try {
-        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`);
+        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+        }
+      });
         setFuncionarios(response.data.funcionarios);
+
         setLoading(false);
       } catch (error) {
         setError("Erro ao carregar os dados dos funcionários");
@@ -61,9 +75,11 @@ const ListagemFuncionarios = () => {
           </div>
           {/* Add more columns for other details like password, working hours, etc. */}
         </div>
-        <div className={styles.buttonContainer}>
-          <button type="button">Cadastrar Atendente</button>
-        </div>
+        <Link to="/registrosuporte">
+          <div className={styles.buttonContainer}>
+            <button type="button">Cadastrar Atendente</button>
+          </div>
+        </Link>
       </div>
     </div>
   );

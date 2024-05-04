@@ -59,7 +59,7 @@ export class FuncionarioService {
                     return { success: false, message: 'Dados inválidos!' };
                 }
 
-                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret2)
+                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret3)
                 console.log('Autenticação realizada com sucesso')
                 return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
             }
@@ -113,10 +113,10 @@ export class FuncionarioService {
             return { success: false, message: `Erro ao editar funcionário!` }
         }
     }
-    public async visualizarFuncionario(id: number) {
+    public async visualizarFuncionario(id: string) {
         try {
             const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
+            const funcionario = await funcionarioRepository.findOne({ where: { func_cpf: id } })
             if (!funcionario) {
                 return { success: false, message: `Funcionário não encontrado!` }
             }

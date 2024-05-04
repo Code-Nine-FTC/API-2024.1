@@ -94,19 +94,19 @@ export class AuthMiddleware {
         try {
             const authHeader = req.headers['authorization']
             const token = authHeader && authHeader.split(' ')[1]
-            const secret2 = process.env.SECRET02
+            const secret3 = process.env.SECRET03
 
             if (!token) {
                 res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
                 return null;
             }
 
-            if (!secret2) {
+            if (!secret3) {
                 res.status(500).json({ success: false, message: `Erro interno do servidor` })
                 return null
             }
 
-            const atendenteToken = jwt.verify(token, secret2) as JwtPayload
+            const atendenteToken = jwt.verify(token, secret3) as JwtPayload
             const atendente = await Connection.getRepository(Funcionario).findOne({ where: { func_id: atendenteToken.id } })
 
             if (!atendente) {

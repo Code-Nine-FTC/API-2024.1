@@ -5,6 +5,7 @@ import Sidebar from '../../component/sidebar/sidebar';
 import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; // Corrigi a importação da função de atualização
 import { useNavigate, useParams } from 'react-router-dom';
 import IFuncionarioUpdate from '../../functions/Editar/Interface/IFuncionarioUpdate';
+import { toast, Toaster } from 'react-hot-toast';
 
 const EditarFuncionario: React.FC = () => {
   const navigate = useNavigate();
@@ -15,7 +16,26 @@ const EditarFuncionario: React.FC = () => {
   const [senha, setSenha] = useState<string>();
   const [func_expediente_inicio, setFuncExpedienteInicio] = useState<string>();
   const [func_expediente_final, setFuncExpedienteFinal] = useState<string>();
-  const [ativo, setAtivo] = useState<boolean>(false);
+  const [ativo, setAtivo] = useState<boolean>(true);
+  const token = localStorage.getItem('token')
+
+  const selecionarHorario = (event: any) => {
+    const horario = event.target.value
+    switch(horario) {
+        case 'valor1':
+            setFuncExpedienteInicio('08:00')
+            setFuncExpedienteFinal('16:00')
+            return
+        case 'valor2':
+            setFuncExpedienteInicio('10:00')
+            setFuncExpedienteFinal('18:00')
+            return
+        case 'valor3':
+            setFuncExpedienteInicio('13:00')
+            setFuncExpedienteFinal('21:00')
+            return
+    }
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Impedir o comportamento padrão do formulário
@@ -39,8 +59,8 @@ const EditarFuncionario: React.FC = () => {
 
     console.log(dadosUpdate);
     try {
-      const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate);
-      alert(funcionarioUpdate.message);
+      const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate, token);
+      toast.success('Alteração concluída')
     } catch (error) {
       console.log(`Erro ao editar Funcionario!`, error);
     }
@@ -48,6 +68,10 @@ const EditarFuncionario: React.FC = () => {
 
   return (
     <>
+      <div><Toaster 
+        position="top-center"
+        reverseOrder={false}/>
+        </div>
       <Sidebar />
       <div className={styles.conteudo}>
         <div className={styles.titulo}>
@@ -69,27 +93,13 @@ const EditarFuncionario: React.FC = () => {
                 <input type="password" value={senha} placeholder='Digite a nova senha do usuario aqui' onChange={e => setSenha(e.target.value)} />
               </label>
            
-              <label>
-  Início do expediente:
-  <input 
-    type="number" 
-    value={func_expediente_inicio} 
-    placeholder='Início do expediente' 
-    onChange={e => setFuncExpedienteInicio(e.target.value)} 
-    min={8} max={12}
-  />
-</label>
-<label>
-  Final do expediente:
-  <input 
-    type="number" 
-    value={func_expediente_final} 
-    placeholder='Final do expediente' 
-    onChange={e => setFuncExpedienteFinal(e.target.value)} 
-    min={18} max={22}
-  />
-</label>
-
+              <label> Horario de atendimento </label>
+              <select onChange={selecionarHorario} required>
+                        <option disabled selected>Selecione um horário</option>
+                        <option value="valor1">8:00 -- 16:00</option>
+                        <option value="valor2">10:00 -- 18:00 </option>
+                        <option value="valor3">13:00 -- 21:00</option>
+              </select>
               </div>
             <button type="submit">Salvar</button>
             <button onClick={() => navigate(`/visualizarfuncionario/${id}`)}>Voltar</button>

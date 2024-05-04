@@ -43,14 +43,14 @@ export default class ClienteController {
     
     async editarCliente(req: Request, res: Response) {
         try {
-            const clienteLogado = res.locals.cliente
+            const clienteLogado = req.body.dadosUpdate
             console.log(clienteLogado)
-            const id = Number(clienteLogado.cli_id)
+            const id = (req.body.cli_id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' })
             }
             const dadosUpdate: IClienteUpdate = req.body
-            const resultado = await this.clienteService.editarCliente(id, dadosUpdate)
+            const resultado = await this.clienteService.editarCliente(id, clienteLogado)
             if (resultado.success) {
                 return res.status(200).json(resultado)
             } else {

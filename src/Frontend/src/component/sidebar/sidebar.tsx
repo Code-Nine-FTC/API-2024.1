@@ -5,10 +5,13 @@ import Dropdown from '../dropdown/dropdown';
 import perfilicone from '../../assets/fotoperfil/perfil.svg'
 import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigationItems } from './navitens'
 import LogoutFunc from '../../functions/Logout/logoutFunc';
+import useAutenticarToken from '../../rotas/autenticarToken';
 
 // Inicia a função da Sidebar, recebendo o usuario logado no momento (userRole), para alterar as opções
 // Define os States para verificar se a Sidebar esta aberte ou fechada, e o mesmo para o menu Dropdown
 const Sidebar = () => { 
+    const token = localStorage.getItem('token') || ''
+    useAutenticarToken(token)
     const userTipo = localStorage.getItem('nivel') || '';
     const buttonRef = useRef<HTMLButtonElement>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
@@ -76,7 +79,7 @@ const Sidebar = () => {
                     <div className={styles.userinfo}>
                     <img src={perfilicone} alt="Foto de perfil"/>
                     <div className={styles.infouser}>
-                        <Link to="/perfil" id={styles.linkperfil}> Eu </Link>
+                        <Link to="/visualizarcliente" id={styles.linkperfil}> Eu </Link>
                         <h2> {userTipo.charAt(0).toUpperCase() + userTipo.slice(1)} </h2>
                         {/* Deixa a primeira letra do nome maiúscula */}
                     </div>
