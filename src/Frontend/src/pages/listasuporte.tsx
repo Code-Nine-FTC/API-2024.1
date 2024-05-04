@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { rotaBase } from "../functions/RotaBase/rotaBase";
+import { rotaBase } from "../functions/rotaBase";
 import Sidebar from "../component/sidebar/sidebar";
 import styles from "../component/listarSuporte/listarSuporte.module.css";
 import { Link } from "react-router-dom";
@@ -38,25 +38,32 @@ const ListagemFuncionarios = () => {
             <h3>Nome</h3>
             {funcionarios.map((funcionario) => (
               <div key={funcionario.func_cpf}>
-                <div className={styles.nameAndCpfLine}>
-                  <span>{funcionario.func_nome}</span>
-                  <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
-                    Ver detalhes
-                  </Link>
-                </div>
+                <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
+                  <div className={styles.nameAndCpfLine}>
+                    <span>{funcionario.func_nome}</span>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
           <div className={styles.cpfColumn}>
             <h3>CPF</h3>
             {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
+              <div key={funcionario.func_cpf}>
+                <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
+                  {funcionario.func_cpf}
+                </Link>
+              </div>
             ))}
           </div>
           <div className={styles.emailColumn}>
             <h3>E-mail</h3>
             {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
+              <div key={funcionario.func_cpf}>
+                <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
+                  {funcionario.func_email}
+                </Link>
+              </div>
             ))}
           </div>
           {/* Add more columns for other details like password, working hours, etc. */}
