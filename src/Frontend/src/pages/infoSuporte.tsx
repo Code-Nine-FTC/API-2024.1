@@ -8,8 +8,6 @@ import axios from 'axios';
 import { rotaBase } from '../functions/rotaBase';
 import { IFuncionarioView } from '../../../Backend/src/interfaces/IFuncionario';
 
-
-
 interface User {
   func_id: string;
   func_nome: string;
@@ -21,7 +19,8 @@ interface User {
 }
 
 const Editinfosuport: React.FC = () => {
-  const { funcionarioId } = useParams(); 
+  const token = localStorage.getItem('token')
+  const { funcionarioId } = useParams<{ funcionarioId: string }>(); 
   const [user, setUser] = useState<User>({
     func_id:'',
     func_nome: '',
@@ -39,8 +38,11 @@ const Editinfosuport: React.FC = () => {
   useEffect(() => {
     const carregarDadosUsuario = async () => {
       try {
-        const response = await axios.get(`${rotaBase}/viewFuncionarios`, { 
-          data: { func_id: funcionarioId } // Enviar o func_id no corpo da requisição
+        const response = await axios.get(`${rotaBase}/viewFuncionario`, { 
+          data: { func_id: funcionarioId },
+          headers: {
+            Authorization: `Bearer ${token}`
+        } // Enviar o func_id no corpo da requisição
         });
         setUser({
           func_id: response.data.funcionario.func_id,

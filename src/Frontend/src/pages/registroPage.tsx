@@ -56,11 +56,13 @@ const Registro = () => {
             <section className={styles.bemvindo}>
                 <h1 className={styles.title}>Bem-vindo !</h1><br></br>
                 <p className={styles.texto}>Já tem uma conta ? Faça login no sistema para obter o suporte necessário. </p>
-                <div className={styles.button}><br></br>
-                    <div>
-                        <Link to='/login' id={styles.Editar2}>Entrar !</Link>
+                <Link to='/login'>
+                     <div className={styles.button}><br></br>
+                        <div id={styles.Editar2}>
+                        Entrar !
+                        </div>
                     </div>
-                </div>
+                </Link>    
             </section>
             <section className={styles.form}>
                 <h1 className={styles.title}>Criar Nova Conta</h1><br></br>
@@ -85,7 +87,6 @@ const Registro = () => {
                         <button type="submit" id={styles.Editar}>
                             Cadastrar-se
                         </button>
-                        <Link to='/login'> Já tem uma conta? </Link>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}

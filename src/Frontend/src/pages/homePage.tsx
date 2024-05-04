@@ -19,6 +19,7 @@ function Home() {
   const handleButtonClick = () => {
     setModalOpen(false)
   }
+  
   const { autenticado, loading } = useAutenticarToken(localStorage.getItem('token') || '');
 
   useEffect(() => {

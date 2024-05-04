@@ -46,6 +46,7 @@ export default class FuncionarioController {
 
     async visualizarFuncionario(req: Request, res: Response) {
         try {
+            console.log('Recebendo solicitação em /viewFuncionario')
             const id = Number(req.body.func_id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' })

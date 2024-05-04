@@ -115,6 +115,7 @@ export class FuncionarioService {
     }
     public async visualizarFuncionario(id: number) {
         try {
+            console.log('Recebendo chamado em funcionarioService')
             const funcionarioRepository = Connection.getRepository(Funcionario)
             const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
             if (!funcionario) {
