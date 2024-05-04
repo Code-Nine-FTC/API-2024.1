@@ -14,8 +14,16 @@ const ListagemFuncionarios = () => {
   const token = localStorage.getItem('token')
   const nivelAcesso = localStorage.getItem('nivel')
   const navigate = useNavigate();
+  const token = localStorage.getItem('token')
+  const nivelAcesso = localStorage.getItem('nivel')
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (nivelAcesso !== 'administrador') {
+      navigate('/homesup');
+      return
+  }
+
     if (nivelAcesso !== 'administrador') {
       navigate('/homesup');
       return
@@ -28,7 +36,13 @@ const ListagemFuncionarios = () => {
             Authorization: `Bearer ${token}`
         }
       });
+        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+        }
+      });
         setFuncionarios(response.data.funcionarios);
+
 
         setLoading(false);
       } catch (error) {
@@ -58,6 +72,12 @@ const ListagemFuncionarios = () => {
                     Ver detalhes
                   </Link>
                 </div>
+                <div className={styles.nameAndCpfLine}>
+                  <span>{funcionario.func_nome}</span>
+                  <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
+                    Ver detalhes
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -65,16 +85,23 @@ const ListagemFuncionarios = () => {
             <h3>CPF</h3>
             {funcionarios.map((funcionario) => (
               <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
+              <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
             ))}
           </div>
           <div className={styles.emailColumn}>
             <h3>E-mail</h3>
             {funcionarios.map((funcionario) => (
               <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
+              <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
             ))}
           </div>
           {/* Add more columns for other details like password, working hours, etc. */}
         </div>
+        <Link to="/registrosuporte">
+          <div className={styles.buttonContainer}>
+            <button type="button">Cadastrar Atendente</button>
+          </div>
+        </Link>
         <Link to="/registrosuporte">
           <div className={styles.buttonContainer}>
             <button type="button">Cadastrar Atendente</button>

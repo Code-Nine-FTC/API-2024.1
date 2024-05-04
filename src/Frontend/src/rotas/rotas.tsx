@@ -10,7 +10,7 @@ import LoginAdmPage from "../pages/loginAdmPage"
 import RegistroSup from "../pages/registroSupp";
 import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup"
-import Listagem from "../pages/listasuporte";
+import Listagem from "../pages/listasuporte"
 import RotaProtegida from "./rotaProtegida";
 import VisualizarFuncionario from "../pages/View/viewFuncionario";
 import EditarFuncionario from "../pages/Editar/editarFuncionario";
