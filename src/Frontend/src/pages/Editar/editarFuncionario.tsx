@@ -2,9 +2,9 @@ import React, { useState, FormEvent } from 'react';
 import styles from "../../component/infoSuporte/InfoSuporte.module.css";
 // import ImageComponent from '../component/imagemPerfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
-import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; // Corrigi a importação da função de atualização
+import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; 
 import { useNavigate, useParams } from 'react-router-dom';
-import IFuncionarioUpdate from '../../functions/Editar/Interface/IFuncionarioUpdate';
+import IFuncionarioUpdate from '../../functions/Editar/interface/IFuncionarioUpdate';
 
 const EditarFuncionario: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const EditarFuncionario: React.FC = () => {
   const [ativo, setAtivo] = useState<boolean>(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Impedir o comportamento padrão do formulário
+    e.preventDefault();
 
     if (!id) {
       navigate('/notfound');

@@ -85,7 +85,7 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               setToken(tokenFunc)
               localStorage.setItem('token', tokenFunc);
               console.log(localStorage.getItem('token'))
-              return navigate('/listarsuporte')
+              return navigate('/visualizarTodosFuncionarios')
             }
             break;
         }
