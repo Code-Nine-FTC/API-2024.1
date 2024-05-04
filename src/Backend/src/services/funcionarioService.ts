@@ -95,7 +95,7 @@ export class FuncionarioService {
                 }
             }
             if (dadosUpdate.func_email) {
-                const emailExistente = await funcionarioRepository.findOne({ where: { func_email: dadosUpdate.func_cpf } })
+                const emailExistente = await funcionarioRepository.findOne({ where: { func_email: dadosUpdate.func_email } })
                 if (emailExistente && emailExistente.func_id !== id) {
                     return { success: false, message: `E-mail já cadastrado` };
                 }
@@ -105,6 +105,7 @@ export class FuncionarioService {
                 dadosUpdate.func_senha = senhaCriptografada;
             }
             const funcionarioUpdate = { ...funcionario, ...dadosUpdate }
+            delete funcionarioUpdate.func_id;
             await funcionarioRepository.update(id, funcionarioUpdate)
             return { success: true, message: `Funcionário atualizado com sucesso!`, funcionarioUpdate }
         } catch (error) {
@@ -119,6 +120,7 @@ export class FuncionarioService {
             if (!funcionario) {
                 return { success: false, message: `Funcionário não encontrado!` }
             }
+            console.log(funcionario)
             return { success: true, message: 'Funcionário encontrado!', funcionario }
         } catch (error) {
             console.error(`Erro ao encontrar funcionário: ${error}`)

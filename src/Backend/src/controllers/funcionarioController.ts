@@ -31,7 +31,8 @@ export default class FuncionarioController {
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' })
             }
-            const dadosUpdate: IFuncionarioUpdate = req.body
+            const dadosUpdate: IFuncionarioUpdate = req.body.dadosUpdate
+            console.log(dadosUpdate)
             const resultado = await this.funcionarioService.editarFuncionario(id, dadosUpdate)
             if (resultado.success) {
                 return res.status(200).json(resultado)
@@ -51,6 +52,7 @@ export default class FuncionarioController {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' })
             }
             const resultado = await this.funcionarioService.visualizarFuncionario(id)
+            console.log(resultado)
             if (resultado.success) {
                 return res.status(200).json(resultado)
             } else {
