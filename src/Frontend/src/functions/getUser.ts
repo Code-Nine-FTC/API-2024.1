@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { rotaBase } from './rotaBase';
+import { rotaBase } from './RotaBase/rotaBase';
 import { IFuncionarioView } from '../../../Backend/src/interfaces/IFuncionario';
 
 interface UserData {

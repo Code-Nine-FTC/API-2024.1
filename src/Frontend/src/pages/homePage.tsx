@@ -22,7 +22,7 @@ function Home() {
     useEffect(() => {
       const storedToken = localStorage.getItem('token');
       if (storedToken !== null){
-        setAutenticado(true)
+        setAutenticacao(true)
       }
   }, []);
 
@@ -49,10 +49,10 @@ function Home() {
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque obcaecati eius pariatur nulla, quaerat architecto necessitatibus id aliquam voluptatem quasi nisi molestiae labore incidunt amet. Maiores totam consequuntur dicta temporibus?</p>
   </Modal>)}
   <div className={styles.conteudo}>
-  {!autenticado && (
+  {!autenticacao && (
     <h1> Cadastre-se para ver seus chamados recentes!</h1>
   )}
-  {autenticado && (
+  {autenticacao && (
     <>
     <div className={styles.status}>
         <Textostatus/>

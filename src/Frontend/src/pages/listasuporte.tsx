@@ -14,9 +14,6 @@ const ListagemFuncionarios = () => {
   const token = localStorage.getItem('token')
   const nivelAcesso = localStorage.getItem('nivel')
   const navigate = useNavigate();
-  const token = localStorage.getItem('token')
-  const nivelAcesso = localStorage.getItem('nivel')
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (nivelAcesso !== 'administrador') {
@@ -31,11 +28,6 @@ const ListagemFuncionarios = () => {
 
     const fetchFuncionarios = async () => {
       try {
-        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-        }
-      });
         const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -85,13 +77,11 @@ const ListagemFuncionarios = () => {
             <h3>CPF</h3>
             {funcionarios.map((funcionario) => (
               <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
-              <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
             ))}
           </div>
           <div className={styles.emailColumn}>
             <h3>E-mail</h3>
             {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
               <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
             ))}
           </div>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { rotaBase } from './rotaBase';
+import { rotaBase } from './RotaBase/rotaBase';
 
 interface User {
   func_id: string;
