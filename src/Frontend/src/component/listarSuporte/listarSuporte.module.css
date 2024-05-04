@@ -1,10 +1,6 @@
 .container {
   display: flex;;
 }
-.nomeColumn a, .cpfColumn a, .emailColumn a {
-  color: black; 
-  text-decoration: none; 
-}
 
 .content {
   flex: 1;
@@ -42,7 +38,7 @@
 
 .titleLine {
   border-bottom: 1px solid rgb(82, 82, 82); 
-  width: 40vw;
+  width: 25vw;
   padding-bottom: 1vw;
   color: blue;
 }
@@ -51,7 +47,6 @@
   justify-content: center;
   align-items: center;
   padding-top: 5vw;
-  padding-right: 5vw;
 }
 
 .buttonContainer button {
@@ -68,12 +63,6 @@
   background-color: darkblue; 
   border-color: darkblue; 
 }
-.nomeColumn, .cpfColumn, .emailColumn {
-  flex: 1;
-  padding-left: 3vw; /* Espaçamento à esquerda */
-  padding-right: 3vw; /* Espaçamento à direita */
-}
-
 
 @media (max-width: 768px) {
   .content {
@@ -85,11 +74,11 @@
     justify-content: space-between; 
     align-items: center; 
   }
-  .nomeColumn, .cpfColumn, .emailColumn {
+  .nomeColumn, .cpfColumn {
     width: 45vw; 
     max-width: none; 
     padding-left: 0; 
-    padding-right: 30vw; 
+    padding-right: 0; 
     margin-bottom: 0;
   }
   .titleLine {
@@ -101,13 +90,5 @@
     justify-content: center;
     padding-right: 29vw;
     padding-top: 5vw;
-  }
-
-  .customLayout {
-    display: flex;
-    flex-direction: column; /* Alterado para coluna em telas menores */
-    justify-content: space-around; /* Ajustado para espaço uniforme */
-    align-items: center;
-    margin-left: 2vw;
   }
 }

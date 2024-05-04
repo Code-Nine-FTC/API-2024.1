@@ -38,32 +38,25 @@ const ListagemFuncionarios = () => {
             <h3>Nome</h3>
             {funcionarios.map((funcionario) => (
               <div key={funcionario.func_cpf}>
-                <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
-                  <div className={styles.nameAndCpfLine}>
-                    <span>{funcionario.func_nome}</span>
-                  </div>
-                </Link>
+                <div className={styles.nameAndCpfLine}>
+                  <span>{funcionario.func_nome}</span>
+                  <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
+                    Ver detalhes
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
           <div className={styles.cpfColumn}>
             <h3>CPF</h3>
             {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>
-                <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
-                  {funcionario.func_cpf}
-                </Link>
-              </div>
+              <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
             ))}
           </div>
           <div className={styles.emailColumn}>
             <h3>E-mail</h3>
             {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>
-                <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
-                  {funcionario.func_email}
-                </Link>
-              </div>
+              <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
             ))}
           </div>
           {/* Add more columns for other details like password, working hours, etc. */}
