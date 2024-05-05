@@ -53,9 +53,11 @@ const ListagemFuncionarios = () => {
               <div key={funcionario.func_cpf}>
                 <div className={styles.nameAndCpfLine}>
                   <span>{funcionario.func_nome}</span>
+                  <div className={styles.verdetalhes}> 
                   <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
                     Ver detalhes
                   </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -81,6 +83,7 @@ const ListagemFuncionarios = () => {
         </Link>
       </div>
     </div>
+    
   );
 };
 
