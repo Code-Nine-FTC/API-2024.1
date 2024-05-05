@@ -1,6 +1,6 @@
 import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
-import IClienteUpdate from "./interface/iClienteUpdate";
+import IClienteUpdate from "./Interface//iClienteUpdate";
 
 const updateCliente = async (cli_id: number , dadosUpdate: IClienteUpdate, token: string | null) => {
     try {
