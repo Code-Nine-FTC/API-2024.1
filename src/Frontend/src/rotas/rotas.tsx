@@ -30,8 +30,6 @@ const Rotas = () => {
             <Route path= "/homesup" element={<RotaProtegida><HomeSup/></RotaProtegida>}/>
             <Route path= "/visualizarTodosFuncionarios" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
             <Route path="/visualizarfuncionario/:id" element={<RotaProtegida><VisualizarFuncionario/></RotaProtegida>}/>
-            <Route path= "/visualizarTodosFuncionarios" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
-            <Route path="/visualizarfuncionario/:id" element={<RotaProtegida><VisualizarFuncionario/></RotaProtegida>}/>
           </Switch>
         </BrowserRouter>
     )

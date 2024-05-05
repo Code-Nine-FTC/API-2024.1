@@ -4,7 +4,7 @@ import styles from "../../component/infoSuporte/InfoSuporte.module.css";
 import Sidebar from '../../component/sidebar/sidebar';
 import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; 
 import { useNavigate, useParams } from 'react-router-dom';
-import IFuncionarioUpdate from '../../functions/Editar/Interface/IFuncionarioUpdate';
+import IFuncionarioUpdate from '../../functions/Editar/interface/IFuncionarioUpdate';
 import { toast, Toaster } from 'react-hot-toast';
 
 const EditarFuncionario: React.FC = () => {
@@ -75,7 +75,7 @@ const EditarFuncionario: React.FC = () => {
       <Sidebar />
       <div className={styles.conteudo}>
         <div className={styles.titulo}>
-          <h1>Editar Usuário</h1>
+          <h1>Editar Funcionário</h1>
         </div>
         <div className={styles.Container}>
           <div className={styles.perfil}>
@@ -83,26 +83,26 @@ const EditarFuncionario: React.FC = () => {
           </div>
           <form className={styles.conteudoform} onSubmit={handleSubmit}>
             <div className={styles.Dados1}>
-              <label> Novo nome:
+              <label> <h3 id={styles.subtitle}>Novo nome:</h3>
                 <input className='' type="text" value={nome} placeholder='Digite o novo nome do usario aqui' onChange={e => setNome(e.target.value)} />
               </label>
-              <label> Novo E-mail:
+              <label> <h3 id={styles.subtitle}>Novo E-mail:</h3> 
                 <input type="email" value={email} placeholder='Digite o novo email do usuario aqui' onChange={e => setEmail(e.target.value)} />
               </label>
-              <label>Nova Senha:
+              <label><h3 id={styles.subtitle}>Nova senha:</h3>
                 <input type="password" value={senha} placeholder='Digite a nova senha do usuario aqui' onChange={e => setSenha(e.target.value)} />
               </label>
            
-              <label> Horario de atendimento </label>
-              <select onChange={selecionarHorario} required>
+              <label> <h3 id={styles.horario}>Horario de atendimento: </h3>  </label>
+              <select id={styles.seletor} onChange={selecionarHorario} required>
                         <option disabled selected>Selecione um horário</option>
                         <option value="valor1">8:00 -- 16:00</option>
                         <option value="valor2">10:00 -- 18:00 </option>
                         <option value="valor3">13:00 -- 21:00</option>
               </select>
               </div>
-            <button type="submit">Salvar</button>
-            <button onClick={() => navigate(`/visualizarfuncionario/${id}`)}>Voltar</button>
+              <button type="submit" className={styles.customButton}>Salvar</button>
+            <button className={styles.voltar} onClick={() => navigate(`/visualizarTodosFuncionarios`)}>Voltar</button>
           </form>
         </div>
       </div>

@@ -49,23 +49,41 @@ input{
     background-color: #030350;
 }
 
-#Deletar {
+/* #Deletar {
     background-color: #d30404;
 }
 
 #Deletar:hover {
     background-color: #a00303; 
-}
+} */
 
-.button{ 
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: space-between;
-    padding: 30px;
-    margin-bottom: 10vh;
+.customButton {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #1818b9;
+  color: white;
+  border: 1px solid #1818b9;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  height: 4vh;
+  width: 20vh;
+  margin-left:32%;
 }
-
+.voltar{
+    padding: 10px;
+    color: blue; 
+    text-Decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: larger;
+}
+.customButton:hover {
+  background-color: darkblue;
+  border-color: darkblue;
+}
 .Container{
     margin: auto;
     display: flex;
@@ -105,7 +123,32 @@ input{
     border-bottom: 1px solid black;
     width: 73%;
 }
-
+#subtitle{
+    margin-left: 6.7%;
+    display: flex;
+    color: #0b0b5f;
+    padding: 5px;
+}
+#horario{
+    margin-left: -57.5%;
+    display: flex;
+    color: #0b0b5f;
+    
+}
+#seletor{
+  width: 56vh; 
+  padding: 5px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  background-color: #d6d4d4; 
+  color: #555;
+  font-weight: lighter;
+  margin-left: 25%;
+  height: 5vh;
+  display: flex;
+  
+}
 @media (max-width: 900px) {
     input {
         width: 40vw;
@@ -119,6 +162,14 @@ input{
     }
     .Dados1, .Dados2{
         margin-bottom: 3%;
+    }
+}
+@Media (max-width: 1580px){
+    #horario{
+        margin-left: -45%;
+        display: flex;
+        color: #0b0b5f;
+        
     }
 }
 @media (max-width: 1920px) {
