@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
+import { Link } from 'react-router-dom';
 
-function LoginAdmForm() {
+function LoginAdmForm({ tipoCadastro }: {tipoCadastro: string }) {
   return ( 
     <div className={styles.conteudo}>
       <form className={styles.conteudointerno}>
@@ -14,8 +15,7 @@ function LoginAdmForm() {
           <label htmlFor="label2">Senha</label>
           <input type="text" id={styles.label2} placeholder="Insira sua senha" />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
-          <div className={styles.Title}>Voltar  →</div>
-          <div className={styles.Title}>É administrador?</div>
+          <Link to='/login'><div className={styles.Title}>Voltar→</div></Link>
         </div>
       </form>
     </div>

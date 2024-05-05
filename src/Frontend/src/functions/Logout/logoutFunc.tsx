@@ -8,10 +8,10 @@ const LogoutFunc = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('id');
         localStorage.removeItem('nivel');
-        navigate('/registro')
+        navigate('/login')
     }, [navigate])
 
-    return <Navigate to="/registro" replace />
+    return <Navigate to="/login" replace />
 };
 
 export default LogoutFunc

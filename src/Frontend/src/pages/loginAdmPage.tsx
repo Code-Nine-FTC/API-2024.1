@@ -6,7 +6,7 @@ import LoginForm from '../component/login/formLogin';
 function LoginAdmPage() {
   return (
     <main>
-      <LoginForm tipoCadastro={'funcionario'}/>
+      <LoginAdmForm tipoCadastro={'funcionario'}/>
     </main>
   );
 }

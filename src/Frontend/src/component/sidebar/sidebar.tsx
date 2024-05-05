@@ -57,7 +57,7 @@ const Sidebar = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('id');
         localStorage.removeItem('nivel');
-        navigate('/registro');
+        navigate('/login');
     };
 
     // Função que altera o nome da classe para ativo quando está em sua rota respectiva
