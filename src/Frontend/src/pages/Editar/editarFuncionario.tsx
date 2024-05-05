@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import styles from "../../component/infoSuporte/InfoSuporte.module.css";
-// import ImageComponent from '../component/imagemPerfil/imagemperfil';
+import ImageComponent from '../../component/imagemperfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
 import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; 
 import { useNavigate, useParams } from 'react-router-dom';
@@ -79,7 +79,7 @@ const EditarFuncionario: React.FC = () => {
         </div>
         <div className={styles.Container}>
           <div className={styles.perfil}>
-            {/* <ImageComponent nome={nome}/> */}
+            <ImageComponent />
           </div>
           <form className={styles.conteudoform} onSubmit={handleSubmit}>
             <div className={styles.Dados1}>

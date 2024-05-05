@@ -111,7 +111,7 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
           <input type="password" name="senha" id={styles.label2} value={formDataPadrao.senha} placeholder="Insira sua senha" onChange={handleChange} />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
           <div className={styles.Title}>
-            <Link to="/login">Voltar  →</Link>
+            <Link to="/registro">Cadastre-se</Link>
           </div>
 
           <div className={styles.Title}>

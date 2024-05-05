@@ -1,12 +1,14 @@
 import React, { useState, FormEvent } from 'react';
 import styles from "../../component/infoCliente/InfoCliente.module.css"
-// import ImageComponent from '../component/imagemPerfil/imagemperfil';
+import ImageComponent from '../../component/imagemperfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
 import updateCliente from '../../functions/Editar/updateClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const Editinfocli: React.FC = () => {
+  const navigate = useNavigate();
   const [cli_nome, setNome] = useState<string>('');
   const [cli_email, setEmail] = useState<string>('');
   const [cli_senha, setSenha] = useState<string>('');
@@ -41,17 +43,20 @@ const Editinfocli: React.FC = () => {
       </div>
       <div className={styles.Container}>
         <div className={styles.perfil}>
-          {/* <ImageComponent nome={nome}/> */}
+          <ImageComponent/>
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.Dados}>
             <label>
+              <h3 id={styles.subtitle}>Altere seu nome:</h3>
               <input className='' type="text" value={cli_nome} placeholder='Altere seu nome' onChange={e => setNome(e.target.value)} />
             </label>
             <label>
+            <h3 id={styles.subtitle}>Altere seu E-mail:</h3>
               <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  placeholder='Altere seu e-mail' onChange={e => setEmail(e.target.value)} />
             </label>
             <label>
+            <h3 id={styles.subtitle}>Altere sua senha:</h3>
               <input type="password" value={cli_senha} placeholder='Altere sua senha' onChange={e => setSenha(e.target.value)} />
             </label>
           </div>
@@ -61,9 +66,7 @@ const Editinfocli: React.FC = () => {
           </button>
           </div>
         </form>
-          <div id={styles.Deletar}>
-            Deletar Conta
-          </div> 
+        <button className={styles.voltar} onClick={() => navigate(`/`)}>Voltar</button>
         </div>
       </div>
     </>

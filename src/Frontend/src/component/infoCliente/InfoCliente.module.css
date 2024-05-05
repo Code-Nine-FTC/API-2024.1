@@ -1,12 +1,10 @@
-* {
-    font-family: "Inter", sans-serif;
-}
+
 .conteudo{
     display: flex;
     flex-direction: column;
     /* width: 80vw; */
     flex-grow: 2;
-    height: 100vh;
+    height: 75vh;
     
 }
 
@@ -28,7 +26,7 @@ input{
     border-radius: 5px;
 }
 #Editar{
-    background-color: #0202c4;
+    background-color: #0d0d9b;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -39,12 +37,13 @@ input{
     cursor: pointer;
     transition: 0.5s;
     font-weight: bold;
-    width: 105px; 
+    width: 150px; 
+    height: 50px;
 }
 #Editar:hover{
     background-color: #030350;
 }
-#Deletar{
+/* #Deletar{
     gap: 10px;
     background-color: #d30404;
     color: white;
@@ -60,15 +59,15 @@ input{
     width: 105px; 
 }
 #Deletar:hover{
-    background-color: #700404;
-}
+    background-color: #700404; */
+/* } */
 .button{ 
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
-    padding: 30px;
-    margin-bottom: 10vh;
+    padding: 15px;
+    margin-bottom: 1px;
 }
 
 .Container{
@@ -103,7 +102,15 @@ input{
     
 }
 
-
+.voltar{
+    padding: 10px;
+    color: blue; 
+    text-Decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: larger;
+}
 
 .titulo{
     position: relative;
@@ -115,4 +122,11 @@ input{
     display: flex;
     border-bottom: 1px solid black;
     width: 44%;
+}
+
+#subtitle{
+    margin-left: 6.7%;
+    display: flex;
+    color: #0b0b5f;
+    padding: 5px;
 }

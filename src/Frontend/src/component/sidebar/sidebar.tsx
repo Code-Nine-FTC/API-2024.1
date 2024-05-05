@@ -2,7 +2,7 @@ import React, { useState, useRef} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from './Sidebar.module.css'
 import Dropdown from '../dropdown/dropdown';
-import perfilicone from '../../assets/fotoperfil/perfil.svg'
+import perfilicone from '../../assets/fotoperfil/perfilsidebar.svg'
 import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigationItems } from './navitens'
 import LogoutFunc from '../../functions/Logout/logoutFunc';
 import useAutenticarToken from '../../rotas/autenticarToken';

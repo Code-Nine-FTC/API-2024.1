@@ -68,12 +68,8 @@ a {
 }
 
 .userinfo img {
-    color: white;
-    width: 30px;
-    height: 40px;
-    flex: 1.5;
-    margin-left: 15%;
-    margin-top: 11%;
+    width: 10vh;
+    padding-left: 15px;
 }
 
 .infouser {
