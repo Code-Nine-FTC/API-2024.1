@@ -51,7 +51,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 5vw;
-  padding-right: 5vw;
+  padding-left: 13vw;
 }
 
 .buttonContainer button {
@@ -99,7 +99,7 @@
   .buttonContainer {
     display: flex;
     justify-content: center;
-    padding-right: 29vw;
+    padding-right: 50vw;
     padding-top: 5vw;
   }
 
