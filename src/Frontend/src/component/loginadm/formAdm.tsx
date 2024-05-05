@@ -3,7 +3,7 @@ import logo from "./projeto9999.png"
 import styles from './Login.module.css'
 import { Link } from 'react-router-dom';
 
-function LoginAdmForm({ tipoCadastro }: {tipoCadastro: string }) {
+function LoginForm() {
   return ( 
     <div className={styles.conteudo}>
       <form className={styles.conteudointerno}>
@@ -13,7 +13,7 @@ function LoginAdmForm({ tipoCadastro }: {tipoCadastro: string }) {
           <label htmlFor="label1">CPF</label>
           <input type="text" id={styles.label1} placeholder="000.000.000-00" />
           <label htmlFor="label2">Senha</label>
-          <input type="text" id={styles.label2} placeholder="Insira sua senha" />
+          <input type="password" id={styles.label2} placeholder="Insira sua senha" />
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
           <Link to='/login'><div className={styles.Title}>Voltar→</div></Link>
         </div>
@@ -22,4 +22,4 @@ function LoginAdmForm({ tipoCadastro }: {tipoCadastro: string }) {
   );
 }
 
-export default LoginAdmForm;
+export default LoginForm;
