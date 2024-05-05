@@ -112,7 +112,7 @@ const RegistroSup = () => {
                         </button>
                     </div>
                     <div className={styles.Title}>
-                        <Link to='/listarsuporte'> Voltar → </Link>
+                        <Link to='/visualizarTodosFuncionarios'> Voltar → </Link>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}

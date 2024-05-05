@@ -41,17 +41,20 @@
 }
 
 .titleLine {
-  border-bottom: 1px solid rgb(82, 82, 82); 
+
+  border-bottom: 1px solid rgb(0, 0, 0); 
   width: 40vw;
   padding-bottom: 1vw;
-  color: blue;
+  color: rgb(6, 6, 150);
+  padding-top: 20px;
+  
 }
 .buttonContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 5vw;
-  padding-left: 13vw;
+  padding-left: 0vw;
 }
 
 .buttonContainer button {
@@ -65,17 +68,30 @@
 }
 
 .buttonContainer button:hover {
-  background-color: darkblue; 
+  background-color: #04048a; 
   border-color: darkblue; 
 }
 .nomeColumn, .cpfColumn, .emailColumn{
-  flex: 1;
   padding-left: 3vw; /* Espaçamento à esquerda */
   padding-right: 3vw; /* Espaçamento à direita */
 }
-.verdetalhes {
-  position: absolute;
-margin-left: 36vw;  
+
+
+.customLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  grid-gap: 10px; /* Espaçamento entre linhas */
+ margin-top: 25px;
+}
+
+.userData {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000000; /* Adiciona uma borda sólida de 1px com a cor cinza */
+  padding: 10px; /* Adiciona um espaçamento interno de 10px para melhorar a aparência */
+  
+  
 }
 
 
@@ -114,8 +130,8 @@ margin-left: 36vw;
     align-items: center;
     margin-left: 2vw;
   }
-  .verdetalhes {
-    position: absolute;
+  .verdetalheslink {
+    position: center;
     padding-top: 23vw;    
   }
 }

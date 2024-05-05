@@ -47,40 +47,39 @@ const ListagemFuncionarios = () => {
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
-          <div className={styles.nomeColumn}>
-            <h3>Nome</h3>
-            {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>
-                <div className={styles.nameAndCpfLine}>
-                  <span>{funcionario.func_nome}</span>
-                  <div className={styles.verdetalhes}> 
-                  <Link to={`/visualizarfuncionario/${funcionario.func_cpf}`}>
-                    Ver detalhes
-                  </Link>
-                  </div>
-                </div>
+          {funcionarios.map((funcionario) => (
+            <div className={styles.funcionarioContainer} key={funcionario.func_cpf}>
+              <div className={styles.userData}>
+                <h3>Nome</h3>
+                <span>{funcionario.func_nome}</span>
               </div>
-            ))}
-          </div>
-          <div className={styles.cpfColumn}>
-            <h3>CPF</h3>
-            {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>{funcionario.func_cpf}</div>
-            ))}
-          </div>
-          <div className={styles.emailColumn}>
-            <h3>E-mail</h3>
-            {funcionarios.map((funcionario) => (
-              <div key={funcionario.func_cpf}>{funcionario.func_email}</div>
-            ))}
-          </div>
-          {/* Add more columns for other details like password, working hours, etc. */}
-        </div>
-        <Link to="/registrosuporte">
+              <div className={styles.userData}>
+                <h3>CPF</h3>
+                <span>{funcionario.func_cpf}</span>
+              </div>
+              <div className={styles.userData}>
+                <h3>E-mail</h3>
+                <span>{funcionario.func_email}</span>
+              </div>
+              <div className={styles.userData}>
+              <Link
+                id={styles.detalheslink}
+                to={`/visualizarfuncionario/${funcionario.func_cpf}`}
+                style={{ color: 'black'}}>
+                Ver detalhes
+              </Link>
+              </div>
+            </div>
+          ))}
+    </div>
+
+
+
+        
           <div className={styles.buttonContainer}>
-            <button type="button">Cadastrar Atendente</button>
+            <Link to="/registrosuporte"> <button type="button">Cadastrar Atendente</button></Link>
           </div>
-        </Link>
+       
       </div>
     </div>
     
