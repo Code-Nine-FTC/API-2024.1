@@ -216,28 +216,6 @@ Desenvolver uma versão inicial do aplicativo, visando o menor produto viável (
      - O administrador tenta novamente com as credencias corretas, se sucesso então ele é redirecionado.
 
 
-### User Story 15:
-
-- Tarefa: Como cliente, desejo um FAQ com possíveis soluções para poder resolver problemas frequentes.
-
-  - Critério de Aceitação:
-
-     - O sistema deve fornecer uma seção de FAQ (Frequently Asked Questions) acessível aos clientes.
-     - O FAQ deve conter uma lista de perguntas frequentes relacionadas aos problemas mais comuns enfrentados pelos clientes.
-     - Para cada pergunta frequente, o FAQ deve fornecer uma resposta clara e detalhada que ajude o cliente a resolver o problema.
-     - O FAQ deve ser organizado de forma clara e intuitiva, permitindo aos clientes encontrar facilmente as respostas para suas dúvidas.
-     - Deve haver uma opção para os clientes entrarem em contato com o suporte caso não encontrem a solução para seu problema no FAQ.
-
-  - Cenário:
-
-     - O cliente acessa o sistema e navega até a seção de perguntas frequentes.
-     - Encontra a seção de FAQ e entra nela.
-     - Visualiza uma lista de perguntas frequentes sobre problemas comuns.
-     - Seleciona uma pergunta que corresponda ao seu problema atual.
-     - Lê a resposta fornecida e verifica se ela resolve o seu problema.
-     - Se a resposta resolve o problema, o cliente segue as instruções fornecidas no FAQ.
-     - Se a resposta não resolver o problema, o cliente pode entrar em contato com o suporte para obter assistência adicional.
-
 <h2> Vídeo demonstrativo </h2><a name="video"></a>
 
 https://github.com/Code-Nine-FTC/API-2024.1/assets/104574671/091e3f02-0c28-4251-947f-0538d1898cd0
