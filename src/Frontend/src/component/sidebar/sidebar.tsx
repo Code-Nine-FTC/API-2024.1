@@ -15,6 +15,7 @@ const Sidebar = () => {
     const userTipo = localStorage.getItem('nivel') || '';
     const buttonRef = useRef<HTMLButtonElement>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
+    const sidebarcontainerRef = useRef<HTMLDivElement>(null);
     const [isSidebarAberta, setIsSidebarAberta] = useState(false);
     const [isDropdownAberto, setIsDropdownAberto] = useState<number | null>(null);
     const [ativoNavItem, setAtivoNavItem] = useState('');
@@ -31,6 +32,9 @@ const Sidebar = () => {
         }
         if (sidebarRef.current) {
             sidebarRef.current.classList.toggle(styles.open);
+        }
+        if (sidebarcontainerRef.current) {
+            sidebarcontainerRef.current.classList.toggle(styles.open)
         }
     };
 
@@ -76,12 +80,12 @@ const Sidebar = () => {
 
     return (
         <>
-        <div className={styles.sidebarContainer}>
-            <button ref={buttonRef} onClick={abrirSidebar} className={styles.sidebarButton}>
+        <button ref={buttonRef} onClick={abrirSidebar} className={styles.sidebarButton}>
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+        <div ref={sidebarcontainerRef} className={styles.sidebarContainer}>
             <section ref={sidebarRef} className={styles.sidebar}>
                 {userTipo !== '' && (
                 <> 

@@ -60,6 +60,10 @@ a {
     opacity: 1;
 }
 
+.sidebarContainer.open {
+    transform: translateX(0);
+}
+
 .userinfo {
     margin-top: 5vh;
     display: flex;
@@ -175,7 +179,7 @@ a {
     height: 2rem;
     width: 2rem;
     position: absolute; 
-    z-index: 1;
+    z-index: 2;
     transition: left 0.3s ease-in-out;
 }
 
@@ -260,6 +264,7 @@ a {
     .sidebarContainer {
         position: fixed;
         z-index: 1;
+        transform: translateX(-100%);
     }
 }
 
