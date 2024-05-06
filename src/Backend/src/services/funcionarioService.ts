@@ -59,10 +59,11 @@ export class FuncionarioService {
                 if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
                     return { success: false, message: 'Dados inválidos!' };
                 }
-
+                
+                const redirecionar = 'atendente'
                 const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret3)
                 console.log('Autenticação realizada com sucesso')
-                return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
+                return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, redirecionar };
             }
             // Admin
             if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
@@ -70,8 +71,9 @@ export class FuncionarioService {
                 return { success: false, message: 'Dados inválidos!' };
             }
             const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'administrador' }, secret3)
+            const redirecionar = 'administrador'
             console.log('Autenticação realizada com sucesso (ADM')
-            return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token };
+            return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, redirecionar };
         } catch (error) {
             console.error(`Erro ao fazer login: ${error}`);
             return { success: false, message: 'Erro ao fazer login!' };

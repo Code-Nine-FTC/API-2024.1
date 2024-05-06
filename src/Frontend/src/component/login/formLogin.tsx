@@ -85,7 +85,12 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               setToken(tokenFunc)
               localStorage.setItem('token', tokenFunc);
               console.log(localStorage.getItem('token'))
-              return navigate('/visualizarTodosFuncionarios')
+              if (resultadoFuncionario.redirecionar === 'atendente'){
+                return navigate('/homesup')
+              }
+              else {
+                return navigate('/visualizarTodosFuncionarios')
+              }
             }
             break;
         }
