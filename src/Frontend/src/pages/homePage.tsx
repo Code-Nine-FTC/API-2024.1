@@ -50,7 +50,7 @@ function Home() {
   </Modal>)}
   <div className={styles.conteudo}>
   {!autenticacao && (
-    <h1> Cadastre-se para ver seus chamados recentes!</h1>
+    <h1 className={styles.titulo}> Cadastre-se para ver seus chamados recentes!</h1>
   )}
   {autenticacao && (
     <>

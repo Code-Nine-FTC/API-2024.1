@@ -9,7 +9,9 @@
 .title{
   padding-bottom: 15px;
 }
-
+.titulo{
+  text-align: center;
+}
 .conteudo {
   display: flex;
   flex-direction: column;

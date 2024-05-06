@@ -1,6 +1,6 @@
 import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
-import  IFuncionarioUpdate  from "./interface/IFuncionarioUpdate"
+import  IFuncionarioUpdate  from "./Interface/IFuncionarioUpdate"
 
 const updateFuncionario = async (func_id: number, dadosUpdate: IFuncionarioUpdate, token: string | null) => {
     try {

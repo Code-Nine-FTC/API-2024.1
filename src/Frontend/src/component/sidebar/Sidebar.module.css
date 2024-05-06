@@ -52,6 +52,7 @@ a {
     display: flex;
     max-width: max-content;
     max-height: max-content;
+    text-align: center;
 }
 
 .sidebar.open {
@@ -215,10 +216,13 @@ a {
     transition: 0.5s;
     font-weight: bold;
     width: 100px; 
-    margin-left: 28%;
 }
 
 .x{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: white;
     text-align: center;
     padding: 20px;
@@ -257,16 +261,10 @@ a {
         position: fixed;
         z-index: 1;
     }
-    .button{
-        margin-left: 20%;
-    }
 }
 
 @media (max-width: 1186px) {
     .sidebar {
         min-width: 17vw;
-    }
-    .button{
-        margin-left: 20%;
     }
 }
