@@ -11,8 +11,8 @@ import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup"
 import Listagem from "../pages/listasuporte"
 import RotaProtegida from "./rotaProtegida";
-import VisualizarFuncionario from "../pages/View/viewFuncionario";
-import EditarFuncionario from "../pages/Editar/editarFuncionario";
+import VisualizarFuncionario from "../pages/View/viewFuncionarioPage";
+import VisualizarCliente from "../pages/View/viewClientePage";
 
 const Rotas = () => {
     return (
@@ -20,8 +20,8 @@ const Rotas = () => {
           <Switch>
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
-            <Route path="/editarfuncionario/:id" element={<RotaProtegida><EditarFuncionario/></RotaProtegida>}/>
-            <Route path= "/visualizarcliente" element={<RotaProtegida><Editinfocli/></RotaProtegida>}/>
+            <Route path="/editarfuncionario/:id" element={<RotaProtegida><VisualizarCliente/></RotaProtegida>}/>
+            <Route path= "/visualizarcliente/:id" element={<RotaProtegida><Editinfocli/></RotaProtegida>}/>
             <Route path="/loginadm" element={<LoginAdmPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path= "/registrosuporte" element={<RotaProtegida><RegistroSup/></RotaProtegida>}/>

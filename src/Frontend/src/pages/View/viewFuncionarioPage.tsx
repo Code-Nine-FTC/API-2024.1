@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../../component/sidebar/sidebar";
 import { useEffect, useState } from "react"; // Importe o useState
 import viewFuncionario from "../../functions/View/viewFuncionarioFunc";
-import DetalhesFuncionario from "../../component/View/viewFuncionario";
+import DetalhesFuncionario from "../../component/View/viewFuncionarioComponent";
 
 export default function VisualizarFuncionario() {
     const navigate = useNavigate();

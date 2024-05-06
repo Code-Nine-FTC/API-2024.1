@@ -63,7 +63,8 @@ export default class ClienteController {
     }
     async visualizarCliente(req: Request, res: Response) {
         try {
-            const clienteLogado = res.locals.cliente
+            const clienteLogado = req.body
+            console.log('Recebendo dados em /viewCliente')
             console.log(clienteLogado)
             const id = Number(clienteLogado.cli_id)
             if (isNaN(id) || id <= 0) {

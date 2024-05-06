@@ -106,10 +106,11 @@ export class ClienteService {
     }
     public async visualizarCliente(id: number) {
         try {
+            console.log('Recebendo dados em Visualizar Cliente')
             const clienteRepository = Connection.getRepository(Cliente)
             const cliente = await clienteRepository.findOne({ where: { cli_id: id } })
             if (!cliente) {
-                return { success: false, message: `Cliente não entrado` }
+                return { success: false, message: `Cliente não encontrado` }
             }
             return { success: true, message: `Cliente encontrado`, cliente }
         } catch (error) {

@@ -12,6 +12,7 @@ import useAutenticarToken from '../../rotas/autenticarToken';
 const Sidebar = () => { 
     const token = localStorage.getItem('token') || ''
     useAutenticarToken(token)
+    const id = localStorage.getItem('id')
     const userTipo = localStorage.getItem('nivel') || '';
     const buttonRef = useRef<HTMLButtonElement>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
@@ -92,7 +93,7 @@ const Sidebar = () => {
                     <div className={styles.userinfo}>
                     <img src={perfilicone} alt="Foto de perfil"/>
                     <div className={styles.infouser}>
-                        <Link to="/visualizarcliente" id={styles.linkperfil}> Eu </Link>
+                        <Link to={`/visualizarfuncionario/${id}`} id={styles.linkperfil}> Eu </Link>
                         <h2> {userTipo.charAt(0).toUpperCase() + userTipo.slice(1)} </h2>
                         {/* Deixa a primeira letra do nome maiúscula */}
                     </div>
