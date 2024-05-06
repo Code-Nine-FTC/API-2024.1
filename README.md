@@ -1,10 +1,5 @@
-<h1> Fatec Prof° Jessen Vidal - 1º Semestre de 2024 </h1>
-<p> Projeto desenvolvido por alunos do 2º semestre do curso de Desenvolvimento de Software Multiplataforma para o API (Aprendizagem por Projetos Integrados),
- com o objetivo de produzir um sistema de gerênciamento de chamados e serviços. </p>
-<br>
-
-<h2> 🗂️ Índice </h2>
-
+### Sprint 2
+=======
 - [Sobre o Projeto](#sobre)
 - [Metodologia Utilizada](#metodologias)
 - [Tecnologias Utilizadas](#tecnologias)
@@ -27,8 +22,6 @@
 
 <p> O framework de Metodologia Ágil utilizado no produto foi o Scrum, um método ágil adaptativo, iterativo, flexível e eficaz.
 Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprints. Para selecionar quais seriam as entregas das nossas Sprints, primeiro definimos nosso MVP, priorizando as tarefas que trariam maior entrega de valor para o cliente. Então, a partir das Tarefas foi construído o Backlog do Produto,  o qual foi aprovado pelo cliente e dividido em 4 Backlogs de Sprint. </p>
-
-<br>
 
 <h2> 🖥️ Tecnologias Utilizadas </h2><a name="tecnologias"></a>
 
@@ -102,7 +95,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 | Sprint |   Início   |  Entrega   |                                      Relatório                                      | Status |
 | :----: | :--------: | :--------: | :---------------------------------------------------------------------------------: | :----: |
 |   01   | 25/03/2024 | 14/04/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-1"> 1° Relatório </a> |   ✅   |
-|   02   | 15/05/2024 | 05/05/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-2"> 2° Relatório </a> |  🔁  |
+|   02   | 15/05/2024 | 05/05/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-2"> 2° Relatório </a> |  ✅  |
 |   03   | 06/05/2023 | 26/06/2024 | 3° Relatório </a> |    🔁   |
 |   04   | 27/05/2023 | 06/06/2023 | 4° Relatório </a> |   🔁   |
 
@@ -121,6 +114,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 | <img src="https://media.licdn.com/dms/image/D4D03AQECpQ1TjLb7mQ/profile-displayphoto-shrink_200_200/0/1696098623322?e=2147483647&v=beta&t=DLisI-vHChLbCiEQ88konsGhNkt2i_LQhYzaJjjEeg4" alt="foto de perfil" height="64px" width="64px">         |   Eduardo Namiuti  |  Developer        | <a href="https://github.com/eduardofsn"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://br.linkedin.com/in/eduardo-namiuti-5641b627b"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
 | <img src="https://avatars.githubusercontent.com/u/142221388?v=4" alt="foto de perfil" height="64px" width="64px">         |   Júlia Rosado  |  Developer        | <a href="https://github.com/juliamariahr"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/júlia-rosado/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
 | <img src="https://avatars.githubusercontent.com/u/142221695?v=4" alt="foto de perfil" height="64px" width="64px">         |   Joyce Silva |  Product Owner       | <a href="https://github.com/joycesilvaaa"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/joyce-silva-79a4b9287/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
+
 
 
 

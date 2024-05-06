@@ -1,0 +1,171 @@
+main {
+    background-color: #0036a3;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    padding: 0;
+    margin: 0;
+  }
+  
+.logo{
+    max-width: 30%;
+    margin-left: 7%;
+  }
+  
+
+/* Estilos para o conteúdo */
+
+.conteudo {
+    width: 70vw;
+    display: flex;
+
+}
+
+.conteudointerno {
+    flex: 2;
+    background-color: white;
+    width: 80%;
+    height: 70vh; /* Altura padrão da section */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+  
+  /* Estilos para as labels */
+  .Labels {
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;/* Ajuste a margem superior conforme necessário */
+    color: #0036a3;
+    margin: 10px 0 0 10vw;
+    
+  }
+  
+  .Labels label {
+    margin-bottom: 15px; /* Ajuste o espaçamento entre as labels conforme necessário */
+  }
+  
+  #label1,
+  #label2 {
+    width: 80%; /* Isso fará com que os inputs ocupem toda a largura da sua seção */
+    padding: 3%; /* Adiciona espaço interno dentro do input */
+    border-radius: 5px; /* Borda arredondada */
+    border: 2px solid #ccc; /* Borda com cor cinza */
+    font-size: 0.6em; /* Tamanho da fonte */
+    background-color: #f5f5f5; /* Cor de fundo */
+    transition: border-color 0.3s ease; /* Transição suave para a mudança de cor da borda */
+    margin-bottom: 5px;
+  }
+  
+  #label1:focus,
+  #label2:focus {
+    border-color: #0036a3; /* Cor da borda ao receber foco */
+    outline: none; /* Remove a borda de foco padrão */
+  }
+  
+  /* Media query para telas menores */
+  @media (max-width: 768px) {
+    .conteudointerno {
+      flex-direction: column;
+      align-items: center;
+      height: 120vh;
+    }
+    .Labels{
+      margin-top: 1px;
+    }
+
+  .logo {
+    width: 80%; /* Reduz o tamanho máximo da imagem para telas menores */
+    max-width: 300px;
+    margin-bottom: 5px;
+    top: 3%; /* Posiciona a imagem a 5% da altura da tela */
+    left: 25%; /* Posiciona a imagem a 5% da largura da tela */
+    display: block; /* Garante que a foto seja exibida em telas menores */
+  }
+
+
+    .Labels {
+      padding-left: 0px; /* Remove o padding-left para telas menores */
+      padding-right: 20px;
+      padding-top: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      align-items: center; /* Centraliza verticalmente as labels */
+      justify-content: center; /* Centraliza horizontalmente as labels */
+      
+    }
+  
+    .Labels h1 {
+      justify-content: center;
+      text-align: center; /* Alinha o título no centro para telas menores */
+      padding-bottom: 20px;
+    }
+  
+    .Labels label {
+      padding-bottom: 5px;
+      margin-bottom: 2%; /* Reduz o espaçamento entre as labels para telas menores */
+    }
+  }
+  
+  .EntrarButton {
+    margin-top: 20px;
+    padding: 3%;
+    background-color: #0036a3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 85%;
+    margin-left: 7%;
+  }
+  
+  .EntrarButton:hover {
+    background-color: #002578; /* Escurece um pouco ao passar o mouse */
+  }
+  
+  /* Estilos para o título clicável */
+  .Title {
+    margin-top: 20px; /* Espaço entre o botão e o título */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 4vw;
+  }
+
+  .Title a {
+    font-size: 18px; /* Tamanho da fonte do título */
+    color: blue; /* Cor do texto do título */
+    cursor: pointer; /* Transforma o cursor em uma mãozinha quando passa sobre o título */
+    margin-bottom: 2%;
+  }
+
+  .Title a:hover {
+    text-decoration: underline; /* Sublinha o texto do título ao passar o mouse */
+  }
+
+@media (max-width: 1000px) {
+  .logo {
+    margin-left: 5%;
+  }
+
+  .Labels {
+    margin-left: 5%;
+  }
+  .Title {
+    margin-top: 20px; /* Espaço entre o botão e o título */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 7vw;
+  }
+}
+

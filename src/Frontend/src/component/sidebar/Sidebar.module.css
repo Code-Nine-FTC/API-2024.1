@@ -1,0 +1,272 @@
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.navItens {
+    margin-top: 10vh;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+a {
+    display: flex;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+#logout {
+    margin-top: auto;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+#logout h1 {
+    display: flex;
+    text-decoration: none;
+    background-color: none;
+    color: white;
+    font-size: 1.1em;
+}
+
+.sidebar {
+    background-color: #00046D;
+    transform: translateX(0);
+    /* position: absolute; */
+    min-width: max-content;
+    min-width: 14vw;
+    min-height: 100vh;
+    max-height: max-content;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarContainer {
+    position: relative;
+    display: flex;
+    max-width: max-content;
+    max-height: max-content;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.userinfo {
+    margin-top: 5vh;
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.userinfo img {
+    width: 10vh;
+    padding-left: 15px;
+}
+
+.infouser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1.5;
+    margin-right: 8%;
+    margin-left: 15%;
+}
+
+#linkperfil {
+    color: white;
+    font-weight: 500;
+    font-size: 1.4em;
+    margin-bottom: 0;
+    align-self: flex-start;
+}
+
+.infouser h2 {
+    margin-top: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 300;
+    align-self: flex-start;
+}
+
+.navitemdiv {
+    margin-bottom: 10px;
+    min-width: 300px;
+    height: auto;
+    width: inherit;
+    color: white;
+    font-size: 1.1em;
+    max-height: 60px;
+}
+
+.navitemdiv a {
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.navitemdiv.ativo {
+    background-color: #111686;
+    transition: max-height 0.3s ease-in-out;
+    max-height: 300px;
+    width: 100%;
+}
+
+.alignlabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+#alignspan {
+    display: flex;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    cursor: pointer;
+}
+
+.navitemdiv img{
+    margin-right: 10px;
+}
+
+/* .navitemdiv li a {
+    margin-bottom: 90%;
+} */
+
+.dropdownMenu {
+    margin-bottom: 10%
+}
+
+.dropdownMenu.ativo {
+    background-color: #111686;
+}   
+
+.dropdownItem{
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdownItem a {
+    text-align: center;
+}
+
+.dropdownItem.ativo a{
+    text-decoration: underline;
+}
+
+.sidebarButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 1vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 2rem;
+    width: 2rem;
+    position: absolute; 
+    z-index: 1;
+    transition: left 0.3s ease-in-out;
+}
+
+.sidebarButton span {
+    width: 2rem;
+    height: 0.25rem;
+    background: currentColor;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+    color: #8488f3;
+    /* border: 1px solid #000000; */
+}
+
+.sidebarButton.open span:nth-child(1) {
+    transform: rotate(45deg);
+}
+  
+.sidebarButton.open span:nth-child(2) {
+    opacity: 0;
+}
+  
+.sidebarButton.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.button{
+    background-color: #ffffff;
+    color: #0202c4;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;  
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: bold;
+    width: 100px; 
+    margin-left: 28%;
+}
+
+.x{
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+
+@media (min-width: 769px) {
+    .sidebar.open {
+        transform: translateX(0);
+        position: absolute;
+        min-width: 17vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebarButton {
+        display: flex;
+        position: fixed;
+    }
+    .sidebar {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    .navitemdiv {
+        margin-bottom: 10px;
+        /* min-width: 100%; */
+        width: inherit;
+        color: white;
+        font-size: 1.1em;
+    }
+    .navitemdiv li {
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
+    .sidebarContainer {
+        position: fixed;
+        z-index: 1;
+    }
+    .button{
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 1186px) {
+    .sidebar {
+        min-width: 17vw;
+    }
+    .button{
+        margin-left: 20%;
+    }
+}

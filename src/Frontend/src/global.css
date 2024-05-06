@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+main {
+    max-width: auto;
+    /* min-height: calc(100vh - 95px); */
+    color: white;
+    padding: 40px 20px;
+}
+
+.divtotal {
+    display: flex;
+}
