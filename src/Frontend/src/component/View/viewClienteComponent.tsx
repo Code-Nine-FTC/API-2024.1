@@ -34,7 +34,7 @@ function DetalhesCliente({ cliente, navigate }: DetalhesClienteProps) {
 
       </div>
       <div className={styles.containerbotao}>
-            <button className={styles.button} onClick={() => navigate(`/editarcliente${cliente.cli_id}`)}>Editar</button>
+            <button className={styles.button} onClick={() => navigate(`/editarcliente/${cliente.cli_id}`)}>Editar</button>
             <button className={styles.button} onClick={() => navigate(`/`)}>Voltar</button>
       </div>
     </div>

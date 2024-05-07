@@ -93,7 +93,7 @@ const Sidebar = () => {
                     <div className={styles.userinfo}>
                     <img src={perfilicone} alt="Foto de perfil"/>
                     <div className={styles.infouser}>
-                        <Link to={`/visualizarfuncionario/${id}`} id={styles.linkperfil}> Eu </Link>
+                        <Link to={`/visualizarCliente/${id}`} id={styles.linkperfil}> Eu </Link>
                         <h2> {userTipo.charAt(0).toUpperCase() + userTipo.slice(1)} </h2>
                         {/* Deixa a primeira letra do nome maiúscula */}
                     </div>

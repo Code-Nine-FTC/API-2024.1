@@ -5,7 +5,7 @@ import { rotaBase } from '../RotaBase/rotaBase';
 const viewCliente = async (cli_id: number, token: string | null) => {
   try {
     // envia o id 
-    const response = await axios.post(`${rotaBase}/viewCliente`,{cli_id: cli_id}, {
+    const response = await axios.post(`${rotaBase}/verCliente`,{cli_id: cli_id}, {
       headers: {
         Authorization: `Bearer ${token}`
       }

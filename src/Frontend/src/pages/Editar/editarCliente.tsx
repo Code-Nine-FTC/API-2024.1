@@ -7,11 +7,11 @@ import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 
-const Editinfocli: React.FC = () => {
+const EditInfoCliente: React.FC = () => {
   const navigate = useNavigate();
-  const [cli_nome, setNome] = useState<string>('');
-  const [cli_email, setEmail] = useState<string>('');
-  const [cli_senha, setSenha] = useState<string>('');
+  const [cli_nome, setNome] = useState<string>();
+  const [cli_email, setEmail] = useState<string>();
+  const [cli_senha, setSenha] = useState<string>();
   const id = localStorage.getItem('id') || ''
   const token = localStorage.getItem('token')
 
@@ -66,11 +66,11 @@ const Editinfocli: React.FC = () => {
           </button>
           </div>
         </form>
-        <button className={styles.voltar} onClick={() => navigate(`/`)}>Voltar</button>
+        <button className={styles.voltar} onClick={() => navigate(`/visualizarCliente/${id}`)}>Voltar</button>
         </div>
       </div>
     </>
   );
 }
 
-export default Editinfocli;
+export default EditInfoCliente;
