@@ -1,0 +1,260 @@
+.blueText{
+    padding-top: 15px;
+  }
+  
+  .blueText1{
+    margin-left: 10%;
+    color: #00046D;
+  }
+  .title{
+    padding-bottom: 15px;
+  }
+  .titulo{
+    text-align: center;
+  }
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    margin: 5% auto 5% auto;
+    align-items: center;
+  }
+  .button1 {
+    border-style: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3 ease;
+  }
+  .button1:hover{
+    transform: scale(1.1) ;
+  }
+  
+  .item{
+    background-color: rgb(238, 238, 238);
+    padding: 30px;
+    width: 14vw;
+    height: 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    
+  .item button {
+    border: none;
+  }
+  
+    .status{
+      display: flex;
+      flex-direction: column;
+    
+    }
+    
+    .flexBaseText{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      align-self: flex-start;
+    }
+    
+    .supportButton{
+      width: 22vw;
+      height: 8vh;
+      font-size: 16px;
+      background-color: #111686;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 3%;
+    
+    }
+    
+    .statusMain{
+      font-weight: normal;
+    }
+    
+    .carrouselControl{
+      display: flex;
+      gap: 20px;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+    
+    .blueText{
+      color: #00046D;
+    }
+    
+    .statusBox{
+      background-color: rgb(238, 238, 238);
+      justify-content: flex-start;
+      width: 67vw;
+      margin: 0 auto 0 auto;
+    }
+    
+    .ticketText{
+      padding-right: 190px;
+    }
+    
+    .buttonAlign{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 50px;
+      margin-right: 2%;
+    
+    }
+    
+    .alignTicket {
+      flex-grow: 1;
+    }
+    
+
+    .buttonNav{
+        display: flex;
+        gap: 10px;
+        flex-direction: row-reverse;
+    }
+    .alignDistance{
+      display: flex;
+      align-items: last baseline;
+      flex-grow: 1;
+    }
+    
+    .chatButton{
+      width: 160px;
+      height: 35px;
+      background-color: #111686;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 3%;
+      margin-left: auto;
+      /* margin-right: 20%; */
+    }
+
+    .andamentoButton{
+        width: 160px;
+        height: 35px;
+        background-color: #EB751F;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 3%;
+        margin-left: auto;
+        /* margin-right: 20%; */
+      }
+
+      .concluidoButton{
+        width: 160px;
+        height: 35px;
+        background-color: #13AD23;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 3%;
+        margin-left: auto;
+        /* margin-right: 20%; */
+      }
+
+      .esperaButton{
+        width: 160px;
+        height: 35px;
+        background-color: #ECE41F;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 3%;
+        margin-left: auto;
+        /* margin-right: 20%; */
+      }
+    
+
+      .chatButton2{
+        width: 160px;
+        height: 35px;
+        background-color: #767676;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 3%;
+        margin-left: auto;
+      /* margin-right: 20%; */
+      }
+    
+    .title{
+      font-weight: normal;
+    }
+    
+    .item-title{
+      color: #1B2A41;
+      margin-top: 1px;  
+    }
+    
+    .carrousel{
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+  
+  @media (max-width: 768px) {
+    .conteudo {
+      margin-top: 15%;
+      width: auto;
+      
+    }
+  
+    .item{
+      background-color: rgb(238, 238, 238);
+      padding: 30px;
+      width: 14vw;
+      height: auto;
+    
+    }
+    
+    .alignTicket{
+      width: 30px;
+      }
+  
+      .alignDistance{
+        flex-direction: column;
+        gap: 5px;
+      }
+  
+      .chatButton{
+        width: 150px;
+        height: 35px;
+      }
+  
+      .supportButton{
+        width: 300px;
+        margin-left: 20%;
+      }
+  
+      .orangeRectangle{
+        height: 160px;
+        width: 10px;
+      }
+  
+      .statusBox{
+        width: auto;
+      }
+  
+      .item{
+        margin: 0 auto 0 auto;
+        text-align: center;
+      }
+  }
+  
+  .carrousel-button{
+    border: none;
+  }
+  @media (max-width:980px){
+    .supportButton{
+      width: 300px;
+      margin-left: 4%;
+    }
+  }
+  @media (max-width:1320px){
+    .supportButton{
+      width: 300px;
+      margin-left: 4%;
+    }
+  }
