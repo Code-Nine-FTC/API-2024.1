@@ -110,9 +110,9 @@ const RegistroSup = () => {
                         <button type='submit' id={styles.Editar}>
                             Adicionar Suporte
                         </button>
-                    </div>
-                    <div className={styles.Title}>
-                        <Link to='/visualizarTodosFuncionarios'> Voltar → </Link>
+                        <div className={styles.Title}>
+                            <Link to='/visualizarTodosFuncionarios'> Voltar → </Link>
+                        </div>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}
