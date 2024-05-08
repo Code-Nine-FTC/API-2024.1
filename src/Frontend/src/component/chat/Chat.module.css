@@ -80,6 +80,12 @@
     margin-bottom: 0;
 }
 
+.alinharInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5%;
+}
+
 .campoMensagens {
     width: 100%;
     height: 65%;

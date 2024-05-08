@@ -17,9 +17,11 @@ const HeaderChat = () => {
                         <img className={styles.ticketFoto} src={ticketFoto} alt="Logo do Ticket"/>
                         <p className={styles.ticket}>Ticket#{ticket.id}</p>
                     </div>
-                    <p>Atendente: {ticket.atendente}</p>
-                    <p>Tipo: {ticket.tipo}</p>
-                    <p>Categoria: {ticket.categoria}</p>
+                    <div className={styles.alinharInfo}>
+                        <p>Atendente: {ticket.atendente}</p>
+                        <p>Tipo: {ticket.tipo}</p>
+                        <p>Categoria: {ticket.categoria}</p>
+                    </div>                
                 </div>
             </header>
         </>
