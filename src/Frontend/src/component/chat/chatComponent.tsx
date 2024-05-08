@@ -1,5 +1,7 @@
 const ChatComponent = () => {
     return (
+        <>
+        </>
     )
 }
 

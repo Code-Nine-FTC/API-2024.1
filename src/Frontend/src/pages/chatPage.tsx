@@ -1,4 +1,4 @@
-import HeaderChat from "../component/chat/headerChat"
+import HeaderChat from "../component/chat/headerChatComponent"
 import Sidebar from "../component/sidebar/sidebar"
 
 const ChatPage = () => {
@@ -6,7 +6,7 @@ const ChatPage = () => {
         <>
         <Sidebar/>
         <HeaderChat/>
-        <Chat/>
+        {/* <Chat/> */}
         </>
     )
 }
