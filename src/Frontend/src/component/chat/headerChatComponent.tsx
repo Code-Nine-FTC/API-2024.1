@@ -22,5 +22,4 @@ const HeaderChat = () => {
         </>
     )
 }
-
 export default HeaderChat
