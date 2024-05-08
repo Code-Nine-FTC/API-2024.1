@@ -6,13 +6,20 @@ import styles from "../component/chat/Chat.module.css"
 
 
 const ChatPage = () => {
+    const nivel = localStorage.getItem('nivel')
+
+    if (nivel === 'administrador') {
+
+    }
     return (
         <>
         <Sidebar/>
         <div className={styles.chatContent}>
             <HeaderChat/>
             <ChatComponent/>
-            <EnviarMensagem/>
+            {nivel !== 'administrador' &&(
+                <EnviarMensagem/>
+            )}
         </div>
         </>
     )

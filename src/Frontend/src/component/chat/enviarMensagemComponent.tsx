@@ -1,7 +1,11 @@
 import styles from './Chat.module.css'
 import enviarIcon from '../../assets/chat/sendicon.svg'
+import { useState } from 'react'
 
 const EnviarMensagem = () => {
+
+    const [mensagem, setMensagem] = useState();
+    
     return (
         <div className={styles.enviarMensagem}>
             <form method="POST" className={styles.formMensagem}>
