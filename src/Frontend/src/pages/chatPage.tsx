@@ -4,6 +4,7 @@ import HeaderChat from "../component/chat/headerChatComponent"
 import Sidebar from "../component/sidebar/sidebar"
 import styles from "../component/chat/Chat.module.css"
 
+
 const ChatPage = () => {
     return (
         <>

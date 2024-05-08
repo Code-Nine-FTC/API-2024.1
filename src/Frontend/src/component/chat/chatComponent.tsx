@@ -1,10 +1,11 @@
 import styles from "./Chat.module.css"
+import Mensagem from './mensagens'
 
 const ChatComponent = () => {
     return (
         <>
         <div className={styles.campoMensagens}>
-            <h1> Mensagem </h1>
+            <Mensagem/>
         </div>
         </>
     )
