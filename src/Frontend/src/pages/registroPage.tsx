@@ -3,6 +3,7 @@ import styles from '../component/registro/Registro.module.css';
 import CadastroClienteFunc from '../functions/Cadastro/cadastroClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Registro = () => {
 
@@ -14,6 +15,8 @@ const Registro = () => {
         senha2: '',
     })
     const [erro, setErro] = useState ('')
+
+    const navigate = useNavigate()
     
     const handleCpfChange = (event: any) => {
         const cpfFinal = event.target.value.replace(/\D/g, '')
@@ -39,7 +42,9 @@ const Registro = () => {
                     setErro('')
                 }
                 toast.success('Cadastro concluído')
-                
+                setTimeout(() => {
+                    navigate('/login')
+                }, 2000);
             }
             catch (error:any) {
                 setErro(error.message)

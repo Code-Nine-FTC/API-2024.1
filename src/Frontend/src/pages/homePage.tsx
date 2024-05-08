@@ -11,6 +11,9 @@ import Sidebar from '../component/sidebar/sidebar';
 import { Modal } from '../component/modal/modal';
 import { useEffect, useState } from 'react';
 import useAutenticarToken from '../rotas/autenticarToken';
+// import Statusemandamento from '../component/statusEmAndamento/statusEmAndamento';
+// import Statusconcluido from '../component/statusConcluido/statusConcluido';
+// import Statusespera from '../component/statusEmEspera/statusEmEspera';
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false)

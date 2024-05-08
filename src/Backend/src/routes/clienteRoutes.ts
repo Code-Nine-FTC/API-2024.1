@@ -11,7 +11,7 @@ router.post('/cadastroCliente', clienteController.cadastrarCliente.bind(clienteC
 router.post('/logginCliente', clienteController.logginCliente.bind(clienteController))
 // Rotas com autenticação
 router.put('/updateCliente', authClient, clienteController.editarCliente.bind(clienteController))
-router.get('/viewCliente', authClient, clienteController.visualizarCliente.bind(clienteController))
+router.post('/verCliente', authClient, clienteController.visualizarCliente.bind(clienteController))
 router.get('/desativarCliente', authClient, clienteController.desativarCliente.bind(clienteController)) 
 
 export default router
