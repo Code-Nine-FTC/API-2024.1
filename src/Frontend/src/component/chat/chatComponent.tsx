@@ -7,6 +7,9 @@ const ChatComponent = () => {
         <>
         <div className={styles.campoMensagens}>
             <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+
         </div>
         </>
     )

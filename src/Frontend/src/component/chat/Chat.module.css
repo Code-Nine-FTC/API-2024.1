@@ -123,3 +123,36 @@
     flex-direction: column;
     margin: 3%;
 }
+
+@media(max-width: 800px){
+    .header{
+        position: fixed;
+        height: 15%;
+    }
+    .chatContent{
+        height: 100vh;
+    }
+
+    .campoMensagens{
+        height: auto;
+    }
+    
+    .formMensagem{
+        height: 3.1rem;
+        align-items: center;
+        }
+    
+    .formMensagem input{
+        font-size: 1rem;
+    }
+
+    .campoMensagens{
+        margin: 8rem;
+        height: auto;
+    }
+
+    .enviarMensagem{
+        position: fixed;
+        bottom: 0;
+    }
+}
