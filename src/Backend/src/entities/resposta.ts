@@ -8,13 +8,13 @@ export default class Resposta{
     public resp_id : number
 
     @Column({type: 'varchar', length: 300})
-    public resp_mensagem_reposta: string
+    public texto: string
 
     @Column({type: 'boolean'})
-    public resp_feita_por_atendente: boolean
+    public autoria: boolean
 
     @Column({type: 'date'})
-    public resp_data_resposta: Date
+    public data: Date
 
     @ManyToOne(() => Chamado, chamado => chamado.respostas)
     @JoinColumn({name: 'cha_id'})

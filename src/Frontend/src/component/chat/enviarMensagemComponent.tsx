@@ -11,23 +11,19 @@ const EnviarMensagem = () => {
     
     const id = 1
 
-    const cha_id = id
-
-    const usuario = localStorage.getItem('nivel')
-
     const [texto, setTexto] = useState('');
     const mensagem = {
-        resp_mensagem_resposta: texto,
-        resp_feita_por_atendente: false,
-        resp_data_resposta: '',
+        texto: texto,
+        autoria: false,
+        data: '',
         chamado: id
     }
 
     if (nivel === 'usuario') {
-        mensagem.resp_feita_por_atendente = false
+        mensagem.autoria = false
     }
     else {
-        mensagem.resp_feita_por_atendente = true
+        mensagem.autoria = true
     }
 
 
@@ -44,6 +40,9 @@ const EnviarMensagem = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if (mensagem.resp_data_resposta.length > 300 || mensagem.resp_data_resposta.length < 0) {
+            alert('A mensagem é invalida')
+        }
         try {
             const dataAtual = getDate()
             const { hora, minuto, segundo } = dataAtual
@@ -52,9 +51,8 @@ const EnviarMensagem = () => {
             console.log(mensagem)
             const resultado = await EnviarMensagemFunc(mensagem);
             if (resultado.sucess){
-                
+                alert('Funcionou')
             }
-            
         }
         catch (error: any) {
             alert(error.message)

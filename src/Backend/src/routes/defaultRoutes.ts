@@ -6,7 +6,7 @@ const router = Router()
 const frontpageAuth = new FrontpageAuth()
 const respostaController = new RespostaController()
 
-router.post('enviarmensagem', respostaController.enviarMensagem.bind(respostaController))
+router.post('/enviarMensagem', respostaController.enviarMensagem.bind(respostaController))
 router.post('/autenticarfrontpage', frontpageAuth.validarPagina.bind(frontpageAuth))
 
 export default router

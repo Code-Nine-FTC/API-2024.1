@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { IResposta } from "../interfaces/IRespostas";
+import { IRespostaInput } from "../interfaces/IRespostas";
 import RespostaService from "../services/respostaService";
 
 export default class RespostaController {
@@ -11,7 +11,7 @@ export default class RespostaController {
         console.log('Received POST request to /enviarMensagem')
         console.log(req.body)
         try {
-            const dadosMensagem: IResposta = req.body
+            const dadosMensagem: IRespostaInput = req.body
             console.log('Request body: ', dadosMensagem)
             const resultado = await this.respostaService.enviarMensagem(dadosMensagem)
             if (resultado.success) {
