@@ -13,7 +13,7 @@ const HeaderChat = () => {
         <>
             <header className={styles.header}>
                 <div className={styles.info}>
-                    <div className={styles.alinharDiv}  >
+                    <div className={styles.alinharDiv}>
                         <img className={styles.ticketFoto} src={ticketFoto} alt="Logo do Ticket"/>
                         <p className={styles.ticket}>Ticket#{ticket.id}</p>
                     </div>
