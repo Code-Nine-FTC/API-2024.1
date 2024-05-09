@@ -1,5 +1,5 @@
 import styles from "./Chat.module.css"
-import Mensagem from './mensagens'
+import Mensagem from './mensagensComponent'
 
 const ChatComponent = () => {
 
