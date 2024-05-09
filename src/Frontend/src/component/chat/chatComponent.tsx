@@ -9,7 +9,37 @@ const ChatComponent = () => {
             <Mensagem/>
             <Mensagem/>
             <Mensagem/>
-
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
+            <Mensagem/>
         </div>
         </>
     )

@@ -8,7 +8,9 @@
 .enviarMensagem {
     background-color: #111686;
     width: 100%;
-    height: 10%;        
+    height: 10%;  
+    position: sticky;
+    bottom: 0;    
 }
 
 .formMensagem {
@@ -16,6 +18,8 @@
     margin: auto;
     height: 100%;
     width: 100%;
+    position: sticky;
+    top: 0;
 }
 
 .formMensagem input {
@@ -55,7 +59,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 25%;
+    /* height: 25%; */
+    position: sticky;
+    top: 0;
+    bottom: 0;
 }
 .info{
     color:white;
@@ -88,10 +95,11 @@
 
 .campoMensagens {
     width: 100%;
-    height: 65%;
+    /* height: 65%; */
     display: flex;
     flex-direction: column;
     margin: 1%;
+    
 
 }
 .chatbox{
