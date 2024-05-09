@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import clienteRoutes from './routes/clienteRoutes'
 import funcionarioRoutes from './routes/funcionarioRoutes'
+import defaultRotes from './routes/defaultRoutes'
 import Funcionario from './entities/funcionario';
 import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
@@ -22,11 +23,7 @@ app.use(cors())
 app.use(express.json()) 
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
-const router = Router()
-app.use(router)
-
-const frontpageAuth = new FrontpageAuth()
-router.post('/autenticarfrontpage', frontpageAuth.validarPagina.bind(frontpageAuth))
+app.use(defaultRotes)
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
