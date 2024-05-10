@@ -1,8 +1,25 @@
 import React from 'react';
 import styles from '../statusBox/statusBox.module.css'
-import orange from '../../assets/faq/rectangle-green.png'
+import orange from '../../assets/faq/rectangle.png'
 
-function Statusconcluido(){
+export interface InfoTicketsProps{
+    chamado:{
+    cha_id: number
+    cha_titulo: string
+    cha_descricao: string
+    cha_prioridade: string
+    cha_status: string
+    cha_data_final?: Date
+    cha_data_inicio: Date
+    cha_topico_chamado: string
+    // cliente: Cliente
+    // // funcionario?: Funcionario
+    // // resposta: Resposta[]
+}
+navigate: (path: string) => void;
+}
+
+function statusemandamento({ chamado, navigate }: InfoTicketsProps){
     return(
         <div className={styles.statusBox}>
             <div className={styles.mainText}>
@@ -14,8 +31,8 @@ function Statusconcluido(){
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, error!</p>
                     </div>
                     <div className={styles.buttonNav}>
-                        <button className={styles.chatButton} type='button'>Ver Conversa</button>
-                        <button className={styles.concluidoButton} type='button'>Concluído</button>
+                        <button className={styles.chatButton} type='button'>Entrar no chat</button>
+                        <button className={styles.andamentoButton} type='button'>Em andamento</button>
                      </div>
                 </div>
                     </div>
@@ -24,4 +41,4 @@ function Statusconcluido(){
     )
 }
 
-export default Statusconcluido;
+export default statusemandamento;

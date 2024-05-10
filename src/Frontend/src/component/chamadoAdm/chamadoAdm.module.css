@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.container header {
+    margin-bottom: 2%;
+}
+ 
+.linha {
+    border-bottom: 1px solid #ddd;
+    width: 300%;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3%;
+    margin-left: 4%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 80%; 
+    border-radius: 1%;
+    margin-left: 6%;
+}
+
+.seletor {
+    width: 82%; 
+    padding: 5px; 
+    font-size: 16px; 
+    border: 1px solid black; 
+    border-radius: 5px; 
+    background-color: white; 
+    color: #555;
+    font-weight: lighter;
+}
+  
+.seletor option {
+    font-size: 16px; 
+    font-weight: lighter;
+}
+  
+.seletor option:checked {
+    background-color: #ddd; 
+    color: #000; 
+}
+
+#Editar {
+    background-color: #0202c4;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;  
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: bold;
+    width: 150px; 
+}
+
+#Editar:hover {
+    background-color: #030350;
+}
+
+#OutroBotao {
+    background-color: #0202c4;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+    user-select: none;  
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: bold;
+    width: 150px; 
+    margin-left: auto;
+}
+
+#OutroBotao:hover {
+    background-color: #030350;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between; /* Isso distribui os elementos igualmente ao longo do contêiner */
+    width: 50%; /* Garante que os botões ocupem toda a largura do contêiner */
+    margin-top: 10px; /* Ajusta o espaçamento acima dos botões */
+    padding-left: 15vw;
+}

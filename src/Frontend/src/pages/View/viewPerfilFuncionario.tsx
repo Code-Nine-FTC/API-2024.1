@@ -1,27 +1,19 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../../component/sidebar/sidebar";
 import { useEffect, useState } from "react"; // Importe o useState
-import viewFuncionario from "../../functions/View/viewFuncionarioFunc";
+import viewPerfilFuncionario from "../../functions/View/viewPerfilFuncionarioFunc";
 import DetalhesFuncionario from "../../component/View/Funcionario/viewFuncionario";
 import { getNivelAcesso } from "../../services/auth";
 
-export default function VisualizarFuncionario() {
+export default function VisualizarPerfilFuncionario() {
     const navigate = useNavigate();
-    const { id } = useParams<{ id?: string }>();
-    const [funcionario, setFuncionario] = useState<any>(null);
     const nivelAcesso = getNivelAcesso()
+    const [funcionario, setFuncionario] = useState<any>(null);
 
     useEffect(() => {
-        if (!id) {
-            navigate('/notfound');
-            return;
-        }
-
-        const func_id: number = parseInt(id, 10);
-
         const fetchFuncionario = async () => {
             try {
-                const resultado = await viewFuncionario(func_id);
+                const resultado = await viewPerfilFuncionario();
                 setFuncionario(resultado);
             } catch (error) {
                 console.error("Erro ao buscar funcionário:", error);
@@ -29,7 +21,7 @@ export default function VisualizarFuncionario() {
         };
 
         fetchFuncionario();
-    }, [id, navigate]);
+    }, [ navigate]);
     console.log(funcionario)
 
     return (

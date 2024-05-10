@@ -1,14 +1,9 @@
-import { rotaBase } from "../RotaBase/rotaBase";
-import axios from "axios";
-import  IFuncionarioUpdate  from "./Interface/IFuncionarioUpdate"
+import  IFuncionarioUpdate  from "./interface/IFuncionarioUpdate"
+import api from "../../services/api";
 
-const updateFuncionario = async (func_id: number, dadosUpdate: IFuncionarioUpdate, token: string | null) => {
+const updateFuncionario = async (func_id: number, dadosUpdate: IFuncionarioUpdate) => {
     try {
-        const resultado = await axios.put(`${rotaBase}/updateFuncionario`,{func_id, dadosUpdate}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-              }
-        }); 
+        const resultado = await api.put(`/updateFuncionario`,{func_id, dadosUpdate}); 
         return {funcionarioUpadate :resultado.data.funcionarioUpdate, message: resultado.data.message}
     } catch (error) {
         console.error('Erro ao salvar dados: ', error);

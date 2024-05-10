@@ -1,6 +1,7 @@
 import React from 'react';
+import LoginAdmForm from '../../component/loginadm/formAdm'
 import styles from '../component/loginadm/Login.module.css'
-import LoginForm from '../component/login/formLogin';
+import LoginForm from '../../component/login/formLogin';
 
 function LoginAdmPage() {
   return (

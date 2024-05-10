@@ -11,7 +11,7 @@ import Funcionario from './entities/funcionario';
 import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
 import { Router } from "express";
-import { FrontpageAuth } from './controllers/frontPagesAuth';
+
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })

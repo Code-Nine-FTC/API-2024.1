@@ -55,15 +55,15 @@ export class FuncionarioService {
             }
             // Funcionario
             if (!funcionario.func_is_admin) {
-                console.log('Dados invalidos')
+                console.log('FUNCIONARIO LOGIN (not adm)')
                 if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
+                    console.log('Dados funcionario Errado (not adm)')
                     return { success: false, message: 'Dados inválidos!' };
                 }
-                
-                const redirecionar = 'atendente'
-                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret3)
+
+                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret2)
                 console.log('Autenticação realizada com sucesso')
-                return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, redirecionar };
+                return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, nivelAcesso: 'atendente' };
             }
             // Admin
             if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
@@ -71,9 +71,8 @@ export class FuncionarioService {
                 return { success: false, message: 'Dados inválidos!' };
             }
             const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'administrador' }, secret3)
-            const redirecionar = 'administrador'
-            console.log('Autenticação realizada com sucesso (ADM')
-            return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, redirecionar };
+            console.log('Autenticação realizada com sucesso (ADM)')
+            return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, nivelAcesso: 'administrador' };
         } catch (error) {
             console.error(`Erro ao fazer login: ${error}`);
             return { success: false, message: 'Erro ao fazer login!' };
@@ -116,11 +115,11 @@ export class FuncionarioService {
             return { success: false, message: `Erro ao editar funcionário!` }
         }
     }
-    public async visualizarFuncionario(id: string) {
+    public async visualizarFuncionario(id: number) {
         try {
             console.log('Recebendo chamado em funcionarioService')
             const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionario = await funcionarioRepository.findOne({ where: { func_cpf: id } })
+            const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
             if (!funcionario) {
                 return { success: false, message: `Funcionário não encontrado!` }
             }

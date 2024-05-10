@@ -1,16 +1,8 @@
-import { rotaBase } from "../RotaBase/rotaBase";
-import axios from "axios";
+import api from "../../services/api";
 
 const CadastroFuncionarioFunc = async (formData: any) => {
-    const token = localStorage.getItem('token')
-    console.log(formData)
     try {
-        const resultado = await axios.post(`${rotaBase}/cadastroFuncionario`, formData, {
-            headers: {
-                Authorization: `Bearer ${token}`
-              }
-        })
-
+        const resultado = await api.post(`/cadastroFuncionario`, formData)
         return resultado.data
     }
     catch (error) {
