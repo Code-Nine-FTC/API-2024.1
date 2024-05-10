@@ -2,18 +2,15 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { rotaBase } from "../RotaBase/rotaBase";
 import IChamadoView from "./IChamado";
+import api from "../../services/api";
 
 
-export default function BuscarChamado(id: number, token: string | null) {
-    const [chamado, setChamado] = useState<IChamadoView[]>([]);
+export default function BuscarChamado(id: number) {
+    const [chamado, setChamado] = useState<any>(null);
     useEffect(() => {
         const fetchChamado = async () => {
           try {
-            const resultado = await axios.post(`${rotaBase}/buscarChamado`, id, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                  }
-            })
+            const resultado = await api.post(`/buscarChamado`, id)
           ;
             setChamado(resultado.data.chamado);
           } catch (error) {

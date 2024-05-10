@@ -5,21 +5,23 @@ import Sidebar from "../component/sidebar/sidebar"
 import styles from "../component/chat/Chat.module.css"
 import { useParams } from "react-router-dom"
 import BuscarChamado from "../functions/Chat/buscarChamadoFunc"
-
+import { getNivelAcesso } from "../services/auth"
+import IChamadoView from "../functions/Chat/IChamado"
 
 const ChatPage = () => {
     // const { id } = useParams<{ id?: string }>();
-    const token = localStorage.getItem('token')
+    const userTipo = getNivelAcesso();
     const id = 1
-    const nivel = localStorage.getItem('nivel')
-    const chamado = BuscarChamado(id, token)
+    const chamado = BuscarChamado(id)
     return (
         <>
         <Sidebar/>
         <div className={styles.chatContent}>
-            <HeaderChat id={id} atendente={chamado.func_id} categoria={chamado.cha_topico_chamado} cliente ={chamado.cli_id}/>
+            {chamado && (
+                    <HeaderChat {...{id, chamado}}/>
+            )}
             <ChatComponent/>
-            {nivel !== 'administrador' &&(
+            {userTipo !== 'administrador' &&(
                 <EnviarMensagem/>
             )}
         </div>

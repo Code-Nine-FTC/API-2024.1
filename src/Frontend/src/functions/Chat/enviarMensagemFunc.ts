@@ -1,15 +1,12 @@
 import { rotaBase } from "../RotaBase/rotaBase"
 import axios from "axios"
+import api from "../../services/api";
 
 const EnviarMensagemFunc = async (mensagem: any) => {
     const token = localStorage.getItem('token')
     try {
         console.log(mensagem)
-        const resultado = await axios.post(`${rotaBase}/enviarMensagem`, mensagem, {
-            headers: {
-                Authorization: `Bearer ${token}`
-              }
-        });
+        const resultado = await api.post(`/enviarMensagem`, mensagem);
         return resultado.data
     }
     catch(error) {

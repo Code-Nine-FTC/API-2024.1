@@ -8,6 +8,6 @@ export default interface IChamadoView {
     cha_topico_chamado: string;
     cli_id: number;
     func_id: number;
-  }
+}
 
 

@@ -1,6 +1,6 @@
 import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
-import IClienteUpdate from "../Editar/interface/iClienteUpdate";
+import IClienteUpdate from "../Editar/Interface/iClienteUpdate";
 import api from "../../services/api";
 
 const updateCliente = async ( dadosUpdate: IClienteUpdate) => {

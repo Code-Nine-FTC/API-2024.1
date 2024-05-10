@@ -3,28 +3,29 @@ import ticketFoto from "../../assets/chat/ticketicon.svg"
 import BuscarNomeCliente from '../../functions/Chat/buscarNomeCliFunc'
 import BuscarNomeAtendente from '../../functions/Chat/buscarNomeAtendFunc'
 import { useEffect, useState } from 'react'
+import { getNivelAcesso } from '../../services/auth'
+import IChamadoView from '../../functions/Chat/IChamado'
 
 
-const HeaderChat = (id: number, atendente: number, categoria: string, cliente: number)  => {
+
+const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => {
     const [nomeCliente, setNomeCliente] = useState('');
     const [nomeAtendente, setNomeAtendente] = useState('');
-    const token = localStorage.getItem('token');
-    const nivel = localStorage.getItem('nivel')
+    const userTipo = getNivelAcesso();
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const clienteName = await BuscarNomeCliente(cliente, token);
+                const clienteName = await BuscarNomeCliente(cliente);
                 setNomeCliente(clienteName.name);
 
-                const atendenteName = await BuscarNomeAtendente(atendente, token);
+                const atendenteName = await BuscarNomeAtendente(atendente);
                 setNomeAtendente(atendenteName.name);
             } catch (error) {
                 console.error('Erro ao buscar nomes: ', error);
             }
         };
-
         fetchData();
-    }, [cliente, atendente, token]);
+    }, [cliente, atendente]);
     return (
         <>
             <header className={styles.header}>
@@ -34,7 +35,7 @@ const HeaderChat = (id: number, atendente: number, categoria: string, cliente: n
                         <p className={styles.ticket}>Ticket#{id}</p>
                     </div>
                     <div className={styles.alinharInfo}>
-                        {nivel !== 'Cliente' ?(
+                        {userTipo !== 'Cliente' ?(
                             <p>Cliente: {nomeCliente}</p>
                         ):(
                             <p>Atendente: {nomeAtendente}</p>
