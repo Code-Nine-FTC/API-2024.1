@@ -63,7 +63,7 @@ const EditarCliente: React.FC = () => {
           </button>
           </div>
         </form>
-        <button className={styles.voltar} onClick={() => navigate(`/visualizarCliente/${id}`)}>Voltar</button>
+        <button className={styles.voltar} onClick={() => navigate(`/visualizarCliente/`)}>Voltar</button>
         </div>
       </div>
     </>

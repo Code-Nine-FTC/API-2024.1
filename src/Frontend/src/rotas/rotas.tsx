@@ -8,7 +8,7 @@ import RegistroSup from "../pages/registroSupp";
 import Ticket from "../pages/envTicket";
 import HomeSup from "../pages/homeSup";
 import Listagem from "../pages/listasuporte";
-import VisualizarFuncionario from "../pages/View/viewFuncionario";
+import VisualizarFuncionario from "../pages/View/viewFuncionarioPage";
 import EditarFuncionario from "../pages/Editar/editarFuncionario";
 import { FC } from 'react';
 import EditarCliente from "../pages/Editar/editarCliente";
