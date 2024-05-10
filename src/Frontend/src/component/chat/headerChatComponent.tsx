@@ -2,18 +2,29 @@ import styles from './Chat.module.css'
 import ticketFoto from "../../assets/chat/ticketicon.svg"
 import BuscarNomeCliente from '../../functions/Chat/buscarNomeCliFunc'
 import BuscarNomeAtendente from '../../functions/Chat/buscarNomeAtendFunc'
+import { useEffect, useState } from 'react'
 
 
-
-const HeaderChat = (id: number, atendente: number, categoria: string, cliente: number) => {
-    // const ticket = {
-    //     id: '0001',
-    //     atendente: 'atendente',
-    //     categoria : 'categoria'
-    // }
-    const nomeCliente = BuscarNomeCliente(cliente)
-    const nomeAtendente = BuscarNomeAtendente(atendente)
+const HeaderChat = (id: number, atendente: number, categoria: string, cliente: number)  => {
+    const [nomeCliente, setNomeCliente] = useState('');
+    const [nomeAtendente, setNomeAtendente] = useState('');
+    const token = localStorage.getItem('token');
     const nivel = localStorage.getItem('nivel')
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const clienteName = await BuscarNomeCliente(cliente, token);
+                setNomeCliente(clienteName.name);
+
+                const atendenteName = await BuscarNomeAtendente(atendente, token);
+                setNomeAtendente(atendenteName.name);
+            } catch (error) {
+                console.error('Erro ao buscar nomes: ', error);
+            }
+        };
+
+        fetchData();
+    }, [cliente, atendente, token]);
     return (
         <>
             <header className={styles.header}>

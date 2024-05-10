@@ -26,4 +26,12 @@ export default class RespostaController {
             return res.status(500).json({ success: false, message: `Erro interno no servidor`})
         }
     }
+    async buscarChamado(req: Request, res: Response) {
+        console.log('Received POST request to /buscarChamado')
+        console.log(req.body)
+        try{
+            const chamados = req.body
+            const id = Number(chamados.cli_id)
+        }
+    }
 }
