@@ -9,9 +9,10 @@ interface DetalhesFuncionarioProps {
     ativo: boolean;
   };
   navigate: (path: string) => void;
+  nivelAcesso: string
 }
 
-function DetalhesFuncionario({ funcionario, navigate }: DetalhesFuncionarioProps) {
+function DetalhesFuncionario({ funcionario, navigate, nivelAcesso }: DetalhesFuncionarioProps) {
   return (
     <>
     <div className={styles.global}>
@@ -31,13 +32,18 @@ function DetalhesFuncionario({ funcionario, navigate }: DetalhesFuncionarioProps
           <h3 className={styles.cpf}>CPF: {funcionario.func_cpf}</h3>
           <h3 className={styles.email}>E-mail: {funcionario.func_email}</h3>
           <h3 className={styles.ativo}>Ativo: {funcionario.ativo ? 'Ativo' : 'Desativado'}</h3>
-
         </div>
 
       </div>
       <div className={styles.containerbotao}>
-            <button className={styles.button} onClick={() => navigate(`/editarfuncionario/${funcionario.func_id}`)}>Editar</button>
-            <button className={styles.button} onClick={() => navigate(`/visualizarTodosFuncionarios`)}>Voltar</button>
+      {nivelAcesso === 'administrador' ? (
+        <>
+          <button className={styles.button} onClick={() => navigate(`/editarfuncionario/${funcionario.func_id}`)}>Editar</button>
+          <button className={styles.button} onClick={() => navigate(`/visualizarTodosFuncionarios`)}>Voltar</button>
+        </>
+      ) : (
+        <button className={styles.button} onClick={() => navigate(`/homesup`)}>Voltar</button>
+      )}
       </div>
     </div>
     </>

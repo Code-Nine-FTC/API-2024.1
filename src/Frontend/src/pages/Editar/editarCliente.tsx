@@ -1,34 +1,31 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import styles from "../../component/infoCliente/InfoCliente.module.css"
 import ImageComponent from '../../component/imagemperfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
 import updateCliente from '../../functions/Editar/updateClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { getToken } from '../../services/auth';
 
-
-const Editinfocli: React.FC = () => {
+const EditarCliente: React.FC = () => {
   const navigate = useNavigate();
-  const [cli_nome, setNome] = useState<string>('');
-  const [cli_email, setEmail] = useState<string>('');
-  const [cli_senha, setSenha] = useState<string>('');
-  const id = localStorage.getItem('id') || ''
-  const token = localStorage.getItem('token')
-
-  const cli_id: number = parseInt(id, 10);
+  const [cli_nome, setNome] = useState<string>();
+  const [cli_email, setEmail] = useState<string>();
+  const [cli_senha, setSenha] = useState<string>();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const user = { cli_nome, cli_email, cli_senha };
-    console.log(user);
+    const user = { cli_email, cli_nome, cli_senha};
     try {
-      const clienteUpdate = await updateCliente(cli_id, user, token);
-      toast.success('Alteração concluída')
+      const token = getToken(); // Obtenha o token JWT do localStorage
+      if (token) {
+        await updateCliente(user);
+        toast.success('Alteração concluída');
+      }
     } catch (error) {
       console.log(`Erro ao editar Cliente`, error);
     }
   };
-  
 
   return (
     <>
@@ -62,7 +59,7 @@ const Editinfocli: React.FC = () => {
           </div>
           <div className={styles.button}>
           <button type="submit" id={styles.Editar}>
-            Editar Perfil
+            Salvar
           </button>
           </div>
         </form>
@@ -73,4 +70,4 @@ const Editinfocli: React.FC = () => {
   );
 }
 
-export default Editinfocli;
+export default EditarCliente;

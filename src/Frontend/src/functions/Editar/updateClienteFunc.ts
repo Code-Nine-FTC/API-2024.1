@@ -1,16 +1,11 @@
 import { rotaBase } from "../RotaBase/rotaBase";
 import axios from "axios";
-import IClienteUpdate from "./interface//iClienteUpdate";
+import IClienteUpdate from "../Editar/Interface/iClienteUpdate";
+import api from "../../services/api";
 
-const updateCliente = async (cli_id: number , dadosUpdate: IClienteUpdate, token: string | null) => {
+const updateCliente = async ( dadosUpdate: IClienteUpdate) => {
     try {
-        console.log('id')
-        console.log(cli_id)
-        const resultado = await axios.put(`${rotaBase}/updateCliente`,{cli_id, dadosUpdate}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-              }
-        }); 
+        const resultado = await api.put(`/updateCliente`,{ dadosUpdate}); 
         return {clienteUpdate :resultado.data.clienteUpdate, message: resultado.data.message}
     } catch (error) {
         console.error('Erro ao salvar dados: ', error);

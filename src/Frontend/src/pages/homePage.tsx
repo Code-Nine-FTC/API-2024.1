@@ -10,7 +10,8 @@ import React from 'react';
 import Sidebar from '../component/sidebar/sidebar';
 import { Modal } from '../component/modal/modal';
 import { useEffect, useState } from 'react';
-import useAutenticarToken from '../rotas/autenticarToken';
+import { isAuthenticated } from '../services/auth';
+
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -20,25 +21,12 @@ function Home() {
     setModalOpen(false)
   }
     useEffect(() => {
-      const storedToken = localStorage.getItem('token');
-      if (storedToken !== null){
+      const isAuth = isAuthenticated()
+      if(isAuth){
         setAutenticacao(true)
       }
   }, []);
 
-  // useEffect(() => {
-  //     const validar = async  () => {
-  //       try {
-  //         const resultado = await AutenticarToken(token);
-  //         if (resultado != undefined) {
-  //           setAutenticado(resultado)
-  //         }
-  //       }catch (error) {
-  //         console.error('Erro ao autenticar', error)
-  //       }
-  //     };
-  //     validar()
-  // }, [token]);
 
   return (
   <>
