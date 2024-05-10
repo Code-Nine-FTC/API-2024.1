@@ -14,6 +14,7 @@ import RotaProtegida from "./rotaProtegida";
 import VisualizarFuncionario from "../pages/View/viewFuncionarioPage";
 import VisualizarCliente from "../pages/View/viewClientePage";
 import EditarFuncionario from "../pages/Editar/editarFuncionario";
+import TicketAdm from "../pages/ticketAdm";
 
 const Rotas = () => {
     return (
@@ -32,6 +33,7 @@ const Rotas = () => {
             <Route path= "/homesup" element={<RotaProtegida><HomeSup/></RotaProtegida>}/>
             <Route path= "/visualizarTodosFuncionarios" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
             <Route path="/visualizarfuncionario/:id" element={<RotaProtegida><VisualizarFuncionario/></RotaProtegida>}/>
+            <Route path= "/ticketadm" element={<RotaProtegida><TicketAdm/></RotaProtegida>}/>
           </Switch>
         </BrowserRouter>
     )
