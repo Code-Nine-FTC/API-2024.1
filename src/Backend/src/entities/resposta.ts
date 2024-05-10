@@ -13,8 +13,8 @@ export default class Resposta{
     @Column({type: 'boolean'})
     public autoria: boolean
 
-    @Column({type: 'date'})
-    public data: Date
+    @Column({type: 'time'})
+    public data: string
 
     @ManyToOne(() => Chamado, chamado => chamado.respostas)
     @JoinColumn({name: 'cha_id'})

@@ -1,45 +1,15 @@
 import styles from "./Chat.module.css"
 import Mensagem from './mensagensComponent'
 
-const ChatComponent = () => {
-
+const ChatComponent = (id: number) => {
+    const mensagens = BuscarMensagens(id)
     return (
         <>
         <div className={styles.campoMensagens}>
+        {mensagens.map((mensagem) => (
+            <div className={styles.funcionarioContainer} key={mensagem.resp_id}>
             <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
-            <Mensagem/>
+        )  
         </div>
         </>
     )

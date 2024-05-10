@@ -3,6 +3,7 @@ import enviarIcon from '../../assets/chat/sendicon.svg'
 import { useState } from 'react'
 import EnviarMensagemFunc from '../../functions/Chat/enviarMensagemFunc'
 import getDate from '../../functions/verData'
+import RecebeData from '../../functions/dataString'
 
 
 const EnviarMensagem = () => {
@@ -27,36 +28,34 @@ const EnviarMensagem = () => {
     }
 
 
-    
-
-    // const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    //     const mensagemEnviada = target;
-    //     setMensagem(mensagemEnviada)
-    // }
-
     const handleChange = (event:any) => {
         setTexto(event.target.value)
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (mensagem.resp_data_resposta.length > 300 || mensagem.resp_data_resposta.length < 0) {
+        if (mensagem.texto.length > 300 || mensagem.texto === '') {
             alert('A mensagem é invalida')
         }
-        try {
-            const dataAtual = getDate()
-            const { hora, minuto, segundo } = dataAtual
-            mensagem.resp_data_resposta = `${hora}:${minuto}:${segundo}`
-            console.log('Enviando mensagem')
-            console.log(mensagem)
-            const resultado = await EnviarMensagemFunc(mensagem);
-            if (resultado.sucess){
-                alert('Funcionou')
+        else{
+            try {
+                const dataAtual = getDate()
+                const { hora, minuto, segundo } = dataAtual
+                const data = `${hora}:${minuto}:${segundo}`
+                mensagem.data = data
+                console.log('Enviando mensagem')
+                console.log(mensagem)
+                const resultado = await EnviarMensagemFunc(mensagem);
+                if (resultado.success){
+                    alert('Funcionou')
+                    setTexto('')
+                }
+            }
+            catch (error: any) {
+                alert(error.message)
             }
         }
-        catch (error: any) {
-            alert(error.message)
-        }
+        
     } 
     
     return (

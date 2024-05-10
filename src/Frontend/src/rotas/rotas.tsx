@@ -33,7 +33,7 @@ const Rotas = () => {
             <Route path= "/homesup" element={<RotaProtegida><HomeSup/></RotaProtegida>}/>
             <Route path= "/visualizarTodosFuncionarios" element={<RotaProtegida><Listagem/></RotaProtegida>}/>
             <Route path="/visualizarfuncionario/:id" element={<RotaProtegida><VisualizarFuncionario/></RotaProtegida>}/>
-            <Route path="/chat" element={<ChatPage/>}/>
+            <Route path="/chat/:id" element={<ChatPage/>}/>
           </Switch>
         </BrowserRouter>
     )
