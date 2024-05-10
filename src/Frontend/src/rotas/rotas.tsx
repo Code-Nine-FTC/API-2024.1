@@ -31,6 +31,7 @@ const Rotas: FC = () => {
           <Route path="/editarcliente" element={<EditarCliente />} />
           <Route path="/visualizarcliente" element={<VisualizarCliente />} />
           <Route path="/ticket" element={<Ticket />} />
+          <Route path="/chat" element={<ChatPage/>} />
         </>
       );
     } else if (nivelAcesso === 'atendente') {
@@ -38,6 +39,7 @@ const Rotas: FC = () => {
         <>
           <Route path="/homesup" element={<HomeSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
+          <Route path="/chat" element={<ChatPage/>} />
         </>
       );
     } else if (nivelAcesso === 'administrador') {
@@ -48,6 +50,7 @@ const Rotas: FC = () => {
           <Route path="/visualizarfuncionario/:id" element={<VisualizarFuncionario />} />
           <Route path="/registrosuporte" element={<RegistroSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
+          <Route path="/chat" element={<ChatPage/>} />
         </>
       );
     }
