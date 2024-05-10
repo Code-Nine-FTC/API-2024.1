@@ -23,5 +23,5 @@ export default function BuscarChamado(id: number, token: string | null) {
         };
         fetchChamado();
       }, []);
-    return chamado
+      return chamado
 }

@@ -27,7 +27,7 @@ export default class RespostaService {
             console.log('Recebendo dados')
             console.log(id)
             const respostaRepository = Connection.getRepository(Chamado)
-            const chamado = respostaRepository.findOne({ where: { cha_id: id } })
+            const chamado = await respostaRepository.findOne({ where: { cha_id: id } })
             console.log(chamado)
             if (!chamado) {
                 return { success: false, message: `Chamado não encontrado` }

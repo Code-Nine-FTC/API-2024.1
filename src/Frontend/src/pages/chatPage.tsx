@@ -17,7 +17,7 @@ const ChatPage = () => {
         <>
         <Sidebar/>
         <div className={styles.chatContent}>
-            <HeaderChat id={chamado.cha_id} atendente={chamado.func_id} categoria={chamado.cha_topico_chamado} cliente ={chamado.cli_id}/>
+            <HeaderChat id={id} atendente={chamado.func_id} categoria={chamado.cha_topico_chamado} cliente ={chamado.cli_id}/>
             <ChatComponent/>
             {nivel !== 'administrador' &&(
                 <EnviarMensagem/>

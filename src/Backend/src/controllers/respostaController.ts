@@ -30,7 +30,7 @@ export default class RespostaController {
         console.log(req.body)
         try{
             const chamados = req.body
-            const id = Number(chamados.cli_id)
+            const id = Number(chamados.cha_id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'Erro ao buscar chamado' })
             }
