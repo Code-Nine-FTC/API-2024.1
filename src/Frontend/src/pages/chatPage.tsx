@@ -18,9 +18,9 @@ const ChatPage = () => {
         <Sidebar/>
         <div className={styles.chatContent}>
             {chamado && (
-                    <HeaderChat {...{id, chamado}}/>
-            )}
-            <ChatComponent/>
+                <HeaderChat id={id} chamado={chamado as IChamadoView} />            
+                )}
+            <ChatComponent id={id}/>
             {userTipo !== 'administrador' &&(
                 <EnviarMensagem/>
             )}

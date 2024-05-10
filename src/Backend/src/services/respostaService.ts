@@ -39,4 +39,22 @@ export default class RespostaService {
             return { success: false, message: `Erro ao encontrar o chamado` }
         }
     }
+
+    public async buscarMensagens(id: number){
+        try{
+            console.log('Recebendo mensagens')
+            console.log(id)
+            const respostaRepository = Connection.getRepository(Resposta)
+            const respostas = await respostaRepository.findOne({where: { cha_id: id}})
+            console.log(respostas)
+            if(!respostas){
+                return{success: false, message: `Mensagem não encontrada`}
+            }
+            return {success: true, message: `Mensagem encontrada`, respostas}
+        }
+        catch(error) {
+            console.error(`Erro ao encontrar mensagem: ${error}`)
+            return {success: false, message: `Erro ao encontrar o chamado`}
+        }
+    }
 }

@@ -15,17 +15,17 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const clienteName = await BuscarNomeCliente(cliente);
+                const clienteName = await BuscarNomeCliente(chamado.cli_id);
                 setNomeCliente(clienteName.name);
 
-                const atendenteName = await BuscarNomeAtendente(atendente);
+                const atendenteName = await BuscarNomeAtendente(chamado.func_id);
                 setNomeAtendente(atendenteName.name);
             } catch (error) {
                 console.error('Erro ao buscar nomes: ', error);
             }
         };
         fetchData();
-    }, [cliente, atendente]);
+    }, [chamado.cli_id, chamado.func_id]);
     return (
         <>
             <header className={styles.header}>
@@ -40,7 +40,7 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => 
                         ):(
                             <p>Atendente: {nomeAtendente}</p>
                         )}
-                        <p>Categoria: {categoria}</p>
+                        {/* <p>Categoria: {chamado.categoria}</p> */}
                     </div>                
                 </div>
             </header>
