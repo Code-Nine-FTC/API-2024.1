@@ -68,7 +68,14 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               console.log('Login concluído')
               login(resultadoFuncionario.token,resultadoFuncionario.nivelAcesso)
               setErro('');
-              navigate('/visualizarTodosFuncionarios')
+              switch (resultadoFuncionario.nivelAcesso) {
+                case 'administrador':
+                  navigate('/visualizarTodosFuncionarios')
+                  break;
+                case 'atendente':
+                  navigate('/homesup')
+                  break;
+              }
             }
             break;
         }
