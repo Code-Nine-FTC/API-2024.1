@@ -1,6 +1,7 @@
 import { IRespostaInput } from "../interfaces/IRespostas";
 import Resposta from "../entities/resposta";
 import { Connection } from "../config/data-source";
+import Chamado from "../entities/chamado";
 
 
 
@@ -19,6 +20,23 @@ export default class RespostaService {
         catch(error) {
             console.error('Erro ao enviar mensagem', error)
             return { success: false}
+        }
+    }
+    public async buscarChamado(id: number){
+        try{
+            console.log('Recebendo dados')
+            console.log(id)
+            const respostaRepository = Connection.getRepository(Chamado)
+            const chamado = respostaRepository.findOne({ where: { cha_id: id } })
+            console.log(chamado)
+            if (!chamado) {
+                return { success: false, message: `Chamado não encontrado` }
+            }
+            return { success: true, message: `Chamado encontrado`, chamado }
+            } 
+            catch (error) {
+            console.error(`Erro ao encontrar chamado: ${error}`)
+            return { success: false, message: `Erro ao encontrar o chamado` }
         }
     }
 }

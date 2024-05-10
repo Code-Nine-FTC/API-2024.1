@@ -9,9 +9,10 @@ import BuscarChamado from "../functions/Chat/buscarChamadoFunc"
 
 const ChatPage = () => {
     // const { id } = useParams<{ id?: string }>();
+    const token = localStorage.getItem('token')
     const id = 1
     const nivel = localStorage.getItem('nivel')
-    const chamado = BuscarChamado(id)
+    const chamado = BuscarChamado(id, token)
     return (
         <>
         <Sidebar/>
