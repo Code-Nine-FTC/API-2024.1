@@ -107,7 +107,7 @@ const RegistroSup = () => {
                     <input type="password" id="confirmarsenha" name="senha2" value={formDataSenha.senha2} placeholder='Confirme sua senha' onChange={handleChange} required></input><br></br>
                     <br></br>
                     <div className={styles.button}>
-                        <button type='submit' id={styles.Editar}>
+                        <button type='submit' id={styles.Editar} >
                             Adicionar Suporte
                         </button>
                         <div className={styles.Title}>

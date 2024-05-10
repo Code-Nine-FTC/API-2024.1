@@ -6,36 +6,41 @@ import Sidebar from "../component/sidebar/sidebar";
 import styles from "../component/listarSuporte/listarSuporte.module.css";
 import { Link } from "react-router-dom";
 import { IFuncionarioView } from "../../../Backend/src/interfaces/IFuncionario";
+import { getNivelAcesso, getToken } from "../services/auth";
+import visualizarTodosFuncionarios from "../functions/View/viewTodosFuncionariosFunc";
 
 const ListagemFuncionarios = () => {
   const [funcionarios, setFuncionarios] = useState<IFuncionarioView[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-  const token = localStorage.getItem('token')
-  const nivelAcesso = localStorage.getItem('nivel')
+  const token = getToken()
+  const nivelAcesso = getNivelAcesso()
   const navigate = useNavigate();
 
   useEffect(() => {
     if (nivelAcesso !== 'administrador') {
       navigate('/homesup');
-      return
-  }
-
+      return;
+    }
+  
     const fetchFuncionarios = async () => {
       try {
-        const response = await axios.get(`${rotaBase}/visualizarTodosFuncionarios`, {
-          headers: {
-            Authorization: `Bearer ${token}`
+        const resultadoListagem = await visualizarTodosFuncionarios();
+        
+        if (resultadoListagem.success){
+          setFuncionarios(resultadoListagem.funcionarios);
+          setLoading(false); // Corrigido para false aqui
+          setError('');
+        } else {
+          setError("Erro ao carregar os dados dos funcionários");
+          setLoading(false); // Corrigido para false aqui também
         }
-      });
-        setFuncionarios(response.data.funcionarios);
-        setLoading(false);
       } catch (error) {
         setError("Erro ao carregar os dados dos funcionários");
         setLoading(false);
       }
     };
-
+  
     fetchFuncionarios();
   }, []);
 
@@ -48,7 +53,7 @@ const ListagemFuncionarios = () => {
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
           {funcionarios.map((funcionario) => (
-            <div className={styles.funcionarioContainer} key={funcionario.func_cpf}>
+            <div className={styles.funcionarioContainer} key={funcionario.func_id}>
               <div className={styles.userData}>
                 <h3>Nome</h3>
                 <span>{funcionario.func_nome}</span>
@@ -64,7 +69,7 @@ const ListagemFuncionarios = () => {
               <div className={styles.userData}>
               <Link
                 id={styles.detalheslink}
-                to={`/visualizarfuncionario/${funcionario.func_cpf}`}
+                to={`/visualizarfuncionario/${funcionario.func_id}`}
                 style={{ color: 'black'}}>
                 Ver detalhes
               </Link>
@@ -72,10 +77,6 @@ const ListagemFuncionarios = () => {
             </div>
           ))}
     </div>
-
-
-
-        
           <div className={styles.buttonContainer}>
             <Link to="/registrosuporte"> <button type="button">Cadastrar Atendente</button></Link>
           </div>

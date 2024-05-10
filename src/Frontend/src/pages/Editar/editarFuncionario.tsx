@@ -17,8 +17,7 @@ const EditarFuncionario: React.FC = () => {
   const [func_expediente_inicio, setFuncExpedienteInicio] = useState<string>();
   const [func_expediente_final, setFuncExpedienteFinal] = useState<string>();
   const [ativo, setAtivo] = useState<boolean>(true);
-  const token = localStorage.getItem('token')
-
+  
   const selecionarHorario = (event: any) => {
     const horario = event.target.value
     switch(horario) {
@@ -59,7 +58,7 @@ const EditarFuncionario: React.FC = () => {
 
     console.log(dadosUpdate);
     try {
-      const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate, token);
+      const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate);
       toast.success('Alteração concluída')
     } catch (error) {
       console.log(`Erro ao editar Funcionario!`, error);

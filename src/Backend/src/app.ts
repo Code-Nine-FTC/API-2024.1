@@ -10,7 +10,7 @@ import Funcionario from './entities/funcionario';
 import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
 import { Router } from "express";
-import { FrontpageAuth } from './controllers/frontPagesAuth';
+
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
@@ -22,11 +22,9 @@ app.use(cors())
 app.use(express.json()) 
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
-const router = Router()
-app.use(router)
+// const router = Router()
+// app.use(router)
 
-const frontpageAuth = new FrontpageAuth()
-router.post('/autenticarfrontpage', frontpageAuth.validarPagina.bind(frontpageAuth))
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
