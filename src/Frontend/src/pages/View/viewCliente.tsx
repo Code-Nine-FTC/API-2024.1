@@ -11,7 +11,6 @@ export default function VisualizarCliente(){
             const resultado = await viewCliente();
             setCliente(resultado.cliente)
             console.log(`Encontrou aqui`)
-            console.log(cliente)
         } catch (error) {
             console.error("Erro ao encontrar Cliente:", error);
         }

@@ -137,6 +137,7 @@ export class AuthMiddleware {
         } catch (error) {
             console.error('Erro ao verificar token:', error)
             res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            next(error)
             return null
         }
     }
@@ -149,11 +150,11 @@ export class AuthMiddleware {
             const secret3 = process.env.SECRET03
 
             if (!token) {
-                res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+                return res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
             }
 
-            if (secret || !secret2 || !secret3) {
-                res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            if (!secret || !secret2 || !secret3) {
+                return res.status(500).json({ success: false, message: `Erro interno do servidor` })
             }
             jwt.verify(token, secret, async(err :any, decoded: any) =>{
                 if (err){
@@ -194,6 +195,7 @@ export class AuthMiddleware {
         } catch (error) {
             console.error('Erro ao verificar token:', error)
             res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            next(error)
             return null
         }
     }

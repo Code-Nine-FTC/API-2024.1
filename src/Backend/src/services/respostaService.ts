@@ -28,14 +28,16 @@ export default class RespostaService {
             console.log(id)
             const respostaRepository = Connection.getRepository(Chamado)
             const chamado = await respostaRepository.findOne({ where: { cha_id: id } })
-            console.log(chamado)
+            // console.log(chamado)
+            console.log('Result of buscarChamado:', chamado);
             if (!chamado) {
                 return { success: false, message: `Chamado não encontrado` }
             }
             return { success: true, message: `Chamado encontrado`, chamado }
             } 
             catch (error) {
-            console.error(`Erro ao encontrar chamado: ${error}`)
+            console.error('Error in buscarChamado:', error);
+            // console.error(`Erro ao encontrar chamado: ${error}`)
             return { success: false, message: `Erro ao encontrar o chamado` }
         }
     }

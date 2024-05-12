@@ -2,11 +2,26 @@ import styles from "./Chat.module.css"
 import Mensagem from './mensagensComponent'
 import BuscarMensagens from "../../functions/Chat/buscarMensagensFunc"
 import { IMensagemView } from "../../functions/Chat/IMensagem";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ChatComponent = ({ id }: { id: number })=> {
-    const mensagemBusca = BuscarMensagens(id)
     const [mensagens, setMensagens] = useState<IMensagemView[]>([]);
+    // useEffect(()=>{
+    //         const fetchMensagem = async () =>{
+    //             try {
+    //                 const resultado = await BuscarMensagens(id);
+    //                 if (resultado && resultado.mensagem) {
+    //                     setMensagens(resultado.mensagem);
+    //                     console.log(`Mensagens encontradas:`, resultado.mensagem);
+    //                 } else {
+    //                     console.log(`Mensagem não encontrada.`);
+    //                 }
+    //             } catch (error) {
+    //                 console.error("Erro ao encontrar Mensagens:", error);
+    //             }
+    //         } 
+    //          fetchMensagem()
+    //     },[])
     return (
         <div className={styles.campoMensagens}>
             {mensagens.map((mensagem) => (

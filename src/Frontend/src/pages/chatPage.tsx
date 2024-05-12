@@ -30,7 +30,7 @@ const ChatPage = () => {
         }
     } 
      fetchCliente()
-},[id])
+},[])
     useEffect(() => {
         console.log('Consolos fodas')
         console.log(chamado);

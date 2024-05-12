@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { rotaBase } from "../RotaBase/rotaBase";
 import IChamadoView from "./IChamado";
 import api from "../../services/api";
 
@@ -12,8 +9,8 @@ export default async function BuscarChamado(id: number) {
             return {chamado: resultado.data.chamado}
           ;
           } catch (error) {
-            console.error('Erro ao buscar nome de funcionario: ', error);
-            throw new Error('Erro ao buscar nome de funcionario');
+            console.error('Erro ao buscar chamado: ', error);
+            throw new Error('Erro ao buscar chamado');
         }
         };
 

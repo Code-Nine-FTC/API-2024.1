@@ -27,7 +27,7 @@ export default class RespostaController {
     }
     async buscarChamado(req: Request, res: Response) {
         console.log('Received POST request to /buscarChamado')
-        console.log(req.body)
+        console.log('Request body: ', req.body)
         try{
             const chamados = req.body
             const id = Number(chamados.cha_id)
