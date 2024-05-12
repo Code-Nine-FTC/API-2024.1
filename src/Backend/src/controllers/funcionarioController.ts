@@ -48,6 +48,7 @@ export default class FuncionarioController {
 
     async visualizarFuncionario(req: Request, res: Response) {
         try {
+            console.log('Recebendo informações /viewFuncionario')
             const id = req.body.func_id;  
             const resultado = await this.funcionarioService.visualizarFuncionario(parseInt(id));
             console.log(resultado);

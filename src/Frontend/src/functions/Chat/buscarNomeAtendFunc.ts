@@ -5,7 +5,7 @@ import api from "../../services/api"
 
 export default async function BuscarNomeAtendente(id: number) {
             try {
-                const resultado = await api.post(`/viewFuncionario`, id)
+                const resultado = await api.post(`/chatFuncionario`, id)
                 return {name: resultado.data.funcionario.func_nome}
             } catch (error) {
                 console.error('Erro ao buscar nome de funcionario: ', error);

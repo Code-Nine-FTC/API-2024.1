@@ -15,25 +15,29 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                
                 const clienteName = await BuscarNomeCliente(chamado.cli_id);
+                const atendenteName = await BuscarNomeAtendente(chamado.func_id);
                 if (clienteName) {
                     setNomeCliente(clienteName.name);
-                    // console.log(`Chamado encontrado:`, resultado.chamado);
                 } else {
-                    console.log(`Chamado não encontrado.`);
+                    console.log(`Cliente não encontrado.`);
                 }
-                setNomeCliente(clienteName.name);
+                if (atendenteName){
+                    setNomeAtendente(atendenteName.name);
+                } else {
+                    console.log('Atendente não encontrado')
+                }
                 
-
-                const atendenteName = await BuscarNomeAtendente(chamado.func_id);
-                setNomeAtendente(atendenteName.name);
             } catch (error) {
                 console.error('Erro ao buscar nomes: ', error);
             }
         };
         fetchData();
     }, [chamado.cli_id, chamado.func_id]);
+    useEffect(() => {
+        console.log('YES BABY THANK YOU')
+        console.log(nomeAtendente, nomeCliente);
+    }, [nomeAtendente, nomeCliente]);
     return (
         <>
             <header className={styles.header}>
