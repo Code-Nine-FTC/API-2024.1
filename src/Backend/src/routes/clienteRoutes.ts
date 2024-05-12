@@ -5,6 +5,9 @@ import { AuthMiddleware } from "../controllers/authMiddleware";
 const router = Router()
 const clienteController = new ClienteController()
 const authClient = AuthMiddleware.authTokenCliente
+const authAdminOrAtendente = AuthMiddleware.authTokenAdminOrAtendente
+
+
 
 // Rotas sem autenticação
 router.post('/cadastroCliente', clienteController.cadastrarCliente.bind(clienteController))

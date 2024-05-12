@@ -15,8 +15,16 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                
                 const clienteName = await BuscarNomeCliente(chamado.cli_id);
+                if (clienteName) {
+                    setNomeCliente(clienteName.name);
+                    // console.log(`Chamado encontrado:`, resultado.chamado);
+                } else {
+                    console.log(`Chamado não encontrado.`);
+                }
                 setNomeCliente(clienteName.name);
+                
 
                 const atendenteName = await BuscarNomeAtendente(chamado.func_id);
                 setNomeAtendente(atendenteName.name);

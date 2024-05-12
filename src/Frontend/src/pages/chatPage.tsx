@@ -30,9 +30,11 @@ const ChatPage = () => {
         }
     } 
      fetchCliente()
-     console.log(chamado)
 },[id])
-
+    useEffect(() => {
+        console.log('Consolos fodas')
+        console.log(chamado);
+    }, [chamado]);
     return (
         <>
         <Sidebar/>
