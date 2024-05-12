@@ -31,11 +31,13 @@ export default class RespostaController {
         try{
             const chamados = req.body
             const id = Number(chamados.cha_id)
+            console.log('id do chamado')
+            console.log(id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'Erro ao buscar chamado' })
             }
             const resultado = await this.respostaService.buscarChamado(id)
-            if (resultado.success) {
+            if (resultado.success) { 
                 return res.status(200).json(resultado)
             } else {
                 return res.status(400).json(resultado)
@@ -43,6 +45,29 @@ export default class RespostaController {
         }
         catch (error) {
             console.error(`Erro ao buscar chamado: ${error}`)
+            return res.status(500).json({ success: false, message: `Erro interno no servidor`})
+        }
+    }
+    async buscarMensagens(req: Request, res: Response) {
+        console.log('Received POST request to /buscarMensagens')
+        console.log(req.body)
+        try{
+            const mensagem = req.body
+            const id = Number(mensagem.cha_id)
+            console.log('id da mensagem')
+            console.log(id)
+            if (isNaN(id) || id <= 0) {
+                return res.status(400).json({ success: false, message: 'Erro ao buscar mensagem' })
+            }
+            const resultado = await this.respostaService.buscarMensagens(id)
+            if (resultado.success) {
+                return res.status(200).json(resultado)
+            } else {
+                return res.status(400).json(resultado)
+            }
+        }
+        catch (error) {
+            console.error(`Erro ao buscar mensagem: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno no servidor`})
         }
     }

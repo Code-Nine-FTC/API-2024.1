@@ -45,11 +45,16 @@ export default class RespostaService {
             console.log('Recebendo mensagens')
             console.log(id)
             const respostaRepository = Connection.getRepository(Resposta)
-            const respostas = await respostaRepository.findOne({where: { cha_id: id}})
+            const respostas = await respostaRepository.findOne({
+                where: {
+                    chamado: { cha_id: id } 
+                },
+                relations: ['chamado']
+            });
             console.log(respostas)
-            if(!respostas){
-                return{success: false, message: `Mensagem não encontrada`}
-            }
+            // if(!respostas){
+            //     return{success: false, message: `Mensagem não encontrada`}
+            // }
             return {success: true, message: `Mensagem encontrada`, respostas}
         }
         catch(error) {

@@ -40,7 +40,7 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => 
                         ):(
                             <p>Atendente: {nomeAtendente}</p>
                         )}
-                        {/* <p>Categoria: {chamado.categoria}</p> */}
+                        {/* <p>Categoria: {chamado.categoria}</p> */} 
                     </div>                
                 </div>
             </header>

@@ -7,12 +7,32 @@ import { useParams } from "react-router-dom"
 import BuscarChamado from "../functions/Chat/buscarChamadoFunc"
 import { getNivelAcesso } from "../services/auth"
 import IChamadoView from "../functions/Chat/IChamado"
+import { useState, useEffect } from "react"
+
+
 
 const ChatPage = () => {
-    // const { id } = useParams<{ id?: string }>();
+    const id = 1 as number;
     const userTipo = getNivelAcesso();
-    const id = 1
-    const chamado = BuscarChamado(id)
+    const [chamado, setChamado]= useState<any>(null)
+    useEffect(()=>{
+    const fetchCliente = async () =>{
+        try {
+            const resultado = await BuscarChamado(id);
+            if (resultado && resultado.chamado) {
+                setChamado(resultado.chamado);
+                // console.log(`Chamado encontrado:`, resultado.chamado);
+            } else {
+                console.log(`Chamado não encontrado.`);
+            }
+        } catch (error) {
+            console.error("Erro ao encontrar Chamado:", error);
+        }
+    } 
+     fetchCliente()
+     console.log(chamado)
+},[id])
+
     return (
         <>
         <Sidebar/>
