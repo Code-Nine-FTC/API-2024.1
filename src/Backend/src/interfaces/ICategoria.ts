@@ -1,7 +1,7 @@
 export interface ICategoriaInput {
     cat_titulo: string
     cat_horario: string
-    cat_prioridade: number
+    cat_prioridade: string
 }
 
 export interface ICategoriaUpdate {

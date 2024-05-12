@@ -19,9 +19,9 @@ export class CategoriaService {
         return await this.categoriaRepository.find();
     }
 
-    public async editarCategoria(funcionario: IFuncionarioInput, cat_titulo: string, categoriaUpdate: ICategoriaUpdate): Promise<void> {
+    public async editarCategoria(funcionario: IFuncionarioInput, cat_id: number, categoriaUpdate: ICategoriaUpdate): Promise<void> {
         if (funcionario.func_is_admin) {
-            const categoria = await this.categoriaRepository.findOne({ where: { cat_titulo } });
+            const categoria = await this.categoriaRepository.findOne({ where: { cat_id } });
             if (categoria) {
                 if (categoriaUpdate.cat_titulo !== undefined) {
                     categoria.cat_titulo = categoriaUpdate.cat_titulo;
@@ -38,6 +38,7 @@ export class CategoriaService {
             throw new Error("Somente administradores podem editar categorias.");
         }
     }
+    
 
     private definirPrioridade(horario: number): string {
         if (horario <= 1) {
