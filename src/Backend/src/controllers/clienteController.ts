@@ -61,6 +61,7 @@ export default class ClienteController {
     
     async visualizarCliente(req: Request, res: Response) {
         try {
+            console.log('recebendo request /viewCliente')
             const id = res.locals.userId;
             console.log(id)
             if (isNaN(id) || id <= 0) {

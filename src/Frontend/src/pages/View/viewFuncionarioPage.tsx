@@ -10,7 +10,7 @@ export default function VisualizarFuncionario() {
     const { id } = useParams<{ id?: string }>();
     const [funcionario, setFuncionario] = useState<any>(null);
     const nivelAcesso = getNivelAcesso()
-
+    
     useEffect(() => {
         if (!id) {
             navigate('/notfound');

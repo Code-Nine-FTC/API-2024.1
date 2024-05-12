@@ -37,7 +37,6 @@ a {
 .sidebar {
     background-color: #00046D;
     transform: translateX(0);
-    /* position: absolute; */
     min-width: max-content;
     min-width: 14vw;
     min-height: 100vh;
@@ -45,6 +44,8 @@ a {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
+    
+
 }
 
 .sidebarContainer {

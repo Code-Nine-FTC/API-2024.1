@@ -36,7 +36,7 @@ export class AuthMiddleware {
             next();
         } catch (error) {
             console.error('Erro ao verificar token:', error);
-            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
@@ -64,7 +64,7 @@ export class AuthMiddleware {
             next();
         } catch (error) {
             console.error('Erro ao verificar token:', error);
-            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
@@ -92,7 +92,7 @@ export class AuthMiddleware {
             next();
         } catch (error) {
             console.error('Erro ao verificar token:', error);
-            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
@@ -134,6 +134,63 @@ export class AuthMiddleware {
                     next()
                 }
             }) as JwtPayload
+        } catch (error) {
+            console.error('Erro ao verificar token:', error)
+            res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            return null
+        }
+    }
+    static async authTokenAll(req: Request, res: Response, next: NextFunction) {
+        try {
+            const authHeader = req.headers['authorization']
+            const token = authHeader && authHeader.split(' ')[1]
+            const secret = process.env.SECRET
+            const secret2 = process.env.SECRET02
+            const secret3 = process.env.SECRET03
+
+            if (!token) {
+                return res.status(401).json({ success: false, message: `Token de autenticação não fornecido` })
+            }
+
+            if (!secret || !secret2 || !secret3) {
+                return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+            }
+            jwt.verify(token, secret, async(err :any, decoded: any) =>{
+                if (err){
+                    jwt.verify(token, secret2, async (err: any, decoded: any) => {
+                        if (err) {
+                            jwt.verify(token, secret3, async (err: any, decoded: any) => {
+                                if (err) {
+                                   return res.status(403).json({ success: false, message: `Token Inválido` })
+                                }
+                                const funcionario = await Connection.getRepository(Funcionario).findOne({ where: { func_id: decoded.id } })
+                                if (!funcionario) {
+                                    return  res.status(403).json({ success: false, message: `Não Autorizado` })
+                                }
+                                res.locals.userId = decoded.id;
+                                next()
+                            }) as JwtPayload
+                        } else {
+                            const funcionario = await Connection.getRepository(Funcionario).findOne({ where: { func_id: decoded.id } })
+                            if (!funcionario) {
+                                return  res.status(403).json({ success: false, message: `Não Autorizado` })
+            
+                            }
+                            res.locals.userId = decoded.id;
+                            next()
+                        }
+                    }) as JwtPayload
+                } else {
+                    const cliente = await Connection.getRepository(Cliente).findOne({ where: { cli_id: decoded.id } })
+                    if (!cliente) {
+                        return  res.status(403).json({ success: false, message: `Não Autorizado` })
+    
+                    }
+                    res.locals.userId = decoded.id;
+                    next()
+                }
+            })
+
         } catch (error) {
             console.error('Erro ao verificar token:', error)
             res.status(500).json({ success: false, message: `Erro interno do servidor` })

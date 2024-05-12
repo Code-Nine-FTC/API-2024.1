@@ -4,7 +4,7 @@ import ImageComponent from '../../component/imagemperfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
 import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; 
 import { useNavigate, useParams } from 'react-router-dom';
-import IFuncionarioUpdate from '../../functions/Editar/interface/IFuncionarioUpdate';
+import IFuncionarioUpdate from '../../functions/Editar/Interface/IFuncionarioUpdate';
 import { toast, Toaster } from 'react-hot-toast';
 
 const EditarFuncionario: React.FC = () => {
