@@ -33,10 +33,6 @@ const Mensagem = ({ mensagem } : { mensagem: IMensagemView }) => {
             </div>
             )
         )}
-            <div className={styles.chatbox}>
-                <p>{mensagem.texto}</p>
-                <p>{mensagem.data}</p>
-            </div>
         </>
     )
 }
