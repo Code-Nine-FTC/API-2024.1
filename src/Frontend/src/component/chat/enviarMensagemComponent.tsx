@@ -4,11 +4,12 @@ import { useState } from 'react'
 import EnviarMensagemFunc from '../../functions/Chat/enviarMensagemFunc'
 import getDate from '../../functions/verData'
 import RecebeData from '../../functions/dataString'
+import { getNivelAcesso } from '../../services/auth'
 
 
 const EnviarMensagem = () => {
 
-    const nivel = localStorage.getItem('nivel')
+    const nivel = getNivelAcesso()
     
     const id = 1
 
@@ -20,13 +21,9 @@ const EnviarMensagem = () => {
         chamado: id
     }
 
-    if (nivel === 'usuario') {
-        mensagem.autoria = false
-    }
-    else {
+    if (nivel !== 'usuario') {
         mensagem.autoria = true
     }
-
 
     const handleChange = (event:any) => {
         setTexto(event.target.value)

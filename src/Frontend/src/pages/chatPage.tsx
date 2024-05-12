@@ -19,7 +19,6 @@ const ChatPage = () => {
             const resultado = await BuscarChamado(id);
             if (resultado && resultado.chamado) {
                 setChamado(resultado.chamado);
-                // console.log(`Chamado encontrado:`, resultado.chamado);
             } else {
                 console.log(`Chamado não encontrado.`);
             }
@@ -29,10 +28,6 @@ const ChatPage = () => {
     } 
      fetchCliente()
 },[id])
-    useEffect(() => {
-        console.log('Consolos fodas')
-        console.log(chamado);
-    }, [chamado]);
     return (
         <>
         <Sidebar/>

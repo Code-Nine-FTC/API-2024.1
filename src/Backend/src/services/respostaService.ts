@@ -2,6 +2,8 @@ import { IRespostaInput } from "../interfaces/IRespostas";
 import Resposta from "../entities/resposta";
 import { Connection } from "../config/data-source";
 import Chamado from "../entities/chamado";
+import Cliente from "../entities/cliente";
+import Funcionario from "../entities/funcionario";
 
 
 
@@ -26,8 +28,16 @@ export default class RespostaService {
         try{
             console.log('Recebendo dados')
             console.log(id)
-            const respostaRepository = Connection.getRepository(Chamado)
-            const chamado = await respostaRepository.findOne({ where: { cha_id: id } })
+            const chamadoRepository = Connection.getRepository(Chamado)
+            const chamado = await chamadoRepository.createQueryBuilder("chamado")
+            .leftJoin("chamado.cliente", "cliente")
+            .addSelect(["cliente.cli_id", "cliente.cli_nome"])
+            .leftJoin("chamado.funcionario", "funcionario")
+            .addSelect(["funcionario.func_id", "funcionario.func_nome"])
+            .leftJoin("chamado.respostas", "respostas")
+            .addSelect("respostas.resp_id")
+            .where("chamado.cha_id = :id", { id: id })
+            .getOne();
             // console.log(chamado)
             console.log('Result of buscarChamado:', chamado);
             if (!chamado) {

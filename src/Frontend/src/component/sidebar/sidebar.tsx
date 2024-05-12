@@ -7,7 +7,6 @@ import { getAdminNavigationItems, getAtendenteNavigationItems, getDefaultNavigat
 import { getNivelAcesso, getToken, logout } from '../../services/auth';
 
 const Sidebar = () => {
-    const token = getToken();
     const userTipo = getNivelAcesso();
     const buttonRef = useRef<HTMLButtonElement>(null);
     const sidebarRef = useRef<HTMLDivElement>(null);
@@ -73,7 +72,7 @@ const Sidebar = () => {
                 <span></span>
                 <span></span>
             </button>
-        <div className={styles.sidebarContainer}>
+        <div ref={sidebarcontainerRef} className={styles.sidebarContainer}>
             <section ref={sidebarRef} className={styles.sidebar}>
                 {userTipo !== null && userTipo !== '' && (
                 <> 

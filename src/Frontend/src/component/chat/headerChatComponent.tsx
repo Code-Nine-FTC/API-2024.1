@@ -9,35 +9,7 @@ import IChamadoView from '../../functions/Chat/IChamado'
 
 
 const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => {
-    const [nomeCliente, setNomeCliente] = useState('');
-    const [nomeAtendente, setNomeAtendente] = useState('');
     const userTipo = getNivelAcesso();
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const clienteName = await BuscarNomeCliente(chamado.cli_id);
-                const atendenteName = await BuscarNomeAtendente(chamado.func_id);
-                if (clienteName) {
-                    setNomeCliente(clienteName.name);
-                } else {
-                    console.log(`Cliente não encontrado.`);
-                }
-                if (atendenteName){
-                    setNomeAtendente(atendenteName.name);
-                } else {
-                    console.log('Atendente não encontrado')
-                }
-                
-            } catch (error) {
-                console.error('Erro ao buscar nomes: ', error);
-            }
-        };
-        fetchData();
-    }, [chamado.cli_id, chamado.func_id]);
-    useEffect(() => {
-        console.log('YES BABY THANK YOU')
-        console.log(nomeAtendente, nomeCliente);
-    }, [nomeAtendente, nomeCliente]);
     return (
         <>
             <header className={styles.header}>
@@ -47,10 +19,10 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => 
                         <p className={styles.ticket}>Ticket#{id}</p>
                     </div>
                     <div className={styles.alinharInfo}>
-                        {userTipo !== 'Cliente' ?(
-                            <p>Cliente: {nomeCliente}</p>
+                        {userTipo !== 'usuario' ?(
+                            <p>Cliente: {chamado.cliente.cli_nome}</p>
                         ):(
-                            <p>Atendente: {nomeAtendente}</p>
+                            <p>Atendente: {chamado.funcionario.func_nome}</p>
                         )}
                         {/* <p>Categoria: {chamado.categoria}</p> */} 
                     </div>                

@@ -6,8 +6,17 @@ export default interface IChamadoView {
     cha_data_final: Date;
     cha_data_inicio: Date;
     cha_topico_chamado: string;
-    cli_id: number;
-    func_id: number;
+    cliente: {
+        cli_id: number;
+        cli_nome: string;
+    };
+    funcionario: {
+        func_id: number;
+        func_nome: string;
+    };
+    respostas: {
+        resp_id: number;
+    }[];
 }
 
 
