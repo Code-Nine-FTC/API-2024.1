@@ -47,7 +47,7 @@ export default class RespostaService {
             console.log('Recebendo mensagens')
             console.log(id)
             const respostaRepository = Connection.getRepository(Resposta)
-            const respostas = await respostaRepository.findOne({
+            const respostas = await respostaRepository.find({
                 where: {
                     chamado: { cha_id: id } 
                 },

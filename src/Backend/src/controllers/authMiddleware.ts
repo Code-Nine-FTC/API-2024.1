@@ -36,7 +36,7 @@ export class AuthMiddleware {
             next();
         } catch (error) {
             console.error('Erro ao verificar token:', error);
-            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
@@ -64,7 +64,7 @@ export class AuthMiddleware {
             next();
         } catch (error) {
             console.error('Erro ao verificar token:', error);
-            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
@@ -92,7 +92,7 @@ export class AuthMiddleware {
             next();
         } catch (error) {
             console.error('Erro ao verificar token:', error);
-            res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
@@ -137,7 +137,6 @@ export class AuthMiddleware {
         } catch (error) {
             console.error('Erro ao verificar token:', error)
             res.status(500).json({ success: false, message: `Erro interno do servidor` })
-            next(error)
             return null
         }
     }
@@ -195,7 +194,6 @@ export class AuthMiddleware {
         } catch (error) {
             console.error('Erro ao verificar token:', error)
             res.status(500).json({ success: false, message: `Erro interno do servidor` })
-            next(error)
             return null
         }
     }

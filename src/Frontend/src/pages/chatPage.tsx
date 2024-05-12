@@ -9,8 +9,6 @@ import { getNivelAcesso } from "../services/auth"
 import IChamadoView from "../functions/Chat/IChamado"
 import { useState, useEffect } from "react"
 
-
-
 const ChatPage = () => {
     const id = 1 as number;
     const userTipo = getNivelAcesso();
@@ -30,7 +28,7 @@ const ChatPage = () => {
         }
     } 
      fetchCliente()
-},[])
+},[id])
     useEffect(() => {
         console.log('Consolos fodas')
         console.log(chamado);
