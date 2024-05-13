@@ -11,6 +11,7 @@ import Funcionario from './entities/funcionario';
 import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
 import { Router } from "express";
+import chamadoRoutes from './routes/chamadoRoutes'
 
 
 // Carrega as variáveis de ambiente do arquivo .env
@@ -24,6 +25,7 @@ app.use(express.json())
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
 app.use(defaultRotes)
+app.use(chamadoRoutes)
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
