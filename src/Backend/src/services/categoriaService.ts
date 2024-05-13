@@ -6,20 +6,29 @@ import Categoria from "../entities/categoria";
 export class CategoriaService {
     private categoriaRepository = Connection.getRepository(Categoria);
 
-    public async criarCategoria(funcionario: IFuncionarioInput, categoriaInput: ICategoriaInput): Promise<void> {
-        if (funcionario.func_is_admin) {
-            categoriaInput.cat_prioridade = this.definirPrioridade(Number(categoriaInput.cat_horario));
-            await this.categoriaRepository.save(categoriaInput);
-        } else {
-            throw new Error("Somente administradores podem criar categorias.");
+    public async criarCategoria(dadosCategoria: ICategoriaInput){
+        try{
+            // Cria a nova categoria
+            const novaCategoria = await this.categoriaRepository.create(dadosCategoria)
+            // Salva a nova categoria
+            await this.categoriaRepository.save(dadosCategoria)
+            return { success: true, message: `Nova Categoria adicionada com sucesso!`, categoria: novaCategoria}
+
+        }catch(error){
+            console.error(`Erro ao cadastrar categoria: ${error}`)
+            return { success: false, message: `Erro ao cadastrar categoria.` }
         }
     }
 
-    public async listarCategorias(): Promise<ICategoriaInput[]> {
-        return await this.categoriaRepository.find();
+    public async listarCategorias() {
+        return await this.categoriaRepository.find(); // fazer tratamento de erros como criar Categoria
     }
 
-    public async editarCategoria(funcionario: IFuncionarioInput, cat_id: number, categoriaUpdate: ICategoriaUpdate): Promise<void> {
+    // Remover funcionario(autenticação já verifica se é adm)
+    // deixar (cat_id: number, dadosCategoria:ICategoriaUpdate)
+    // usar logica de editarCliente 
+    // Tratamento de erros!!!
+    public async editarCategoria(funcionario: IFuncionarioInput, cat_id: number, categoriaUpdate: ICategoriaUpdate){
         if (funcionario.func_is_admin) {
             const categoria = await this.categoriaRepository.findOne({ where: { cat_id } });
             if (categoria) {
@@ -39,16 +48,15 @@ export class CategoriaService {
         }
     }
     
-
     private definirPrioridade(horario: number): string {
         if (horario <= 1) {
-            return 'alta';
+            return 'Alta';
         } else if (horario <= 3) {
-            return 'média';
+            return 'Média';
         } else if (horario <= 5) {
-            return 'baixa';
+            return 'Baixa';
         } else {
-            return 'baixa';
+            return 'Baixa';
         }
     }
 }
