@@ -8,43 +8,56 @@ export class CategoriaService {
 
     public async criarCategoria(dadosCategoria: ICategoriaInput){
         try{
-            // Cria a nova categoria
             const novaCategoria = await this.categoriaRepository.create(dadosCategoria)
-            // Salva a nova categoria
-            await this.categoriaRepository.save(dadosCategoria)
+            await this.categoriaRepository.save(novaCategoria)
             return { success: true, message: `Nova Categoria adicionada com sucesso!`, categoria: novaCategoria}
-
+    
         }catch(error){
             console.error(`Erro ao cadastrar categoria: ${error}`)
             return { success: false, message: `Erro ao cadastrar categoria.` }
         }
     }
-
+    
     public async listarCategorias() {
-        return await this.categoriaRepository.find(); // fazer tratamento de erros como criar Categoria
-    }
-
-    // Remover funcionario(autenticação já verifica se é adm)
-    // deixar (cat_id: number, dadosCategoria:ICategoriaUpdate)
-    // usar logica de editarCliente 
-    // Tratamento de erros!!!
-    public async editarCategoria(funcionario: IFuncionarioInput, cat_id: number, categoriaUpdate: ICategoriaUpdate){
-        if (funcionario.func_is_admin) {
-            const categoria = await this.categoriaRepository.findOne({ where: { cat_id } });
-            if (categoria) {
-                if (categoriaUpdate.cat_titulo !== undefined) {
-                    categoria.cat_titulo = categoriaUpdate.cat_titulo;
-                }
-                if (categoriaUpdate.cat_horario !== undefined) {
-                    categoria.cat_horario = categoriaUpdate.cat_horario;
-                    categoria.cat_prioridade = this.definirPrioridade(Number(categoriaUpdate.cat_horario));
-                }
-                await this.categoriaRepository.save(categoria);
-            } else {
-                throw new Error("Categoria não encontrada.");
+        try {
+            const categorias = await this.categoriaRepository.find();
+            if (categorias.length === 0) {
+                return { success: false, message: 'Nenhuma categoria encontrada' };
             }
-        } else {
-            throw new Error("Somente administradores podem editar categorias.");
+            return { success: true, categorias };
+        } catch (error) {
+            console.error(`Erro ao listar categorias: ${error}`);
+            return { success: false, message: 'Erro ao listar categorias' };
+        }
+    }
+    
+
+    public async editarCategoria(cat_id: number, categoriaUpdate: ICategoriaUpdate) {
+        try {
+            const categoriaRepository = Connection.getRepository(Categoria)
+            const categoria = await categoriaRepository.findOne({ where: { cat_id } })
+    
+            if (!categoria) {
+                return { success: false, message: `Categoria não encontrada` }
+            }
+            if (categoriaUpdate.cat_titulo) {
+                const tituloExistente = await categoriaRepository.findOne({ where: { cat_titulo: categoriaUpdate.cat_titulo } })
+    
+                if (tituloExistente && tituloExistente.cat_id !== cat_id) {
+                    return { success: false, message: `Título já cadastrado` }
+                }
+            }
+            if (categoriaUpdate.cat_horario) {
+                categoria.cat_horario = categoriaUpdate.cat_horario;
+                categoria.cat_prioridade = this.definirPrioridade(Number(categoriaUpdate.cat_horario));
+            }
+    
+            const categoriaUpdateFinal = { ...categoria, ...categoriaUpdate }
+            await categoriaRepository.update(cat_id, categoriaUpdateFinal)
+            return { success: true, message: `Categoria atualizada com sucesso`, categoriaUpdateFinal }
+        } catch (error) {
+            console.error(`Erro ao editar categoria: ${error}`)
+            return { success: false, message: `Erro ao editar categoria` }
         }
     }
     
