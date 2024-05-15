@@ -1,20 +1,19 @@
 import axios from "axios";
 import { rotaBase } from "../RotaBase/rotaBase";
+import api from "../../services/api";
 
-const CadastroCategoriaAdm = async (formData: { cat_titulo: string; cat_horario: string; cat_prioridade: string }) => {
-    const token = localStorage.getItem('token');
-    
+interface ICategoriaInput {
+    cat_titulo: string
+    cat_horario: string
+    cat_prioridade: string
+}
+
+const CadastroCategoriaAdm = async (formData: ICategoriaInput) => {
     try {
-        const resultado = await axios.post(`${rotaBase}/categoria`, formData, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-
-        return resultado.data;
+        const resultado = await api.post(`/criarCategoria`, formData);
+        return {success: resultado.data.success, message: resultado.data.message, categoria: resultado.data.categoria};
     } catch (error) {
         console.error('Erro no cadastro ', error);
-        throw new Error('Erro ao cadastrar categoria');
     }
 };
 

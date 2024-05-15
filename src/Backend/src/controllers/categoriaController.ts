@@ -12,8 +12,11 @@ export class CategoriaController {
     public async criarCategoria(req: Request, res: Response) {
         try {
             const dadosCategoria: ICategoriaInput = req.body;
-            await this.categoriaService.criarCategoria(dadosCategoria);
-            return res.status(201).send({ message: 'Categoria criada com sucesso.' });
+            const resultado = await this.categoriaService.criarCategoria(dadosCategoria);
+            if(!resultado.success){
+                return res.status(400).json(resultado)
+            }
+            return res.status(201).json(resultado);
         } catch (error) {
             return res.status(400).send({ message: 'Erro ao criar categoria: ' + error.message });
         }

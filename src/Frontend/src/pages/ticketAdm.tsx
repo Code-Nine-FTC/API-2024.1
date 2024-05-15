@@ -4,18 +4,26 @@ import CadastroCategoriaAdm from "../functions/categoria/criarCategoriaAdm";
 import styles from '../component/chamadoAdm/chamadoAdm.module.css';
 
 const TicketAdm = () => {
-    const [formData, setFormData] = useState({ cat_titulo: '', cat_horario: '', cat_prioridade: '' });
+    const [formData, setFormData] = useState({ 
+        cat_titulo: '',
+        cat_horario: '',
+        cat_prioridade: '' 
+    });
+    
 
-    const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleFormSubmit = async (e: any) => {
+        e.preventDefault();
         
         try {
-            await CadastroCategoriaAdm(formData);
-            alert('Categoria criada com sucesso.');
-            // Limpar o formulário após o envio bem-sucedido
-            setFormData({ cat_titulo: '', cat_horario: '', cat_prioridade: '' });
+           const resultado = await CadastroCategoriaAdm(formData);
+           if (resultado?.message){
+            console.log(formData)
+            alert('Categoria cadastrada com sucesso!')
+           }else{
+            alert(resultado?.message)
+           }
         } catch (error) {
-            alert('Erro ao criar categoria.');
+            // alert('Erro ao criar categoria.');
             console.error(error);
         }
     };
@@ -62,7 +70,7 @@ const TicketAdm = () => {
                             required
                         >
                             <option disabled value="">Horário</option>
-                            <option value="08:00-12:00">08:00-12:00</option>
+                            <option value="01:00:00">08:00-12:00</option>
                             <option value="12:00-16:00">12:00-16:00</option>
                             <option value="16:00-20:00">16:00-20:00</option>
                         </select>
