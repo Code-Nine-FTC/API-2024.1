@@ -52,6 +52,7 @@ const Rotas: FC = () => {
           <Route path="/visualizarfuncionario/:id" element={<VisualizarFuncionario />} />
           <Route path="/registrosuporte" element={<RegistroSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
+          <Route path="/ticketadm" element={<TicketAdm />} />
           <Route path="/chat" element={<ChatPage/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
            

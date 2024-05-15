@@ -12,7 +12,7 @@ import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
 import { Router } from "express";
 import chamadoRoutes from './routes/chamadoRoutes'
-
+import categoriaRoutes from './routes/categoriaRoutes'
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
@@ -26,6 +26,7 @@ app.use(clienteRoutes)
 app.use(funcionarioRoutes)
 app.use(defaultRotes)
 app.use(chamadoRoutes)
+app.use(categoriaRoutes)
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
