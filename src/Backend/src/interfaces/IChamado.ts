@@ -3,6 +3,7 @@ import Funcionario from "../entities/funcionario";
 import Resposta from "../entities/resposta";
 
 export interface IChamadoView{
+    cha_id: number
     cha_titulo: string
     cha_descricao: string
     cha_prioridade: string

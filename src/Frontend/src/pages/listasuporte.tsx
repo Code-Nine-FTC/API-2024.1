@@ -53,6 +53,7 @@ const ListagemFuncionarios = () => {
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
           {funcionarios.map((funcionario) => (
+            
             <div className={styles.funcionarioContainer} key={funcionario.func_id}>
               <div className={styles.userData}>
                 <h3>Nome</h3>

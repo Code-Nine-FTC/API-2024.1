@@ -17,6 +17,8 @@ import VisualizarCliente from "../pages/View/viewCliente";
 import VisualizarPerfilFuncionario from "../pages/View/viewPerfilFuncionario";
 import TicketAdm from "../pages/ticketAdm";
 import ChatPage from "../pages/chatPage";
+import TicketsAtivos from "../pages/Tickets/ticketsAtivos";
+
 
 const Rotas: FC = () => {
   const resultado = isAuthenticated();
@@ -51,6 +53,8 @@ const Rotas: FC = () => {
           <Route path="/registrosuporte" element={<RegistroSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
           <Route path="/chat" element={<ChatPage/>} />
+          <Route path='/ticketsativos' element={<TicketsAtivos/>} />
+           
         </>
       );
     }

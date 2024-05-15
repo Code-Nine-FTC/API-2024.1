@@ -1,25 +1,9 @@
 import React from 'react';
-import styles from '../statusBox/statusBox.module.css'
-import orange from '../../assets/faq/rectangle.png'
+import styles from '../../statusBox/statusBox.module.css'
+import orange from '../../../assets/faq/rectangle.png'
 
-export interface InfoTicketsProps{
-    chamado:{
-    cha_id: number
-    cha_titulo: string
-    cha_descricao: string
-    cha_prioridade: string
-    cha_status: string
-    cha_data_final?: Date
-    cha_data_inicio: Date
-    cha_topico_chamado: string
-    // cliente: Cliente
-    // // funcionario?: Funcionario
-    // // resposta: Resposta[]
-}
-navigate: (path: string) => void;
-}
 
-function statusemandamento({ chamado, navigate }: InfoTicketsProps){
+function statusemandamento({ }){
     return(
         <div className={styles.statusBox}>
             <div className={styles.mainText}>
