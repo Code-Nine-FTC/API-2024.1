@@ -1,11 +1,15 @@
 import { Response, Request } from "express"
 import { ClienteService } from "../services/clienteService"
 import { IClienteInput, IClienteLoggin, IClienteUpdate } from "../interfaces/ICliente"
+import  ChamadoService from '../services/chamadoService'
 
 export default class ClienteController {
-    private clienteService: ClienteService
+    private clienteService: ClienteService;
+    private chamadoService: ChamadoService; 
+
     constructor() {
-        this.clienteService = new ClienteService()
+        this.clienteService = new ClienteService();
+        this.chamadoService = new ChamadoService(); 
     }
     async cadastrarCliente(req: Request, res: Response) {
         try {
@@ -79,23 +83,21 @@ export default class ClienteController {
             return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
-    // async desativarCliente(req: Request, res: Response) {
-    //     try {
-    //         const clienteLogado = res.locals.cliente
-    //         console.log(clienteLogado)
-    //         const id = Number(clienteLogado.cli_id)
-    //         if (isNaN(id) || id <= 0) {
-    //             return res.status(400).json({ success: false, message: 'ID do cliente inválido' })
-    //         }
-    //         const resultado = await this.clienteService.desativarCliente(id)
-    //         if (resultado.success) {
-    //             return res.status(200).json(resultado)
-    //         } else {
-    //             return res.status(400).json(resultado)
-    //         }
-    //     } catch (error) {
-    //         console.error(`Erro em desativar cliente: ${error}`)
-    //         return res.status(500).json({ success: false, message: `Erro interno do servidor` })
-    //     }
-    // }
+    public async desativarCliente(req: Request, res: Response) {
+        try {
+            const id = res.locals.userId
+            if (isNaN(id) || id <= 0) {
+                return res.status(400).json({ success: false, message: 'ID do cliente inválido' })
+            }
+            const resultado = await this.clienteService.desativarCliente(id, this.chamadoService)
+
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
+        } catch (error) {
+            console.error(`Erro em desativar cliente: ${error}`)
+            return res.status(500).json({ success: false, message: `Erro interno do servidor` })
+        }
+    }
 }
