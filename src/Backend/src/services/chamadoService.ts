@@ -1,12 +1,15 @@
 import { Connection } from "../config/data-source";
 import Categoria from "../entities/categoria";
 import Chamado from "../entities/chamado";
+import Funcionario from "../entities/funcionario";
 import { IChamadoInput } from "../interfaces/IChamado";
 
 class ChamadoService{
     private chamadoRepository = Connection.getRepository(Chamado)
+    private funcionarioRepository = Connection.getRepository(Funcionario)
 
     //Para Cliente
+    // cria novo chamado
     public async cadastrarChamado(dadosChamado: IChamadoInput){
         console.log(dadosChamado)
         try{
@@ -32,7 +35,8 @@ class ChamadoService{
             return { success: false, message: `Erro ao cadastrar chamado.` }
         }
     }
-
+    
+    // chamados ativos
     public async visualizarChamadosAtivosCliente(cli_id: number){
         try{
             // Busca os chamados do cliente desejado
@@ -53,6 +57,7 @@ class ChamadoService{
         }
     }
     
+    // chamados finalizados cliente
     public async visualizarChamadosFinalizadosCliente(cli_id: number){
         try{
             // Busca os chamados do cliente desejado
@@ -73,6 +78,7 @@ class ChamadoService{
         }
     }
 
+    // todos chamados cliente
     public async visualizarTodosChamadosCliente(cli_id: number){
         try{
             // Busca os chamados do cliente desejado
@@ -92,6 +98,7 @@ class ChamadoService{
         }
     }
     
+    // chamado aberto mais recente
     public async visualizarUltimoChamadoCliente(cli_id: number){
         try{
             // Busca os chamados do cliente desejado
@@ -113,7 +120,37 @@ class ChamadoService{
         }
     }
 
+   // Cancela cada chamado do cliente assim que for assionado!
+    public async cancelarChamado(cli_id: number){
+        try{
+            // Busca todos os chamados do cliente pela relação chamado/cliente
+            const chamados = await this.chamadoRepository.find({
+                where: { cliente: {cli_id: cli_id}} 
+            })
+
+            // verifica se o array é do tamanho 0
+            if (chamados.length === 0){
+                return { success: false, message: `Nenhum chamado encontrado!` }
+            }
+
+            // para cada elemento do array 
+            for (const chamado of chamados){
+                chamado.cha_status = 'Cancelado'
+            }
+
+            // salva o status
+            await this.chamadoRepository.save(chamados)
+
+            return { success: true, message: `Chamados cancelados com sucesso!` }
+
+        }catch(error){
+            console.error(`Erro em cancelar chamados do cliente: ${error}`)
+            return { success: false, message: `Erro em cancelar os chamados` }
+        }
+    }
+
     // Para Atendente
+    // em atendimento
     public async visualizarChamadoEmAtendimentoAtendente(func_id: number){
         try{
             //Busca todos os chamados do atendente desejado
@@ -134,6 +171,7 @@ class ChamadoService{
         }
     }
 
+    // chamados finalizados
     public async visualizarChamadosFinalizadosAtendente(func_id: number){
         try{
             //Busca todos os chamados do atendente desejado
@@ -154,13 +192,100 @@ class ChamadoService{
         }
     }
 
+    // Inicia atendimento
+    public async iniciarAtendimento(cha_id: number, func_id: number) {
+        try {
+            // Buscando as informações do chamado que vai ser atendido
+            const chamado = await this.chamadoRepository.findOne({
+                where: { cha_id: cha_id },
+                relations: ['funcionario'] // Carrega todas informações relacionada a relação com funcionario
+            });
+
+            // Verificando se ele foi encontrado!
+            if (!chamado) {
+                return { success: false, message: `Chamado não encontrado!` };
+            }
+
+            // Verifica se existe um funcionario associado
+            if (chamado.funcionario) {
+                return { success: false, message: `Chamado em atendimento!` };
+            }
+
+            // Verifica se o status do chamado nao esta cancelado
+            if(chamado.cha_status === 'Cancelado'){
+                return { success: false, message: `Não é possivel iniciar o atendimento desse chamado!` }
+            }
+
+            // Busca funcionario 
+            const funcionario = await this.funcionarioRepository.findOne({
+                where: { func_id: func_id }
+            });
+
+            if (funcionario.func_is_admin){
+                return { success: false, message: `Esse funcionario não pode realizar atendimento!` }
+            }
+
+            if (!funcionario) {
+                return { success: false, message: `Funcionario não encontrado!` };
+            }
+
+            // Verifica se o funcionario já está atendendo um chamado
+            const funcionarioOcupado = await this.chamadoRepository.findOne({
+                where: { funcionario: { func_id: func_id }, cha_status: 'Em Andamento' }
+            });
+
+            if (funcionarioOcupado) {
+                return { success: false, message: `Finalize o atendimento que está sendo realizado antes de iniciar um novo atendimento!` };
+            }
+
+            // Mudando o Status do Chamado
+            chamado.cha_status = 'Em Andamento';
+            // Atribuindo ao Funcionario que iniciou
+            chamado.funcionario = funcionario;
+            // Salvando as alterações
+            await this.chamadoRepository.save(chamado);
+
+            return { success: true, message: `Chamado atribuido com sucesso!` };
+        } catch (error) {
+            console.error(`Erro ao atribuir chamado ao funcionario: ${error}`);
+            return { success: false, message: `Erro ao atribuir chamado` };
+        }
+    }
+
+    // Finalizar chamado Atendente
+    public async finalizarAtendimento(cha_id: number){
+        try{
+            const chamado = await this.chamadoRepository.findOne({
+                where: {cha_id: cha_id}
+            })
+            if (!chamado){
+                return { success: false, message: `Chamado não encontrado!` }
+            }
+            if (chamado.cha_status !== 'Em Andamento'){
+                return { success: false, message: `Não é possivel finalizar onde não está sendo atendido!` }
+            }
+            // mudando status do chamado para concluido!
+            chamado.cha_status = 'Concluído'
+            // adicionando data e hora que foi finalizado
+            chamado.cha_data_final = new Date()
+            // salvando mudanças
+            await this.chamadoRepository.save(chamado)
+
+            return { success: true, message: `Chamado Finalizado!` }
+        }catch(error){
+            console.error(`Erro em finalizar chamado: ${error}`)
+            return { success: false, message: `Erro em finalizar chamado!` }
+        }
+    }
+
     // Para Administrador
+    // chamados em atendimento adm
     public async visualizarTodosChamadosEmAtendimento(){
         try{
             // Busca todos os chamados
             const chamadosAdm = await this.chamadoRepository.find({
                 where: {
-                    cha_status: 'Em Atendimento'
+                    cha_status: 'Em Andamento'
                 }
             })
             // Verificações
@@ -174,6 +299,7 @@ class ChamadoService{
         }
     }
 
+    //  todos os chamados Adm
     public async visualizarTodosChamados(){
         try{
             // Busca todos os chamados
@@ -189,6 +315,46 @@ class ChamadoService{
         }
     }
 
+    // Direciona atendimento ao atendente 
+    public async direcionarAtendimento(cha_id: number, func_id: number) {
+        try {
+            // Busca chamado 
+            const chamado = await this.chamadoRepository.findOne({
+                where: { cha_id: cha_id },
+                relations: ['funcionario'] 
+            });
+
+            // Verifica se ele existe
+            if (!chamado) {
+                return { success: false, message: `Chamado não encontrado!` };
+            }
+
+            // Verifica se o status do chamado nao esta cancelado
+            if(chamado.cha_status !== 'Cancelado'){
+                return { success: false, message: `Não é possivel direcionar o atendimento desse chamado!` }
+            }
+
+            // Busca funcionario 
+            const funcionario = await this.funcionarioRepository.findOne({
+                where: { func_id: func_id }
+            });
+
+            if (!funcionario) {
+                return { success: false, message: `Funcionario não encontrado!` };
+            }
+
+            // Direciona para um atendente o chamado 
+            chamado.funcionario = funcionario;
+            // Salva 
+            await this.chamadoRepository.save(chamado);
+
+            return { success: true, message: `Chamado direcionado com sucesso!` };
+        } catch (error) {
+            console.error(`Erro ao direcionar chamado para um atendente: ${error}`);
+            return { success: false, message: `Erro ao direcionar chamado` };
+        }
+    }
+
     // Para Ambos (Atendente e Administrador)    
     public async visualizarChamadoEmEspera(){
         try{
@@ -199,10 +365,17 @@ class ChamadoService{
                 }
             })
             // Verificações
-            if(!chamados){
+            if(chamados.length === 0){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-            return { success: true, message: `Chamados encontrados!`, chamados }
+            // Definindo a prioridade para ordenar
+            const prioridades = { 'Baixa': 1, 'Media': 2, 'Alta': 3 };
+
+            // Ordenando por prioridade
+            const chamadosOrdenados = chamados.sort((a, b) => prioridades[b.cha_prioridade] - prioridades[a.cha_prioridade]); // se + == B, senão == A
+            console.log(chamadosOrdenados)
+            return { success: true, message: `Chamados encontrados!`, chamados: chamadosOrdenados }
+
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
             return { success: false, message: `Erro em buscar todos os chamados` }
