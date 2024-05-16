@@ -19,10 +19,13 @@ router.get('/ultimoChamado', authClient, chamadoController.viewUltimoChamadoClie
 // Rotas atendenteChamado
 router.get('/chamadoEmAtendimento', authAtendente, chamadoController.viewChamadoEmAtendimentoAtendente.bind(chamadoController))
 router.get('/chamadosConcluidos', authAtendente, chamadoController.viewChamadosFinalizadosAtendente.bind(chamadoController))
+router.get('/iniciarChamado/:cha_id', authAtendente, chamadoController.iniciarAtendimentoController.bind(chamadoController))
+router.get('/finalizaAtendimento/:cha_id', authAtendente, chamadoController.finalizarAtendimentoController.bind(chamadoController))
 
 // Para Administrador 
 router.get('/todosChamadosEmAtendimento', authAdmin, chamadoController.viewTodosChamadosEmAtendimento.bind(chamadoController))
 router.get('/todosChamados/administrador', authAdmin, chamadoController.viewTodosChamados.bind(chamadoController))
+router.get('/direcionaAtendimento', authAdmin, chamadoController.direcionaChamadoController.bind(chamadoController))
 
 // Para Ambos(Administrador e Atendente)
 router.get('/chamadosEmEspera', authAdminOrAtendete, chamadoController.viewChamadosEmEspera.bind(chamadoController))
