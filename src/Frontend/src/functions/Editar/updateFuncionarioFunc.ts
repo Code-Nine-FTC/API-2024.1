@@ -1,4 +1,4 @@
-import  IFuncionarioUpdate  from "./interface/IFuncionarioUpdate"
+import  IFuncionarioUpdate  from "../Editar/Interface/IFuncionarioUpdate"
 import api from "../../services/api";
 
 const updateFuncionario = async (func_id: number, dadosUpdate: IFuncionarioUpdate) => {
