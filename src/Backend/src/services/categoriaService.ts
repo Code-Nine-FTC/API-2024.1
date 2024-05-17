@@ -34,9 +34,10 @@ export class CategoriaService {
 
     public async editarCategoria(cat_id: number, categoriaUpdate: ICategoriaUpdate) {
         try {
+            console.log(categoriaUpdate)
             const categoriaRepository = Connection.getRepository(Categoria)
-            const categoria = await categoriaRepository.findOne({ where: { cat_id } })
-    
+            const categoria = await categoriaRepository.findOne({ where: { cat_id: cat_id} })
+            console.log('cheguei aqui')
             if (!categoria) {
                 return { success: false, message: `Categoria não encontrada` }
             }

@@ -33,9 +33,14 @@ export class CategoriaController {
     
     public async editarCategoria(req: Request, res: Response) {
         try {
-            const cat_id: number = Number(req.params.cat_id);
+            const cat_id = req.params.cat_id;
+            console.log('id',cat_id)
             const dadosUpdate: ICategoriaUpdate = req.body;
-            await this.categoriaService.editarCategoria(cat_id, dadosUpdate);
+            console.log(dadosUpdate)
+            const resultado = await this.categoriaService.editarCategoria(parseInt(cat_id), dadosUpdate);
+            if (!resultado.success){
+                return res.status(400).json(resultado)
+            }
             return res.status(200).send({ message: 'Categoria atualizada com sucesso.' });
         } catch (error) {
             return res.status(400).send({ message: 'Erro ao atualizar categoria: ' + error.message });
