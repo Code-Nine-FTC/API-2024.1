@@ -18,6 +18,8 @@ import VisualizarPerfilFuncionario from "../pages/View/viewPerfilFuncionario";
 import TicketAdm from "../pages/ticketAdm";
 import ChatPage from "../pages/chatPage";
 import TicketsAtivos from "../pages/Tickets/ticketsAtivos";
+import ListagemCategorias from "../pages/listarCategoriaAdm";
+import EditarCategoria from "../pages/Editar/editarCategoriaAdm";
 
 
 const Rotas: FC = () => {
@@ -55,6 +57,8 @@ const Rotas: FC = () => {
           <Route path="/ticketadm" element={<TicketAdm />} />
           <Route path="/chat" element={<ChatPage/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
+          <Route path='/visualizacategoria' element={<ListagemCategorias/>} />
+          <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
            
         </>
       );
