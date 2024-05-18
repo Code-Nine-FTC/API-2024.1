@@ -27,6 +27,7 @@ const EnviarMensagem = () => {
 
     const handleChange = (event:any) => {
         setTexto(event.target.value)
+        mensagem.texto = event.target.value
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
