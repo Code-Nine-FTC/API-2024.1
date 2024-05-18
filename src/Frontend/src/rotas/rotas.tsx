@@ -1,4 +1,5 @@
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
 import NotFound from "../pages/notFound";
 import Registro from "../pages/registroPage";
 import Home from "../pages/homePage";
@@ -12,24 +13,25 @@ import VisualizarFuncionario from "../pages/View/viewFuncionarioPage";
 import EditarFuncionario from "../pages/Editar/editarFuncionario";
 import { FC } from 'react';
 import EditarCliente from "../pages/Editar/editarCliente";
-import { getNivelAcesso, isAuthenticated } from "../services/auth";
 import VisualizarCliente from "../pages/View/viewCliente";
 import VisualizarPerfilFuncionario from "../pages/View/viewPerfilFuncionario";
 import TicketAdm from "../pages/ticketAdm";
 import ChatPage from "../pages/chatPage";
 import TicketsAtivos from "../pages/Tickets/ticketsAtivos";
-import ListagemCategorias from "../pages/listarCategoriaAdm";
-import EditarCategoria from "../pages/Editar/editarCategoriaAdm";
+import { useContext } from 'react';
+import { AuthContext } from '../services/context';
 
 
-const Rotas: FC = () => {
-  const resultado = isAuthenticated();
-  const nivelAcesso = getNivelAcesso();
-
+const Rotas: FC =() => {
+  const { isAutenticado, nivelAcesso} = useContext(AuthContext);
+  const resultado = isAutenticado;
+  const acesso = nivelAcesso;
+  console.log(resultado, acesso);
+  
   let rotas;
 
   if (resultado) {
-    if (nivelAcesso === 'usuario') {
+    if (acesso === 'usuario') {
       rotas = (
         <>
           <Route path="/editarcliente" element={<EditarCliente />} />
@@ -38,7 +40,7 @@ const Rotas: FC = () => {
           <Route path="/chat" element={<ChatPage/>} />
         </>
       );
-    } else if (nivelAcesso === 'atendente') {
+    } else if (acesso === 'atendente') {
       rotas = (
         <>
           <Route path="/homesup" element={<HomeSup />} />
@@ -46,7 +48,7 @@ const Rotas: FC = () => {
           <Route path="/chat" element={<ChatPage/>} />
         </>
       );
-    } else if (nivelAcesso === 'administrador') {
+    } else if (acesso === 'administrador') {
       rotas = (
         <>
           <Route path="/editarfuncionario/:id" element={<EditarFuncionario />} />
@@ -57,8 +59,6 @@ const Rotas: FC = () => {
           <Route path="/ticketadm" element={<TicketAdm />} />
           <Route path="/chat" element={<ChatPage/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
-          <Route path='/visualizacategoria' element={<ListagemCategorias/>} />
-          <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
            
         </>
       );

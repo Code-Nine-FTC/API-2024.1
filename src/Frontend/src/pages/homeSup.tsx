@@ -2,8 +2,6 @@ import Sidebar from "../component/sidebar/sidebar"
 import Status from '../component/status/status';
 import styles from '../component/homeSup/HomeSuporte.module.css'
 import Textostatus from "../component/textostatus/textostatus";
-const userLogado = 'atendente'
-
 
 const HomeSup = () =>{
     return(

@@ -6,6 +6,8 @@ import {toast, Toaster} from 'react-hot-toast';
 import LoginClienteFunc from '../../functions/Login/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/Login/loginFuncionarioFunc';
 import { login } from '../../services/auth';
+import { useContext } from 'react';
+import { AuthContext } from '../../services/context';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
 
@@ -15,6 +17,8 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
   const [type, setType] = useState('');
   const [formDataPadrao, setFormDataPadrao] = useState({email: '',senha: ''})
   const [erro, setErro] = useState ('')
+  const { setAutenticado, setNivelAcesso, setToken } = useContext(AuthContext);
+
 
   useEffect(() => {
     switch (tipoCadastro) {
@@ -54,7 +58,7 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               console.log('Login concluído')
               setErro('');
               toast.success('Login concluído');
-              login(resultadoUsuario.token, resultadoUsuario.nivelAcesso)
+              login(resultadoUsuario.token, resultadoUsuario.nivelAcesso, setAutenticado, setNivelAcesso, setToken);
               navigate('/')
             }
             break;
@@ -66,8 +70,9 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
             const resultadoFuncionario = await LoginFuncionarioFunc(formDataFunc);
             if (resultadoFuncionario.success) {
               console.log('Login concluído')
-              login(resultadoFuncionario.token,resultadoFuncionario.nivelAcesso)
+              login(resultadoFuncionario.token, resultadoFuncionario.nivelAcesso, setAutenticado, setNivelAcesso, setToken);
               setErro('');
+              console.log('User Level:', resultadoFuncionario.nivelAcesso);
               switch (resultadoFuncionario.nivelAcesso) {
                 case 'administrador':
                   navigate('/visualizarTodosFuncionarios')
