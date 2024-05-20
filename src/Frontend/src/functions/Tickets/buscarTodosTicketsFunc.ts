@@ -1,12 +1,11 @@
 import api from "../../services/api";
 
 // Busca usuario no banco banco de dados com base no id fornecido
-const BuscarTicketsEmAtendimento = async (user: string | null) => {
+const BuscarTodosTickets = async (user: string | null) => {
     switch (user) {
         case 'usuario':
             try {
-                // envia o id 
-                const resposta = await api.get('/chamadosAtivosCli');
+                const resposta = await api.get('/chamadosFinalizadosCli');
                 console.log(resposta.data.chamados)
                 return resposta.data
             } catch (error) {
@@ -14,7 +13,7 @@ const BuscarTicketsEmAtendimento = async (user: string | null) => {
             }
         case 'atendente':
             try {
-                const resposta = await api.get('/chamadoEmAtendimentoAtend');
+                const resposta = await api.get('/chamadosConcluidosAtend');
                 console.log(resposta.data.chamados)
                 return resposta.data
             } catch (error) {
@@ -22,7 +21,7 @@ const BuscarTicketsEmAtendimento = async (user: string | null) => {
             }
         case 'administrador':
             try {
-                const resposta = await api.get('/todosChamadosEmAtendimentoAdm');
+                const resposta = await api.get('/todosChamados/administrador');
                 return resposta.data
             } catch (error) {
                 throw new Error('Erro ao buscar o chamado Por favor, tente novamente mais tarde.');
@@ -30,4 +29,4 @@ const BuscarTicketsEmAtendimento = async (user: string | null) => {
         }
     };
 
-export default BuscarTicketsEmAtendimento
+export default BuscarTodosTickets

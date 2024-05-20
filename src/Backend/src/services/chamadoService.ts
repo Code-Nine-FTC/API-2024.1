@@ -66,7 +66,7 @@ class ChamadoService{
             const chamadosCliente = await this.chamadoRepository.find({ 
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
-                    cha_status: 'Concluído'
+                    cha_status: 'Finalizado'
                 }
             })
             // verificações
@@ -115,7 +115,7 @@ class ChamadoService{
             if (!chamadoCliente){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-            return { success: true, message: `Chamados encontrados!`, chamado: chamadoCliente  }
+            return { success: true, message: `Chamados encontrados!`, chamados: chamadoCliente  }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do cliente: ${error}`)
             return { success: false, message: `Erro em buscar todos os chamados` }
@@ -155,8 +155,9 @@ class ChamadoService{
     // em atendimento
     public async visualizarChamadoEmAtendimentoAtendente(func_id: number){
         try{
+            console.log('Recebendo dados em Visualizar Chamados Ativos Atendente: ', func_id)
             //Busca todos os chamados do atendente desejado
-            const chamadoAtendente = await this.chamadoRepository.findOne({
+            const chamadoAtendente = await this.chamadoRepository.find({
                 where: {
                     funcionario: { func_id: func_id },
                     cha_status: 'Em Andamento'
@@ -166,7 +167,8 @@ class ChamadoService{
             if(!chamadoAtendente){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-            return { success: true, message: `Chamados encontrados!`, chamado: chamadoAtendente }
+            console.log('Deu certo: ', chamadoAtendente)
+            return { success: true, message: `Chamados encontrados!`, chamados: chamadoAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
             return { success: false, message: `Erro em buscar todos os chamados` }
@@ -180,7 +182,7 @@ class ChamadoService{
             const chamadosAtendente = await this.chamadoRepository.find({
                 where: {
                     funcionario: { func_id: func_id },
-                    cha_status: 'Concluído'
+                    cha_status: 'Finalizado'
                 }
             })
             // Verificações

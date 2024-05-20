@@ -19,7 +19,8 @@ import TicketAdm from "../pages/ticketAdm";
 import ChatPage from "../pages/chatPage";
 import ListagemCategorias from "../pages/listarCategoriaAdm";
 import EditarCategoria from "../pages/Editar/editarCategoriaAdm";
-import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimento";
+import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimentoPage";
+import TodosTickets from "../pages/Tickets/ticketsTodosPage";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
 
@@ -37,6 +38,7 @@ const Rotas: FC =() => {
       rotas = (
         <>
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
+          <Route path='/todostickets' element={<TodosTickets/>} />
           {/* <Route path="/ticketstodos" element={<TicketsTodos/>} /> */}
           <Route path="/editarcliente" element={<EditarCliente />} />
           <Route path="/visualizarcliente" element={<VisualizarCliente />} />
@@ -50,6 +52,7 @@ const Rotas: FC =() => {
           <Route path="/homesup" element={<HomeSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
+          <Route path='/todostickets' element={<TodosTickets/>} />
           <Route path="/chat" element={<ChatPage/>} />
         </>
       );
@@ -63,11 +66,10 @@ const Rotas: FC =() => {
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
           <Route path="/ticketadm" element={<TicketAdm />} />
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
+          <Route path='/todostickets' element={<TodosTickets/>} />
           <Route path="/chat" element={<ChatPage/>} />
-          <Route path='/ticketsativos' element={<TicketsAtivos/>} />
           <Route path="/listarcategorias" element={<ListagemCategorias/>} />
           <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
-           
         </>
       );
     }

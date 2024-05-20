@@ -5,25 +5,26 @@ import StatusEmAndamento from "../../component/envioticket/statusEmAndamento/sta
 import StatusEmEspera from "../../component/envioticket/statusEmEspera/statusEmEspera";
 import StatusConcluido from "../../component/envioticket/statusConcluido/statusConcluido";
 import { getNivelAcesso } from "../../services/auth";
-import BuscarTicketsEmAtendimento from "../../functions/Tickets/buscarTIcketsEmAtendimentoFunc";
+import BuscarTodosTickets from "../../functions/Tickets/buscarTodosTicketsFunc";
 import { useEffect, useState } from "react";
 import IChamadoView from "../../functions/Tickets/iChamado";
 
-const TicketsAtivos = () => {
+const TodosTickets = () => {
     const user = getNivelAcesso()
     const [chamados, setChamado] = useState<IChamadoView[]>([]);
 
     useEffect(()=>{
         const fetchTickets = async () =>{
             try {
-                const resultado = await BuscarTicketsEmAtendimento(user);
+                const resultado = await BuscarTodosTickets(user);
                 if (resultado && resultado.chamados) {
+                    console.log('teste foda', resultado.chamados)
                     if (Array.isArray(resultado.chamados)) {
                         setChamado(resultado.chamados);
                     } else {
                         setChamado([]);
                     }
-                    console.log(`TIckets encontrados:`, resultado.chamados);
+                    console.log(`Tickets encontrados:`, resultado.chamados);
                 } else {
                     console.log(`Tickets não encontrado.`);
                 }
@@ -44,7 +45,7 @@ const TicketsAtivos = () => {
         <>
         <Sidebar/>
         <div>
-            <h1>Tickets Ativos</h1>
+            <h1>Todos os Tickets</h1>
             {chamados.map((chamado: IChamadoView) => (
                 <div className="ticketcampo">
                     { chamado.cha_status === 'Em andamento' ? (
@@ -52,7 +53,7 @@ const TicketsAtivos = () => {
                     ): chamado.cha_status === 'Em espera' ? (
                         <StatusEmEspera />
                     ): (
-                        <StatusConcluido />
+                        <StatusConcluido chamado={chamado} />
                     )}
                 </div>
             ))}
@@ -61,4 +62,4 @@ const TicketsAtivos = () => {
     );
 }
 
-export default TicketsAtivos;
+export default TodosTickets;
