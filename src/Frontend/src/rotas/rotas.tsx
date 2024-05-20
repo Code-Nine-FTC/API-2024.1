@@ -17,6 +17,8 @@ import VisualizarCliente from "../pages/View/viewCliente";
 import VisualizarPerfilFuncionario from "../pages/View/viewPerfilFuncionario";
 import TicketAdm from "../pages/ticketAdm";
 import ChatPage from "../pages/chatPage";
+import ListagemCategorias from "../pages/listarCategoriaAdm";
+import EditarCategoria from "../pages/Editar/editarCategoriaAdm";
 import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimento";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
@@ -63,6 +65,8 @@ const Rotas: FC =() => {
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path="/chat" element={<ChatPage/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
+          <Route path="/listarcategorias" element={<ListagemCategorias/>} />
+          <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
            
         </>
       );
