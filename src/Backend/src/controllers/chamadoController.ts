@@ -164,6 +164,7 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const func_id = res.locals.userId
+            console.log('Recebendo requisição em /viewChamadosFinalizadosAtendente ', func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${func_id}` });

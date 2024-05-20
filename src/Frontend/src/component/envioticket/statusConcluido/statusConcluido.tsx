@@ -1,26 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from '../../envioticket/EnvioTicket.module.css'
 import orange from '../../../assets/faq/rectangle-green.png'
-import { rotaBase } from '../../../functions/RotaBase/rotaBase';
 import {IChamadoView} from './IChamadoView'
 
 function StatusConcluido({chamado} : { chamado: IChamadoView }) {
-    const [chamados, setChamados] = useState<IChamadoView[]>([]);
-
-    useEffect(() => {
-        axios.get(`${rotaBase}/todosChamadosEmAtendimento`)
-            .then(response => {
-                if (response.data.success) {
-                    setChamados(response.data.chamados);
-                } else {
-                    console.error(response.data.message);
-                }
-            })
-            .catch(error => {
-                console.error(`Erro em buscar todos os chamados: ${error}`);
-            });
-    }, []);
 
     return(
         <div className={styles.statusBox}>

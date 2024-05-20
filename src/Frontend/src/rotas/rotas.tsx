@@ -20,10 +20,11 @@ import ChatPage from "../pages/chatPage";
 import ListagemCategorias from "../pages/listarCategoriaAdm";
 import EditarCategoria from "../pages/Editar/editarCategoriaAdm";
 import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimentoPage";
+import TicketsEmEspera from "../pages/Tickets/ticketsEmEsperaPage";
 import TodosTickets from "../pages/Tickets/ticketsTodosPage";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
-import TicketsEmEspera from "../pages/Tickets/ticketsEmEsperaPage";
+
 
 
 const Rotas: FC =() => {

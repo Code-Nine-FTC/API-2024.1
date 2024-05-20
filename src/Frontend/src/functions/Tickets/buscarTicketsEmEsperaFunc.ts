@@ -13,7 +13,7 @@ const BuscarTicketsEmEspera = async (user: string | null) => {
             }
         case 'administrador':
             try{
-                const resposta = await api.get('/chamadoEmEspera')
+                const resposta = await api.get('/chamadosEmEspera')
                 console.log(resposta.data.chamados)
                 return resposta.data
             }

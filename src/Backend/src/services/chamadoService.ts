@@ -167,10 +167,6 @@ class ChamadoService{
             if(!chamadoAtendente){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-<<<<<<< Updated upstream
-            console.log('Deu certo: ', chamadoAtendente)
-=======
->>>>>>> Stashed changes
             return { success: true, message: `Chamados encontrados!`, chamados: chamadoAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
@@ -181,6 +177,7 @@ class ChamadoService{
     // chamados finalizados
     public async visualizarChamadosFinalizadosAtendente(func_id: number){
         try{
+            console.log('Recebendo dados em Visualizar Chamados Finalizados Atendente: ', func_id)
             //Busca todos os chamados do atendente desejado
             const chamadosAtendente = await this.chamadoRepository.find({
                 where: {
@@ -192,6 +189,7 @@ class ChamadoService{
             if(!chamadosAtendente || chamadosAtendente.length === 0){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
+            console.log('Chamados finalizados encontrados: ', chamadosAtendente)
             return { success: true, message: `Chamados encontrados!`, chamados: chamadosAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
