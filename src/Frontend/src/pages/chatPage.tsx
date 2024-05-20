@@ -6,7 +6,7 @@ import styles from "../component/chat/Chat.module.css"
 import { useParams } from "react-router-dom"
 import BuscarChamado from "../functions/Chat/buscarChamadoFunc"
 import { getNivelAcesso } from "../services/auth"
-import IChamadoView from "../functions/Chat/IChamado"
+import IChamadoViewMensagem from "../functions/Tickets/iChamado"
 import { useState, useEffect } from "react"
 
 const ChatPage = () => {
@@ -33,7 +33,7 @@ const ChatPage = () => {
         <Sidebar/>
         <div className={styles.chatContent}>
             {chamado && (
-                <HeaderChat id={id} chamado={chamado as IChamadoView} />            
+                <HeaderChat id={id} chamado={chamado as IChamadoViewMensagem} />            
                 )}
             <ChatComponent id={id}/>
             {userTipo !== 'administrador' &&(

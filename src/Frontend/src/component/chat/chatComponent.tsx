@@ -35,7 +35,6 @@ const ChatComponent = ({ id }: { id: number })=> {
         <div className={styles.campoMensagens}>
             {mensagens.map((mensagem) => (
                 <div className={styles.funcionarioContainer} key={mensagem.resp_id}>
-                    {/* Renderize o componente de mensagem (substitua 'Mensagem' pelo componente correto) */}
                     <Mensagem mensagem={mensagem} />
                 </div>
             ))}

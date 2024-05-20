@@ -4,11 +4,9 @@ import BuscarNomeCliente from '../../functions/Chat/buscarNomeCliFunc'
 import BuscarNomeAtendente from '../../functions/Chat/buscarNomeAtendFunc'
 import { useEffect, useState } from 'react'
 import { getNivelAcesso } from '../../services/auth'
-import IChamadoView from '../../functions/Chat/IChamado'
+import IChamadoViewMensagem from '../../functions/Tickets/iChamado'
 
-
-
-const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoView })  => {
+const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoViewMensagem })  => {
     const userTipo = getNivelAcesso();
     return (
         <>

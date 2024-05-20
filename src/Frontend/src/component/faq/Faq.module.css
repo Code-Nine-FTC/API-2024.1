@@ -67,6 +67,10 @@
   
   }
   
+  .supportButton:hover {
+    background-color: #2a30b0
+  }
+
   .statusMain{
     font-weight: normal;
   }

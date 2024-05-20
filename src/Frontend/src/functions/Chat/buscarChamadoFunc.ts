@@ -1,6 +1,5 @@
-import IChamadoView from "./IChamado";
+import iChamadoViewMensagem from "../../functions/Tickets/iChamado";
 import api from "../../services/api";
-
 
 export default async function BuscarChamado(id: number) {
           try {

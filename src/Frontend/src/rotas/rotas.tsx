@@ -17,7 +17,7 @@ import VisualizarCliente from "../pages/View/viewCliente";
 import VisualizarPerfilFuncionario from "../pages/View/viewPerfilFuncionario";
 import TicketAdm from "../pages/ticketAdm";
 import ChatPage from "../pages/chatPage";
-import TicketsAtivos from "../pages/Tickets/ticketsAtivos";
+import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimento";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
 
@@ -34,9 +34,11 @@ const Rotas: FC =() => {
     if (acesso === 'usuario') {
       rotas = (
         <>
+          <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
+          {/* <Route path="/ticketstodos" element={<TicketsTodos/>} /> */}
           <Route path="/editarcliente" element={<EditarCliente />} />
           <Route path="/visualizarcliente" element={<VisualizarCliente />} />
-          <Route path="/ticket" element={<Ticket />} />
+          <Route path="/criarticket" element={<Ticket />} />
           <Route path="/chat" element={<ChatPage/>} />
         </>
       );
@@ -45,6 +47,7 @@ const Rotas: FC =() => {
         <>
           <Route path="/homesup" element={<HomeSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
+          <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path="/chat" element={<ChatPage/>} />
         </>
       );
@@ -57,6 +60,7 @@ const Rotas: FC =() => {
           <Route path="/registrosuporte" element={<RegistroSup />} />
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
           <Route path="/ticketadm" element={<TicketAdm />} />
+          <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path="/chat" element={<ChatPage/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
            

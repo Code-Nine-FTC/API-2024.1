@@ -50,6 +50,7 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const cli_id = res.locals.userId
+            console.log('Recebendo request em /viewChamadosAtivosCliente', cli_id)
             // Verificações
             if (isNaN(cli_id) || cli_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${cli_id}` });
@@ -60,6 +61,7 @@ class ChamadoController {
             if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
+            console.log('devolveu 2', resultado.chamados)
             return res.status(200).json(resultado)
 
         } catch (error) {

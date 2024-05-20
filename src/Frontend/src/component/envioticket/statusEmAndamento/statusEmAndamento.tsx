@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from '../../statusBox/statusBox.module.css'
 import orange from '../../../assets/faq/rectangle.png'
+import { IChamadoView } from '../statusConcluido/IChamadoView';
 
 
-function statusemandamento({ }){
+const StatusEmAndamento = ({ chamado } : { chamado: IChamadoView }) => {
     return(
         <div className={styles.statusBox}>
             <div className={styles.mainText}>
@@ -11,8 +12,8 @@ function statusemandamento({ }){
                     <img src={orange} className={styles.orangeRectangle}/>
                     <div className={styles.alignDistance}>
                     <div className={styles.alignTicket}>
-                        <p className={styles.ticketText}>Ticket#0000</p>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, error!</p>
+                        <p className={styles.ticketText}>Ticket#{chamado.cha_id}</p>
+                        <p>{chamado.cha_titulo}</p>
                     </div>
                     <div className={styles.buttonNav}>
                         <button className={styles.chatButton} type='button'>Entrar no chat</button>
@@ -25,4 +26,4 @@ function statusemandamento({ }){
     )
 }
 
-export default statusemandamento;
+export default StatusEmAndamento;

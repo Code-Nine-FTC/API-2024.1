@@ -40,16 +40,18 @@ class ChamadoService{
     public async visualizarChamadosAtivosCliente(cli_id: number){
         try{
             // Busca os chamados do cliente desejado
+            console.log('Recebendo dados em Visualizar Chamados Ativos Cliente: ', cli_id)
             const chamadosCliente = await this.chamadoRepository.find({ 
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
-                    cha_status: 'Aberto' || 'Em andamento'
+                    cha_status: 'Em andamento'
                 }
             })
             // verificações
             if (!chamadosCliente || chamadosCliente.length === 0){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
+            console.log('chamados fodas', chamadosCliente)
             return { success: true, message: `Chamados encontrados!`, chamados: chamadosCliente  }
         }catch(error){
             console.error(`Erro em buscar todos os chamados ativos do cliente: ${error}`)

@@ -10,9 +10,9 @@ const getAdminNavigationItems = () : NavigationItemInterface[] => {
     return [
         { label: 'Dashboard', path: '/dashboard', imageUrl: dashboard },
         { label: 'Tickets', dropdownItems: [
-            { label: 'Ativos', path: '/ticketsativos' },
-            { label: 'Em atendimento', path: '/ticketsatendimento' },
-            { label: 'Em espera ', path: '/ticketsespera' }
+            { label: 'Em atendimento', path: '/ticketsativos' },
+            { label: 'Em espera', path: '/ticketsatendimento' },
+            { label: 'Finalizados', path: '/ticketsespera' }
             ], imageUrl: tickets},
         { label: 'Gerenciar', path: '/visualizarTodosFuncionarios', imageUrl: gerenciar},
         { label: 'FAQ', path: '/faq', imageUrl: faq},
@@ -26,9 +26,9 @@ const getAdminNavigationItems = () : NavigationItemInterface[] => {
 const getAtendenteNavigationItems = () => {
     return [
         { label: 'Tickets', dropdownItems: [
-            { label: 'Em atendimento', path: '/homesup' },
-            { label: 'Finalizados', path: '/ticketstodos' },
-            { label: 'Não atendidos', path: '/naoatendidos' }
+            { label: 'Em atendimento', path: '/ticketsAtendimento' },
+            { label: 'Em espera', path: '/ticketstodos' },
+            { label: 'FInalizados', path: '/naoatendidos' }
             ], imageUrl: tickets},
     ];
 };
@@ -37,7 +37,7 @@ const getDefaultNavigationItems = () => {
     return [
         { label: 'Home', path: '/', imageUrl: home},
         { label: 'Tickets', dropdownItems: [
-            { label: 'Ativos', path: '/ativos' },
+            { label: 'Ativos', path: '/ticketsAtendimento' },
             { label: 'Todos', path: '/ticketstodos' },
             { label: 'Criar Ticket', path: '/criarticket' }
             ], imageUrl: tickets},
