@@ -7,11 +7,12 @@
 
 .enviarMensagem {
     background-color: #111686;
-    width: 100%;
+    width: 80vw;
     height: 10%;  
-    position: sticky;
-    bottom: 0;    
+    position: fixed;
+    bottom: 0; 
 }
+
 
 .formMensagem {
     display: flex;
@@ -20,6 +21,7 @@
     width: 100%;
     position: sticky;
     top: 0;
+    bottom: auto;
 }
 
 .formMensagem input {
@@ -162,5 +164,7 @@
     .enviarMensagem{
         position: fixed;
         bottom: 0;
+        width: 100%;
+        height: 10%; 
     }
 }
