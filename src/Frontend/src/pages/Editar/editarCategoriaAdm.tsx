@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import styles from "../../component/infoSuporte/InfoSuporte.module.css";
+import styles from "../../component/editarCategoria/editarCategoria.module.css";
 import Sidebar from '../../component/sidebar/sidebar';
 import updateCategoria from '../../functions/categoria/editarCategoriaAdm';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -76,9 +76,9 @@ function EditarCategoria() {
                 <h3 id={styles.horario}>Novo horário:</h3>  
                 <select id={styles.seletor} onChange={e => setHorario(e.target.value)} required>
                   <option disabled selected>Selecione um horário</option>
-                  <option value="1">8:00 -- 16:00</option>
-                  <option value="2">10:00 -- 18:00</option>
-                  <option value="3">13:00 -- 21:00</option>
+                  <option value="01:00:00">01:00:00</option>
+                  <option value="02:00:00">02:00:00</option>
+                  <option value="03:00:00">03:00:00</option>
                 </select>
               </label>
             </div>
