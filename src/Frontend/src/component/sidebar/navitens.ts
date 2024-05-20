@@ -10,9 +10,15 @@ const getAdminNavigationItems = () : NavigationItemInterface[] => {
     return [
         { label: 'Dashboard', path: '/dashboard', imageUrl: dashboard },
         { label: 'Tickets', dropdownItems: [
+<<<<<<< Updated upstream
             { label: 'Em atendimento', path: '/ticketsAtendimento' },
             { label: 'Em espera', path: '/ticketsatendimento' },
             { label: 'Finalizados', path: '/todostickets' }
+=======
+            { label: 'Em atendimento', path: '/ticketsativos' },
+            { label: 'Em espera', path: '/ticketsespera' },
+            { label: 'Finalizados', path: '/ticketsespera' }
+>>>>>>> Stashed changes
             ], imageUrl: tickets},
         { label: 'Gerenciar', path: '/visualizarTodosFuncionarios', imageUrl: gerenciar},
         { label: 'FAQ', path: '/faq', imageUrl: faq},
@@ -27,8 +33,13 @@ const getAtendenteNavigationItems = () => {
     return [
         { label: 'Tickets', dropdownItems: [
             { label: 'Em atendimento', path: '/ticketsAtendimento' },
+<<<<<<< Updated upstream
             { label: 'Em espera', path: '/ticketstodos' },
             { label: 'Finalizados', path: '/todostickets' }
+=======
+            { label: 'Em espera', path: '/ticketsespera' },
+            { label: 'FInalizados', path: '/naoatendidos' }
+>>>>>>> Stashed changes
             ], imageUrl: tickets},
     ];
 };

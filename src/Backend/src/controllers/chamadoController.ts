@@ -292,12 +292,13 @@ class ChamadoController {
             if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
+            console.log('devolveu', resultado.chamados)
             return res.status(200).json(resultado)
-
         } catch (error) {
             console.error(`Erro em buscar todos os chamados ativos do cliente: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno do Servidor` })
         }
+        
     }
 }
 export default ChamadoController

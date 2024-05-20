@@ -167,7 +167,10 @@ class ChamadoService{
             if(!chamadoAtendente){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
+<<<<<<< Updated upstream
             console.log('Deu certo: ', chamadoAtendente)
+=======
+>>>>>>> Stashed changes
             return { success: true, message: `Chamados encontrados!`, chamados: chamadoAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
@@ -365,7 +368,7 @@ class ChamadoService{
             //Busca todos os chamados do atendente desejado
             const chamados = await this.chamadoRepository.find({
                 where: {
-                    cha_status: 'Aberto'
+                    cha_status: 'Em espera'
                 }
             })
             // Verificações

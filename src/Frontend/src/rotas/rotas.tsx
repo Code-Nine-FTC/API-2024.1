@@ -23,6 +23,7 @@ import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimentoPage";
 import TodosTickets from "../pages/Tickets/ticketsTodosPage";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
+import TicketsEmEspera from "../pages/Tickets/ticketsEmEsperaPage";
 
 
 const Rotas: FC =() => {
@@ -54,6 +55,7 @@ const Rotas: FC =() => {
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path='/todostickets' element={<TodosTickets/>} />
           <Route path="/chat" element={<ChatPage/>} />
+          <Route path='/ticketsespera' element={<TicketsEmEspera/>}/>
         </>
       );
     } else if (acesso === 'administrador') {
@@ -68,8 +70,13 @@ const Rotas: FC =() => {
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path='/todostickets' element={<TodosTickets/>} />
           <Route path="/chat" element={<ChatPage/>} />
+<<<<<<< Updated upstream
           <Route path="/listarcategorias" element={<ListagemCategorias/>} />
           <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
+=======
+          <Route path='/ticketsativos' element={<TicketsAtivos/>} />
+          <Route path='/ticketsespera' element={<TicketsEmEspera/>}/>
+>>>>>>> Stashed changes
         </>
       );
     }

@@ -5,7 +5,26 @@ import orange from '../../../assets/faq/rectangle-green.png'
 import { rotaBase } from '../../../functions/RotaBase/rotaBase';
 import {IChamadoView} from './IChamadoView'
 
+<<<<<<< Updated upstream
 const StatusConcluido = ({ chamado } : { chamado: IChamadoView }) => {
+=======
+function StatusConcluido({chamado} : { chamado: IChamadoView }) {
+    const [chamados, setChamados] = useState<IChamadoView[]>([]);
+
+    useEffect(() => {
+        axios.get(`${rotaBase}/todosChamadosEmAtendimento`)
+            .then(response => {
+                if (response.data.success) {
+                    setChamados(response.data.chamados);
+                } else {
+                    console.error(response.data.message);
+                }
+            })
+            .catch(error => {
+                console.error(`Erro em buscar todos os chamados: ${error}`);
+            });
+    }, []);
+>>>>>>> Stashed changes
 
     return(
         <div className={styles.statusBox}>
