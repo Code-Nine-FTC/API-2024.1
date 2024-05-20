@@ -39,7 +39,7 @@ const getDefaultNavigationItems = () => {
         { label: 'Tickets', dropdownItems: [
             { label: 'Ativos', path: '/ticketsAtendimento' },
             { label: 'Todos', path: '/ticketstodos' },
-            { label: 'Criar Ticket', path: '/criarticket' }
+            { label: 'Criar Ticket', path: '/ticket' }
             ], imageUrl: tickets},
     ];
 };

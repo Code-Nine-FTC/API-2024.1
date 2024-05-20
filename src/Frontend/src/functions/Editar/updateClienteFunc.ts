@@ -1,4 +1,4 @@
-import IClienteUpdate from "../Editar/Interface/iClienteUpdate";
+import IClienteUpdate from "./Interface/iClienteUpdate";
 import api from "../../services/api";
 
 const updateCliente = async ( dadosUpdate: IClienteUpdate) => {
