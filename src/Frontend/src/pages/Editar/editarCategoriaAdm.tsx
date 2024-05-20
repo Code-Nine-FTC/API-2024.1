@@ -13,6 +13,7 @@ function EditarCategoria() {
   // Estados para armazenar os dados do formulário
   const [titulo, setTitulo] = useState<string>('');
   const [horario, setHorario] = useState<string>('');
+  const [prioridade, setPrioridade] = useState<string>('');
 
 
   // Função para lidar com o envio do formulário
@@ -28,7 +29,8 @@ function EditarCategoria() {
 
     const dadosUpdate: ICategoriaUpdate = {
       cat_titulo: titulo,
-      cat_horario: horario
+      cat_horario: horario,
+      cat_prioridade: prioridade,
     };
     console.log(dadosUpdate)
     console.log(cat_id)
@@ -81,9 +83,18 @@ function EditarCategoria() {
                   <option value="03:00:00">03:00:00</option>
                 </select>
               </label>
+              <label>
+                <h3 id={styles.horario}>Nova prioridade:</h3>  
+                <select id={styles.seletor} onChange={e => setPrioridade(e.target.value)} required>
+                  <option disabled selected>Selecione a prioridade</option>
+                  <option value="alta">Alta</option>
+                  <option value="media">Média</option>
+                  <option value="baixa">Baixa</option>
+                </select>
+              </label>
             </div>
             <button type="submit" className={styles.customButton}>Salvar</button>
-            <button className={styles.voltar} onClick={() => navigate(`/visualizacategoria`)}>Voltar</button>
+            <button className={styles.voltar} onClick={() => navigate(`/listarcategorias`)}>Voltar</button>
           </form>
         </div>
       </div>
