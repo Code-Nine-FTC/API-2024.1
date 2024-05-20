@@ -51,7 +51,7 @@ const TodosTickets = () => {
                     { chamado.cha_status === 'Em andamento' ? (
                         <StatusEmAndamento chamado={chamado}/>
                     ): chamado.cha_status === 'Em espera' ? (
-                        <StatusEmEspera />
+                        <StatusEmEspera chamado={chamado} />
                     ): (
                         <StatusConcluido chamado={chamado} />
                     )}

@@ -5,9 +5,6 @@ import orange from '../../../assets/faq/rectangle-green.png'
 import { rotaBase } from '../../../functions/RotaBase/rotaBase';
 import {IChamadoView} from './IChamadoView'
 
-<<<<<<< Updated upstream
-const StatusConcluido = ({ chamado } : { chamado: IChamadoView }) => {
-=======
 function StatusConcluido({chamado} : { chamado: IChamadoView }) {
     const [chamados, setChamados] = useState<IChamadoView[]>([]);
 
@@ -24,7 +21,6 @@ function StatusConcluido({chamado} : { chamado: IChamadoView }) {
                 console.error(`Erro em buscar todos os chamados: ${error}`);
             });
     }, []);
->>>>>>> Stashed changes
 
     return(
         <div className={styles.statusBox}>

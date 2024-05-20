@@ -5,7 +5,7 @@ import StatusEmAndamento from "../../component/envioticket/statusEmAndamento/sta
 import StatusEmEspera from "../../component/envioticket/statusEmEspera/statusEmEspera";
 import StatusConcluido from "../../component/envioticket/statusConcluido/statusConcluido";
 import { getNivelAcesso } from "../../services/auth";
-import BuscarTicketsEmAtendimento from "../../functions/Tickets/buscarTicketsEmAtendimentoFunc";
+import BuscarTicketsEmAtendimento from "../../functions/Tickets/buscarTIcketsEmAtendimentoFunc";
 import { useEffect, useState } from "react";
 import IChamadoView from "../../functions/Tickets/iChamado";
 
@@ -54,11 +54,7 @@ const TicketsAtivos = () => {
                     ): chamado.cha_status === 'Em espera' ? (
                         <StatusEmEspera chamado = {chamado}/>
                     ): (
-<<<<<<< Updated upstream:src/Frontend/src/pages/Tickets/ticketsEmAtendimentoPage.tsx
                         <StatusConcluido chamado={chamado}/>
-=======
-                        <StatusConcluido chamado = {chamado}/>
->>>>>>> Stashed changes:src/Frontend/src/pages/Tickets/ticketsEmAtendimento.tsx
                     )}
                 </div>
             ))}

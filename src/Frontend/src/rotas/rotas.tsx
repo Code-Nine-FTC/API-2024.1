@@ -70,20 +70,16 @@ const Rotas: FC =() => {
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path='/todostickets' element={<TodosTickets/>} />
           <Route path="/chat" element={<ChatPage/>} />
-<<<<<<< Updated upstream
           <Route path="/listarcategorias" element={<ListagemCategorias/>} />
           <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
-=======
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
           <Route path='/ticketsespera' element={<TicketsEmEspera/>}/>
->>>>>>> Stashed changes
         </>
       );
     }
   } else {
     <Route path="*" element={<Navigate to="/" replace />} />
   }
-
   return (
     <BrowserRouter>
       <Routes>
