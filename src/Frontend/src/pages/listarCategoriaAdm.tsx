@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../component/sidebar/sidebar";
-import styles from "../component/listarSuporte/listarSuporte.module.css";
+import styles from "../component/listarCategoria/listarcategoria.module.css";
 import { Link } from "react-router-dom";
 import ListarCategorias from "../functions/categoria/listarCategoriaAdm";
 import { ICategoriaView } from "../../../Backend/src/interfaces/ICategoria";
