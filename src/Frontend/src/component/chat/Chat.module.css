@@ -72,11 +72,27 @@
     top: 0;
     bottom: 0;
 }
+
+.headerEsquerda {
+    flex: 1;
+}
+
+.headerDireita {
+    margin-right: 2%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
 .info{
     color:white;
     margin-top: 0.3%;
     margin-left: 3%;
     font-weight: bold;
+    display: flex;
+    padding-top: 1px;
+    padding-bottom: 1%;
+    /* height: 100%; */
 }
 .ticket{
     font-size: 1.5em;
@@ -87,6 +103,30 @@
 .ticketFoto {
     height: 25%;
     width: 10%;
+}
+
+.encerrarChamado {
+    background-color: #6B6FD1;
+    width: 45%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: auto;
+    right: 0;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+.encerrarChamado:hover {
+    background-color: #4146dd;
+    cursor: pointer;
+}
+
+.ticketFinish {
+    height: 30px;
+    width: 30px;
 }
 
 .alinharDiv {

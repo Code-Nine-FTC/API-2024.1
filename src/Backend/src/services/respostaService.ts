@@ -4,6 +4,7 @@ import { Connection } from "../config/data-source";
 import Chamado from "../entities/chamado";
 import Cliente from "../entities/cliente";
 import Funcionario from "../entities/funcionario";
+import Categoria from "../entities/categoria";
 
 
 
@@ -36,6 +37,8 @@ export default class RespostaService {
             .addSelect(["funcionario.func_id", "funcionario.func_nome"])
             .leftJoin("chamado.respostas", "respostas")
             .addSelect("respostas.resp_id")
+            .leftJoinAndSelect("chamado.categoria", "categoria")
+            .addSelect("categoria.cat_titulo")
             .where("chamado.cha_id = :id", { id: id })
             .getOne();
             // console.log(chamado)

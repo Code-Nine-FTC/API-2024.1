@@ -20,6 +20,7 @@
       "express-async-errors": "^3.1.1",
       "jsonwebtoken": "^9.0.2",
       "mysql2": "^3.9.6",
+      "node-cron": "^3.0.3",
       "nodemon": "^3.1.0",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.20"

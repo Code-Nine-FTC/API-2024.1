@@ -8,11 +8,11 @@ import clienteRoutes from './routes/clienteRoutes'
 import funcionarioRoutes from './routes/funcionarioRoutes'
 import defaultRotes from './routes/defaultRoutes'
 import Funcionario from './entities/funcionario';
-import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
-import { Router } from "express";
 import chamadoRoutes from './routes/chamadoRoutes'
 import categoriaRoutes from './routes/categoriaRoutes'
+import tarefaSla from './cron';
+import { error } from 'console';
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
@@ -34,6 +34,10 @@ Connection.initialize().then(() => {
     insertAdmin().catch(error => {
         console.log(`Erro ao inserir administrador: `,error)
     })
+
+    // Agendamento do cron job para verificar o sla
+    tarefaSla.start()
+
     const port = process.env.PORT || 3000
     app.listen(port, ()=> {
         console.log(`Servido rodando na porta ${port}`)
