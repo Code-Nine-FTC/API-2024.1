@@ -104,3 +104,14 @@
     padding: 1px;
 }
 
+.ticketcampo{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.ticketcampoEsp{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+

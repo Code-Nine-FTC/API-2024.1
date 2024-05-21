@@ -6,7 +6,7 @@ import Sidebar from "../../component/sidebar/sidebar";
 import StatusEmAndamento from "../../component/envioticket/statusEmAndamento/statusEmAndamento";
 import StatusEmEspera from "../../component/envioticket/statusEmEspera/statusEmEspera";
 import StatusConcluido from "../../component/envioticket/statusConcluido/statusConcluido";
-
+import styles from '../../component/envioticket/EnvioTicket.module.css'
 
 const TicketsEmEspera = () => {
     const user = getNivelAcesso()
@@ -41,16 +41,16 @@ const TicketsEmEspera = () => {
     return (
         <>
         <Sidebar/>
-        <div>
-            <h1>Tickets em Espera</h1>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Tickets em Espera</h1>
             {chamados.map((chamado: IChamadoView) => (
-                <div className='ticketcampo'>
+                <div className={styles.ticketcampoEsp}>
                     { chamado.cha_status === 'Em andamento' ? (
                         <StatusEmAndamento chamado={chamado}/>
                     ): chamado.cha_status === 'Em espera' ? (
                         <StatusEmEspera chamado = {chamado}/>
-                    ): (
-                        <StatusConcluido chamado = {chamado} />
+                    ):(
+                        <StatusConcluido chamado = {chamado}/>
                     )}
                 </div>
             )
