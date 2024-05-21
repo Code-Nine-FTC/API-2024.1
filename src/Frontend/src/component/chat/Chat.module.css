@@ -7,10 +7,16 @@
 
 .enviarMensagem {
     background-color: #111686;
-    width: 80vw;
-    height: 10%;  
+    width: 80%;
+    height: auto;  /* Altere a altura inicial para automática */
+    max-height: 10%; /* Adicione uma altura máxima */
+    transition: max-height 0.5s ease; /* Adicione uma transição suave */
     position: fixed;
     bottom: 0; 
+}
+
+.enviarMensagem:focus-within {
+    max-height: 100%; /* Quando em foco, expanda para a altura máxima */
 }
 
 
@@ -97,11 +103,10 @@
 
 .campoMensagens {
     width: 100%;
-    /* height: 65%; */
+    height: 65%;
     display: flex;
     flex-direction: column;
-    margin: 1%;
-    
+        
 
 }
 .chatbox{
@@ -157,7 +162,7 @@
     }
 
     .campoMensagens{
-        margin: 8rem;
+        margin-top: 1rem;
         height: auto;
     }
 
@@ -165,6 +170,6 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        height: 10%; 
+        height: 5vh; 
     }
 }
