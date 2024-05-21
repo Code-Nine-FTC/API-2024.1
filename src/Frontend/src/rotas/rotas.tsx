@@ -22,6 +22,7 @@ import EditarCategoria from "../pages/Editar/editarCategoriaAdm";
 import TicketsAtivos from "../pages/Tickets/ticketsEmAtendimentoPage";
 import TicketsEmEspera from "../pages/Tickets/ticketsEmEsperaPage";
 import TodosTickets from "../pages/Tickets/ticketsTodosPage";
+import FAQAdm from "../pages/faqAdm";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
 
@@ -75,6 +76,7 @@ const Rotas: FC =() => {
           <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />
           <Route path='/ticketsespera' element={<TicketsEmEspera/>}/>
+          <Route path='/faqadm' element={<FAQAdm/>}/>
         </>
       );
     }
