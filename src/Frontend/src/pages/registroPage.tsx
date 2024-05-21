@@ -47,7 +47,8 @@ const Registro = () => {
                 }, 2000);
             }
             catch (error:any) {
-                setErro(error.message)
+                let errorMessage = error.message || 'Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.';
+                setErro(errorMessage)
             }
         }
     }
@@ -94,7 +95,7 @@ const Registro = () => {
                         </button>
                     </div>
                     <div className={styles.Title}>
-                        <Link to='/visualizarTodosFuncionarios'> Voltar → </Link>
+                        <Link to='/login'> Voltar → </Link>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}

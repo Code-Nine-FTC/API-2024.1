@@ -20,16 +20,26 @@ main {
 /* Estilos para o conteúdo */
 
 .conteudo {
+    min-width: max-content;
     width: 70vw;
     display: flex;
 
+}
+
+.Title {
+  margin-top: 1%; /* Espaço entre o botão e o título */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 7vw;
 }
 
 .conteudointerno {
     flex: 2;
     background-color: white;
     width: 80%;
-    height: 70vh; /* Altura padrão da section */
+    min-height: max-content;
+    height: 74vh; /* Altura padrão da section */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +51,6 @@ main {
   /* Estilos para as labels */
   .Labels {
     display: flex;
-    
     flex-direction: column;
     align-items: center;/* Ajuste a margem superior conforme necessário */
     color: #0036a3;
@@ -77,9 +86,11 @@ main {
       flex-direction: column;
       align-items: center;
       height: 120vh;
+      min-height: max-content;
     }
     .Labels{
       margin-top: 1px;
+      min-height: max-content;
     }
 
   .logo {
@@ -100,6 +111,7 @@ main {
       margin-bottom: 5px;
       align-items: center; /* Centraliza verticalmente as labels */
       justify-content: center; /* Centraliza horizontalmente as labels */
+      min-height: max-content;
       
     }
   
@@ -134,7 +146,7 @@ main {
   
   /* Estilos para o título clicável */
   .Title {
-    margin-top: 20px; /* Espaço entre o botão e o título */
+    margin-top: 3%; /* Espaço entre o botão e o título */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,9 +171,10 @@ main {
 
   .Labels {
     margin-left: 5%;
+    min-height: max-content;
   }
   .Title {
-    margin-top: 20px; /* Espaço entre o botão e o título */
+    margin-top: 3%; /* Espaço entre o botão e o título */
     display: flex;
     flex-direction: column;
     align-items: center;
