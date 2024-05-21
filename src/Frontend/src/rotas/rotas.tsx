@@ -45,7 +45,7 @@ const Rotas: FC =() => {
           <Route path="/editarcliente" element={<EditarCliente />} />
           <Route path="/visualizarcliente" element={<VisualizarCliente />} />
           <Route path="/criarticket" element={<Ticket />} />
-          <Route path="/chat" element={<ChatPage/>} />
+          <Route path="/chat/:id" element={<ChatPage/>} />
         </>
       );
     } else if (acesso === 'atendente') {
@@ -55,7 +55,7 @@ const Rotas: FC =() => {
           <Route path="/visualizar/perfil/funcionario" element={<VisualizarPerfilFuncionario />} />
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path='/todostickets' element={<TodosTickets/>} />
-          <Route path="/chat" element={<ChatPage/>} />
+          <Route path="/chat/:id" element={<ChatPage/>} />
           <Route path='/ticketsespera' element={<TicketsEmEspera/>}/>
         </>
       );
@@ -70,7 +70,7 @@ const Rotas: FC =() => {
           <Route path="/ticketadm" element={<TicketAdm />} />
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path='/todostickets' element={<TodosTickets/>} />
-          <Route path="/chat" element={<ChatPage/>} />
+          <Route path="/chat/:id" element={<ChatPage/>} />
           <Route path="/listarcategorias" element={<ListagemCategorias/>} />
           <Route path="/editarcategoria/:id" element={<EditarCategoria/>} />
           <Route path='/ticketsativos' element={<TicketsAtivos/>} />

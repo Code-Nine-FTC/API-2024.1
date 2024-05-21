@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../statusBox/statusBox.module.css'
 import orange from '../../../assets/faq/rectangle.png'
 import { IChamadoView } from '../statusConcluido/IChamadoView';
+import { Link } from 'react-router-dom';
 
 
 const StatusEmAndamento = ({ chamado } : { chamado: IChamadoView }) => {
@@ -16,7 +17,9 @@ const StatusEmAndamento = ({ chamado } : { chamado: IChamadoView }) => {
                         <p>{chamado.cha_titulo}</p>
                     </div>
                     <div className={styles.buttonNav}>
+                    <Link to={`/chat/${chamado.cha_id}`}>
                         <button className={styles.chatButton} type='button'>Entrar no chat</button>
+                    </Link>
                         <button className={styles.andamentoButton} type='button'>Em andamento</button>
                      </div>
                 </div>

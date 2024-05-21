@@ -5,13 +5,11 @@ import EnviarMensagemFunc from '../../functions/Chat/enviarMensagemFunc'
 import getDate from '../../functions/verData'
 import RecebeData from '../../functions/dataString'
 import { getNivelAcesso } from '../../services/auth'
+import Swal from 'sweetalert2';
 
-
-const EnviarMensagem = () => {
+const EnviarMensagem = ({ id }: { id: number })=> {
 
     const nivel = getNivelAcesso()
-    
-    const id = 1
 
     const [texto, setTexto] = useState('');
     const mensagem = {
@@ -33,7 +31,12 @@ const EnviarMensagem = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (mensagem.texto.length > 300 || mensagem.texto === '') {
-            alert('A mensagem é invalida')
+            Swal.fire({
+                title: 'Erro',
+                text: 'A mensagem é invalida',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
         else{
             try {

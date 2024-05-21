@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styles from '../../envioticket/EnvioTicket.module.css'
 import orange from '../../../assets/faq/rectangle-green.png'
 import {IChamadoView} from './IChamadoView'
+import { Link, useNavigate } from 'react-router-dom';
 
 function StatusConcluido({chamado} : { chamado: IChamadoView }) {
+    const navigate = useNavigate()
 
     return(
         <div className={styles.statusBox}>
@@ -16,7 +18,9 @@ function StatusConcluido({chamado} : { chamado: IChamadoView }) {
                             <p className={styles.ticketText}>{chamado.cha_titulo}</p>
                         </div>
                         <div className={styles.buttonNav}>
-                            <button className={styles.chatButton} type='button'>Exibir Conversa</button>
+                        <Link to={`/chat/${chamado.cha_id}`}>
+                            <button className={styles.chatButton} type='button'>Entrar no chat</button>
+                        </Link>
                             <button className={styles.concluidoButton} type='button'>Concluído</button>
                         </div>
                     </div>

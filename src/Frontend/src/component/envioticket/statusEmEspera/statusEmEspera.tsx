@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../../statusBox/statusBox.module.css'
 import orange from '../../../assets/faq/rectangle-yellow.png'
 import IChamadoView from '../../../functions/Tickets/iChamado';
+import IniciarChamado from '../../../functions/Tickets/iniciarTicketFunc';
+import { getNivelAcesso } from '../../../services/auth';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
+function StatusEspera({ chamado } : { chamado: IChamadoView }){
+    const navigate = useNavigate()
+    const user = getNivelAcesso();
+    
+    const ComecarChamado = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        try {
+        const resultado = await IniciarChamado(chamado.cha_id);
+        console.log(resultado)
+        if (resultado.success) {
+            navigate(`/chat/${chamado.cha_id}`);
+        }
 
-function statusEspera({ chamado } : { chamado: IChamadoView }){
+    } catch (error: any) {
+        let errorMessage = error.message || 'Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.';
+            Swal.fire({
+                title: 'Erro',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            console.log('Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.', errorMessage, error);
+    }};
+
     return(
         <div className={styles.statusBox}>
             <div className={styles.mainText}>
@@ -16,7 +42,11 @@ function statusEspera({ chamado } : { chamado: IChamadoView }){
                         <p>{chamado.cha_titulo}</p>
                     </div>
                     <div className={styles.buttonNav}>
-                        <button className={styles.chatButton2} type='button'>Entrar no chat</button>
+                    {user === 'atendente' ? (
+                        <button className={styles.chatButton2} type='button' onClick={ComecarChamado}>Entrar no chat</button>):
+                        (
+                        <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>)
+                        }
                         <button className={styles.esperaButton} type='button'>Em espera</button>
                      </div>
                 </div>
@@ -26,4 +56,4 @@ function statusEspera({ chamado } : { chamado: IChamadoView }){
     )
 }
 
-export default statusEspera;
+export default StatusEspera;
