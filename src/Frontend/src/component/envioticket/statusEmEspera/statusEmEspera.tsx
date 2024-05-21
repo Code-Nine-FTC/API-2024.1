@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../statusBox/statusBox.module.css'
 import orange from '../../../assets/faq/rectangle-yellow.png'
-import IChamadoView from '../../../functions/Tickets/iChamado';
+import IChamadoView from '../../../functions/Tickets/interface/iChamado';
 import IniciarChamado from '../../../functions/Tickets/iniciarTicketFunc';
 import { getNivelAcesso } from '../../../services/auth';
 import Swal from 'sweetalert2';

@@ -57,7 +57,7 @@
     background-color: #0202c4;
     color: white;
     padding: 10px 20px;
-    text-decoration: none;
+    text-decoration: none; /* Remover a decoração do texto */
     outline: none;
     border-radius: 5px;
     text-align: center;
@@ -67,6 +67,7 @@
     font-weight: bold;
     width: 150px; 
 }
+
 
 #Editar:hover {
     background-color: #030350;

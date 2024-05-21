@@ -7,7 +7,7 @@ import StatusConcluido from "../../component/envioticket/statusConcluido/statusC
 import { getNivelAcesso } from "../../services/auth";
 import BuscarTodosTickets from "../../functions/Tickets/buscarTodosTicketsFunc";
 import { useEffect, useState } from "react";
-import IChamadoView from "../../functions/Tickets/iChamado";
+import IChamadoView from "../../functions/Tickets/interface/iChamado";
 import styles from '../../component/envioticket/EnvioTicket.module.css'
 
 
