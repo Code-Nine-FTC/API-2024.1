@@ -1,5 +1,5 @@
 import { getNivelAcesso } from "../../services/auth"
-import IChamadoView from "../../functions/Tickets/iChamado";
+import IChamadoView from "../../functions/Tickets/interface/iChamado";
 import { useEffect, useState } from "react";
 import BuscarTicketsEmEspera from "../../functions/Tickets/buscarTicketsEmEsperaFunc";
 import Sidebar from "../../component/sidebar/sidebar";

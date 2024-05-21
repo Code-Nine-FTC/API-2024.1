@@ -6,7 +6,7 @@ import styles from "../component/chat/Chat.module.css"
 import { useParams } from "react-router-dom"
 import BuscarChamado from "../functions/Chat/buscarChamadoFunc"
 import { getNivelAcesso } from "../services/auth"
-import IChamadoViewMensagem from "../functions/Tickets/iChamado"
+import IChamadoViewMensagem from "../functions/Tickets/interface/iChamado"
 import { useState, useEffect } from "react"
 
 const ChatPage = () => {

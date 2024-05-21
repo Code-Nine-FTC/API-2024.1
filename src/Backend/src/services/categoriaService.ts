@@ -24,6 +24,19 @@ export class CategoriaService {
             if (categorias.length === 0) {
                 return { success: false, message: 'Nenhuma categoria encontrada' };
             }
+            return { success: true, message:`Categorias encontradas`, categorias };
+        } catch (error) {
+            console.error(`Erro ao listar categorias: ${error}`);
+            return { success: false, message: 'Erro ao listar categorias' };
+        }
+    }
+
+    public async listarTodasCategorias() {
+        try {
+            const categorias = await this.categoriaRepository.find();
+            if (categorias.length === 0) {
+                return { success: false, message: 'Nenhuma categoria encontrada' };
+            }
             return { success: true, categorias };
         } catch (error) {
             console.error(`Erro ao listar categorias: ${error}`);
