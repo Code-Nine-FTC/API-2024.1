@@ -79,9 +79,7 @@ const Ticket = () => {
                     </div>
                     <br></br>
                     <div>
-                        <div id={styles.Editar}>
-                            <button type="submit">Enviar</button>
-                        </div>
+                        <button className={styles.button} type="submit">Enviar</button>
                     </div>
                 </form>
             </div>

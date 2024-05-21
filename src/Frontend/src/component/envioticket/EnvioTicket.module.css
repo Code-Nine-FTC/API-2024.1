@@ -80,7 +80,7 @@
     margin-bottom: 10%;
 }
 
-button {
+.button {
     text-decoration: none;
     background-color: #0202c4;
     color: white;
@@ -97,7 +97,7 @@ button {
     margin-left: 35%;
 }
 
-button:hover {
+.button:hover {
     background-color: #030350;
 }
 

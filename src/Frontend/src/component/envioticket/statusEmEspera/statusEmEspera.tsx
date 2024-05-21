@@ -43,7 +43,7 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                     </div>
                     <div className={styles.buttonNav}>
                     {user === 'atendente' ? (
-                        <button className={styles.chatButton2} type='button' onClick={ComecarChamado}>Entrar no chat</button>):
+                        <button className={styles.chatButtonAtn} type='button' onClick={ComecarChamado}>Entrar no chat</button>):
                         (
                         <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>)
                         }
