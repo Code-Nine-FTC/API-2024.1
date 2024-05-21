@@ -85,7 +85,8 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
             break;
         }
       } catch (error: any) {
-        setErro(error.message);
+        let errorMessage = error.message || 'Erro ao realizar o login. Por favor, tente novamente mais tarde.';
+        setErro(errorMessage);
       }
     };
 
@@ -138,26 +139,27 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
 
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
 
-          <div className={styles.Title}>
+          
           {tipoCadastro === 'usuario' && (
-            <Link to="/registro">Cadastre-se</Link>
+            <div className={styles.Title}>
+              <Link to="/registro">Cadastre-se</Link>
+            </div>
           )}
-          </div>
 
-          <div className={styles.Title}>
-            {tipoCadastro === 'usuario' && (
+          {tipoCadastro === 'usuario' && (
+            <div className={styles.Title}>
               <Link to="/loginadm">É funcionário? </Link>
-              
-              )} 
-          </div>
+            </div>
+          )} 
+          
 
-          <div className={styles.Title}>
-            {tipoCadastro === 'funcionario' && (
-              <Link to="/login">Voltar→ </Link>
-              
-              )} 
-          </div>
-          {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%', fontSize: '0.8em'}}>{erro}</p>}
+          {tipoCadastro === 'funcionario' && (
+            <div className={styles.Title}>
+                <Link to="/login">Voltar→ </Link>
+            </div>
+            )} 
+            
+          {erro && <p style={{ marginLeft: '10%', color: 'red', textAlign: 'center', marginBottom: '3%', marginTop: '2%',fontSize: '0.8em'}}>{erro}</p> }
         </div>
       </form>
     </div>

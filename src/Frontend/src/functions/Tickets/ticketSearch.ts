@@ -1,19 +1,13 @@
-import axios from 'axios';
-import { rotaBase } from '../RotaBase/rotaBase';
+import api from '../../services/api';
 
-// Busca usuario no banco banco de dados com base no id fornecido
-const viewCliente = async (cli_id: number, token: string | null) => {
+const visualizarTodasCategorias = async () => {
   try {
-    // envia o id 
-    const response = await axios.post(`${rotaBase}/verCliente`,{cli_id: cli_id}, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return response.data.cliente;
+    const response = await api.get(`/listarCategorias`);
+  
+    return {categorias: response.data.categorias, success: response.data.success}
   } catch (error) {
-    throw new Error('Erro ao buscar cliente. Por favor, tente novamente mais tarde.');
+    throw new Error('Erro ao buscar categorias. Por favor, tente novamente mais tarde.');
   }
 };
 
-export default viewCliente
+export default visualizarTodasCategorias;

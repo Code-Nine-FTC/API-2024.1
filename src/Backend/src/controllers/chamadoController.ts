@@ -164,6 +164,7 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const func_id = res.locals.userId
+            console.log('Recebendo requisição em /viewChamadosFinalizadosAtendente ', func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${func_id}` });
@@ -189,6 +190,7 @@ class ChamadoController {
             console.log(cha_id)
             // Pega o id passado pela autenticação
             const func_id = res.locals.userId
+            console.log('Recebendo requisição em /iniciarAtendimentoController', cha_id, func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${func_id}` });
@@ -203,7 +205,7 @@ class ChamadoController {
 
         } catch (error) {
             console.error(`Erro interno do servidor: ${error}`)
-            return res.status(500).json({ success: false, message: `Erro interno do servidor` });
+            return res.status(500).json({ success: false, message: `Erro interno do servidor`, error: error.message });
         }
     }
 

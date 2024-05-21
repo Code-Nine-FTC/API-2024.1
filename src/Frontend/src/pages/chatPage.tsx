@@ -6,11 +6,11 @@ import styles from "../component/chat/Chat.module.css"
 import { useParams } from "react-router-dom"
 import BuscarChamado from "../functions/Chat/buscarChamadoFunc"
 import { getNivelAcesso } from "../services/auth"
-import IChamadoViewMensagem from "../functions/Tickets/iChamado"
+import IChamadoViewMensagem from "../functions/Tickets/interface/iChamado"
 import { useState, useEffect } from "react"
 
 const ChatPage = () => {
-    const id = 1 as number;
+    const id = Number(useParams<{id: string}>().id) || 0;
     const userTipo = getNivelAcesso();
     const [chamado, setChamado]= useState<any>(null)
     useEffect(()=>{
@@ -37,7 +37,7 @@ const ChatPage = () => {
                 )}
             <ChatComponent id={id}/>
             {userTipo !== 'administrador' &&(
-                <EnviarMensagem/>
+                <EnviarMensagem id={id} />
             )}
         </div>
         </>

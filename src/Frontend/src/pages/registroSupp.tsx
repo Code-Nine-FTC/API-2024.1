@@ -63,8 +63,9 @@ const RegistroSup = () => {
                     toast.success('Cadastro concluído')
                 }
             }
-            catch (error: any) {
-                setErro(error.message)
+            catch (error:any) {
+                let errorMessage = error.message || 'Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.';
+                setErro(errorMessage)
             }
         }
     }
@@ -116,7 +117,7 @@ const RegistroSup = () => {
                             </div>
                         </div>
 
-                        {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%' }}>{erro}</p>}
+                        {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '3%' }}>{erro}</p>}
                     </form>
                 </section>
             </section>

@@ -23,7 +23,7 @@
   text-align: center;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  height: 98vh;
+  height: 110vh;
 }
 
 .form {
@@ -36,7 +36,7 @@
   margin-left: 5%;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transform: translate(-26%);
-  height: 98vh;
+  height: 110vh;
 }
 label{
   margin-left: 7%;
@@ -161,7 +161,7 @@ select{
 
 .Title {
   display: flex;
-  margin-top: 20px; 
+  margin-top: 2%; 
   font-size: 18px;
   color: blue;
   cursor: pointer; 

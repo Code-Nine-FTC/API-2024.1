@@ -1,4 +1,4 @@
-import iChamadoViewMensagem from "../../functions/Tickets/iChamado";
+import iChamadoViewMensagem from "../../functions/Tickets/interface/iChamado";
 import api from "../../services/api";
 
 export default async function BuscarChamado(id: number) {

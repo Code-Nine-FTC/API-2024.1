@@ -11,6 +11,7 @@ import Sidebar from '../component/sidebar/sidebar';
 import { Modal } from '../component/modal/modal';
 import { useEffect, useState } from 'react';
 import { isAuthenticated } from '../services/auth';
+import { Link } from 'react-router-dom';
 // import Statusemandamento from '../component/statusEmAndamento/statusEmAndamento';
 // import Statusconcluido from '../component/statusConcluido/statusConcluido';
 // import Statusespera from '../component/statusEmEspera/statusEmEspera';
@@ -51,7 +52,7 @@ function Home() {
         <Status/>
     </div>
     <div>
-      <p className={styles.blueText}>Ver todos os meus tickets abertos →</p>
+      <Link to={'/todostickets'}><p className={styles.blueText}>Ver todos os meus tickets abertos →</p></Link>
     </div>
     </>
   )}

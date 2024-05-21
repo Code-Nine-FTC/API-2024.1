@@ -1,56 +1,57 @@
+import React, { useState, useEffect } from "react"
 import Sidebar from "../component/sidebar/sidebar"
 import styles from '../component/envioticket/EnvioTicket.module.css'
-import React, { useState } from "react"
-import axios from "axios"
-import { rotaBase } from "../functions/RotaBase/rotaBase"
 import api from "../services/api"
-
-
-
-
+import visualizarTodasCategorias from "../functions/Tickets/ticketSearch"
+import ICategoriaView from "../functions/Tickets/interface/iCategoria"
 
 const Ticket = () => {
-
-const [titulo, setTitulo] = useState<string>('');
-const [descricao, setdescricao] = useState<string>('');
-const [number, setnumber] = useState<number>();
-
     const [dadosChamado, setdadosChamado] = useState({
-        cha_titulo: titulo,
-        cha_descricao: descricao,
-        cat_id: number,
-    })
+        cha_titulo: '',
+        cha_descricao: '',
+        cat_id: '',
+    });
+    const [viewcategoria, setviewcategoria] = useState<ICategoriaView[]>([]);
+
+    useEffect(() => { 
+        const fetchListarCategorias = async () => {
+            try {
+                const resultadoViewCategoria = await visualizarTodasCategorias();
+                if (resultadoViewCategoria.success) {
+                    setviewcategoria(resultadoViewCategoria.categorias);
+                } else {
+                    console.error("Erro ao carregar os dados das categorias");
+                }
+            } catch (error) {
+                console.error("Erro ao carregar os dados das categorias:", error);
+            }
+        }
+        fetchListarCategorias();
+    }, []);
+
     const handleInputChange = (evento: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setdadosChamado({
             ...dadosChamado,
             [evento.target.name]: evento.target.value
         });
     };
-    
-    
-    
-    const enviarTicket = (evento: React.FormEvent<HTMLFormElement>) => {
-        try {
-            const token = localStorage.getItem('token')
-            evento.preventDefault()
-          api.post(`${rotaBase}/cadastroChamado`, dadosChamado)
-              .then(() => {
-                  alert('Dados salvos com sucesso')
-              })
-              console.log('enviar os dados')
-        } catch (error) {
-            
-        }
-       
-    }
 
+    const enviarTicket = async (evento: React.FormEvent<HTMLFormElement>) => {
+        evento.preventDefault();
+        try {
+            await api.post(`/cadastroChamado`, dadosChamado);
+            alert('Dados salvos com sucesso');
+        } catch (error) {
+            console.error("Erro ao enviar o ticket:", error);
+        }
+    }
 
     return (
         <>
             <Sidebar />
             <div className={styles.container}>
                 <header className={styles.title}>
-                    <h1>Envie sua solicitação</h1>
+                    <h1>Envie seu Ticket</h1>
                     <p>Não importa se for problema ou dúvida, responderemos em até 24hrs.</p>
                     <br></br>
                     <br></br>
@@ -60,11 +61,10 @@ const [number, setnumber] = useState<number>();
                     <div>
                         <br></br>
                         <select className={styles.seletor} value={dadosChamado.cat_id} onChange={handleInputChange} name="cat_id" required>
-                            <option disabled selected>Selecione o tópico desejado</option>
-                            <option value="1">Rastreio de Pacote</option>
-                            <option value="2">Perda do Código de Rastreio</option>
-                            <option value="3">Danos à Encomenda</option>
-                            <option value="4">Outros</option>
+                            <option disabled value="">Selecione o tópico desejado</option>
+                            {viewcategoria.map((categoria) => (
+                                <option key={categoria.cat_id} value={categoria.cat_id}>{categoria.cat_titulo}</option>
+                            ))}
                         </select>
                     </div>
                     <br></br>
@@ -79,16 +79,12 @@ const [number, setnumber] = useState<number>();
                     </div>
                     <br></br>
                     <div>
-                        <div id={styles.Editar}>
-                            <button type="submit">Enviar</button>
-                        </div>
+                        <button className={styles.button} type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
-
         </>
     )
 }
-
 
 export default Ticket

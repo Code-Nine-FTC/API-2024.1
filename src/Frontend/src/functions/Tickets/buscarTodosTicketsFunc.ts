@@ -5,7 +5,7 @@ const BuscarTodosTickets = async (user: string | null) => {
     switch (user) {
         case 'usuario':
             try {
-                const resposta = await api.get('/chamadosFinalizadosCli');
+                const resposta = await api.get('/todosChamadosCli');
                 console.log(resposta.data.chamados)
                 return resposta.data
             } catch (error) {

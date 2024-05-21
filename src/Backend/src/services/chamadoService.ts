@@ -1,3 +1,4 @@
+import { copyFileSync } from "fs";
 import { Connection } from "../config/data-source";
 import Categoria from "../entities/categoria";
 import Chamado from "../entities/chamado";
@@ -167,7 +168,6 @@ class ChamadoService{
             if(!chamadoAtendente){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-            console.log('Deu certo: ', chamadoAtendente)
             return { success: true, message: `Chamados encontrados!`, chamados: chamadoAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
@@ -178,6 +178,7 @@ class ChamadoService{
     // chamados finalizados
     public async visualizarChamadosFinalizadosAtendente(func_id: number){
         try{
+            console.log('Recebendo dados em Visualizar Chamados Finalizados Atendente: ', func_id)
             //Busca todos os chamados do atendente desejado
             const chamadosAtendente = await this.chamadoRepository.find({
                 where: {
@@ -189,6 +190,7 @@ class ChamadoService{
             if(!chamadosAtendente || chamadosAtendente.length === 0){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
+            console.log('Chamados finalizados encontrados: ', chamadosAtendente)
             return { success: true, message: `Chamados encontrados!`, chamados: chamadosAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
@@ -200,23 +202,27 @@ class ChamadoService{
     public async iniciarAtendimento(cha_id: number, func_id: number) {
         try {
             // Buscando as informações do chamado que vai ser atendido
+            console.log('Iniciando chamado: ', cha_id, func_id)
             const chamado = await this.chamadoRepository.findOne({
                 where: { cha_id: cha_id },
                 relations: ['funcionario'] // Carrega todas informações relacionada a relação com funcionario
             });
-
+            console.log('deu certo', chamado)
             // Verificando se ele foi encontrado!
-            if (!chamado) {
+            if (!chamado) { 
+                console.log('Chamado não encontrado')
                 return { success: false, message: `Chamado não encontrado!` };
             }
 
             // Verifica se existe um funcionario associado
             if (chamado.funcionario) {
+                console.log('Chamado em atendimento')
                 return { success: false, message: `Chamado em atendimento!` };
             }
 
             // Verifica se o status do chamado nao esta cancelado
             if(chamado.cha_status === 'Cancelado'){
+                console.log('Chamado cancelado')
                 return { success: false, message: `Não é possivel iniciar o atendimento desse chamado!` }
             }
 
@@ -224,12 +230,14 @@ class ChamadoService{
             const funcionario = await this.funcionarioRepository.findOne({
                 where: { func_id: func_id }
             });
-
+            console.log('Funcionario encontrado: ', funcionario)
             if (funcionario.func_is_admin){
+                console.log('Funcionario é admin')
                 return { success: false, message: `Esse funcionario não pode realizar atendimento!` }
             }
 
             if (!funcionario) {
+                console.log('Funcionario não encontrado')
                 return { success: false, message: `Funcionario não encontrado!` };
             }
 
@@ -243,7 +251,7 @@ class ChamadoService{
             }
 
             // Mudando o Status do Chamado
-            chamado.cha_status = 'Em Andamento';
+            chamado.cha_status = 'Em andamento';
             // Atribuindo ao Funcionario que iniciou
             chamado.funcionario = funcionario;
             // Salvando as alterações
@@ -252,7 +260,7 @@ class ChamadoService{
             return { success: true, message: `Chamado atribuido com sucesso!` };
         } catch (error) {
             console.error(`Erro ao atribuir chamado ao funcionario: ${error}`);
-            return { success: false, message: `Erro ao atribuir chamado` };
+            return { success: false, message: `Erro ao atribuir chamado`, error: error.message };
         }
     }
 
