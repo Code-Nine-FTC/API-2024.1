@@ -67,7 +67,7 @@ class ChamadoService{
             const chamadosCliente = await this.chamadoRepository.find({ 
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
-                    cha_status: 'Finalizado'
+                    cha_status: 'Concluido'
                 }
             })
             // verificações
@@ -251,7 +251,7 @@ class ChamadoService{
             }
 
             // Mudando o Status do Chamado
-            chamado.cha_status = 'Em andamento';
+            chamado.cha_status = 'Em Andamento';
             // Atribuindo ao Funcionario que iniciou
             chamado.funcionario = funcionario;
             // Salvando as alterações
