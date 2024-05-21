@@ -44,7 +44,7 @@ class ChamadoService{
             const chamadosCliente = await this.chamadoRepository.find({ 
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
-                    cha_status: 'Em andamento'
+                    cha_status: 'Em Andamento'
                 }
             })
             // verificações
@@ -167,10 +167,7 @@ class ChamadoService{
             if(!chamadoAtendente){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-<<<<<<< Updated upstream
             console.log('Deu certo: ', chamadoAtendente)
-=======
->>>>>>> Stashed changes
             return { success: true, message: `Chamados encontrados!`, chamados: chamadoAtendente }
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
@@ -185,7 +182,7 @@ class ChamadoService{
             const chamadosAtendente = await this.chamadoRepository.find({
                 where: {
                     funcionario: { func_id: func_id },
-                    cha_status: 'Finalizado'
+                    cha_status: 'Concluido'
                 }
             })
             // Verificações
@@ -272,7 +269,7 @@ class ChamadoService{
                 return { success: false, message: `Não é possivel finalizar onde não está sendo atendido!` }
             }
             // mudando status do chamado para concluido!
-            chamado.cha_status = 'Concluído'
+            chamado.cha_status = 'Concluido'
             // adicionando data e hora que foi finalizado
             chamado.cha_data_final = new Date()
             // salvando mudanças
@@ -368,7 +365,7 @@ class ChamadoService{
             //Busca todos os chamados do atendente desejado
             const chamados = await this.chamadoRepository.find({
                 where: {
-                    cha_status: 'Em espera'
+                    cha_status: 'Em Aberto'
                 }
             })
             // Verificações
@@ -388,6 +385,46 @@ class ChamadoService{
             return { success: false, message: `Erro em buscar todos os chamados` }
         }
     }
+
+    // SLA
+    public async verificarSLA(){
+        try {
+            // busca todos os chamados que estão em andamento e aberto
+            const chamados = await this.chamadoRepository.find({
+                where: [
+                    { cha_status: 'Em Andamento' },
+                    { cha_status: 'Em Aberto' }
+                ],
+                relations: ['categoria']
+            });
+    
+            const agora = new Date(); // pega a data e hora atuais
+    
+            for (const chamado of chamados) {
+                if (chamado.categoria) {
+                    const horario = chamado.categoria.cat_horario; // pega o horário previsto da categoria    
+                    // Converte o horário de "HH:MM:SS" para horas decimais
+                    const horarioDecimal = this.converterHoraParaDecimal(horario);    
+                    // Faz o cálculo em milissegundos e transforma em horas
+                    const tempoDecorrido = (agora.getTime() - new Date(chamado.cha_data_inicio).getTime()) / (1000 * 60 * 60);
+                    if (tempoDecorrido > horarioDecimal) {
+                        chamado.cha_prioridade = 'Alta';
+                        await this.chamadoRepository.save(chamado);
+                    }
+                }
+            }
+            return { success: true, message: 'SLA verificado e atualizado com sucesso.' };
+        } catch (error) {
+            console.error(`Erro ao verificar SLA: ${error}`);
+            return { success: false, message: 'Erro ao verificar SLA.' };
+        }
+    }
+
+    // Função para converter "HH:MM:SS" para horas decimais
+    converterHoraParaDecimal(horario) {
+    const [horas, minutos, segundos] = horario.split(':').map(Number);
+    return horas + (minutos / 60) + (segundos / 3600);
+}
 }
 
 export default ChamadoService
