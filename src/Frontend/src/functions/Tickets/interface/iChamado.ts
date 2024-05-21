@@ -35,6 +35,9 @@ export default interface IChamadoViewMensagem {
         func_id: number;
         func_nome: string;
     };
+    categoria: {
+        cat_titulo: string
+    }
     respostas: {
         resp_id: number;
     }[];

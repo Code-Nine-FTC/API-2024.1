@@ -22,7 +22,7 @@ export default class Chamado {
     @Column({ type: 'date', nullable: true })
     public cha_data_final: Date | null    
 
-    @Column({ type: 'varchar', length: 100, default: 'Em Aberto' })
+    @Column({ type: 'varchar', length: 100, default: 'Em espera' })
     public cha_status: string
 
     @Column({ type: 'varchar', nullable: true })
