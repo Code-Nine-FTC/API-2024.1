@@ -183,6 +183,29 @@ class ChamadoController {
         }
     }
 
+    public async viewUltimoChamadoAtendente(req: Request, res: Response) {
+        try {
+            //Pega o id do cliente passado pela autenticação
+            const func_id = res.locals.userId
+            console.log('Recebendo requisição em /viewUltimoChamadoAtendente', func_id)
+            // Verificações
+            if (isNaN(func_id) || func_id <= 0) {
+                return res.status(400).json({ success: false, message: `Id do atendente inválido: ID ${func_id}` });
+            }
+            // Passa o func_id para a função no service
+            const resultado = await this.chamadoService.visualizarUltimoChamadoAtendente(parseInt(func_id))
+
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            }
+            return res.status(200).json(resultado)
+
+        } catch (error) {
+            console.error(`Erro em buscar todos os chamados ativos do cliente: ${error}`)
+            return res.status(500).json({ success: false, message: `Erro interno do Servidor` })
+        }
+    }
+
     public async iniciarAtendimentoController(req: Request, res: Response) {
         try {
             // Pega o id pela url

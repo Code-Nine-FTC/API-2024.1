@@ -198,6 +198,29 @@ class ChamadoService{
         }
     }
 
+    public async visualizarUltimoChamadoAtendente(func_id: number){
+        try{
+            // Busca os chamados do cliente desejado
+            console.log('Buscando ultimo chamado do atendente', func_id)
+            const chamadoAtendente = await this.chamadoRepository.findOne({ 
+                where: {
+                    funcionario: { func_id: func_id }// usa o relacionamento do cliente para a busca
+                }, order: {
+                    cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
+                }
+            })
+            // verificação
+            if (!chamadoAtendente){
+                return { success: false, message: `Nenhum chamado encontrado!`}
+            }
+            console.log('Ultimo chamado do atendente encontrado ', chamadoAtendente)
+            return { success: true, message: `Chamados encontrados!`, chamados: chamadoAtendente  }
+        }catch(error){
+            console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
+            return { success: false, message: `Erro em buscar todos os chamados` }
+        }
+    }
+
     // Inicia atendimento
     public async iniciarAtendimento(cha_id: number, func_id: number) {
         try {
