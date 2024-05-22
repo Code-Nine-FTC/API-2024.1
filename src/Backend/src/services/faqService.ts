@@ -7,13 +7,15 @@ export class FaqService {
 
     public async criarFaq(dadosFaq: IFaqInput) {
         try {
-            const novaFaq = await this.faqRepository.create(dadosFaq)
-            await this.faqRepository.save(novaFaq)
-            return { success: true, message: `Nova FAQ adicionada com sucesso!`, faq: novaFaq }
-
+            const novaFaq = this.faqRepository.create({
+                ...dadosFaq,
+                faq_data_modificacao: new Date() // Define a data de modificação aqui
+            });
+            await this.faqRepository.save(novaFaq);
+            return { success: true, message: `Nova FAQ adicionada com sucesso!`, faq: novaFaq };
         } catch (error) {
-            console.error(`Erro ao cadastrar FAQ: ${error}`)
-            return { success: false, message: `Erro ao cadastrar FAQ.` }
+            console.error(`Erro ao cadastrar FAQ: ${error}`);
+            return { success: false, message: `Erro ao cadastrar FAQ.` };
         }
     }
 
@@ -34,15 +36,15 @@ export class FaqService {
         try {
             const faq = await this.faqRepository.findOne({ where: { faq_id: faqId } });
             if (!faq) {
-                return { success: false, message: `FAQ não encontrada` }
+                return { success: false, message: `FAQ não encontrada` };
             }
 
-            const faqUpdateFinal = { ...faq, ...faqUpdate }
-            await this.faqRepository.update(faqId, faqUpdateFinal)
-            return { success: true, message: `FAQ atualizada com sucesso`, faqUpdateFinal }
+            const faqUpdateFinal = { ...faq, ...faqUpdate, faq_data_modificacao: new Date() }; // Atualiza a data de modificação
+            await this.faqRepository.update(faqId, faqUpdateFinal);
+            return { success: true, message: `FAQ atualizada com sucesso`, faqUpdateFinal };
         } catch (error) {
-            console.error(`Erro ao editar FAQ: ${error}`)
-            return { success: false, message: `Erro ao editar FAQ` }
+            console.error(`Erro ao editar FAQ: ${error}`);
+            return { success: false, message: `Erro ao editar FAQ` };
         }
     }
 }

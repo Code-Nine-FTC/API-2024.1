@@ -1,38 +1,46 @@
 import React, { useState } from 'react';
-import Sidebar from "../component/sidebar/sidebar";
+import Sidebar from '../component/sidebar/sidebar';
 import CadastroFaqAdm from '../functions/faq/criarFaq';
 import styles from '../component/chamadoAdm/chamadoAdm.module.css';
 
-const FAQAdm = () => {
-    const [formData, setFormData] = useState({ 
+interface IFaqInput {
+    faq_exemplo: string;
+    faq_titulo: string;
+    faq_descricao: string;
+}
+
+const FAQAdm: React.FC = () => {
+    const [formData, setFormData] = useState<IFaqInput>({
         faq_exemplo: '',
         faq_titulo: '',
-        faq_descricao: '' 
+        faq_descricao: '',
     });
 
-    const handleFormSubmit = async (e: React.FormEvent) => {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
+
         try {
             const resultado = await CadastroFaqAdm(formData);
-            if (resultado?.message) {
+            if (resultado?.success) {
                 alert('FAQ cadastrada com sucesso!');
+                setFormData({ faq_exemplo: '', faq_titulo: '', faq_descricao: '' });
             } else {
-                alert(resultado?.message);
+                alert(resultado?.message || 'Erro ao cadastrar FAQ.');
             }
         } catch (error) {
             console.error('Erro ao criar FAQ:', error);
+            alert('Erro ao criar FAQ');
         }
     };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
     };
 
     return (
         <>
-            <Sidebar/>
+            <Sidebar />
             <div className={styles.container}>
                 <header className={styles.title}>
                     <h1>Criar FAQ</h1>
@@ -48,7 +56,7 @@ const FAQAdm = () => {
                             type="text"
                             id="faq_exemplo"
                             name="faq_exemplo"
-                            maxLength={25}
+                            maxLength={300}
                             placeholder="Exemplo"
                             value={formData.faq_exemplo}
                             onChange={handleInputChange}
@@ -64,7 +72,7 @@ const FAQAdm = () => {
                             type="text"
                             id="faq_titulo"
                             name="faq_titulo"
-                            maxLength={25}
+                            maxLength={50}
                             placeholder="Título do FAQ"
                             value={formData.faq_titulo}
                             onChange={handleInputChange}
@@ -80,7 +88,7 @@ const FAQAdm = () => {
                             type="text"
                             id="faq_descricao"
                             name="faq_descricao"
-                            maxLength={25}
+                            maxLength={300}
                             placeholder="Descrição"
                             value={formData.faq_descricao}
                             onChange={handleInputChange}
