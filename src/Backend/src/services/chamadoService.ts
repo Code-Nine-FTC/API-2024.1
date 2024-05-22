@@ -4,6 +4,7 @@ import Categoria from "../entities/categoria";
 import Chamado from "../entities/chamado";
 import Funcionario from "../entities/funcionario";
 import { IChamadoInput } from "../interfaces/IChamado";
+import { In } from "typeorm";
 
 class ChamadoService{
     private chamadoRepository = Connection.getRepository(Chamado)
@@ -45,14 +46,16 @@ class ChamadoService{
             const chamadosCliente = await this.chamadoRepository.find({ 
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
-                    cha_status: 'Em Andamento'
+                    cha_status: In(['Em Andamento', 'Em Aberto'])
+                }, order: {
+                    cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }
             })
+            console.log('service',chamadosCliente)
             // verificações
             if (!chamadosCliente || chamadosCliente.length === 0){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-            console.log('chamados fodas', chamadosCliente)
             return { success: true, message: `Chamados encontrados!`, chamados: chamadosCliente  }
         }catch(error){
             console.error(`Erro em buscar todos os chamados ativos do cliente: ${error}`)
@@ -68,6 +71,8 @@ class ChamadoService{
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
                     cha_status: 'Concluido'
+                }, order: {
+                    cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }
             })
             // verificações
@@ -88,6 +93,8 @@ class ChamadoService{
             const chamadosCliente = await this.chamadoRepository.find({ 
                 where: {
                     cliente: { cli_id: cli_id } ,// usa o relacionamento do cliente para a busca
+                }, order: {
+                    cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }
             })
             // verificações
@@ -184,6 +191,8 @@ class ChamadoService{
                 where: {
                     funcionario: { func_id: func_id },
                     cha_status: 'Concluido'
+                }, order: {
+                    cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }
             })
             // Verificações
@@ -396,20 +405,15 @@ class ChamadoService{
             //Busca todos os chamados do atendente desejado
             const chamados = await this.chamadoRepository.find({
                 where: {
-                    cha_status: 'Em espera'
+                    cha_status: 'Em Aberto'
                 }
             })
             // Verificações
             if(chamados.length === 0){
                 return { success: false, message: `Nenhum chamado encontrado!`}
             }
-            // Definindo a prioridade para ordenar
-            const prioridades = { 'Baixa': 1, 'Media': 2, 'Alta': 3 };
 
-            // Ordenando por prioridade
-            const chamadosOrdenados = chamados.sort((a, b) => prioridades[b.cha_prioridade] - prioridades[a.cha_prioridade]); // se + == B, senão == A
-            console.log(chamadosOrdenados)
-            return { success: true, message: `Chamados encontrados!`, chamados: chamadosOrdenados }
+            return { success: true, message: `Chamados encontrados!`, chamados }
 
         }catch(error){
             console.error(`Erro em buscar todos os chamados do atendente: ${error}`)
