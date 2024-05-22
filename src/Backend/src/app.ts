@@ -12,12 +12,7 @@ import { FuncionarioService } from './services/funcionarioService';
 import chamadoRoutes from './routes/chamadoRoutes'
 import categoriaRoutes from './routes/categoriaRoutes'
 import tarefaSla from './cron';
-<<<<<<< Updated upstream
-=======
-import { error } from 'console';
 import Faqrouter from './routes/faqRoutes';
->>>>>>> Stashed changes
-
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
