@@ -20,7 +20,7 @@ const StatusEmAndamento = ({ chamado } : { chamado: IChamadoView }) => {
                     <Link to={`/chat/${chamado.cha_id}`}>
                         <button className={styles.chatButton} type='button'>Entrar no chat</button>
                     </Link>
-                        <button className={styles.andamentoButton} type='button'>Em andamento</button>
+                        <button className={styles.andamentoButton} type='button'>Em Andamento</button>
                      </div>
                 </div>
                     </div>

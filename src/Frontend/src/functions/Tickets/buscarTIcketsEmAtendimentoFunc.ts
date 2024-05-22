@@ -7,8 +7,7 @@ const BuscarTicketsEmAtendimento = async (user: string | null) => {
             try {
                 // envia o id 
                 const resposta = await api.get('/chamadosAtivosCli');
-                console.log(resposta.data.chamados)
-                return resposta.data
+                return {success: resposta.data.success, message: resposta.data.message, chamados: resposta.data.chamados}
             } catch (error) {
                 throw new Error('Erro ao buscar o chamado Por favor, tente novamente mais tarde.');
             }

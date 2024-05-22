@@ -47,7 +47,7 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                         (
                         <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>)
                         }
-                        <button className={styles.esperaButton} type='button'>Em espera</button>
+                        <button className={styles.esperaButton} type='button'>Em Espera</button>
                      </div>
                 </div>
                     </div>

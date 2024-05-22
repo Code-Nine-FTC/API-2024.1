@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import Sidebar from "../../component/sidebar/sidebar";
 import StatusEmAndamento from "../../component/envioticket/statusEmAndamento/statusEmAndamento";
 import StatusEmEspera from "../../component/envioticket/statusEmEspera/statusEmEspera";
@@ -9,6 +7,7 @@ import BuscarTicketsEmAtendimento from "../../functions/Tickets/buscarTIcketsEmA
 import { useEffect, useState } from "react";
 import IChamadoView from "../../functions/Tickets/interface/iChamado";
 import styles from '../../component/envioticket/EnvioTicket.module.css'
+import StatusCancelado from "../../component/envioticket/statusCancelado/statusCancelado";
 
 const TicketsAtivos = () => {
     const user = getNivelAcesso()
@@ -18,6 +17,7 @@ const TicketsAtivos = () => {
         const fetchTickets = async () =>{
             try {
                 const resultado = await BuscarTicketsEmAtendimento(user);
+                console.log('teste foda2', resultado.chamados)
                 if (resultado && resultado.chamados) {
                     console.log('teste foda', resultado.chamados)
                     if (Array.isArray(resultado.chamados)) {
@@ -42,25 +42,27 @@ const TicketsAtivos = () => {
     }, [chamados]);
 
     return (
-        
         <>
-        <Sidebar/>
-        <div className={styles.container}>
-            <h1 className={styles.title}>Tickets Ativos</h1>
-            {chamados.map((chamado: IChamadoView) => (
-                <div className={styles.ticketcampo}>
-                    { chamado.cha_status === 'Em andamento' ? (
-                        <StatusEmAndamento chamado={chamado}/>
-                    ): chamado.cha_status === 'Em espera' ? (
-                        <StatusEmEspera chamado = {chamado}/>
-                    ): (
-                        <StatusConcluido chamado={chamado}/>
-                    )}
-                </div>
-            ))}
-        </div>
+            <Sidebar />
+            <div className={styles.container}>
+                <h1 className={styles.title}>Tickets Ativos</h1>
+                {chamados.length === 0 ? (
+                    <p>Nenhum ticket ativo encontrado.</p>
+                ) : (
+                    chamados.map((chamado: IChamadoView) => (
+                        <div key={chamado.cha_id} className={styles.ticketcampo}>
+                            {chamado.cha_status === 'Em Andamento' ? (
+                                <StatusEmAndamento chamado={chamado} />
+                            ) : (
+                                <StatusEmEspera chamado={chamado} />
+                            )}
+                        </div>
+                    ))
+                )}
+            </div>
         </>
     );
+    
 }
 
 export default TicketsAtivos;

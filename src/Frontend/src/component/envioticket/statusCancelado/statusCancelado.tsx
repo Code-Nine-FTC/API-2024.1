@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../statusBox/statusBox.module.css'
-import orange from '../../../assets/faq/rectangle-green.png'
-import {IChamadoView} from './IChamadoView'
+import green from '../../../assets/faq/rectangle-green.png'
+import {IChamadoView} from '../statusConcluido/IChamadoView'
 import { Link, useNavigate } from 'react-router-dom';
 
-function StatusConcluido({chamado} : { chamado: IChamadoView }) {
+function StatusCancelado({chamado} : { chamado: IChamadoView }) {
     return(
         <div className={styles.statusBox}>
             <div className={styles.mainText}>
                 <div className={styles.buttonAlign}>
-                    <img src={orange} className={styles.orangeRectangle}/>
+                    <img src={green} className={styles.orangeRectangle}/>
                     <div className={styles.alignDistance}>
                         <div className={styles.alignTicket}>
                             <p className={styles.ticketText}>Ticket#{chamado.cha_id}</p>
@@ -19,7 +19,7 @@ function StatusConcluido({chamado} : { chamado: IChamadoView }) {
                         <Link to={`/chat/${chamado.cha_id}`}>
                             <button className={styles.chatButton} type='button'>Entrar no chat</button>
                         </Link>
-                            <button className={styles.concluidoButton} type='button'>Concluído</button>
+                            <button className={styles.concluidoButton} type='button'>Cancelado</button>
                         </div>
                     </div>
                 </div>
@@ -28,4 +28,4 @@ function StatusConcluido({chamado} : { chamado: IChamadoView }) {
     )
 }
 
-export default StatusConcluido;
+export default StatusCancelado;

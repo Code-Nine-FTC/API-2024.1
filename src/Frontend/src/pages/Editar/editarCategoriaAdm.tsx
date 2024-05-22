@@ -11,9 +11,9 @@ function EditarCategoria() {
   const  {id } = useParams<{ id?: string }>();
 
   // Estados para armazenar os dados do formulário
-  const [titulo, setTitulo] = useState<string>('');
-  const [horario, setHorario] = useState<string>('');
-  const [prioridade, setPrioridade] = useState<string>('');
+  const [titulo, setTitulo] = useState<string>();
+  const [horario, setHorario] = useState<string>();
+  const [prioridade, setPrioridade] = useState<string>();
 
 
   // Função para lidar com o envio do formulário
@@ -37,7 +37,7 @@ function EditarCategoria() {
     try {
       const resultado = await updateCategoria(cat_id, dadosUpdate);
       if (resultado.success){
-        alert('Chamado Editado!')
+        alert('Categoria Editada!')
         toast.success(resultado.message);
         console.log('Deu certo!')
       }

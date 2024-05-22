@@ -9,7 +9,7 @@ import BuscarTodosTickets from "../../functions/Tickets/buscarTodosTicketsFunc";
 import { useEffect, useState } from "react";
 import IChamadoView from "../../functions/Tickets/interface/iChamado";
 import styles from '../../component/envioticket/EnvioTicket.module.css'
-
+import StatusCancelado from "../../component/envioticket/statusCancelado/statusCancelado";
 
 const TodosTickets = () => {
     const user = getNivelAcesso()
@@ -50,13 +50,15 @@ const TodosTickets = () => {
             <h1 className={styles.title}>Todos os Tickets</h1>
             {chamados.map((chamado: IChamadoView) => (
                 <div className={styles.ticketcampo}>
-                    { chamado.cha_status === 'Em andamento' ? (
-                        <StatusEmAndamento chamado={chamado}/>
-                    ): chamado.cha_status === 'Em espera' ? (
-                        <StatusEmEspera chamado={chamado} />
-                    ): (
-                        <StatusConcluido chamado={chamado} />
-                    )}
+                    {chamado.cha_status === 'Em Andamento' ? (
+                            <StatusEmAndamento chamado={chamado} />
+                        ) : chamado.cha_status === 'Em Aberto' ? (
+                            <StatusEmEspera chamado={chamado} />
+                        ) : chamado.cha_status === 'Concluido' ? (
+                            <StatusConcluido chamado={chamado} />
+                        ) : (
+                            <StatusCancelado chamado={chamado} />
+                        )}
                 </div>
             ))}
         </div>

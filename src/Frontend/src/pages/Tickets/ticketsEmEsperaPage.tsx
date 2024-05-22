@@ -3,9 +3,7 @@ import IChamadoView from "../../functions/Tickets/interface/iChamado";
 import { useEffect, useState } from "react";
 import BuscarTicketsEmEspera from "../../functions/Tickets/buscarTicketsEmEsperaFunc";
 import Sidebar from "../../component/sidebar/sidebar";
-import StatusEmAndamento from "../../component/envioticket/statusEmAndamento/statusEmAndamento";
 import StatusEmEspera from "../../component/envioticket/statusEmEspera/statusEmEspera";
-import StatusConcluido from "../../component/envioticket/statusConcluido/statusConcluido";
 import styles from '../../component/envioticket/EnvioTicket.module.css'
 
 const TicketsEmEspera = () => {
@@ -40,24 +38,21 @@ const TicketsEmEspera = () => {
 
     return (
         <>
-        <Sidebar/>
-        <div className={styles.container}>
-            <h1 className={styles.title}>Tickets em Espera</h1>
-            {chamados.map((chamado: IChamadoView) => (
-                <div className={styles.ticketcampoEsp}>
-                    { chamado.cha_status === 'Em andamento' ? (
-                        <StatusEmAndamento chamado={chamado}/>
-                    ): chamado.cha_status === 'Em espera' ? (
-                        <StatusEmEspera chamado = {chamado}/>
-                    ):(
-                        <StatusConcluido chamado = {chamado}/>
-                    )}
-                </div>
-            )
-            )}
-        </div>
+            <Sidebar />
+            <div className={styles.container}>
+                <h1 className={styles.title}>Tickets em Espera</h1>
+                {chamados.length === 0 ? (
+                    <p>Nenhum ticket encontrado.</p>
+                ) : (
+                    chamados.map((chamado: IChamadoView) => (
+                        <div key={chamado.cha_id} className={styles.ticketcampo}>
+                            <StatusEmEspera chamado={chamado} />
+                        </div>
+                    ))
+                )}
+            </div>
         </>
-    )
+    );
 }
 
 export default TicketsEmEspera
