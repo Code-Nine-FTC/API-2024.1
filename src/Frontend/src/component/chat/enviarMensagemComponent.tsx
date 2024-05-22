@@ -9,6 +9,10 @@ import Swal from 'sweetalert2';
 
 const EnviarMensagem = ({ id }: { id: number })=> {
 
+    function refreshPage(){
+        window.location.reload();
+    }
+
     const nivel = getNivelAcesso()
 
     const [texto, setTexto] = useState('');
@@ -63,7 +67,7 @@ const EnviarMensagem = ({ id }: { id: number })=> {
         <div className={styles.enviarMensagem}>
             <form method="POST" onSubmit={handleSubmit}className={styles.formMensagem}>
                 <input type="text" name="mensagem" value={texto} onChange={handleChange} placeholder="Mensagem"/>
-                <button className={styles.enviarButton} type="submit">
+                <button className={styles.enviarButton} type="submit" onClick={refreshPage}>
                     <img src={enviarIcon} className="enviarIcon" alt="Enviar Mensagem"/>
                 </button>
             </form>
