@@ -12,7 +12,6 @@ import { FuncionarioService } from './services/funcionarioService';
 import chamadoRoutes from './routes/chamadoRoutes'
 import categoriaRoutes from './routes/categoriaRoutes'
 import tarefaSla from './cron';
-import { error } from 'console';
 
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })

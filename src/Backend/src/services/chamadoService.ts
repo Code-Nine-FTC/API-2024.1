@@ -271,7 +271,7 @@ class ChamadoService{
                 where: {cha_id: cha_id}
             })
             if (!chamado){
-                return { success: false, message: `Chamado não encontrado!` }
+                return { success: false, message: `Chamado não encontrado!`,  }
             }
             if (chamado.cha_status !== 'Em Andamento'){
                 return { success: false, message: `Não é possivel finalizar onde não está sendo atendido!` }
@@ -286,7 +286,7 @@ class ChamadoService{
             return { success: true, message: `Chamado Finalizado!` }
         }catch(error){
             console.error(`Erro em finalizar chamado: ${error}`)
-            return { success: false, message: `Erro em finalizar chamado!` }
+            return { success: false, message: `Erro em finalizar chamado!`, error: error.message }
         }
     }
 
@@ -373,7 +373,7 @@ class ChamadoService{
             //Busca todos os chamados do atendente desejado
             const chamados = await this.chamadoRepository.find({
                 where: {
-                    cha_status: 'Em Aberto'
+                    cha_status: 'Em espera'
                 }
             })
             // Verificações

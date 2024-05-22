@@ -36,7 +36,7 @@ const ChatPage = () => {
                 <HeaderChat id={id} chamado={chamado as IChamadoViewMensagem} />            
                 )}
             <ChatComponent id={id}/>
-            {userTipo !== 'administrador' &&(
+            {userTipo !== 'administrador' && chamado && chamado.cha_status !== 'Concluido' && (
                 <EnviarMensagem id={id} />
             )}
         </div>

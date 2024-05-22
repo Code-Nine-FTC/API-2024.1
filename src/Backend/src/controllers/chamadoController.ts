@@ -214,6 +214,7 @@ class ChamadoController {
             // Pega o id pela url
             const cha_id = req.params.cha_id
             // chama função do service
+            console.log('Recebendo requisiição em /finalizarAtendimentoController', cha_id)
             const resultado = await this.chamadoService.finalizarAtendimento(parseInt(cha_id))
 
             if(!resultado.success){

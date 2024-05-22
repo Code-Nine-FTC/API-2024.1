@@ -124,6 +124,21 @@
     cursor: pointer;
 }
 
+.encerrarChamadoConcluido {
+    background-color: #898cf9;
+    width: 45%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: auto;
+    right: 0;
+    padding: 2px;
+    font-size: 0.9em;
+    cursor: not-allowed;
+}
+
 .ticketFinish {
     height: 30px;
     width: 30px;
