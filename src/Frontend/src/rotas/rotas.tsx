@@ -26,6 +26,7 @@ import FAQAdm from "../pages/faqAdm";
 import { useContext } from 'react';
 import { AuthContext } from '../services/context';
 import ListagemFaqs from "../pages/listarFaqAdm";
+import EditarFaq from "../pages/Editar/editarFaqAdm";
 
 
 
@@ -79,6 +80,7 @@ const Rotas: FC =() => {
           <Route path='/ticketsespera' element={<TicketsEmEspera/>}/>
           <Route path='/faqadm' element={<FAQAdm/>}/>
           <Route path='/listafaqadm' element={<ListagemFaqs/>}/>
+          <Route path='/editarfaq/:id' element={<EditarFaq/>}/>
         </>
       );
     }
