@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../component/sidebar/sidebar";
 import styles from "../component/listarSuporte/listarSuporte.module.css";
 import ListarFaqs from "../functions/faq/listarFaq";
-import { IFaqView } from "../../../Backend/src/interfaces/IFaq"
-
+import { IFaqView } from "../../../Backend/src/interfaces/IFaq";
+import { Link } from "react-router-dom";
 
 const ListagemFaqs = () => {
   const [faqs, setFaqs] = useState<IFaqView[]>([]);
@@ -19,11 +19,11 @@ const ListagemFaqs = () => {
         
         if (resultadoListagem.success) {
           setFaqs(resultadoListagem.faqs);
-          setLoading(false); // Corrigido para false aqui
+          setLoading(false);
           setError('');
         } else {
           setError("Erro ao carregar os dados das FAQs");
-          setLoading(false); // Corrigido para false aqui também
+          setLoading(false);
         }
       } catch (error) {
         setError("Erro ao carregar os dados das FAQs");
@@ -42,34 +42,36 @@ const ListagemFaqs = () => {
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
-          {faqs.map((faq: any) => (
+          {faqs.map((faq) => (
             <div className={styles.faqContainer} key={faq.faq_id}>
-              <div className={styles.faqData}>
+              <div className={styles.userData}>
                 <h3>Título</h3>
                 <span>{faq.faq_titulo}</span>
               </div>
-              <div className={styles.faqData}>
+              <div className={styles.userData}>
                 <h3>Descrição</h3>
                 <span>{faq.faq_descricao}</span>
               </div>
-              <div className={styles.faqData}>
+              <div className={styles.userData}>
                 <h3>Data de Modificação</h3>
                 <span>{new Date(faq.faq_data_modificacao).toLocaleString()}</span>
               </div>
-              <div className={styles.faqData}>
-                <a
+              <div className={styles.userData}>
+                <Link
                   id={styles.detalheslink}
-                  href={`/visualizarfaq/${faq.faq_id}`}
+                  to={`/editarfaq/${faq.faq_id}`}
                   style={{ color: 'black' }}
                 >
                   Ver detalhes
-                </a>
+                </Link>
               </div>
             </div>
           ))}
         </div>
         <div className={styles.buttonContainer}>
-          <a href="/faqadm"><button type="button">Cadastrar FAQ</button></a>
+          <Link to="/faqadm">
+            <button type="button">Cadastrar FAQ</button>
+          </Link>
         </div>
       </div>
     </div>
