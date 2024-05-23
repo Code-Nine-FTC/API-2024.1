@@ -309,6 +309,25 @@ class ChamadoController {
 
         }
     }
+
+    public async listaFuncionarioDisponiveis(req: Request, res: Response) {
+        try {
+            console.log('Recebendo request em /listaFuncionarioDisponiveis')
+    
+            const resultado = await this.chamadoService.listaFuncionarioDisponiveis()
+    
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            }
+            console.log('Funcionários disponíveis encontrados!', resultado.funcionarios)
+            return res.status(200).json(resultado)
+    
+        } catch (error) {
+            console.error(`Erro ao listar funcionários disponíveis: ${error}`)
+            return res.status(500).json({ success: false, message: `Erro interno do Servidor` })
+        }
+    }
+    
     //Para Ambos (Administrador e Atendente)
     public async viewChamadosEmEspera(req: Request, res: Response) {
         try {

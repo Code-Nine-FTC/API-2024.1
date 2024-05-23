@@ -27,6 +27,7 @@ router.get('/ultimoChamadoSup', authAtendente, chamadoController.viewUltimoChama
 router.get('/todosChamadosEmAtendimentoAdm', authAdmin, chamadoController.viewTodosChamadosEmAtendimento.bind(chamadoController))
 router.get('/todosChamados/administrador', authAdmin, chamadoController.viewTodosChamados.bind(chamadoController))
 router.get('/direcionaAtendimento', authAdmin, chamadoController.direcionaChamadoController.bind(chamadoController))
+router.get('/listaFuncionarioDisponiveis', authAdmin, chamadoController.listaFuncionarioDisponiveis.bind(chamadoController))
 
 // Para Ambos(Administrador e Atendente)
 router.get('/chamadosEmEspera', authAdminOrAtendete, chamadoController.viewChamadosEmEspera.bind(chamadoController))

@@ -459,7 +459,47 @@ class ChamadoService{
     converterHoraParaDecimal(horario) {
     const [horas, minutos, segundos] = horario.split(':').map(Number);
     return horas + (minutos / 60) + (segundos / 3600);
-}
+    }
+
+    public async listaFuncionarioDisponiveis() {
+        try {
+            const horarioAtual = new Date();
+            let todosFuncionarios;
+            let chamadosAtivos;
+            try {
+                todosFuncionarios = await this.funcionarioRepository.createQueryBuilder("funcionario")
+                    .where("funcionario.func_expediente_inicio <= :horarioAtual")
+                    .andWhere("funcionario.func_expediente_final >= :horarioAtual")
+                    .andWhere("funcionario.ativo = :ativo", { ativo: true })
+                    .setParameter("horarioAtual", horarioAtual)
+                    .getMany();
+    
+                chamadosAtivos = await this.chamadoRepository.createQueryBuilder("chamado")
+                    .leftJoinAndSelect("chamado.funcionario", "funcionario")
+                    .where("chamado.cha_status != :status", { status: 'Concluído' })
+                    .getMany();
+            } catch (error) {
+                console.error(`Erro ao buscar funcionários e chamados ativos: ${error}`);
+                return { success: false, message: `Erro em buscar todos os chamados` };
+            }
+    
+            const funcionariosAtendendoUmChamado = chamadosAtivos.map(chamado => chamado.funcionario.id);
+            const funcionariosDisponiveis = todosFuncionarios.filter(funcionario => !funcionariosAtendendoUmChamado.includes(funcionario.id));
+    
+            if (!funcionariosDisponiveis || funcionariosDisponiveis.length === 0) {
+                return { success: false, message: 'Nenhum funcionário disponível no momento.' };
+            }
+    
+            return {
+                success: true,
+                message: 'Funcionários disponíveis encontrados!',
+                funcionarios: funcionariosDisponiveis
+            };
+        } catch (error) {
+            console.error(`Erro ao listar funcionários disponíveis: ${error}`);
+            return { success: false, message: error.message };
+        }
+    }     
 }
 
 export default ChamadoService
