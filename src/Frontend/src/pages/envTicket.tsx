@@ -4,8 +4,8 @@ import styles from '../component/envioticket/EnvioTicket.module.css'
 import api from "../services/api"
 import visualizarTodasCategorias from "../functions/Tickets/ticketSearch"
 import ICategoriaView from "../functions/Tickets/interface/iCategoria"
-import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2"
 
 const Ticket = () => {
     const [dadosChamado, setdadosChamado] = useState({
@@ -45,8 +45,12 @@ const Ticket = () => {
            const resultado = await api.post(`/cadastroChamado`, dadosChamado);
             if(resultado.data.success){
                 natigation('/ticketsAtendimento')  
+                Swal.fire({
+                    title: "Enviado",
+                    text: "O chamado foi enviado",
+                    icon: "success"
+                  });
             }
-            toast.success(resultado.data.message)
         } catch (error) {
             console.error("Erro ao enviar o ticket:", error);
         }

@@ -4,6 +4,7 @@ import CadastroClienteFunc from '../functions/Cadastro/cadastroClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Registro = () => {
 
@@ -40,11 +41,13 @@ const Registro = () => {
                 const resultado = await CadastroClienteFunc(formData)
                 if (resultado.success) {
                     setErro('')
-                }
-                toast.success('Cadastro concluído')
-                setTimeout(() => {
+                    Swal.fire({
+                        title: "Registrado!",
+                        text: "Sua conta foi criada com sucesso!",
+                        icon: "success"
+                      });
                     navigate('/login')
-                }, 2000);
+                }
             }
             catch (error:any) {
                 let errorMessage = error.message || 'Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.';

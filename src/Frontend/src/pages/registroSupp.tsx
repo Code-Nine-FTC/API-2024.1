@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '../component/registro/log.png'
 import styles from '../component/registro/Registro.module.css'
 import CadastroFuncionarioFunc from '../functions/Cadastro/cadastroFuncionarioFunc';
 import { toast, Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RegistroSup = () => {
+    const navigate = useNavigate()
 
     const [formDataSenha, setFormData] = useState({
         func_nome: '',
@@ -61,6 +62,9 @@ const RegistroSup = () => {
                 if (resultado.success) {
                     setErro('')
                     toast.success('Cadastro concluído')
+                    setTimeout(() => {
+                        navigate('/visualizarTodosFuncionarios')
+                    }, 10000);   
                 }
             }
             catch (error:any) {

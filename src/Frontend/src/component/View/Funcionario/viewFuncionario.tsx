@@ -7,6 +7,7 @@ interface DetalhesFuncionarioProps {
     func_cpf: string;
     func_email: string;
     ativo: boolean;
+    func_is_admin: boolean;
   };
   navigate: (path: string) => void;
   nivelAcesso: string
@@ -38,7 +39,9 @@ function DetalhesFuncionario({ funcionario, navigate, nivelAcesso }: DetalhesFun
       <div className={styles.containerbotao}>
       {nivelAcesso === 'administrador' ? (
         <>
+        {!funcionario.func_is_admin && (
           <button className={styles.button} onClick={() => navigate(`/editarfuncionario/${funcionario.func_id}`)}>Editar</button>
+        )}
           <button className={styles.button} onClick={() => navigate(`/visualizarTodosFuncionarios`)}>Voltar</button>
         </>
       ) : (

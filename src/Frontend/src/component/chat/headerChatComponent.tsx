@@ -79,7 +79,15 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoViewMensagem
                                 </div>
                             }
                         </div>
-                    }           
+                    } 
+                    {chamado.cha_status === 'Concluido' && (
+                        <div className={styles.headerDireita}>
+                            <div className={styles.encerrarChamadoConcluido}>
+                                <img className={styles.ticketFinish} src={finishIcon} alt="Icone para finalizar o chamado"/>
+                                <p> Atendimento finalizado </p>
+                            </div>
+                        </div>
+                    )}          
                 </div>
             </header>
         </>
