@@ -38,7 +38,6 @@ function EditarCategoria() {
     try {
       const resultado = await updateCategoria(cat_id, dadosUpdate);
       if (resultado.success){
-        alert('Categoria Editada!')
         toast.success(resultado.message);
         console.log('Deu certo!')
       }

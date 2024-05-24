@@ -41,7 +41,7 @@ export class CategoriaController {
             if (!resultado.success){
                 return res.status(400).json(resultado)
             }
-            return res.status(200).send({ message: 'Categoria atualizada com sucesso.' });
+            return res.status(200).send({ success: true, message: 'Categoria atualizada com sucesso.' });
         } catch (error) {
             return res.status(400).send({ message: 'Erro ao atualizar categoria: ' + error.message });
         }
