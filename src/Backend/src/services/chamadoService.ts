@@ -446,7 +446,7 @@ class ChamadoService{
                     // Faz o cálculo em milissegundos e transforma em horas
                     const tempoDecorrido = (agora.getTime() - new Date(chamado.cha_data_inicio).getTime()) / (1000 * 60 * 60);
                     if (tempoDecorrido > horarioDecimal) {
-                        chamado.cha_prioridade = 'Alta';
+                        chamado.cha_prioridade = 'alta';
                         await this.chamadoRepository.save(chamado);
                     }
                 }

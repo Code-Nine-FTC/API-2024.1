@@ -167,6 +167,16 @@
         margin-left: auto;
       }
     
+      .prioridadeButton {
+        width: 160px;
+        height: 35px;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: none;
+        margin-left: auto;
+      }
 
       .chatButton2{
         width: 160px;

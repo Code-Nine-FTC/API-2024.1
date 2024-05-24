@@ -6,10 +6,12 @@ import IniciarChamado from '../../../functions/Tickets/iniciarTicketFunc';
 import { getNivelAcesso } from '../../../services/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Prioridade from '../prioridadeComponent';
 
 function StatusEspera({ chamado } : { chamado: IChamadoView }){
     const navigate = useNavigate()
     const user = getNivelAcesso();
+    console.log(chamado.cha_prioridade)
     
     const ComecarChamado = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -48,6 +50,9 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                         <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>)
                         }
                         <button className={styles.esperaButton} type='button'>Em Espera</button>
+                        {user !== 'usuario' && (
+                            <Prioridade prioridade = {chamado.cha_prioridade}/>
+                        )}      
                      </div>
                 </div>
                     </div>

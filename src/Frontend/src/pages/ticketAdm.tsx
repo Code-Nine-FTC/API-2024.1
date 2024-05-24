@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from "../component/sidebar/sidebar";
 import CadastroCategoriaAdm from "../functions/categoria/criarCategoriaAdm";
 import styles from '../component/chamadoAdm/chamadoAdm.module.css';
+import { toast, Toaster } from 'react-hot-toast';
 
 const TicketAdm = () => {
     const [formData, setFormData] = useState({ 
@@ -18,9 +19,9 @@ const TicketAdm = () => {
            const resultado = await CadastroCategoriaAdm(formData);
            if (resultado?.message){
             console.log(formData)
-            alert('Categoria cadastrada com sucesso!')
+            toast.success(resultado.message);
            }else{
-            alert(resultado?.message)
+            toast.error(resultado?.message);
            }
         } catch (error) {
             // alert('Erro ao criar categoria.');
@@ -35,6 +36,12 @@ const TicketAdm = () => {
 
     return (
         <>
+        <div>
+            <Toaster 
+            position="top-center"
+            reverseOrder={false}
+            />
+         </div>
             <Sidebar/>
             <div className={styles.container}>
                 <header className={styles.title}>
