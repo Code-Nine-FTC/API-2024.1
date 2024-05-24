@@ -216,7 +216,7 @@ class ChamadoService{
             const chamadoAtendente = await this.chamadoRepository.findOne({ 
                 where: {
                     funcionario: { func_id: func_id } , // usa o relacionamento do cliente para a busca
-                    cha_status: In(['Em Andamento', 'Em Aberto'])
+                    cha_status: In(['Em Andamento'])
                 }, order: {
                     cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }

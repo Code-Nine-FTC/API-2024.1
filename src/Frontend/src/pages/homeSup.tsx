@@ -59,18 +59,17 @@ const HomeSup = () =>{
                 </header>
                 <br></br>
                 <div className={styles.conteudo}>                
-                <div className={styles.status}>
-                    <Textostatus/>
-                    {chamado && (
-                        chamado.cha_status === 'Em andamento' ? (
-                            <StatusEmAndamento chamado={chamado}/>
-                        ) : chamado.cha_status === 'Em Aberto' && (
-                            <StatusEmEspera chamado={chamado}/>
-                        )
-                    )}
-                    <br></br>
+               
                     
-                </div>
+                    {chamado && chamado.cha_status ? (
+                         <div className={styles.status}>
+                            <Textostatus/>
+                                <StatusEmAndamento chamado={chamado}/>
+                        </div>
+                    ): 
+                        <p style={{textAlign:"center", fontSize:'1.5em'}}> Não há nenhum chamado em andamento! </p>
+                    }
+                    <br></br>
                 </div>
             </div>
 
