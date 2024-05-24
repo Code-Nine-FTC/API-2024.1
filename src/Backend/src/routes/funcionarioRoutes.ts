@@ -13,7 +13,7 @@ router.post('/logginFuncionario', funcionarioController.logginFuncionario.bind(f
 router.post('/cadastroFuncionario', authAdmin,funcionarioController.cadastrarFuncionario.bind(funcionarioController))
 router.put('/updateFuncionario',  authAdmin, funcionarioController.editarFuncionario.bind(funcionarioController))
 router.post('/viewFuncionario',  authAdmin, funcionarioController.visualizarFuncionario.bind(funcionarioController))
-router.get('/desativarFuncionario', authAdmin,funcionarioController.desativarFuncionario.bind(funcionarioController))
+router.post('/desativarFuncionario', authAdmin,funcionarioController.desativarFuncionario.bind(funcionarioController))
 router.get('/visualizarTodosFuncionarios', authAdmin, funcionarioController.visualizarTodosFuncionarios.bind(funcionarioController))
 router.get('/viewPerfilFuncionario',  authAdminOrAtendente, funcionarioController.visualizarPerfilFuncionario.bind(funcionarioController))
 export default router

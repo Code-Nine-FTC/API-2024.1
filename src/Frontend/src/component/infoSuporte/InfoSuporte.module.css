@@ -148,6 +148,13 @@ input{
   display: flex;
   
 }
+.delete{
+    display: flex;
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 80%;
+}
 @media(max-width: 798px){
     #seletor{
         width: 20vh;

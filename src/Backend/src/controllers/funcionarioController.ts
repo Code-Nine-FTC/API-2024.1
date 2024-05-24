@@ -114,6 +114,7 @@ export default class FuncionarioController {
     async desativarFuncionario(req: Request, res: Response) {
         try {
             const id = Number(req.body.func_id);
+            console.log(id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' });
             }

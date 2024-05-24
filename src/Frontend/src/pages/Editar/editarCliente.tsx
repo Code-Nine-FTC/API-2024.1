@@ -5,7 +5,10 @@ import Sidebar from '../../component/sidebar/sidebar';
 import updateCliente from '../../functions/Editar/updateClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { getToken } from '../../services/auth';
+import { getToken, logout } from '../../services/auth';
+import desativarCliente from '../../functions/Editar/desativarClienteFunc';
+import Swal from 'sweetalert2';
+
 
 const EditarCliente: React.FC = () => {
   const navigate = useNavigate();
@@ -27,6 +30,40 @@ const EditarCliente: React.FC = () => {
     }
   };
 
+
+
+const handleDelete = async () => {
+  Swal.fire({
+    title: "Você tem certeza?",
+    text: "",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Não, cancelar!",
+    confirmButtonText: "Sim, desativar!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const token = getToken();
+        if (token) {
+          await desativarCliente();
+          logout();
+          toast.success('Conta desativada');
+          navigate('/login');
+          Swal.fire({
+            title: "Desativado!",
+            text: "Sua conta foi desativada com sucesso",
+            icon: "success"
+          });
+        }
+      } catch (error) {
+        console.log(`Erro ao desativar conta`, error);
+      }
+    }
+  });
+};
+
   return (
     <>
       <div><Toaster 
@@ -41,6 +78,9 @@ const EditarCliente: React.FC = () => {
       <div className={styles.Container}>
         <div className={styles.perfil}>
           <ImageComponent/>
+        </div>
+        <div className={styles.delete} onClick={handleDelete}>
+              <p>Desativar</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.Dados}>
