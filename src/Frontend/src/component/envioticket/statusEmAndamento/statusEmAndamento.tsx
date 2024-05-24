@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../statusBox/statusBox.module.css'
 import orange from '../../../assets/faq/rectangle.png'
-import { IChamadoView } from '../statusConcluido/IChamadoView';
+import IChamadoView from '../../../functions/Tickets/interface/iChamado';
 import { Link } from 'react-router-dom';
 import Prioridade from '../prioridadeComponent';
 import { getNivelAcesso } from '../../../services/auth';

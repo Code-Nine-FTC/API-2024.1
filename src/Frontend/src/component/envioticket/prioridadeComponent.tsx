@@ -10,7 +10,7 @@ const Prioridade = ({prioridade} : {prioridade: string}) => {
       texto = 'Baixa';
       break;
     case 'média':
-      cor = 'FFB932';
+      cor = '6A0BAF';
       texto = 'Média';
       break;
     case 'alta':

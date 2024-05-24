@@ -17,9 +17,7 @@ const TicketsAtivos = () => {
         const fetchTickets = async () =>{
             try {
                 const resultado = await BuscarTicketsEmAtendimento(user);
-                console.log('teste foda2', resultado.chamados)
                 if (resultado && resultado.chamados) {
-                    console.log('teste foda', resultado.chamados)
                     if (Array.isArray(resultado.chamados)) {
                         setChamado(resultado.chamados);
                     } else {

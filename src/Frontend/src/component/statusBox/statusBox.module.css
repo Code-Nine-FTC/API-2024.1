@@ -159,14 +159,14 @@
       .esperaButton{
         width: 160px;
         height: 35px;
-        background-color: #ECE41F;
+        background-color: #FFB932;
         color: white;
         font-weight: bold;
         border: none;
         border-radius: 5px;
         margin-left: auto;
       }
-    
+      
       .prioridadeButton {
         width: 160px;
         height: 35px;
@@ -174,7 +174,6 @@
         font-weight: bold;
         border: none;
         border-radius: 5px;
-        cursor: none;
         margin-left: auto;
       }
 
