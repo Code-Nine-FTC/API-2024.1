@@ -39,25 +39,37 @@ const ListagemCategorias = () => {
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
-          {categorias.map((categoria, index) => (
-            <div className={styles.categoriaContainer} key={index}>
-              {Object.entries(categoria).map(([key, value]) => (
-                <div className={styles.userData} key={key}>
-                  <h3>{key}</h3>
-                  <span>{value}</span>
-                </div>
-              ))}
-              <div className={styles.userData}>
-                <Link
-                  id={styles.detalheslink}
-                  to={`/editarcategoria/${categoria.cat_id}`} // Convertendo para string aqui
-                  style={{ color: 'black'}}>
-                  Editar
-                </Link>
-              </div>
-            </div>
+  <table className={styles.categoryTable}>
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Valor</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {categorias.map((categoria, index) => (
+        <tr key={index}>
+          {Object.entries(categoria).map(([key, value], idx) => (
+            <React.Fragment key={idx}>
+              {idx === 0 ? <td rowSpan={Object.keys(categoria).length}>{key}</td> : null}
+              <td>{value}</td>
+            </React.Fragment>
           ))}
-        </div>
+          <td>
+            <Link
+              id={styles.detalheslink}
+              to={`/editarcategoria/${categoria.cat_id}`}
+              style={{ color: 'black'}}
+            >
+              Editar
+            </Link>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
         <div className={styles.buttonContainer}>
           <Link to="/ticketadm">
             <button type="button">Criar Categoria</button>

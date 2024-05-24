@@ -5,6 +5,7 @@ import updateCategoria from '../../functions/categoria/editarCategoriaAdm';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ICategoriaUpdate } from '../../../../Backend/src/interfaces/ICategoria';
 import { toast, Toaster } from 'react-hot-toast';
+import Folder from '../../assets/editarCategoria/Folder.png'
 
 function EditarCategoria() {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ function EditarCategoria() {
       <Sidebar />
       <div className={styles.conteudo}>
         <div className={styles.titulo}>
+          <img src={Folder} alt='test'/>
           <h1>Editar Categoria</h1>
         </div>
         <div className={styles.Container}>
@@ -93,8 +95,10 @@ function EditarCategoria() {
                 </select>
               </label>
             </div>
-            <button type="submit" className={styles.customButton}>Salvar</button>
-            <button className={styles.voltar} onClick={() => navigate(`/listarcategorias`)}>Voltar</button>
+            <div className={styles.buttons}>
+              <button type="submit" className={styles.customButton}>Salvar</button>
+              <button className={styles.voltar} onClick={() => navigate(`/listarcategorias`)}>Voltar</button>
+            </div>
           </form>
         </div>
       </div>
