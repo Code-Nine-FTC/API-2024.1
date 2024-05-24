@@ -64,10 +64,8 @@ const HomeSup = () =>{
                     {chamado && (
                         chamado.cha_status === 'Em andamento' ? (
                             <StatusEmAndamento chamado={chamado}/>
-                        ) : chamado.cha_status === 'Em espera' ? (
+                        ) : chamado.cha_status === 'Em Aberto' && (
                             <StatusEmEspera chamado={chamado}/>
-                        ) : (
-                            <StatusConcluido chamado={chamado}/>
                         )
                     )}
                     <br></br>

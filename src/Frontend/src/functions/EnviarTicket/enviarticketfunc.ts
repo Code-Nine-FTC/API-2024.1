@@ -1,24 +1,20 @@
-import React from "react"
-import axios from "axios"
 import api from "../../services/api";
-import { rotaBase } from "../RotaBase/rotaBase";
-import { useState } from "react";
 import IdadosChamado from "./IChamado"
 
-
-
-const enviarTicket = async (evento: React.FormEvent<HTMLFormElement>, dadosChamado: IdadosChamado ) => {
-    const token = localStorage.getItem('token')
+const EnviarTicket = async (dadosChamado: IdadosChamado ) => {
     try{
-        evento.preventDefault()
-        const resultado = await api.post(`${rotaBase}/cadastroChamado`, dadosChamado);
-        return {enviarTicket :resultado.data.enviarTicket, message: resultado.data.message}
-    }
-    catch(error) {
+        const resultado = await api.post(`/cadastroChamado`, dadosChamado);
+        console.log('Resultado do cadastroChamado: ', resultado.data)
+        if (resultado.data.success) {
+            return resultado.data
+        } else {
+            console.log('Falha ao criar chamado: ', resultado.data)
+        }
+    } catch(error) {
         console.error('Erro ao enviar Ticket: ', error)
         throw new Error('Erro ao enviar Ticket')
-    }
+        }
     
-}
+};
 
-export default enviarTicket
+export default EnviarTicket

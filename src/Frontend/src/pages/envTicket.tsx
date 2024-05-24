@@ -6,6 +6,9 @@ import visualizarTodasCategorias from "../functions/Tickets/ticketSearch"
 import ICategoriaView from "../functions/Tickets/interface/iCategoria"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
+import getDate from "../functions/verData"
+import EnviarMensagemFunc from "../functions/Chat/enviarMensagemFunc"
+import EnviarTicket from "../functions/EnviarTicket/enviarticketfunc"
 
 const Ticket = () => {
     const [dadosChamado, setdadosChamado] = useState({
@@ -13,6 +16,14 @@ const Ticket = () => {
         cha_descricao: '',
         cat_id: '',
     });
+
+    const mensagem = {
+        texto: '',
+        autoria: false,
+        data: '',
+        chamado: 0,
+    }
+
     const [viewcategoria, setviewcategoria] = useState<ICategoriaView[]>([]);
     const natigation = useNavigate()
 
@@ -42,14 +53,25 @@ const Ticket = () => {
     const enviarTicket = async (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault();
         try {
-           const resultado = await api.post(`/cadastroChamado`, dadosChamado);
-            if(resultado.data.success){
-                natigation('/ticketsAtendimento')  
+           const resultado = await EnviarTicket(dadosChamado);
+            if (resultado.success) {
+                const dataAtual = getDate()
+                const { hora, minuto, segundo } = dataAtual
+                const data = `${hora}:${minuto}:${segundo}`
+                mensagem.data = data
+                mensagem.texto = dadosChamado.cha_descricao
+                mensagem.chamado = resultado.chamadoId
+                const resultadoMensagem = await EnviarMensagemFunc(mensagem);
+                if (resultadoMensagem.success) {
+                    natigation('/ticketsAtendimento')  
                 Swal.fire({
                     title: "Enviado",
                     text: "O chamado foi enviado",
                     icon: "success"
                   });
+                } else {
+                    console.log('Falha ao enviar mensagem: ', resultadoMensagem.message);
+                }
             }
         } catch (error) {
             console.error("Erro ao enviar o ticket:", error);
@@ -85,7 +107,7 @@ const Ticket = () => {
                     <br></br>
                     <div>
                         <br></br>
-                        <textarea className={styles.textarea} value={dadosChamado.cha_descricao} onChange={handleInputChange} id="campo2" name="cha_descricao" maxLength={1000} rows={4} placeholder="Descreva seu problema aqui..." required></textarea>
+                        <textarea className={styles.textarea} value={dadosChamado.cha_descricao} onChange={handleInputChange} id="campo2" name="cha_descricao" maxLength={300} rows={4} placeholder="Descreva seu problema aqui... (Limite de 300 caractéres)" required></textarea>
                     </div>
                     <br></br>
                     <div>

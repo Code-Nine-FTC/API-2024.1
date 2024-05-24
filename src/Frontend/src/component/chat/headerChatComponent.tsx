@@ -65,7 +65,7 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoViewMensagem
                         </div>
                     </div>
                     
-                    {userTipo === 'atendente' &&
+                    {userTipo === 'atendente' ? (
                         <div className={styles.headerDireita}>
                             {chamado.cha_status === 'Concluido' ? (
                                 <div className={styles.encerrarChamadoConcluido}>
@@ -79,15 +79,16 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoViewMensagem
                                 </div>
                             }
                         </div>
-                    } 
-                    {chamado.cha_status === 'Concluido' && (
-                        <div className={styles.headerDireita}>
-                            <div className={styles.encerrarChamadoConcluido}>
-                                <img className={styles.ticketFinish} src={finishIcon} alt="Icone para finalizar o chamado"/>
-                                <p> Atendimento finalizado </p>
+                    ): (
+                        chamado.cha_status === 'Concluido' && (
+                            <div className={styles.headerDireita}>
+                                <div className={styles.encerrarChamadoConcluido}>
+                                    <img className={styles.ticketFinish} src={finishIcon} alt="Icone para finalizar o chamado"/>
+                                    <p> Atendimento finalizado </p>
+                                </div>
                             </div>
-                        </div>
-                    )}          
+                        )
+                    )}  
                 </div>
             </header>
         </>

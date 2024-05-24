@@ -62,9 +62,11 @@ const RegistroSup = () => {
                 if (resultado.success) {
                     setErro('')
                     toast.success('Cadastro concluído')
-                    setTimeout(() => {
+                    const timeoutId = setTimeout(() => {
+                        console.log('Navigating...');
                         navigate('/visualizarTodosFuncionarios')
                     }, 10000);   
+                    return () => clearTimeout(timeoutId);
                 }
             }
             catch (error:any) {

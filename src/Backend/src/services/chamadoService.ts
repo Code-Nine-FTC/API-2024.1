@@ -29,9 +29,10 @@ class ChamadoService{
                 categoria: { cat_id: dadosChamado.cat_id } // 'categoria' é uma relação na entidade Chamado
             });
             // Salva novo chamado
-            await this.chamadoRepository.save(novoChamado)
+            const chamadoSalvo = await this.chamadoRepository.save(novoChamado)
 
-            return { success: true, message: `Chamado criado com sucesso!` }
+
+            return { success: true, message: `Chamado criado com sucesso!`, chamadoId: chamadoSalvo.cha_id }
         }catch(error){
             console.error(`Erro ao cadastrar chamado: ${error}`)
             return { success: false, message: `Erro ao cadastrar chamado.` }
@@ -114,7 +115,8 @@ class ChamadoService{
             // Busca os chamados do cliente desejado
             const chamadoCliente = await this.chamadoRepository.findOne({ 
                 where: {
-                    cliente: { cli_id: cli_id }// usa o relacionamento do cliente para a busca
+                    cliente: { cli_id: cli_id }, // usa o relacionamento do cliente para a busca
+                    cha_status: In(['Em Andamento', 'Em Aberto'])
                 }, order: {
                     cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }
@@ -213,7 +215,8 @@ class ChamadoService{
             console.log('Buscando ultimo chamado do atendente', func_id)
             const chamadoAtendente = await this.chamadoRepository.findOne({ 
                 where: {
-                    funcionario: { func_id: func_id }// usa o relacionamento do cliente para a busca
+                    funcionario: { func_id: func_id } , // usa o relacionamento do cliente para a busca
+                    cha_status: In(['Em Andamento', 'Em Aberto'])
                 }, order: {
                     cha_data_inicio: 'DESC' // ordenando do mais recente para o mais antigo
                 }
