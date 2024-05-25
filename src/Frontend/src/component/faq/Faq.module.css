@@ -234,6 +234,75 @@
       text-align: center;
     }
 }
+.accordionwrapper {
+  min-height: 10vh;
+  border: 100% solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+
+.accordioncontent {
+  display: flex;
+  background-color: #ececec;
+  flex-direction: column;
+  width: 47.9vh; 
+  max-height: 50vh;
+  padding: 10px;
+
+}
+.accordiondescricao {
+  word-wrap: break-word;
+  max-width: 100%;
+ font-size: medium;
+  overflow: hidden;
+
+}
+.accordionexemplo{
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+  font-size: medium;
+  color: #00046D;
+}
+
+.accordioncontent.open {
+  max-height: 100%; /* Ajuste este valor conforme necessário */
+}
+.accordeonbutton{
+  padding-left: 2vh;
+  padding-bottom: 1.5vh;
+  padding-top: 1.5vh;
+  border: none;
+  width: 50vh;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #dddada;
+  border-radius: 5px;
+}
+.accordeontitle{
+  color: #00046D;
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.arrowDown {
+  display: inline-block;
+  padding-right: 5vh;
+  width: 24px;
+  height: 24px;
+  margin-left: 2vh;
+  background-image: url('./seta.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}
+
+
+
+
 
 .carrousel-button{
   border: none;

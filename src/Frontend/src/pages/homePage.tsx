@@ -100,21 +100,7 @@ function Home() {
     <br/>
         <h1 className={styles.title}>Perguntas Frequentes</h1>
         <FaqComponent/>
-        {/* <div className={styles.carrousel}>
-            <Map/>
-            <Delivery/>
-            <Trolley/>
-        </div>
-        <br/>
-      <div className={styles.carrouselControl}>
-        <Ellipse/>
-        <Ellipse/>
-        <Ellipse/>
-        <Ellipse/>
-        <Ellipse/>
-        <Ellipse/>
-      </div>
-      <br/> */}
+
       <div className={styles.supportControl}>
         <p className={styles.blueText1}>Não encontrou a solução para o seu problema?</p>
         <br/>

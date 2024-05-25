@@ -93,6 +93,7 @@
   flex-direction: column;
   border: 0.01em solid rgba(238, 238, 238, 0.5); 
   padding: 10px; 
+  word-wrap: break-word;
 }
 
 
