@@ -126,7 +126,7 @@ const Sidebar = () => {
                         </div>
                     ))}
                      <div id={styles.logout} onClick={handleLogout}>
-                        <h1>Logout → </h1>
+                        <h1> Logout → </h1>
                     </div>
                 </ul>
                 </>

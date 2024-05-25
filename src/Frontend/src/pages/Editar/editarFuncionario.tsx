@@ -39,8 +39,6 @@ function EditarFuncionario() {
     }
   }
 
- 
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!id) {

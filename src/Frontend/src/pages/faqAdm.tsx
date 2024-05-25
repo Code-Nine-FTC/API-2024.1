@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../component/sidebar/sidebar';
 import CadastroFaqAdm from '../functions/faq/criarFaq';
 import styles from '../component/chamadoAdm/chamadoAdm.module.css';
+import { toast, Toaster } from 'react-hot-toast';
 
 interface IFaqInput {
     faq_exemplo: string;
@@ -22,7 +23,7 @@ const FAQAdm: React.FC = () => {
         try {
             const resultado = await CadastroFaqAdm(formData);
             if (resultado?.success) {
-                alert('FAQ cadastrada com sucesso!');
+                toast.success(resultado.message);
                 setFormData({ faq_exemplo: '', faq_titulo: '', faq_descricao: '' });
             } else {
                 alert(resultado?.message || 'Erro ao cadastrar FAQ.');
@@ -40,6 +41,12 @@ const FAQAdm: React.FC = () => {
 
     return (
         <>
+            <div>
+                <Toaster 
+                position="top-center"
+                reverseOrder={false}
+                />
+            </div>
             <Sidebar />
             <div className={styles.container}>
                 <header className={styles.title}>

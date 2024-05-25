@@ -1,16 +1,13 @@
-ul {
+.navItens {
+    margin-top: 10vh;
+    font-weight: bold;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     list-style: none;
     padding: 0;
     align-items: center;
     justify-content: center;
-}
-
-.navItens {
-    margin-top: 10vh;
-    font-weight: bold;
-    flex-grow: 1;
 }
 
 a {
@@ -148,6 +145,12 @@ a {
 } */
 
 .dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 10%
 }
 
