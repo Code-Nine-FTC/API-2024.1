@@ -17,6 +17,7 @@ import IChamadoView from '../functions/Tickets/interface/iChamado';
 import BuscarUltimoTicketCliente from '../functions/Tickets/buscarUltimoTIcketClienteFunc';
 import StatusEmAndamento from '../component/envioticket/statusEmAndamento/statusEmAndamento';
 import StatusEspera from '../component/envioticket/statusEmEspera/statusEmEspera';
+import FaqComponent from '../component/faq/faqComponent';
 // import Statusemandamento from '../component/statusEmAndamento/statusEmAndamento';
 // import Statusconcluido from '../component/statusConcluido/statusConcluido';
 // import Statusespera from '../component/statusEmEspera/statusEmEspera';
@@ -98,7 +99,8 @@ function Home() {
   )}
     <br/>
         <h1 className={styles.title}>Perguntas Frequentes</h1>
-        <div className={styles.carrousel}>
+        <FaqComponent/>
+        {/* <div className={styles.carrousel}>
             <Map/>
             <Delivery/>
             <Trolley/>
@@ -112,7 +114,7 @@ function Home() {
         <Ellipse/>
         <Ellipse/>
       </div>
-      <br/>
+      <br/> */}
       <div className={styles.supportControl}>
         <p className={styles.blueText1}>Não encontrou a solução para o seu problema?</p>
         <br/>
