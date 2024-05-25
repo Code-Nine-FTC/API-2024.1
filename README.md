@@ -1,123 +1,326 @@
-<h1> Fatec Prof° Jessen Vidal - 1º Semestre de 2024 </h1>
-<p> Projeto desenvolvido por alunos do 2º semestre do curso de Desenvolvimento de Software Multiplataforma para o API (Aprendizagem por Projetos Integrados),
- com o objetivo de produzir um sistema de gerênciamento de chamados e serviços. </p>
+<h1> Terceira Sprint </h1>
+
+<h2> Índice </h2>
+
+- [Valor da Sprint](#valor)
+- [DoR (Definition of Ready)](#dor)
+- [DoD (Definition of Done)](#dod)
+- [Sprint Backlog](#backlog)
+- [Burndown](#burndown)
+- [Tasks](#tasks)
+- [Vídeo do produto](#video)
+  
 <br>
 
-<h2> 🗂️ Índice </h2>
+<h2> Valor da Sprint</h2><a name="valor"></a>
 
-- [Sobre o Projeto](#sobre)
-- [Metodologia Utilizada](#metodologias)
-- [Tecnologias Utilizadas](#tecnologias)
-- [MVP](#mvp)
-- [Requisitos do Cliente](#requisitoscliente)
-- [Product Backlog](#productbacklog)
-- [Sprints](#sprints)
-- [Integrantes do grupo](#integrantes)
-
-<br>
-
-<h2> 📚 Sobre o Projeto </h2><a name="sobre"></a>
-<p> Com o objetivo de desenvolver um sistema capaz de implementar melhorias no sistema de chamados e serviços, possuindo sistema de cadastro, criação de chamados 
-  a serem atendidos, registro de conclusão dos atendimentos e sistema de relátorios para análise. <br>
-  Atendendo no ramo de entregas, visando solucionar problemas relacionados a frete, rastreamento, dentre outros.</p>
+Criação de funcionalidades principais da aplicação.
 
 <br>
 
-<h2> 📋 Metodologia Utilizada </h2><a name="metodologias"></a>
+<h2> DoR (Definition of Ready) </h2><a name="dor"></a>
 
-<p> O framework de Metodologia Ágil utilizado no produto foi o Scrum, um método ágil adaptativo, iterativo, flexível e eficaz.
-Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprints. Para selecionar quais seriam as entregas das nossas Sprints, primeiro definimos nosso MVP, priorizando as tarefas que trariam maior entrega de valor para o cliente. Então, a partir das Tarefas foi construído o Backlog do Produto,  o qual foi aprovado pelo cliente e dividido em 4 Backlogs de Sprint. </p>
+### Sprint 2
 
-<br>
+- Criação das telas  ✔
 
-<h2> 🖥️ Tecnologias Utilizadas </h2><a name="tecnologias"></a>
+- Sistema de cadastro ✔
 
-<p> Essas foram as Tecnologias Utilizadas para produção do projeto. </p>
+- Sistema de login ✔
 
-<br>
+- Sistema de autenticação ✔
 
-<div align="center">
-  <a href="https://discord.com/"><img src="https://img.shields.io/badge/Discord-4a1fa8?style=for-the-badge&logo=discord&logoColor=white&color=00046D"/>
-  <a href="https://www.figma.com/"><img src="https://img.shields.io/badge/Figma-3ad6b2?style=for-the-badge&logo=figma&logoColor=c41f1f&color=00046D"/>
-  <a href="https://github.com/"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=00046D"/>
-  <a href="https://www.w3schools.com/html/"><img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=da5d1e&color=00046D"/>
-  <a href="https://www.w3schools.com/Css/"><img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=1e6fda&color=00046D"/>
-  <a href="https://www.typescriptlang.org"> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&color=00046D"/>
-  <a href="https://nodejs.org/en"><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white&color=00046D"/>
-  <a href="https://react.dev"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white&color=00046D"/>
-  <a href= "https://slack.com/intl/pt-br"><img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white&color=00046D"/>
-  <a href="https://www.microsoft.com/pt-br/microsoft-365/excel/?rtc=1"><img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white&color=00046D"/>
-  <a href="https://www.microsoft.com/pt-br/microsoft-teams/log-in"><img src="https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white&color=00046D"/>
-  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-4a1fa8?style=for-the-badge&logo=mysql&logoColor=white&color=00046D"/>
+- Sistema de dados ✔
 
-<br>
-<br>
-
-<h2> 🏆 MVP </h2><a name="mvp"></a>
-
-<p> Em desenvolvimento </p>
-
-<h2> 📖 Requisitos do Cliente </h2><a name="requisitoscliente"></a>
-
-| Número	| Requisito do Cliente |
-| --- | --- |
-| 1 | Cadastros de Usuários, Técnicos, Equipamentos e Horários |
-| 2	| Usuários devem ter perfis diferentes (administrador, suporte, cliente) |
-| 3	| Registro de chamados |
-| 4	| Acompanhamento de chamados (Aberto, Em processo, finalizado e Concluído) |
-| 5	| Cadastro de soluções para problemas conhecidos |
-| 6	| SLA (Acordo de Nível de Serviço) |
-| 7	| Base de conhecimento (FAQ) |
+- Planejamento para a sprint ✔
 
 <br>
 
-<h2> 📒 Product Backlog </h2><a name="productbacklog"></a>
+<h2> DoD (Definition of Done) </h2><a name="dod"></a>
 
-| Rank | Prioridade | Tarefa | Estimativa | Sprint | Requisito do Cliente |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Alta | Como cliente, desejo utilizar um sistema de cadastro para acessar os recursos disponíveis do website. | 8 | 2 | 2 |
-| 2 | Alta | Como administrador, desejo registrar atendentes com seu tipo de serviço prestado. | 8 | 2 | 1 |
-| 3 | Médio | Como cliente, desejo ter a possibilidade de visualizar e editar as informações de minha conta para manter atualizada. | 6 | 2 | 2 |
-| 4 | Alta | Como administrador, desejo poder visualizar e gerenciar todos os atendentes cadastrados no sistema, incluindo a capacidade de editar informações. | 6 | 2 | 1 |
-| 5 | Médio | Como cliente, desejo realizar login no sistema utilizando e-mail e senha. | 3 | 2 | 2 |
-| 6 | Médio  | Como atendente, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
-| 7 | Médio | Como administrador, desejo realizar login no sistema utilizando CPF e senha. | 3 | 2 | 2 |
-| 8 | Alta | Como cliente, desejo selecionar um categoria em que se encaixa o meu problema para realizar o atendimento de forma mais específica. | 5 | 3 | 3 |
-| 9 | Alta | Como cliente, desejo visualizar todos os meus chamados e seus status. | 5 | 3 | 3 |
-| 10  | Alta  | Como atendente, desejo visualizar os chamados que não foram resolvidos por ordem de prioridade para solucionar o mais rápido. | 5 | 3 | 3 |
-| 11  | Alta  | Como atendente, desejo visualizar os atendimentos realizados por mim e seus status. | 5 | 3 | 4 |
-| 12 | Alta | Como cliente, quero abrir um chat para me comunicar com o atendente. | 5 | 3 | 3 |
-| 13 | Alta | Como atendente, quero abrir um chat para me comunicar com o cliente. | 5 | 3 | 3 |
-| 14 | Alta | Como administrador, quero que cada problema tenha um tempo de resposta definido para saber qual deve ser priorizado. | 5 | 3 | 6 |
-| 15 | Média | Como cliente, desejo um FAQ com possíveis soluções para poder resolver problemas frequentes. | 2 | 3 | 7 |
-| 16 | Alta | Como atendente, desejo poder alterar o status de um chamado entre "aberto", "em atendimento" e "finalizado", para acompanhar e gerenciar o progresso dos chamados de forma eficiente. | 5 | 3 | 4 |
-| 17 | Alta | Como administrador, desejo gerar relatórios sobre tópicos mais abordados para poder gerenciar da melhor forma. | 5 | 4 | 5 |
-| 18 |  Alta | Como administrador, desejo direcionar um atendimento para o suporte que esteja disponível. | 5 | 4 | 3 |
-| 19 | Alta | Como administrador, quero poder cadastrar soluções para problemas comuns. | 3 | 4 | 5 |
+### Sprint 3
+
+- Criação de chamado ✔
+
+- Visualização de chamados (Cliente) ✔
+
+- Visualização de chamados (Atendente) ✔
+
+- Visualização de chamados (Administrador) ✔
+
+- Atendendimento ao chamado (Atendente) ✔
+
+- Encerramento do chamado (Atendente) ✔
+
+- Criação de categorias ✔
+
+- Definição de tempo de resposta de cada categoria ✔
+
+- Visualização de categorias ✔
+
+- Escolha de categorias ✔
+
+- Visualização de prioridade (Funcionários) ✔
+
+- Visualização de status do chamado ✔
+
+- Comunicação por chat (Cliente & Atendente) ✔
+
+- Escolha de categorias ✔
+
+- Cadastro de perguntas frequentes (FAQs) ✔
+
+- Edição de perguntas frequentes (FAQs) ✔
+
+- Visualização de perguntas frequentes (FAQs) ✔
+
+- Aumento automático da prioridade baseado em tempo de resposta (SLA) ✔
 
 <br>
 
-<h2> 📑 Sprints </h2><a name="sprints"></a>
+<h2> Sprint Backlog </h2> <a name="backlog"></a>
 
-| Sprint |   Início   |  Entrega   |                                      Relatório                                      | Status |
-| :----: | :--------: | :--------: | :---------------------------------------------------------------------------------: | :----: |
-|   01   | 25/03/2024 | 14/04/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-1"> 1° Relatório </a> |   ✅   |
-|   02   | 15/05/2024 | 05/05/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-2"> 2° Relatório </a> |  ✅  |
-|   03   | 06/05/2023 | 26/06/2024 | 3° Relatório </a> |    🔁   |
-|   04   | 27/05/2023 | 06/06/2023 | 4° Relatório </a> |   🔁   |
+| Rank | Prioridade | Tarefa | Estimativa |
+| --- | --- | --- | --- |
+| 1 | Alta | Criação de chamado | 20 horas |
+| 2 | Alta | Visualização dos chamados | 15 horas |
+| 3 | Alta | Criação de categorias | 13 horas |
+| 4 | Alta | Edição de categorias | 04 horas |
+| 5 | Alta | Visualização de categorias | 09 horas |
+| 6 | Alta | Iniciar atendimento | 06 horas |
+| 7 | Alta | Encerrar atendimento | 04 horas |
+| 8 | Alta | Chat de atendimento | 15 horas |
+| 9 | Alta | Visualização de prioridade | 06 horas |
+| 10 | Alta | Visualização de status | 07 horas |
+| 11 | Média | Atualização automática da prioridade (SLA) | 08 horas |
+| 12 | Média | Desativar conta de cliente | 08 horas |
+| 13 | Média | Desativar conta de funcionário | 06 horas |
+| 14 | Baixa | Cadastro de FAQs | 05 horas |
+| 15 | Baixa| Edição de FAQs | 02 horas |
+| 16 | Baixa | Visualização de FAQs| 07 horas |
 
 <br>
 
-<h2> 🙎 Integrantes do Grupo </h2><a name="integrantes"></a>
+<h2> Burndown Chart </h2><a name="burndown">
 
-|          |   Nome   |  Função  |  GitHub  | LinKedin |
-| :------: | :------: | :------: | :------: | :------: |
-| <img src="https://avatars.githubusercontent.com/u/104574671?v=4" alt="foto de perfil" height="64px" width="64px">         |   Davi Maciel  |  Scrum Master     | <a href="https://github.com/DfMaciel"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/dfmaciel"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>          |
-| <img src="https://avatars.githubusercontent.com/u/142221848?v=4" alt="foto de perfil" height="64px" width="64px">         |   Jonas Miguel |  Developer        | <a href="https://github.com/Jonasoliver"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/jonas-miguel-ol"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>          |
-| <img src="https://avatars.githubusercontent.com/u/142221546?v=4" alt="foto de perfil" height="64px" width="64px">         | Leonardo Parra       |  Developer        | <a href="https://github.com/LeonardoParraGodoi"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/leonardo-parra-81824828b/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
-| <img src="https://avatars.githubusercontent.com/u/79583088?v=4"  alt="foto de perfil" height="64px" width="64px">         |   Yuri Braga  |   Developer     | <a href="https://github.com/yuribragga"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/yuri-braga/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
-| <img src="https://avatars.githubusercontent.com/u/142221456?v=4" alt="foto de perfil" height="64px" width="64px">         |   Pedro Oliveira |  Developer        | <a href="https://github.com/OliveiraPedro09"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/pedrooliv9"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>          | 
-| <img src="https://avatars.githubusercontent.com/u/142221532?v=4" alt="foto de perfil" height="64px" width="64px">         |   Renato Júnior |  Developer        | <a href="https://github.com/Renato-Cruz-Jr"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/renato-fernandes-da-cruz-junior-798582204/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
-| <img src="https://media.licdn.com/dms/image/D4D03AQECpQ1TjLb7mQ/profile-displayphoto-shrink_200_200/0/1696098623322?e=2147483647&v=beta&t=DLisI-vHChLbCiEQ88konsGhNkt2i_LQhYzaJjjEeg4" alt="foto de perfil" height="64px" width="64px">         |   Eduardo Namiuti  |  Developer        | <a href="https://github.com/eduardofsn"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://br.linkedin.com/in/eduardo-namiuti-5641b627b"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
-| <img src="https://avatars.githubusercontent.com/u/142221388?v=4" alt="foto de perfil" height="64px" width="64px">         |   Júlia Rosado  |  Developer        | <a href="https://github.com/juliamariahr"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/júlia-rosado/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
-| <img src="https://avatars.githubusercontent.com/u/142221695?v=4" alt="foto de perfil" height="64px" width="64px">         |   Joyce Silva |  Product Owner       | <a href="https://github.com/joycesilvaaa"><img src="https://img.shields.io/badge/GitHub-13196a?style=for-the-badge&logo=github&logoColor=white">         | <a href="https://www.linkedin.com/in/joyce-silva-79a4b9287/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>         |
+![Burndown sprint 3](/src/docs/burndownsprint3.png)
+
+<br>
+
+<h2> Tarefas </h2><a name="tasks"></a>
+
+### User Story 8:
+
+- Tarefa: Como cliente, desejo selecionar um categoria em que se encaixa o meu problema para realizar o atendimento de forma mais específica.
+
+  - Critério de Aceitação:
+
+     - O sistema deve apresentar uma lista de categorias relevantes que representam os problemas comuns dos clientes.
+     - O cliente deve poder selecionar um categoria que melhor descreva seu problema da lista fornecida.
+     - Após selecionar o categoria, o cliente deve ter a opção de descrever o problema em um campo de texto caso necessario.
+     - Após descrever o problema, o cliente deve poder enviar as informações para iniciar o atendimento.
+     - O sistema deve registrar o categoria selecionado e a descrição do problema enviada pelo cliente para referência futura.
+
+  - Cenários:
+
+     - O cliente acessa a página de atendimento ou de abertura de chamados.
+     - Visualiza a lista de tópicos relevantes apresentados pelo sistema.
+     - Seleciona um categoria que corresponda ao seu problema.
+     - Após selecionar o categoria, é apresentado um campo de texto para descrever detalhadamente o problema.
+     - O cliente descreve seu problema no campo fornecido.
+     - Clica no botão de enviar para submeter o problema ao sistema.
+     - O sistema registra o categoria selecionada e a descrição do problema associada ao cliente.
+     - O cliente verifica se o problema foi submetido corretamente recebendo uma confirmação de envio.
+
+### User Story 9:
+
+- Tarefa: Como cliente, desejo visualizar todos os meus chamados abertos e seus status.
+
+  - Critérios de Aceitação:
+
+     - O sistema deve fornecer uma seção de tickets onde o cliente possa escolher entre visualizar os chamados ativos, todos os chamados e criar um novo chamado.
+     - Para cada chamado ativo, o sistema deve exibir seu número de identificação, título e status atual.
+     - Os chamados ativos devem estar disponíveis em uma página separada dos chamados fechados.
+     - O cliente deve poder acessar a página de chamados fechados para visualizar o histórico completo quando necessário.
+     - O sistema deve permitir ao cliente alternar facilmente entre as páginas de chamados ativos e fechados.
+     - O cliente deve poder atualizar a página ou solicitar uma atualização para ver o status mais recente de seus chamados ativos.
+
+  - Cenários:
+
+     - O cliente faz login na sua conta.
+     - Navega até a seção de tickets.
+     - Na seção de tickets, o cliente pode escolher entre três opções: "Tickets Ativos", "Todos os Tickets" e "Criar Novo Ticket".
+     - O cliente seleciona "Tickets Ativos".
+     - Visualiza uma lista de todos os seus chamados ativos, incluindo o número de identificação, título e status atual de cada um.
+     - Se necessário, o cliente pode entrar no chat.
+     - O cliente pode acessar a página de chamados fechados para visualizar o histórico completo quando desejar.
+     - O cliente pode alternar facilmente entre as páginas de chamados ativos e fechados.
+
+### User Story 10:
+
+- Tarefa: Como atendente, desejo visualizar os chamados que não foram resolvidos por ordem de prioridade para solucioná-los mais rapidamente.
+
+  - Critérios de Aceitação:
+
+     - O sistema deve fornecer uma seção onde o atendente possa visualizar os chamados não resolvidos.
+     - Os chamados não resolvidos devem ser ordenados por ordem de prioridade, com os mais prioritários exibidos primeiro.
+     - Para cada chamado não resolvido, o sistema deve exibir seu número de identificação, título, prioridade e status atual.
+     - O atendente deve poder acessar cada chamado não resolvido para ver mais detalhes e tomar ações necessárias para resolvê-lo.
+     - O sistema deve permitir ao atendente atualizar a página ou solicitar uma atualização para ver os chamados não resolvidos mais recentes.
+
+  - Cenário:
+
+     - O atendente faz login na sua conta.
+     - Navega até a seção de chamados não resolvidos.
+     - Visualiza uma lista de chamados não resolvidos, ordenados por prioridade.
+     - Para cada chamado, verifica o número de identificação, título, prioridade e status atual.
+     - Clica em um chamado para ver mais detalhes e tomar ações necessárias para resolvê-lo.
+
+### User Story 11:
+
+- Tarefa: Como atendente, desejo visualizar os atendimentos realizados por mim e seus status.
+
+  - Critério de Aceitação:
+
+     - O sistema deve fornecer uma seção onde o atendente possa visualizar os atendimentos realizados por ele.
+     - Para cada atendimento realizado pelo atendente, o sistema deve exibir seu número de identificação, título e status atual.
+     - Os atendimentos realizados pelo atendente devem ser apresentados de forma clara e organizada, permitindo identificar facilmente cada um.
+     - O atendente deve poder acessar cada atendimento para ver mais detalhes, se necessário.
+
+  - Cenário:
+
+     - O atendente faz login na sua conta.
+     - Navega até a seção de histórico de atendimento.
+     - Visualiza uma lista de atendimentos realizados por ele, incluindo o número de identificação, título e status atual de cada um.
+
+### User Story 12:
+
+- Tarefa: Como cliente, quero abrir um chat para me comunicar com o atendente.
+
+  - Critério de Aceitação:
+
+     - O sistema deve possuir uma interface em que o cliente possa se comunicar com o atendente de forma clara.
+
+  - Cenário:
+
+     - O cliente faz login.
+     - O cliente entra em um chamado que esta aberto.
+     - Encontra a opção de entrar no chat.
+     - Visualiza a reposta do atendente.
+     - Se ele precisar de mais assistência ou tiver outras duvidas ele pode continuar a conversa com o atendente.
+
+### User Story 13:
+
+- Tarefa: Como atendente, quero abrir um chat para me comunicar com o cliente.
+
+  - Critério de Aceitação:
+
+     - O sistema deve possuir uma interface clara que permita ao atendente abrir um chat com o cliente de forma direta para solucionar o problema.
+     - Deve haver uma opção para o atendente encerrar o chat quando a comunicação for concluída.
+
+  - Cenário:
+
+     - O atendente faz login na sua conta.
+     - Acessa a seção de tickets, onde seleciona por prioridade o ticket que vai atender.
+     - O sistema abre uma janela de chat onde o atendente pode enviar mensagens ao cliente.
+     - O atendente cumprimenta o cliente e se coloca à disposição para ajudar.
+     - A comunicação continua no chat até que o atendente encerre o chat.
+     - Se o atendente resolver o problema ou tirar as dúvidas do cliente, ele tem a opção de encerrar o chat.
+     - Se o cliente precisar de mais assistência ou tiver outras perguntas, a comunicação pode continuar no chat.
+
+### User Story 14:
+
+- Tarefa: Como administrador, quero que cada problema tenha um tempo de resposta definido para saber qual deve ser priorizado.
+
+  - Critério de Aceitação:
+
+  - O sistema deve calcular um tempo esperado para cada problema.
+  - O sistema deve destacar e sinalizar os chamados de acordo com seu tempo para que não exceda o tempo de reposta definido.
+
+  - Cenário:
+
+     - O administrador faz login na sua conta.
+     - Acessa a seção de gerenciamento de tickets ou chamados.
+     - Visualiza os tickets ordenados de acordo com sua prioridade.
+     - O sistema destaca ou sinaliza os tickets de acordo com o tempo esperado de resposta para cada um.
+     - Se houver dois tickets com prioridade alta, o sistema prioriza aquele que está esperando há mais tempo.
+     - O administrador pode revisar a lista de tickets e tomar decisões com base na priorização feita pelo sistema.
+     - Garante que os tickets sejam tratados de forma eficiente, minimizando o tempo de espera dos clientes e mantendo a qualidade do serviço.
+
+### User Story 15:
+
+- Tarefa: Como cliente, desejo um FAQ com possíveis soluções para poder resolver problemas frequentes.
+
+  - Critério de Aceitação:
+
+     - O sistema deve fornecer uma seção de FAQ (Frequently Asked Questions) acessível aos clientes.
+     - O FAQ deve conter uma lista de perguntas frequentes relacionadas aos problemas mais comuns enfrentados pelos clientes.
+     - Para cada pergunta frequente, o FAQ deve fornecer uma resposta clara e detalhada que ajude o cliente a resolver o problema.
+     - O FAQ deve ser organizado de forma clara e intuitiva, permitindo aos clientes encontrar facilmente as respostas para suas dúvidas.
+     - Deve haver uma opção para os clientes entrarem em contato com o suporte caso não encontrem a solução para seu problema no FAQ.
+
+  - Cenário:
+
+     - O cliente acessa o sistema e navega até a seção de perguntas frequentes.
+     - Encontra a seção de FAQ e entra nela.
+     - Visualiza uma lista de perguntas frequentes sobre problemas comuns.
+     - Seleciona uma pergunta que corresponda ao seu problema atual.
+     - Lê a resposta fornecida e verifica se ela resolve o seu problema.
+     - Se a resposta resolve o problema, o cliente segue as instruções fornecidas no FAQ.
+     - Se a resposta não resolver o problema, o cliente pode entrar em contato com o suporte para obter assistência adicional.
+
+### User Story 16:
+
+- Tarefa: Como atendente, desejo poder alterar o status de um chamado entre "aberto", "em atendimento" e "finalizado", para acompanhar e gerenciar o progresso dos chamados de forma eficiente.
+
+  - Critério de Aceitação:
+
+     - O sistema deve fornecer uma interface para os atendentes alterarem o status de um chamado.
+     - Os status disponíveis para seleção devem incluir "aberto", "em atendimento" e "finalizado".
+     - Ao alterar o status de um chamado para "em atendimento", o sistema deve registrar a data e hora em que o atendimento começou.
+     - Ao alterar o status de um chamado para "finalizado", o sistema deve registrar a data e hora em que o atendimento foi concluído.
+     - Deve haver uma opção para adicionar comentários ou notas ao alterar o status de um chamado, permitindo registrar informações relevantes sobre o progresso do atendimento.
+     - O sistema deve garantir que apenas os atendentes autorizados tenham permissão para alterar o status de um chamado.
+
+  - Cenário:
+
+     - O atendente faz login na sua conta.
+     - Seleciona um chamado para o qual deseja atender e alterar o status.
+     - Encontra a opção para alterar o status e escolhe entre "aberto", "em atendimento" ou "finalizado".
+     - Se selecionar "em atendimento", o atendente adiciona um comentário informando que o atendimento começou.
+     - Se selecionar "finalizado", o atendente adiciona um comentário informando que o atendimento foi concluído.
+     - Confirma a alteração de status do chamado.
+     - O sistema registra a data e hora da alteração de status, bem como quaisquer comentários adicionados pelo atendente.
+     - Verifica se o status do chamado foi atualizado corretamente e se todas as informações relevantes foram registradas.
+
+### User Story 19:
+
+- Tarefa: Como administrador, quero poder cadastrar soluções para problemas comuns.
+
+  - Critério de Aceitação:
+
+     - O sistema deve fornecer uma funcionalidade para o administrador cadastrar soluções para problemas comuns enfrentados pelos clientes.
+     - Deve haver uma interface clara e intuitiva para o cadastro de soluções.
+     - Cada solução cadastrada deve incluir um título, uma descrição detalhada do problema e a solução recomendada.
+     - O sistema deve permitir a associação de uma ou mais categorias a cada solução cadastrada, facilitando a organização e pesquisa.
+     - Deve ser possível editar e excluir soluções cadastradas, caso necessário.
+     - As soluções cadastradas devem estar disponíveis para consulta pelos atendentes e clientes, a fim de ajudar na resolução de problemas.
+
+  - Cenário:
+
+     - O administrador faz login na sua conta de administrador.
+     - Acessa a seção de cadastro de soluções para problemas comuns.
+     - Preenche os campos necessários, incluindo título, descrição do problema e solução recomendada.
+     - Confirma o cadastro da solução.
+     - Verifica se a solução cadastrada está disponível na lista de soluções.
+     - Se necessário, o administrador pode editar ou excluir uma solução cadastrada.
+     - Os atendentes e clientes podem acessar a lista de soluções cadastradas para encontrar ajuda na resolução de problemas comuns.
+
+
+<h2> Vídeo demonstrativo </h2><a name="video"></a>
+
+<h3> Cliente </h3>
+
+<h3> Atendente </h3>
+
+<h3> Administrador </h3>
