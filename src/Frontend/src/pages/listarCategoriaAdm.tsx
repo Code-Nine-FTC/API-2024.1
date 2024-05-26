@@ -39,37 +39,36 @@ const ListagemCategorias = () => {
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
-  <table className={styles.categoryTable}>
-    <thead>
-      <tr>
-        <th>Categoria</th>
-        <th>Valor</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      {categorias.map((categoria, index) => (
-        <tr key={index}>
-          {Object.entries(categoria).map(([key, value], idx) => (
-            <React.Fragment key={idx}>
-              {idx === 0 ? <td rowSpan={Object.keys(categoria).length}>{key}</td> : null}
-              <td>{value}</td>
-            </React.Fragment>
-          ))}
-          <td>
-            <Link
-              id={styles.detalheslink}
-              to={`/editarcategoria/${categoria.cat_id}`}
-              style={{ color: 'black'}}
-            >
-              Editar
-            </Link>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+          <table className={styles.categoryTable}>
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Valor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categorias.map((categoria, index) => (
+                <tr key={index}>
+                  {Object.entries(categoria).map(([key, value], idx) => (
+                    <React.Fragment key={idx}>
+                      {idx === 0 && <td className="nomeColumn">{key}</td>}
+                      <td className={idx === 0 ? "cpfColumn" : ""}>{value}</td>
+                    </React.Fragment>
+                  ))}
+                  <td>
+                    <Link
+                      id={styles.detalheslink}
+                      to={`/editarcategoria/${categoria.cat_id}`}
+                    >
+                      Editar
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <div className={styles.buttonContainer}>
           <Link to="/ticketadm">
             <button type="button">Criar Categoria</button>
@@ -81,4 +80,3 @@ const ListagemCategorias = () => {
 };
 
 export default ListagemCategorias;
-
