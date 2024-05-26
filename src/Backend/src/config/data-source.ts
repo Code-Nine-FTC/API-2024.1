@@ -7,6 +7,7 @@ import Resposta from "../entities/resposta";
 import Faq from "../entities/faq";
 import { config } from "dotenv";
 import path from 'path';
+import Categoria from "../entities/categoria";
 
 config({ path: path.resolve(__dirname, '.env') });
 
@@ -19,7 +20,7 @@ export const Connection = new DataSource({
     database: process.env.DB_NAME,
     synchronize: true,
     logging: false,
-    entities: [Cliente, Funcionario, Chamado, Resposta, Faq],
+    entities: [Cliente, Funcionario, Chamado, Resposta, Faq, Categoria],
     migrations: [],
     subscribers: [],
 });

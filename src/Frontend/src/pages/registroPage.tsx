@@ -3,6 +3,8 @@ import styles from '../component/registro/Registro.module.css';
 import CadastroClienteFunc from '../functions/Cadastro/cadastroClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Registro = () => {
 
@@ -14,6 +16,8 @@ const Registro = () => {
         senha2: '',
     })
     const [erro, setErro] = useState ('')
+
+    const navigate = useNavigate()
     
     const handleCpfChange = (event: any) => {
         const cpfFinal = event.target.value.replace(/\D/g, '')
@@ -37,12 +41,17 @@ const Registro = () => {
                 const resultado = await CadastroClienteFunc(formData)
                 if (resultado.success) {
                     setErro('')
+                    Swal.fire({
+                        title: "Registrado!",
+                        text: "Sua conta foi criada com sucesso!",
+                        icon: "success"
+                      });
+                    navigate('/login')
                 }
-                toast.success('Cadastro concluído')
-                
             }
             catch (error:any) {
-                setErro(error.message)
+                let errorMessage = error.message || 'Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.';
+                setErro(errorMessage)
             }
         }
     }
@@ -87,6 +96,9 @@ const Registro = () => {
                         <button type="submit" id={styles.Editar}>
                             Cadastrar-se
                         </button>
+                    </div>
+                    <div className={styles.Title}>
+                        <Link to='/login'> Voltar → </Link>
                     </div>
 
                     {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%'}}>{erro}</p>}

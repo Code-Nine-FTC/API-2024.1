@@ -5,6 +5,9 @@ import {Link, useNavigate, redirect} from 'react-router-dom';
 import {toast, Toaster} from 'react-hot-toast';
 import LoginClienteFunc from '../../functions/Login/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/Login/loginFuncionarioFunc';
+import { login } from '../../services/auth';
+import { useContext } from 'react';
+import { AuthContext } from '../../services/context';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
 
@@ -12,19 +15,10 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
   const [identificacao, setIdentificacao] = useState('');
   const [placeholder, setPlaceholder] = useState('');
   const [type, setType] = useState('');
-  const [token, setToken] = useState(localStorage.getItem('token') || '');
-
-  const [formDataPadrao, setFormDataPadrao] = useState({
-    email: '',
-    senha: '',
-  })
-  
-  // if (token !== ''){
-  //   console.log('teste')
-  //   redirect('/')
-  // }
-
+  const [formDataPadrao, setFormDataPadrao] = useState({email: '',senha: ''})
   const [erro, setErro] = useState ('')
+  const { setAutenticado, setNivelAcesso, setToken } = useContext(AuthContext);
+
 
   useEffect(() => {
     switch (tipoCadastro) {
@@ -58,17 +52,14 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               cli_email: tipoCadastro === 'usuario' ? formDataPadrao.email : '',
               cli_senha: tipoCadastro === 'usuario' ? formDataPadrao.senha : '',
             }
+
             const resultadoUsuario = await LoginClienteFunc(formDataUser);
-            console.log('Tentando login')
             if (resultadoUsuario.success) {
               console.log('Login concluído')
               setErro('');
               toast.success('Login concluído');
-              const tokenCliente = resultadoUsuario.token;
-              setToken(tokenCliente)
-              localStorage.setItem('token', tokenCliente);
-              console.log(localStorage.getItem('token'))
-              return navigate('/')
+              login(resultadoUsuario.token, resultadoUsuario.nivelAcesso, setAutenticado, setNivelAcesso, setToken);
+              navigate('/')
             }
             break;
           case 'funcionario':
@@ -77,20 +68,25 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               func_senha: tipoCadastro === 'funcionario' ? formDataPadrao.senha : ''
             }
             const resultadoFuncionario = await LoginFuncionarioFunc(formDataFunc);
-            console.log('Tentando login')
             if (resultadoFuncionario.success) {
               console.log('Login concluído')
+              login(resultadoFuncionario.token, resultadoFuncionario.nivelAcesso, setAutenticado, setNivelAcesso, setToken);
               setErro('');
-              const tokenFunc= resultadoFuncionario.token;
-              setToken(tokenFunc)
-              localStorage.setItem('token', tokenFunc);
-              console.log(localStorage.getItem('token'))
-              return navigate('/visualizarTodosFuncionarios')
+              console.log('User Level:', resultadoFuncionario.nivelAcesso);
+              switch (resultadoFuncionario.nivelAcesso) {
+                case 'administrador':
+                  navigate('/visualizarTodosFuncionarios')
+                  break;
+                case 'atendente':
+                  navigate('/homesup')
+                  break;
+              }
             }
             break;
         }
       } catch (error: any) {
-        setErro(error.message);
+        let errorMessage = error.message || 'Erro ao realizar o login. Por favor, tente novamente mais tarde.';
+        setErro(errorMessage);
       }
     };
 
@@ -104,32 +100,66 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
       <form onSubmit={handleSubmit} method="POST" className={styles.conteudointerno}>
         <img src={logo} className={styles.logo} alt="logo" />
         <div className={styles.Labels}>
+          
           <h1>Faça o seu Login</h1>
+
           <label htmlFor="label1">{identificacao}</label>
-          <input type={type} name="email" id={styles.label1} value={formDataPadrao.email} placeholder={placeholder} onChange={handleChange} />
+          <input 
+            type={type} 
+            name="email" 
+            id={styles.label1} 
+            value={formDataPadrao.email} 
+            placeholder={placeholder} 
+            onChange={handleChange} 
+            onClick={() => {
+              setErro('');
+              setFormDataPadrao(prevFormDataPadrao => ({
+                ...prevFormDataPadrao,
+                email: ''
+              }));
+            }} 
+          />
+
           <label htmlFor="label2">Senha</label>
-          <input type="password" name="senha" id={styles.label2} value={formDataPadrao.senha} placeholder="Insira sua senha" onChange={handleChange} />
+          <input 
+            type="password" 
+            name="senha" 
+            id={styles.label2} 
+            value={formDataPadrao.senha} 
+            placeholder="Insira sua senha" 
+            onChange={handleChange}
+            onClick={() => {
+                setErro('');
+                setFormDataPadrao(prevFormDataPadrao => ({
+                    ...prevFormDataPadrao,
+                    senha: ''
+                }));
+            }} 
+        />
+
           <button type="submit" className={styles.EntrarButton}>Entrar</button>
-          <div className={styles.Title}>
+
+          
           {tipoCadastro === 'usuario' && (
-            <Link to="/registro">Cadastre-se</Link>
+            <div className={styles.Title}>
+              <Link to="/registro">Cadastre-se</Link>
+            </div>
           )}
-          </div>
 
-          <div className={styles.Title}>
-            {tipoCadastro === 'usuario' && (
+          {tipoCadastro === 'usuario' && (
+            <div className={styles.Title}>
               <Link to="/loginadm">É funcionário? </Link>
-              
-              )} 
-          </div>
+            </div>
+          )} 
+          
 
-          <div className={styles.Title}>
-            {tipoCadastro === 'funcionario' && (
-              <Link to="/login">Voltar→ </Link>
-              
-              )} 
-          </div>
-          {erro && <p style={{ color: 'red', textAlign: 'center', marginTop: '4%', fontSize: '0.8em'}}>{erro}</p>}
+          {tipoCadastro === 'funcionario' && (
+            <div className={styles.Title}>
+                <Link to="/login">Voltar→ </Link>
+            </div>
+            )} 
+            
+          {erro && <p style={{ marginLeft: '10%', color: 'red', textAlign: 'center', marginBottom: '3%', marginTop: '2%',fontSize: '0.8em'}}>{erro}</p> }
         </div>
       </form>
     </div>

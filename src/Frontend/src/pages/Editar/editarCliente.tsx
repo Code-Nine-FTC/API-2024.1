@@ -1,34 +1,68 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import styles from "../../component/infoCliente/InfoCliente.module.css"
 import ImageComponent from '../../component/imagemperfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
 import updateCliente from '../../functions/Editar/updateClienteFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { getToken, logout } from '../../services/auth';
+import desativarCliente from '../../functions/Editar/desativarClienteFunc';
+import Swal from 'sweetalert2';
 
 
-const Editinfocli: React.FC = () => {
+const EditarCliente: React.FC = () => {
   const navigate = useNavigate();
-  const [cli_nome, setNome] = useState<string>('');
-  const [cli_email, setEmail] = useState<string>('');
-  const [cli_senha, setSenha] = useState<string>('');
-  const id = localStorage.getItem('id') || ''
-  const token = localStorage.getItem('token')
-
-  const cli_id: number = parseInt(id, 10);
+  const [cli_nome, setNome] = useState<string>();
+  const [cli_email, setEmail] = useState<string>();
+  const [cli_senha, setSenha] = useState<string>();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const user = { cli_nome, cli_email, cli_senha };
-    console.log(user);
+    const user = { cli_email, cli_nome, cli_senha};
     try {
-      const clienteUpdate = await updateCliente(cli_id, user, token);
-      toast.success('Alteração concluída')
+      const token = getToken(); // Obtenha o token JWT do localStorage
+      if (token) {
+        await updateCliente(user);
+        toast.success('Alteração concluída');
+      }
     } catch (error) {
       console.log(`Erro ao editar Cliente`, error);
     }
   };
-  
+
+
+
+const handleDelete = async () => {
+  Swal.fire({
+    title: "Você tem certeza?",
+    text: "",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Não, cancelar!",
+    confirmButtonText: "Sim, desativar!",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const token = getToken();
+        if (token) {
+          await desativarCliente();
+          logout();
+          toast.success('Conta desativada');
+          navigate('/login');
+          Swal.fire({
+            title: "Desativado!",
+            text: "Sua conta foi desativada com sucesso",
+            icon: "success"
+          });
+        }
+      } catch (error) {
+        console.log(`Erro ao desativar conta`, error);
+      }
+    }
+  });
+};
 
   return (
     <>
@@ -44,6 +78,9 @@ const Editinfocli: React.FC = () => {
       <div className={styles.Container}>
         <div className={styles.perfil}>
           <ImageComponent/>
+        </div>
+        <div className={styles.delete} onClick={handleDelete}>
+              <p>Desativar</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className={styles.Dados}>
@@ -62,15 +99,15 @@ const Editinfocli: React.FC = () => {
           </div>
           <div className={styles.button}>
           <button type="submit" id={styles.Editar}>
-            Editar Perfil
+            Salvar
           </button>
           </div>
         </form>
-        <button className={styles.voltar} onClick={() => navigate(`/`)}>Voltar</button>
+        <button className={styles.voltar} onClick={() => navigate(`/visualizarCliente/`)}>Voltar</button>
         </div>
       </div>
     </>
   );
 }
 
-export default Editinfocli;
+export default EditarCliente;

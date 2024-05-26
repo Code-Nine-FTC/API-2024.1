@@ -1,6 +1,9 @@
 .container {
   display: flex;;
 }
+.funcionarioContainer{
+  background-color: #f7f7f7;
+}
 .nomeColumn a, .cpfColumn a, .emailColumn a {
   color: black; 
   text-decoration: none; 
@@ -88,10 +91,9 @@
   color: black;
   display: flex;
   flex-direction: column;
-  border: 1px solid #000000; /* Adiciona uma borda sólida de 1px com a cor cinza */
-  padding: 10px; /* Adiciona um espaçamento interno de 10px para melhorar a aparência */
-  
-  
+  border: 0.01em solid rgba(238, 238, 238, 0.5); 
+  padding: 10px; 
+  word-wrap: break-word;
 }
 
 

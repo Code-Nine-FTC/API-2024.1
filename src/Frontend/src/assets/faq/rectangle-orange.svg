@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 107" width="10" height="107">
+	<title>rectangle-yellow</title>
+	<defs>
+		<image  width="10" height="107" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAABrAQMAAAB0VIEBAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA/7ky5i/JUwAAAAJ0Uk5TAP9bkSK1AAAAGUlEQVR4nGO0P8hYz8j4/+AoIhkBw83+IAA7ybesWwGeWAAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+</svg>

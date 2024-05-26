@@ -1,16 +1,13 @@
-ul {
+.navItens {
+    margin-top: 10vh;
+    font-weight: bold;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     list-style: none;
     padding: 0;
     align-items: center;
     justify-content: center;
-}
-
-.navItens {
-    margin-top: 10vh;
-    font-weight: bold;
-    flex-grow: 1;
 }
 
 a {
@@ -37,7 +34,6 @@ a {
 .sidebar {
     background-color: #00046D;
     transform: translateX(0);
-    /* position: absolute; */
     min-width: max-content;
     min-width: 14vw;
     min-height: 100vh;
@@ -45,6 +41,8 @@ a {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
+    
+
 }
 
 .sidebarContainer {
@@ -52,11 +50,16 @@ a {
     display: flex;
     max-width: max-content;
     max-height: max-content;
+    text-align: center;
 }
 
 .sidebar.open {
     transform: translateX(0);
     opacity: 1;
+}
+
+.sidebarContainer.open {
+    transform: translateX(0);
 }
 
 .userinfo {
@@ -142,6 +145,12 @@ a {
 } */
 
 .dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 10%
 }
 
@@ -174,7 +183,7 @@ a {
     height: 2rem;
     width: 2rem;
     position: absolute; 
-    z-index: 1;
+    z-index: 2;
     transition: left 0.3s ease-in-out;
 }
 
@@ -215,10 +224,13 @@ a {
     transition: 0.5s;
     font-weight: bold;
     width: 100px; 
-    margin-left: 28%;
 }
 
 .x{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: white;
     text-align: center;
     padding: 20px;
@@ -256,17 +268,12 @@ a {
     .sidebarContainer {
         position: fixed;
         z-index: 1;
-    }
-    .button{
-        margin-left: 20%;
+        transform: translateX(-100%);
     }
 }
 
 @media (max-width: 1186px) {
     .sidebar {
         min-width: 17vw;
-    }
-    .button{
-        margin-left: 20%;
     }
 }

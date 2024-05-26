@@ -4,10 +4,13 @@ import ImageComponent from '../../component/imagemperfil/imagemperfil';
 import Sidebar from '../../component/sidebar/sidebar';
 import updateFuncionario from '../../functions/Editar/updateFuncionarioFunc'; 
 import { useNavigate, useParams } from 'react-router-dom';
-import IFuncionarioUpdate from '../../functions/Editar/interface/IFuncionarioUpdate';
+import IFuncionarioUpdate from '../../functions/Editar/Interface/IFuncionarioUpdate';
 import { toast, Toaster } from 'react-hot-toast';
+import deletarFuncionario from '../../functions/Editar/deletarFuncionarioFunc';
+import Swal from 'sweetalert2';
 
-const EditarFuncionario: React.FC = () => {
+
+function EditarFuncionario() {
   const navigate = useNavigate();
   const { id } = useParams<{ id?: string }>();
   const [nome, setNome] = useState<string>();
@@ -17,8 +20,7 @@ const EditarFuncionario: React.FC = () => {
   const [func_expediente_inicio, setFuncExpedienteInicio] = useState<string>();
   const [func_expediente_final, setFuncExpedienteFinal] = useState<string>();
   const [ativo, setAtivo] = useState<boolean>(true);
-  const token = localStorage.getItem('token')
-
+  
   const selecionarHorario = (event: any) => {
     const horario = event.target.value
     switch(horario) {
@@ -39,12 +41,11 @@ const EditarFuncionario: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!id) {
       navigate('/notfound');
-      return;
+      return
     }
-
+    
     const func_id: number = parseInt(id, 10);
 
     const dadosUpdate: IFuncionarioUpdate = {
@@ -59,13 +60,46 @@ const EditarFuncionario: React.FC = () => {
 
     console.log(dadosUpdate);
     try {
-      const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate, token);
+      const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate);
       toast.success('Alteração concluída')
     } catch (error) {
       console.log(`Erro ao editar Funcionario!`, error);
     }
   };
-
+  const handleDelete = async () => {
+    if (!id) {
+      navigate('/notfound');
+      return
+    }
+    
+    const func_id: number = parseInt(id, 10);
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, desativar!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const resultado = await deletarFuncionario(func_id);
+          if(resultado.success){
+            Swal.fire({
+              title: "Desativado!",
+              text: "O funcionario foi desativado.",
+              icon: "success"
+            });
+            toast.success(resultado.message)
+            navigate('/visualizarTodosFuncionarios')
+          }
+        } catch (error) {
+          console.log(`Erro ao desativar Funcionario!`, error);
+        }
+      }
+    });
+  };
   return (
     <>
       <div><Toaster 
@@ -80,6 +114,9 @@ const EditarFuncionario: React.FC = () => {
         <div className={styles.Container}>
           <div className={styles.perfil}>
             <ImageComponent />
+          </div>
+          <div className={styles.delete} onClick={handleDelete}>
+              <p>Desativar</p>
           </div>
           <form className={styles.conteudoform} onSubmit={handleSubmit}>
             <div className={styles.Dados1}>
@@ -108,6 +145,6 @@ const EditarFuncionario: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default EditarFuncionario;

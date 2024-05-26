@@ -1,0 +1,230 @@
+.chatContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.enviarMensagem {
+    background-color: #111686;
+    width: 80%;
+    height: auto;  /* Altere a altura inicial para automática */
+    max-height: 10%; /* Adicione uma altura máxima */
+    transition: max-height 0.5s ease; /* Adicione uma transição suave */
+    position: fixed;
+    bottom: 0; 
+}
+
+.enviarMensagem:focus-within {
+    max-height: 100%; /* Quando em foco, expanda para a altura máxima */
+}
+
+
+.formMensagem {
+    display: flex;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    bottom: auto;
+}
+
+.formMensagem input {
+    font-size: 0.8em;
+    font-weight: lighter;
+    background-color: white;
+    min-width: 90%;
+    margin-left: 2%;
+    margin-top: 1.2%;
+    min-height: 60%;
+    text-indent: 10px;
+    border: none;
+    outline: none;
+}
+
+.enviarButton {
+    background-color: #6B6FD1;
+    border-radius: 5px;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    padding: 5px;
+}
+
+.enviarButton:hover {
+    background-color: #4f53cf;
+}
+
+.enviarButton img {
+    width: 70%;
+    min-height: 30%;
+}
+
+.header{
+    background-color: #111686;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: 25%; */
+    position: sticky;
+    top: 0;
+    bottom: 0;
+}
+
+.headerEsquerda {
+    flex: 1;
+}
+
+.headerDireita {
+    margin-right: 2%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.info{
+    color:white;
+    margin-top: 0.3%;
+    margin-left: 3%;
+    font-weight: bold;
+    display: flex;
+    padding-top: 1px;
+    padding-bottom: 1%;
+    /* height: 100%; */
+}
+.ticket{
+    font-size: 1.5em;
+    font-weight: bolder;
+    width: fit-content;
+}
+
+.ticketFoto {
+    height: 25%;
+    width: 10%;
+}
+
+.encerrarChamado {
+    background-color: #6B6FD1;
+    width: 45%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: auto;
+    right: 0;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+.encerrarChamado:hover {
+    background-color: #4146dd;
+    cursor: pointer;
+}
+
+.encerrarChamadoConcluido {
+    background-color: #898cf9;
+    width: 45%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    margin-left: auto;
+    right: 0;
+    padding: 2px;
+    font-size: 0.9em;
+    cursor: not-allowed;
+}
+
+.ticketFinish {
+    height: 30px;
+    width: 30px;
+}
+
+.alinharDiv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.alinharInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5%;
+}
+
+.campoMensagens {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+        
+
+}
+.chatbox{
+    color: #FFFFFF;
+    background-color: #3F416E;
+    border-radius: 10px;
+    padding: 10px ;
+    margin-bottom: 10px;
+    max-width: 40%;
+    min-width: 40%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 3%;
+    margin-right: 3%;
+    margin-left: auto;
+}
+
+.otherchatbox{
+    color: #FFFFFF;
+    background-color: #6B6FD1;
+    border-radius: 10px;
+    padding: 10px ;
+    margin-bottom: 10px;
+    max-width: 40%;
+    min-width: 40%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 3%;
+}
+
+@media(max-width: 800px){
+    .header{
+        position: fixed;
+        height: 15%;
+    }
+    .chatContent{
+        height: 100vh;
+    }
+
+    .campoMensagens{
+        height: auto;
+    }
+    
+    .formMensagem{
+        height: 3.1rem;
+        align-items: center;
+        }
+    
+    .formMensagem input{
+        font-size: 1rem;
+    }
+
+    .campoMensagens{
+        margin-top: 1rem;
+        height: auto;
+    }
+
+    .enviarMensagem{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 5vh; 
+    }
+}

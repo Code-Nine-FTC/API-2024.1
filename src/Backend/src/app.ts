@@ -6,12 +6,13 @@ import dotenv from 'dotenv';
 import path from 'path';
 import clienteRoutes from './routes/clienteRoutes'
 import funcionarioRoutes from './routes/funcionarioRoutes'
+import defaultRotes from './routes/defaultRoutes'
 import Funcionario from './entities/funcionario';
-import * as bcrypt from 'bcrypt';
 import { FuncionarioService } from './services/funcionarioService';
-import { Router } from "express";
-import { FrontpageAuth } from './controllers/frontPagesAuth';
-
+import chamadoRoutes from './routes/chamadoRoutes'
+import categoriaRoutes from './routes/categoriaRoutes'
+import tarefaSla from './cron';
+import Faqrouter from './routes/faqRoutes';
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
@@ -22,11 +23,10 @@ app.use(cors())
 app.use(express.json()) 
 app.use(clienteRoutes)
 app.use(funcionarioRoutes)
-const router = Router()
-app.use(router)
-
-const frontpageAuth = new FrontpageAuth()
-router.post('/autenticarfrontpage', frontpageAuth.validarPagina.bind(frontpageAuth))
+app.use(defaultRotes)
+app.use(chamadoRoutes)
+app.use(categoriaRoutes)
+app.use(Faqrouter)
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
@@ -34,6 +34,10 @@ Connection.initialize().then(() => {
     insertAdmin().catch(error => {
         console.log(`Erro ao inserir administrador: `,error)
     })
+
+    // Agendamento do cron job para verificar o sla
+    tarefaSla.start()
+
     const port = process.env.PORT || 3000
     app.listen(port, ()=> {
         console.log(`Servido rodando na porta ${port}`)

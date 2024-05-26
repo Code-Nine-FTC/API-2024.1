@@ -1,21 +1,15 @@
 import Chamado from "../entities/chamado"
 
-export interface IResposta{
-    resp_mensagem_reposta: string
-    resp_feita_por_atendente: boolean
-    resp_data_resposta: Date
+export interface IRespostaInput {
+    texto: string
+    autoria: boolean
+    data: string
     chamado: Chamado
 }
-
-export interface IRespostaCliente {
-    resp_mensagem_reposta: string
-    resp_data_resposta: Date
-    chamado: Chamado;
+export interface IRespostaSelect{
+    resp_id: number
+    texto: string
+    autoria: boolean
+    data: string
+    chamado: Chamado
 }
-
-export interface IRespostaSuporte{
-    resp_mensagem_reposta: string
-    resp_data_resposta: Date
-    chamado: Chamado;
-}
-

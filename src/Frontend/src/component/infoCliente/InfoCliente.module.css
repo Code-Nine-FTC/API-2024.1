@@ -7,6 +7,13 @@
     height: 75vh;
     
 }
+.delete{
+    display: flex;
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 80%;
+}
 
 .Dados{
     display: flex;
