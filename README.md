@@ -320,10 +320,15 @@ Criação de funcionalidades principais da aplicação.
 <h2> Vídeo demonstrativo </h2><a name="video"></a>
 
 <h3> Cliente </h3>
+
 https://github.com/Code-Nine-FTC/API-2024.1/assets/79583088/1c0f1f5a-456e-499d-aa1d-f2e8230c67cd
+
 <h3> Atendente </h3>
+
 https://github.com/Code-Nine-FTC/API-2024.1/assets/79583088/8f481dc3-29c6-43df-8177-2877be10462c
+
 <h3> Administrador </h3>
+
 https://github.com/Code-Nine-FTC/API-2024.1/assets/79583088/d2effc97-8d2b-4f07-bad5-825955ea8c9a
 
 
