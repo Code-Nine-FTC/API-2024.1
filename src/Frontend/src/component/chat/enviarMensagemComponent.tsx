@@ -52,8 +52,8 @@ const EnviarMensagem = ({ id }: { id: number })=> {
                 console.log(mensagem)
                 const resultado = await EnviarMensagemFunc(mensagem);
                 if (resultado.success){
-                    alert('Funcionou')
                     setTexto('')
+                    refreshPage()
                 }
             }
             catch (error: any) {
@@ -67,7 +67,7 @@ const EnviarMensagem = ({ id }: { id: number })=> {
         <div className={styles.enviarMensagem}>
             <form method="POST" onSubmit={handleSubmit}className={styles.formMensagem}>
                 <input type="text" name="mensagem" value={texto} onChange={handleChange} placeholder="Mensagem"/>
-                <button className={styles.enviarButton} type="submit" onClick={refreshPage}>
+                <button className={styles.enviarButton} type="submit">
                     <img src={enviarIcon} className="enviarIcon" alt="Enviar Mensagem"/>
                 </button>
             </form>
