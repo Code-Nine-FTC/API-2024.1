@@ -77,9 +77,9 @@ const TicketAdm = () => {
                             required
                         >
                             <option disabled value="">Horário</option>
-                            <option value="01:00:00">01:00:00</option>
-                            <option value="02:00:00">02:00:00</option>
-                            <option value="03:00:00">03:00:00</option>
+                            <option value="00:03:00">00:03:00</option>
+                            <option value="00:02:00">00:02:00</option>
+                            <option value="00:01:00">00:01:00</option>
                         </select>
                     </div>
                     <br />
