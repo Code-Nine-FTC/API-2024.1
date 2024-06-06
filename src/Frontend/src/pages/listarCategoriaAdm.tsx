@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import ListarCategorias from "../functions/categoria/listarCategoriaAdm";
 import { ICategoriaView } from "../../../Backend/src/interfaces/ICategoria";
 
-const ListagemCategorias = () => {
+interface Props {}
+
+const ListagemCategorias: React.FC<Props> = () => {
   const [categorias, setCategorias] = useState<ICategoriaView[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -29,6 +31,7 @@ const ListagemCategorias = () => {
     };
 
     fetchCategorias();
+    return () => {}; // Adiciona uma função de cleanup vazia
   }, []);
 
   return (
@@ -39,37 +42,36 @@ const ListagemCategorias = () => {
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div className={styles.customLayout}>
-  <table className={styles.categoryTable}>
-    <thead>
-      <tr>
-        <th>Categoria</th>
-        <th>Valor</th>
-        <th>Ações</th>
+        <table className={styles.categoryTable}>
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Horário</th>
+      <th>Prioridade</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {categorias.map((categoria) => (
+      <tr key={categoria.cat_id}>
+        <td>{categoria.cat_titulo}</td>
+        <td>{categoria.cat_horario}</td> 
+        <td>{categoria.cat_prioridade}</td>
+        <td>
+          <Link
+            id={styles.detalheslink}
+            to={`/editarcategoria/${categoria.cat_id}`}
+            title="Editar categoria"
+            style={{ color: 'black' }}
+          >
+            Editar
+          </Link>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      {categorias.map((categoria, index) => (
-        <tr key={index}>
-          {Object.entries(categoria).map(([key, value], idx) => (
-            <React.Fragment key={idx}>
-              {idx === 0 ? <td rowSpan={Object.keys(categoria).length}>{key}</td> : null}
-              <td>{value}</td>
-            </React.Fragment>
-          ))}
-          <td>
-            <Link
-              id={styles.detalheslink}
-              to={`/editarcategoria/${categoria.cat_id}`}
-              style={{ color: 'black'}}
-            >
-              Editar
-            </Link>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+    ))}
+  </tbody>
+</table>
+        </div>
         <div className={styles.buttonContainer}>
           <Link to="/ticketadm">
             <button type="button">Criar Categoria</button>
@@ -81,4 +83,3 @@ const ListagemCategorias = () => {
 };
 
 export default ListagemCategorias;
-
