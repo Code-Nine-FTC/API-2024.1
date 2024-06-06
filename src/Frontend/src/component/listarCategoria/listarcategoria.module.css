@@ -41,6 +41,7 @@
 .titleLine {
     border-bottom: 1px solid rgb(0, 0, 0); 
     width: 40vw;
+    margin-top: 100px;
     padding-bottom: 1vw;
     color: rgb(6, 6, 150);
     padding-top: 20px;
@@ -71,13 +72,15 @@
 }
 
 .categoryTable th,.categoryTable td {
-  border: 1px solid #ddd;
+  border: 1px solid #00046D;
   padding: 10px;
   text-align: left;
 }
 
 .categoryTable th {
-  background-color: #f0f0f0;
+  background-color: #00046D;
+  color: white;
+  text-align: center;
 }
 
 .categoryTable tr:nth-child(even) {
@@ -101,6 +104,7 @@
   .content {
     width: 100%;
     padding: 0;
+    
   }
   .nomeColumn, .cpfColumn, .emailColumn {
     padding-left: 0;

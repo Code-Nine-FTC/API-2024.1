@@ -14,6 +14,7 @@
   margin: auto;
   padding-left: 20vw;
   padding-bottom: 20vw; 
+  margin-top: 100px;
 }
 
 .center {
@@ -50,6 +51,8 @@
   padding-bottom: 1vw;
   color: rgb(6, 6, 150);
   padding-top: 20px;
+  margin-bottom: 50px;
+
   
 }
 .buttonContainer {
@@ -91,9 +94,45 @@
   color: black;
   display: flex;
   flex-direction: column;
-  border: 0.01em solid rgba(238, 238, 238, 0.5); 
+  border: 0.01em solid #00046D; 
   padding: 10px; 
   word-wrap: break-word;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,.table td {
+  border: 1px solid #00046D;
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #00046D;
+  text-align: center;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #ccc;
+}
+
+.detalheslink {
+  text-decoration: none;
+  color: black;
+}
+
+.detalheslink:hover {
+  text-decoration: underline;
+  color: #337ab7;
 }
 
 
