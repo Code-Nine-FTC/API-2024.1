@@ -54,7 +54,7 @@
 }
 
 #Editar {
-    background-color: #0202c4;
+    background-color: #00046D;
     color: white;
     padding: 10px 20px;
     text-decoration: none; /* Remover a decoração do texto */
@@ -70,11 +70,11 @@
 
 
 #Editar:hover {
-    background-color: #030350;
+    background-color: #0101A1;
 }
 
 #OutroBotao {
-    background-color: #0202c4;
+    background-color: #00046D;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -90,7 +90,7 @@
 }
 
 #OutroBotao:hover {
-    background-color: #030350;
+    background-color: #0101A1;
 }
 
 .buttonsContainer {

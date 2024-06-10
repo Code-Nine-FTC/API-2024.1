@@ -1,3 +1,5 @@
+
+
 export interface ICategoriaInput {
     cat_titulo: string
     cat_horario: string

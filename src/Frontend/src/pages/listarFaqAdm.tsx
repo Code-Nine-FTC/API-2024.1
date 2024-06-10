@@ -40,7 +40,7 @@ const ListagemFaqs = () => {
       <div className={styles.content}>
         <h2 className={`${styles.center} ${styles.titleLine}`}>FAQs Cadastradas</h2>
         {loading && <p>Carregando...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p style={{ color: "red", display: 'flex', justifyContent: 'center' }}>{error}</p>}
         <div className={styles.customLayout}>
           {faqs.map((faq) => (
             <div className={styles.faqContainer} key={faq.faq_id}>
