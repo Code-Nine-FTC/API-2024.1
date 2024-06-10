@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./ViewFuncionario.module.css"
+import ImageComponent from "../../imagemperfil/imagemperfil";
 interface DetalhesFuncionarioProps {
   funcionario: {
     func_id: string,
@@ -23,18 +24,31 @@ function DetalhesFuncionario({ funcionario, navigate, nivelAcesso }: DetalhesFun
         <br></br>
         <hr className={styles.linha}></hr>
       </div>
+      <span className={styles.containerspanidentificacao}>
+          <h3 className={styles.funcionaroid}>ID: {funcionario.func_id}</h3>
+          <h3 className={styles.ativo}>Ativo: {funcionario.ativo ? 'Ativo' : 'Desativado'}</h3>
+      </span>
 
       <div className={styles.containermaior}>
-        <span className={styles.containerspanidentificacao}>
-          <h2 className={styles.funcionaroid}>ID: {funcionario.func_id}</h2>
-        </span>
-        <div className={styles.cotainerinfo}>
-          <h3 className={styles.nome}>Nome: {funcionario.func_nome}</h3>
-          <h3 className={styles.cpf}>CPF: {funcionario.func_cpf}</h3>
-          <h3 className={styles.email}>E-mail: {funcionario.func_email}</h3>
-          <h3 className={styles.ativo}>Ativo: {funcionario.ativo ? 'Ativo' : 'Desativado'}</h3>
+        <div className={styles.img}>
+          <ImageComponent />
         </div>
-
+        <table className={styles.employeetable}>
+          <tr>
+            <td className={styles.nome}>Nome:</td>
+            <td className={styles.conteudo}>{funcionario.func_nome}</td>
+          </tr>
+          <br></br>
+          <tr>
+            <td className={styles.cpf}>CPF:</td>
+            <td className={styles.conteudo}>{funcionario.func_cpf}</td>
+          </tr>
+          <br></br>
+          <tr>
+            <td className={styles.email}>E-mail:</td>
+            <td className={styles.conteudo}>{funcionario.func_email}</td>
+          </tr>
+        </table>
       </div>
       <div className={styles.containerbotao}>
       {nivelAcesso === 'administrador' ? (

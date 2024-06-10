@@ -1,7 +1,4 @@
 import styles from '../component/faq/Faq.module.css'
-import Map from '../component/map/map';
-import Delivery from '../component/delivery/delivery';
-import Trolley from '../component/trolley/trolley';
 import Status from '../component/status/status';
 import Textostatus from '../component/textostatus/textostatus';
 import Textostatus2 from '../component/textostatus/textoStatus2';

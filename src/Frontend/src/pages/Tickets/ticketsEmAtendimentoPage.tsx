@@ -45,7 +45,7 @@ const TicketsAtivos = () => {
             <div className={styles.container}>
                 <h1 className={styles.title}>Tickets Ativos</h1>
                 {chamados.length === 0 ? (
-                    <p>Nenhum ticket ativo encontrado.</p>
+                    <p style={{ display: 'flex', justifyContent: 'center' }}>Nenhum ticket ativo encontrado.</p>
                 ) : (
                     chamados.map((chamado: IChamadoView) => (
                         <div key={chamado.cha_id} className={styles.ticketcampo}>

@@ -4,10 +4,18 @@
     height: fit-content;
 }
 .linha{
+    display: flex;
+    justify-content: center;
     border-bottom: 1px solid #ddd;
-    width: 100%;
+    width: 80%;
     height: 0px;
-    margin-left: 2%;
+    margin-left: 13%;
+}
+.img{
+    height: 100px;
+    width: 100px;
+    padding-left: 33%;
+    padding-bottom: 33%;
 }
 
 .containermaior{
@@ -17,12 +25,15 @@
     height: fit-content;
     width: fit-content;
     margin-left: 39%;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .containerspanidentificacao{
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
+    margin-left: 20%;
+    margin-top: 2%;
+    width: 80%;
+    justify-content: flex-start;
 }
 .tipofuncionario{
     justify-content: center;
@@ -36,7 +47,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    
 }
 .cotainerinfo{
     display: flex;
@@ -44,14 +54,37 @@
     justify-content: center;
     height: fit-content;
 }
+.employeetable{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: larger;
+}
+.employee-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+
+.employee-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+.employee-table tr:hover {
+    background-color: #ddd;
+  }
 .nome{
     margin-bottom: 3%;
+    font-weight: bold;
+    color: #333;
+}
+.conteudo{
+    padding-left: 3%;
 }
 .cpf{
     margin-bottom: 3%;
+    color: #666;
 }
 .email{
     margin-bottom: 3%;
+    color: #666;
 }
 .ativo{
     margin-bottom: 3%;
