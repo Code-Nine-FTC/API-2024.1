@@ -33,7 +33,7 @@ input{
     border-radius: 5px;
 }
 #Editar{
-    background-color: #0d0d9b;
+    background-color: #00046D;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -46,28 +46,12 @@ input{
     font-weight: bold;
     width: 150px; 
     height: 50px;
+    border: none;
 }
 #Editar:hover{
-    background-color: #030350;
+    background-color: #0101A1;
 }
-/* #Deletar{
-    gap: 10px;
-    background-color: #d30404;
-    color: white;
-    padding: 15px;
-    text-decoration: none;
-    outline: none;
-    border-radius: 5px;
-    text-align: center;
-    user-select: none;  
-    cursor: pointer;
-    transition: 0.5s;
-    font-weight: bold;
-    width: 105px; 
-}
-#Deletar:hover{
-    background-color: #700404; */
-/* } */
+
 .button{ 
     display: flex;
     flex-direction: row;

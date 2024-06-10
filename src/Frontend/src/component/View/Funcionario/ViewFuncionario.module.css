@@ -57,7 +57,7 @@
     margin-bottom: 3%;
 }
 .button{
-    background-color: #0202c4;
+    background-color: #00046D;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -73,7 +73,7 @@
     margin: 1%;
 }
 .button:hover{
-    background-color: #030350;
+    background-color: #0101A1;
 }
 
 .containerbotao{
@@ -83,6 +83,11 @@
     padding: 20px 20px;
     margin: 1%;
 }
+@media(max-width: 680px){
+        .containerbotao{
+        
+    }
+}
 
 @media (max-width: 900px){
     .global{
@@ -91,22 +96,22 @@
     .linha{
         width: 100%;
     }
-    .containermaior{
-        margin-left: 10%;
+   .containermaior{
+        display: flex;
+        justify-content: center;
     }
-    .containerbotao{
-        margin-left: 3%;
-    }
+
 }
 @media (max-width: 1440px){
     .title{
-        margin-left: 8%;
+        margin-right: 2%;
     }
     .linha{
         width: 100%;
     }
     .containermaior{
-        margin-left: 10%;
+        display: flex;
+        justify-content: center;
     }
     .containerbotao{
         margin-left: 3%;

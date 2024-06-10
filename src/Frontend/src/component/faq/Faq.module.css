@@ -86,10 +86,10 @@
   }
   
   .supportButton{
-    width: 22vw;
-    height: 8vh;
+    width: 40vh;
+    height: 6vh;
     font-size: 16px;
-    background-color: #111686;
+    background-color: #00046D;
     color: white;
     font-weight: bold;
     border: none;
@@ -98,7 +98,7 @@
   }
   
   .supportButton:hover {
-    background-color: #2a30b0
+    background-color: #0101A1;
   }
 
   .statusMain{
@@ -312,10 +312,16 @@
     width: 300px;
     margin-left: 4%;
   }
+  .supportButton{
+    width: 45vh;
+    height: 5vh;
+    margin-left: 4%;
+  }
 }
 @media (max-width:1320px){
   .supportButton{
-    width: 300px;
+    width: 45vh;
+    height: 5vh;
     margin-left: 4%;
   }
 }

@@ -43,17 +43,6 @@ const HomeSup = () =>{
                 <header className={styles.title}>
                     <h1>Bem-Vindo !</h1>
                     <br></br>
-                    {/* <div className={styles.ticketcampo}>
-                    {chamado && (
-                        chamado.cha_status === 'Em andamento' ? (
-                            <StatusEmAndamento chamado={chamado}/>
-                        ) : chamado.cha_status === 'Em espera' ? (
-                            <StatusEmEspera chamado={chamado}/>
-                        ) : (
-                            <StatusConcluido chamado={chamado}/>
-                        )
-                    )}
-                </div> */}
                     <br></br>
                     <hr className={styles.linha}></hr>   
                 </header>
