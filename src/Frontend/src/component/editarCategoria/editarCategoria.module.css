@@ -48,18 +48,18 @@ input {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: #1818b9;
+    background-color: #00046D;
     color: white;
-    border: 1px solid #1818b9;
+    border: 1px solid #00046D;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    height: 7vh;
-    width: 20vh;
+    height: 5vh;
+    width: 15vh;
 }
 
 .customButton:hover {
-    background-color: darkblue;
+    background-color: #0202a8;
     border-color: darkblue;
 }
 
@@ -68,14 +68,17 @@ input {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: #5555c6;
+    background-color: #ac0303;
     color: white;
-    border: 1px solid #1818b9;
+    border: 1px solid #c00000;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    height: 7vh;
-    width: 20vh;
+    height: 5vh;
+    width: 15vh;
+}
+.voltar:hover{
+    background-color: #d40707;
 }
 
 .Container {
@@ -170,6 +173,11 @@ input {
         width: max-content;
     }
 
+    #horario {
+        margin-left: -45%;
+        display: flex;
+        color: #0b0b5f;
+    }
     .Dados1 {
         margin-bottom: 3%;
     }
