@@ -34,7 +34,7 @@ const EnviarMensagem = ({ id }: { id: number })=> {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (mensagem.texto.length > 300 || mensagem.texto === '') {
+        if (mensagem.texto.length > 300 || mensagem.texto.trim() === '') {
             Swal.fire({
                 title: 'Erro',
                 text: 'A mensagem é invalida',
