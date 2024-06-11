@@ -503,6 +503,21 @@ class ChamadoService{
             return { success: false, message: error.message };
         }
     }     
+
+    public async contarChamadosPorCategoriaEStatus(cat_id: number) {
+        try {
+            const chamadosPorStatus = await this.chamadoRepository.createQueryBuilder("chamado")
+                .select("chamado.cha_status, COUNT(chamado.cha_id) AS total")
+                .where("chamado.cat_id = :cat_id", { cat_id })
+                .groupBy("chamado.cha_status")
+                .getRawMany();
+            return { success: true, chamadosPorStatus };
+        } catch (error) {
+            console.error(`Erro em contar chamados por categoria e status: ${error}`);
+            return { success: false, message: 'Erro ao contar chamados por categoria e status' };
+        }
+    }
+    
 }
 
 export default ChamadoService

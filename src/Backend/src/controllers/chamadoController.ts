@@ -345,5 +345,22 @@ class ChamadoController {
         }
         
     }
+    public async contarChamadosPorCategoriaEStatus(req: Request, res: Response) {
+        const { cat_id } = req.params;
+        if (!cat_id) {
+            return res.status(400).json({ success: false, message: 'Categoria não fornecida' });
+        }
+        try {
+            const resultado = await this.chamadoService.contarChamadosPorCategoriaEStatus(Number(cat_id));
+            if (!resultado.success) {
+                return res.status(400).json(resultado);
+            }
+            return res.status(200).json(resultado);
+        } catch (error) {
+            console.error(`Erro ao contar chamados por categoria e status: ${error}`);
+            return res.status(500).json({ success: false, message: 'Erro interno do Servidor' });
+        }
+    }
+    
 }
 export default ChamadoController

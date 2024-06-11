@@ -13,6 +13,7 @@ import chamadoRoutes from './routes/chamadoRoutes'
 import categoriaRoutes from './routes/categoriaRoutes'
 import tarefaSla from './cron';
 import Faqrouter from './routes/faqRoutes';
+import dashBoardRoutes from './routes/dashBoardRoutes';
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
@@ -27,6 +28,7 @@ app.use(defaultRotes)
 app.use(chamadoRoutes)
 app.use(categoriaRoutes)
 app.use(Faqrouter)
+app.use(dashBoardRoutes)
 
 //inicializa o banco de dados e da start se estiver ok!
 Connection.initialize().then(() => {
