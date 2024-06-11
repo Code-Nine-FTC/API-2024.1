@@ -27,6 +27,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../services/context';
 import ListagemFaqs from "../pages/listarFaqAdm";
 import EditarFaq from "../pages/Editar/editarFaqAdm";
+import DashboardView from "../pages/dashboard";
 
 
 
@@ -81,6 +82,7 @@ const Rotas: FC =() => {
           <Route path='/faqadm' element={<FAQAdm/>}/>
           <Route path='/listafaqadm' element={<ListagemFaqs/>}/>
           <Route path='/editarfaq/:id' element={<EditarFaq/>}/>
+          <Route path="/dashboard/:id" element={<DashboardView/>}/>
         </>
       );
     }
