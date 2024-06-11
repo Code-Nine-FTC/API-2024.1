@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.6"
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/react-input-mask": "^3.0.5"
   }
 }

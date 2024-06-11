@@ -12,11 +12,9 @@ export interface ICategoriaUpdate {
     cat_prioridade?: string
 }
 export interface ICategoriaView {
-    campo1: ReactNode
-    campo2: ReactNode
-    prioridade: ReactNode
-    valor: ReactNode
-    nome: ReactNode
+    prioridade: string
+    valor: string
+    nome: string
     cat_titulo: string
     cat_horario: string
     cat_prioridade: string

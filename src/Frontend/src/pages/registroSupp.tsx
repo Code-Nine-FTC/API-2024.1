@@ -4,6 +4,8 @@ import styles from '../component/registro/Registro.module.css'
 import CadastroFuncionarioFunc from '../functions/Cadastro/cadastroFuncionarioFunc';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import InputMask from 'react-input-mask';
+
 
 const RegistroSup = () => {
     const navigate = useNavigate()
@@ -97,7 +99,7 @@ const RegistroSup = () => {
                         <input type="email" id="email" name="func_email" value={formDataSenha.func_email} placeholder='Example@example.com' onChange={handleChange} required></input><br></br>
                         <br></br>
                         <label>Seu CPF:</label>
-                        <input type="text" id="cpf" name="func_cpf" value={cpfFormatado} onChange={handleCpfChange} placeholder="000.000.000-00 " required></input><br></br>
+                        <InputMask mask="999.999.999-99" type="text" id="cpf" name="func_cpf" onChange={handleCpfChange} placeholder="000.000.000-00 " required></InputMask><br></br>
                         <br></br>
                         <label>Horário de Atendimento :</label>
                         <select className={styles.seletor} onChange={selecionarHorario} required>
