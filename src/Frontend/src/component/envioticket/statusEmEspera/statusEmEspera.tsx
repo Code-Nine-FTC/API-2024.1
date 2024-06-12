@@ -7,10 +7,13 @@ import { getNivelAcesso } from '../../../services/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import Prioridade from '../prioridadeComponent';
+import { Modal } from '../../modal/modal';
+import AtribuirChamadoModal from '../../modal/atribuirChamadoModal';
 
 function StatusEspera({ chamado } : { chamado: IChamadoView }){
     const navigate = useNavigate()
     const user = getNivelAcesso();
+    const [modal, setModal] = useState(false);
     console.log(chamado.cha_prioridade)
     
     const ComecarChamado = async (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,8 +35,17 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
             });
             console.log('Erro ao iniciar o chamado. Por favor, tente novamente mais tarde.', errorMessage, error);
     }};
+    
+    const AtribuirChamado = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setModal(true)
+    }
+    
+    const closeModal = () => {
+        setModal(false);
+    }
 
     return(
+        <>
         <div className={styles.statusBox}>
             <div className={styles.mainText}>
                 <div className={styles.buttonAlign}>
@@ -47,9 +59,14 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                     {user === 'atendente' ? (
                         <button className={styles.chatButtonAtn} type='button' onClick={ComecarChamado}>Entrar no chat</button>):
                         (
-                        <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>)
-                        }
-                        <button className={styles.esperaButton} type='button'>Em Espera</button>
+                        <>
+                            <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>
+                            {user === 'administrador' && (
+                                <button className={styles.chatButtonAtn} type='button' onClick={AtribuirChamado}>Atribuir atendente</button>
+                            )}
+                            <button className={styles.esperaButton} type='button'>Em Espera</button>
+                            </>
+                        )}
                         {user !== 'usuario' && (
                             <Prioridade prioridade = {chamado.cha_prioridade}/>
                         )}      
@@ -58,6 +75,12 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                     </div>
             </div>
         </div>
+        {modal && (
+            <Modal onClose={closeModal} titulo='Atribuir Chamado'>
+                <AtribuirChamadoModal id={chamado.cha_id}/>
+            </Modal>
+        )}
+        </>
     )
 }
 

@@ -13,9 +13,14 @@
 .modal{
     border-radius: 5px;
     background-color: #FFF;
-    padding: 2rem;
-    width: 30rem;
-    
+    padding: 3%;
+    width: 40vw;
+    height: 23vh;
+}
+
+.titulo {
+    margin-bottom: 1rem;
+    margin-left: auto;
 }
 
 .btn{
@@ -38,7 +43,7 @@
 
 .modal-header{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     font-size: 2rem;
 }
 
@@ -53,5 +58,13 @@
 
 .close{
     cursor: pointer;
+    right: 0;
+    margin-left: auto;
 }
 
+@media (max-width: 768px){
+    .modal{
+        width: 80vw;
+        height: 30vh;
+    }
+}
