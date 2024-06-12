@@ -31,13 +31,35 @@ export class FaqController {
 
     public async editarFaq(req: Request, res: Response) {
         try {
-            const faqId = parseInt(req.params.faq_id, 10);
+            const faqId = parseInt(req.params.id, 10);
             const dadosUpdate: IFaqUpdate = req.body;
             const resultado = await this.faqService.editarFaq(faqId, dadosUpdate);
             const status = resultado.success ? 200 : 400;
             return res.status(status).json(resultado);
         } catch (error) {
             return res.status(400).send({ message: 'Erro ao atualizar FAQ: ' + error.message });
+        }
+    }
+
+    public async deletarFaq(req: Request, res: Response) {
+        try {
+            const faqId = parseInt(req.params.id, 10);
+            const resultado = await this.faqService.deletarFaq(faqId);
+            const status = resultado.success ? 200 : 400;
+            return res.status(status).json(resultado);
+        } catch (error) {
+            return res.status(400).send({ message: 'Erro ao deletar FAQ: ' + error.message });
+        }
+    }
+
+    public async verFaq(req: Request, res: Response) {
+        try {
+            const faqId = parseInt(req.params.id, 10);
+            const resultado = await this.faqService.verFaq(faqId);
+            const status = resultado.success ? 200 : 400;
+            return res.status(status).json(resultado);
+        } catch (error) {
+            return res.status(400).send({ message: 'Erro ao ver FAQ: ' + error.message });
         }
     }
 }
