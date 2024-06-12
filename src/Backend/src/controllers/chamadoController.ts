@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
 import ChamadoService from "../services/chamadoService";
-import { ClienteService } from "../services/clienteService";
-import { AuthMiddleware } from "./authMiddleware";
 
 class ChamadoController {
     private chamadoService: ChamadoService
@@ -50,7 +48,6 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const cli_id = res.locals.userId
-            console.log('Recebendo request em /viewChamadosAtivosCliente', cli_id)
             // Verificações
             if (isNaN(cli_id) || cli_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${cli_id}` });
@@ -61,7 +58,6 @@ class ChamadoController {
             if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
-            console.log('devolveu 2', resultado.chamados)
             return res.status(200).json(resultado)
 
         } catch (error) {
@@ -141,7 +137,6 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const func_id = res.locals.userId
-            console.log('Recebendo requisição em /viewChamadoEmAtendimentoAtendente', func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${func_id}` });
@@ -164,7 +159,6 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const func_id = res.locals.userId
-            console.log('Recebendo requisição em /viewChamadosFinalizadosAtendente ', func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${func_id}` });
@@ -187,7 +181,6 @@ class ChamadoController {
         try {
             //Pega o id do cliente passado pela autenticação
             const func_id = res.locals.userId
-            console.log('Recebendo requisição em /viewUltimoChamadoAtendente', func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do atendente inválido: ID ${func_id}` });
@@ -213,7 +206,6 @@ class ChamadoController {
             console.log(cha_id)
             // Pega o id passado pela autenticação
             const func_id = res.locals.userId
-            console.log('Recebendo requisição em /iniciarAtendimentoController', cha_id, func_id)
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do cliente inválido: ID ${func_id}` });
@@ -221,7 +213,7 @@ class ChamadoController {
             // chama função do service
             const resultado = await this.chamadoService.iniciarAtendimento(parseInt(cha_id), func_id)
 
-            if(!resultado.success){
+            if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
             return res.status(200).json(resultado)
@@ -237,10 +229,9 @@ class ChamadoController {
             // Pega o id pela url
             const cha_id = req.params.cha_id
             // chama função do service
-            console.log('Recebendo requisiição em /finalizarAtendimentoController', cha_id)
             const resultado = await this.chamadoService.finalizarAtendimento(parseInt(cha_id))
 
-            if(!resultado.success){
+            if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
             return res.status(200).json(resultado)
@@ -284,10 +275,11 @@ class ChamadoController {
         }
     }
 
-    public async direcionaChamadoController(req:Request, res: Response){
-        try{
+    public async direcionaChamadoController(req: Request, res: Response) {
+        try {
             // Pega o id do chamado e do funcionario que foi enviado do corpo
             const { cha_id, func_id } = req.body
+            
             // Verificações
             if (isNaN(func_id) || func_id <= 0) {
                 return res.status(400).json({ success: false, message: `Id do funcionario inválido: ID ${func_id}` });
@@ -297,13 +289,13 @@ class ChamadoController {
             }
             // chama a função do service
             const resultado = await this.chamadoService.direcionarAtendimento(parseInt(cha_id), parseInt(func_id))
-
-            if(!resultado.success){
+            console.log(resultado)
+            if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
             return res.status(200).json(resultado)
 
-        }catch(error){
+        } catch (error) {
             console.error(`Erro interno do servidor: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });
 
@@ -312,22 +304,18 @@ class ChamadoController {
 
     public async listaFuncionarioDisponiveis(req: Request, res: Response) {
         try {
-            console.log('Recebendo request em /listaFuncionarioDisponiveis')
-    
             const resultado = await this.chamadoService.listaFuncionarioDisponiveis()
-    
+
             if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
-            console.log('Funcionários disponíveis encontrados!', resultado.funcionarios)
             return res.status(200).json(resultado)
-    
         } catch (error) {
             console.error(`Erro ao listar funcionários disponíveis: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno do Servidor` })
         }
     }
-    
+
     //Para Ambos (Administrador e Atendente)
     public async viewChamadosEmEspera(req: Request, res: Response) {
         try {
@@ -337,21 +325,21 @@ class ChamadoController {
             if (!resultado.success) {
                 return res.status(400).json(resultado)
             }
-            console.log('devolveu', resultado.chamados)
             return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro em buscar todos os chamados ativos do cliente: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno do Servidor` })
         }
-        
+
     }
-    public async contarChamadosPorCategoriaEStatus(req: Request, res: Response) {
-        const { cat_id } = req.params;
-        if (!cat_id) {
-            return res.status(400).json({ success: false, message: 'Categoria não fornecida' });
-        }
+
+    public async dashboardPesquisaChamado(req: Request, res: Response) {
         try {
-            const resultado = await this.chamadoService.contarChamadosPorCategoriaEStatus(Number(cat_id));
+            const { cat_id } = req.params;
+            if (!cat_id) {
+                return res.status(400).json({ success: false, message: 'ID Categoria não fornecida' });
+            }
+            const resultado = await this.chamadoService.dashboardPesquisaChamado(Number(cat_id));
             if (!resultado.success) {
                 return res.status(400).json(resultado);
             }
@@ -361,6 +349,6 @@ class ChamadoController {
             return res.status(500).json({ success: false, message: 'Erro interno do Servidor' });
         }
     }
-    
+
 }
 export default ChamadoController

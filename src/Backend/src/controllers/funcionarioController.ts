@@ -12,11 +12,10 @@ export default class FuncionarioController {
         try {
             const dadosFuncionario: IFuncionarioInput = req.body;
             const resultado = await this.funcionarioService.cadastrarFuncionario(dadosFuncionario);
-            if (resultado.success) {
-                return res.status(201).json(resultado);
-            } else {
-                return res.status(400).json(resultado);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(201).json(resultado)
         } catch (error) {
             console.error(`Erro no cadastro do funcionário: ${error}`);
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });
@@ -31,11 +30,10 @@ export default class FuncionarioController {
             }
             const dadosUpdate: IFuncionarioUpdate = req.body.dadosUpdate;
             const resultado = await this.funcionarioService.editarFuncionario(id, dadosUpdate);
-            if (resultado.success) {
-                return res.status(200).json(resultado);
-            } else {
-                return res.status(400).json(resultado);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro em editar o funcionário: ${error}`);
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });
@@ -47,11 +45,10 @@ export default class FuncionarioController {
             const id = req.params.id;  
             const resultado = await this.funcionarioService.visualizarFuncionario(parseInt(id));
             console.log(resultado);
-            if (resultado.success) {
-                return res.status(200).json(resultado);
-            } else {
-                return res.status(400).json(resultado);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro em visualizar o funcionário: ${error}`);
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });
@@ -68,20 +65,19 @@ export default class FuncionarioController {
                 return res.status(400).json(resultado);
             }
         } catch (error) {
-            console.error(`Erro em visualizar o funcionário: ${error}`);
+            console.error(`Erro em visualizar o perfil do funcionário: ${error}`);
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });
         }
     }
 
     async visualizarTodosFuncionarios(req: Request, res: Response) {
         try {
-            const result = await this.funcionarioService.visualizarTodosFuncionarios();
+            const resultado = await this.funcionarioService.visualizarTodosFuncionarios();
 
-            if (result.success) {
-                return res.status(200).json(result);
-            } else {
-                return res.status(404).json(result);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro visualizar todos os funcionarios: ${error}`);
             return res.status(500).json({ success: false, message: 'Erro interno do servidor' });
@@ -93,11 +89,10 @@ export default class FuncionarioController {
             const dadosLoggin: IFuncionarioLoggin = req.body;
             const resultado = await this.funcionarioService.loginFuncionario(dadosLoggin);
 
-            if (resultado.success) {
-                return res.status(200).json(resultado);
-            } else {
-                return res.status(400).json(resultado);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro no login do funcionário: ${error}`);
             return res.status(500).json({ success: false, message: 'Erro interno do servidor' });
@@ -111,11 +106,10 @@ export default class FuncionarioController {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' });
             }
             const resultado = await this.funcionarioService.desativarFuncionario(id);
-            if (resultado.success) {
-                return res.status(200).json(resultado);
-            } else {
-                return res.status(400).json(resultado);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro em desativar funcionário: ${error}`);
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });

@@ -35,6 +35,7 @@ export class FuncionarioService {
             return { success: false, message: "Erro ao cadastrar funcionário!" };
         }
     }
+
     public async loginFuncionario(dadosLoggin: IFuncionarioLoggin) {
         try {
             // Senhas para criação de token
@@ -74,6 +75,7 @@ export class FuncionarioService {
             return { success: false, message: 'Erro ao fazer login!' };
         }
     }
+
     public async editarFuncionario(id: number, dadosUpdate: IFuncionarioUpdate) {
         try {
             // busca funcionario
@@ -123,6 +125,7 @@ export class FuncionarioService {
             return { success: false, message: `Erro ao editar funcionário!` }
         }
     }
+
     public async visualizarFuncionario(id: number) {
         try {
             // Busca funcionario
@@ -137,10 +140,13 @@ export class FuncionarioService {
             return { success: false, message: `Erro ao encontrar o funcionário!` }
         }
     }
+
     public async visualizarTodosFuncionarios() {
         try {
             // Busca os funcinarios
-            const funcionarios = await this.funcionarioRepository.find()
+            const funcionarios = await this.funcionarioRepository.find({
+                where : { func_is_admin : false }
+            })
             // Verifica se existe funcionarios registrados
             if (!funcionarios || funcionarios.length === 0) {
                 return { success: false, message: `Nenhum funcionário encontrado!` }

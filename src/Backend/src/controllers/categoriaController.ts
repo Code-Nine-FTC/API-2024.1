@@ -12,6 +12,7 @@ export class CategoriaController {
     public async criarCategoria(req: Request, res: Response) {
         try {
             const dadosCategoria: ICategoriaInput = req.body;
+            console.log(dadosCategoria)
             const resultado = await this.categoriaService.criarCategoria(dadosCategoria);
             if(!resultado.success){
                 return res.status(400).json(resultado)
@@ -34,7 +35,6 @@ export class CategoriaController {
     public async editarCategoria(req: Request, res: Response) {
         try {
             const cat_id = req.params.cat_id;
-            console.log('id',cat_id)
             const dadosUpdate: ICategoriaUpdate = req.body;
             console.log(dadosUpdate)
             const resultado = await this.categoriaService.editarCategoria(parseInt(cat_id), dadosUpdate);
