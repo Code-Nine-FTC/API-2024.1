@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { listarChamadosPorCategoriaEStatus, listarCategorias } from '../functions/dashboard/dash';
+import Sidebar from '../component/sidebar/sidebar';
 
 interface ICategoriaView {
     cat_id: number;
@@ -88,8 +89,10 @@ const DashboardView: React.FC = () => {
     };
 
     return (
+        <>
+        <Sidebar/>
         <div style={styles.container}>
-            <h2 style={styles.title}>Dashboard de Chamados</h2>
+            <h2 style={styles.title}>Relatórios de Tickets</h2>
             {loading && <p>Carregando...</p>}
             {error && <p style={styles.errorMessage}>{error}</p>}
             <div style={styles.selectContainer}>
@@ -109,6 +112,7 @@ const DashboardView: React.FC = () => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 
