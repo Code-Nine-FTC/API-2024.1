@@ -3,7 +3,7 @@ import api from "../../services/api";
 
 const updateCliente = async ( dadosUpdate: IClienteUpdate) => {
     try {
-        const resultado = await api.put(`/updateCliente`,{ dadosUpdate}); 
+        const resultado = await api.put(`/update/cliente`,{ dadosUpdate}); 
         return {clienteUpdate :resultado.data.clienteUpdate, message: resultado.data.message}
     } catch (error) {
         console.error('Erro ao salvar dados: ', error);

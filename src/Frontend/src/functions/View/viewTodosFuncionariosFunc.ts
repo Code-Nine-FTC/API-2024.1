@@ -4,7 +4,7 @@ import api from '../../services/api';
 
 const visualizarTodosFuncionarios = async () => {
   try {
-    const response = await api.get(`/visualizarTodosFuncionarios`);
+    const response = await api.get(`/ver/todos/funcionarios`);
   
     return {funcionarios: response.data.funcionarios, success: response.data.success}
   } catch (error) {
