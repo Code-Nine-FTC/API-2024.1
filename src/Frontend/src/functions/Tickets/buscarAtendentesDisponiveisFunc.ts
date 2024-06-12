@@ -2,7 +2,7 @@ import api from "../../services/api";
 
 const BuscarAtendentesDisponiveis = async () => {
     try {
-    const resposta = await api.get('/listaFuncionarioDisponiveis')
+    const resposta = await api.get('/todos/funcionarios/disponiveis')
     console.log(resposta.data.funcionarios)
     return resposta.data
     }

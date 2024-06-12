@@ -62,13 +62,28 @@ const HeaderChat = ({ id, chamado }: { id: number; chamado: IChamadoViewMensagem
                                      {chamado.funcionario && chamado.funcionario.func_nome ? (
                                             <p>Atendente: {chamado.funcionario.func_nome}</p>
                                         ) : (
-                                            <p>Atendente: Não Possui Atendente</p>
+                                            <p>Não Atendido</p>
                                         )}
                                     <p>Cliente: {chamado.cliente.cli_nome}</p>
                                 </>
-                                ): ( <p>Cliente: {chamado.cliente.cli_nome}</p>)
+                                ): ( 
+                                    <>
+                                    {chamado.funcionario && chamado.funcionario.func_nome ? (
+                                           <p>Atendente: {chamado.funcionario.func_nome}</p>
+                                       ) : (
+                                        <p>Não Atendido</p>
+                                       )}
+                                   <p>Cliente: {chamado.cliente.cli_nome}</p>
+                               </>)
                             ):(
-                                <p>Atendente: {chamado.funcionario.func_nome}</p>
+                                <>
+                                     {chamado.funcionario && chamado.funcionario.func_nome ? (
+                                            <p>Atendente: {chamado.funcionario.func_nome}</p>
+                                        ) : (
+                                            <p>Não Atendido</p>
+                                        )}
+                                    <p>Cliente: {chamado.cliente.cli_nome}</p>
+                                </>
                             )}
                             <p>Categoria: {chamado.categoria.cat_titulo}</p> 
                         </div>

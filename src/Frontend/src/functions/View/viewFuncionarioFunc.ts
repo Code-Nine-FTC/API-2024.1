@@ -4,6 +4,7 @@ import api from '../../services/api';
 const viewFuncionario = async (func_id: number) => {
   try {
     const response = await api.get(`/ver/funcionario/${func_id}`);
+    console.log()
     return response.data.funcionario;
   } catch (error) {
     throw new Error('Erro ao buscar funcionários. Por favor, tente novamente mais tarde.');

@@ -18,6 +18,7 @@ export default function VisualizarFuncionario() {
         }
 
         const func_id: number = parseInt(id, 10);
+        console.log(func_id)
 
         const fetchFuncionario = async () => {
             try {

@@ -45,7 +45,6 @@ const Rotas: FC =() => {
         <>
           <Route path="/ticketsAtendimento" element={<TicketsAtivos/>} />
           <Route path='/todostickets' element={<TodosTickets/>} />
-          {/* <Route path="/ticketstodos" element={<TicketsTodos/>} /> */}
           <Route path="/editarcliente" element={<EditarCliente />} />
           <Route path="/visualizarcliente" element={<VisualizarCliente />} />
           <Route path="/criarticket" element={<Ticket />} />

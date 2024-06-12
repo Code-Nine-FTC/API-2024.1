@@ -4,7 +4,7 @@ import { AxiosError } from "axios";
 const EncerrarTicket = async (id: number | null) => {
     try {
         // envia o id 
-        const resposta = await api.post(`/finalizaAtendimento/${id}`);
+        const resposta = await api.put(`/finaliza/atendimento/${id}`);
         console.log(resposta.data)
 
         if (!resposta.data.success) {

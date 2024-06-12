@@ -10,7 +10,7 @@ interface ICategoriaInput {
 
 const CadastroCategoriaAdm = async (formData: ICategoriaInput) => {
     try {
-        const resultado = await api.post(`/criarCategoria`, formData);
+        const resultado = await api.post(`/criar/categoria`, formData);
         return {success: resultado.data.success, message: resultado.data.message, categoria: resultado.data.categoria};
     } catch (error) {
         console.error('Erro no cadastro ', error);

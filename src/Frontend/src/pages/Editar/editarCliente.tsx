@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 
 
 const EditarCliente: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [cli_nome, setNome] = useState<string>();
   const [cli_email, setEmail] = useState<string>();
   const [cli_senha, setSenha] = useState<string>();

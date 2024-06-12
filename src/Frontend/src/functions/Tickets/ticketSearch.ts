@@ -2,7 +2,7 @@ import api from '../../services/api';
 
 const visualizarTodasCategorias = async () => {
   try {
-    const response = await api.get(`/listarCategorias`);
+    const response = await api.get(`/todas/categorias`);
   
     return {categorias: response.data.categorias, success: response.data.success}
   } catch (error) {

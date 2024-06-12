@@ -5,7 +5,7 @@ const BuscarTodosTickets = async (user: string | null) => {
     switch (user) {
         case 'usuario':
             try {
-                const resposta = await api.get('/todosChamadosCli');
+                const resposta = await api.get('/todos/chamados/cliente');
                 console.log(resposta.data.chamados)
                 return resposta.data
             } catch (error) {
@@ -13,7 +13,7 @@ const BuscarTodosTickets = async (user: string | null) => {
             }
         case 'atendente':
             try {
-                const resposta = await api.get('/chamadosConcluidosAtend');
+                const resposta = await api.get('/todos/chamados/finalizados');
                 console.log(resposta.data.chamados)
                 return resposta.data
             } catch (error) {
@@ -21,7 +21,7 @@ const BuscarTodosTickets = async (user: string | null) => {
             }
         case 'administrador':
             try {
-                const resposta = await api.get('/todosChamados/administrador');
+                const resposta = await api.get('/todos/chamados/administrador');
                 return resposta.data
             } catch (error) {
                 throw new Error('Erro ao buscar o chamado Por favor, tente novamente mais tarde.');

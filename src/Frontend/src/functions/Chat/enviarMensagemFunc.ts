@@ -1,10 +1,8 @@
-import { rotaBase } from "../RotaBase/rotaBase"
 import api from "../../services/api";
 
 const EnviarMensagemFunc = async (mensagem: any) => {
     try {
-        console.log(mensagem)
-        const resultado = await api.post(`/enviarMensagem`, mensagem);
+        const resultado = await api.post(`/enviar/mensagem`, mensagem);
         return resultado.data
     }
     catch(error) {

@@ -7,14 +7,14 @@ import Swal from 'sweetalert2';
 
 export default function AtribuirChamadoModal({ id } : { id : number}) {
     const [viewAtendentes, setViewAtendentes] = useState<IFuncionarioView[]>([]);
-    let [funcionarioEscolhido, setFuncionarioEscolhido] = useState<number | null>(null);
+    let [funcionarioEscolhido, setFuncionarioEscolhido] = useState<string>('');
     
     useEffect(() => { 
         const fetchBuscarFuncionários = async () => {
             try {
                 const resultadoBuscarAtendentesDisponiveis = await BuscarAtendentesDisponiveis();
                 if (resultadoBuscarAtendentesDisponiveis.success) {
-                    setViewAtendentes(resultadoBuscarAtendentesDisponiveis.funcionarios);
+                    setViewAtendentes(resultadoBuscarAtendentesDisponiveis.data);
                 } else {
                     console.error("Erro ao carregar os dados dos funcionários");
                 }
@@ -48,12 +48,13 @@ export default function AtribuirChamadoModal({ id } : { id : number}) {
             console.error("Erro ao atribuir chamado: ", error);
         }
     }
+    
 
     return (
         <div className={styles.atribuirChamadoModal}>
             <form>
                 <label htmlFor="atendente" className={styles.labelSelect}>Atendentes disponíveis</label>
-                <select value={funcionarioEscolhido? funcionarioEscolhido : ""} onChange={(event) => setFuncionarioEscolhido(Number(event.target.value))} className={styles.selectAtendente} name="atendente" required>
+                <select value={funcionarioEscolhido? funcionarioEscolhido : ""} onChange={(event) => setFuncionarioEscolhido((event.target.value))} className={styles.selectAtendente} name="atendente" required>
                     <option value="" disabled>Escolha um atendente</option>
                     <option value="teste">Escolha um atendente</option>
 

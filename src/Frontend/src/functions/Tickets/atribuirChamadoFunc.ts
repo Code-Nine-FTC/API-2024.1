@@ -1,13 +1,13 @@
 import api from "../../services/api";
 import { AxiosError } from "axios";
 
-const AtribuirChamado = async (func_id: number | null, cha_id: number | null) => {
+const AtribuirChamado = async (func_id: string, cha_id: number ) => {
     const dadosChamado = {
         func_id: func_id,
         cha_id: cha_id
     }
     try {
-        const resposta = await api.post(`/direcionaAtendimento`, dadosChamado) ;
+        const resposta = await api.put(`/direciona/atendimento`, dadosChamado) ;
         if (!resposta.data.success) {
             throw new Error(resposta.data.message);
         }
