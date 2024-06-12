@@ -4,6 +4,7 @@ import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend }
 import { Bar } from 'react-chartjs-2';
 import { listarChamadosPorCategoriaEStatus, listarCategorias } from '../functions/dashboard/dash';
 import Sidebar from '../component/sidebar/sidebar';
+import { reverse } from 'dns';
 interface ICategoriaView {
     cat_id: number;
     cat_titulo: string;
@@ -55,19 +56,21 @@ const DashboardView: React.FC = () => {
     const data = {
         labels: chamadosPorStatus.map(chamado => chamado.cha_status),
         datasets: [
-            {
+            {   
                 label: 'Chamados',
                 data: chamadosPorStatus.map(chamado => chamado.total),
                 backgroundColor: chamadosPorStatus.map((chamado, index) => 
                     index === 0 ? 'rgba(83, 82, 188, 1)' : 
                     index === chamadosPorStatus.length - 1 ? 'rgba(16,15,92,1)' : 'rgba(41, 39, 226, 1)'),
-                borderColor: 'rgba(16,15,92,1)',
+                borderColor: chamadosPorStatus.map((chamado, index) => 
+                    index === 0 ? 'rgba(83, 82, 188, 1)' : 
+                    index === chamadosPorStatus.length - 1 ? 'rgba(16,15,92,1)' : 'rgba(41, 39, 226, 1)'),
                 borderWidth: 1,
-                barPercentage: 0.5,
-                categoryPercentage: 0.5,
+                barThickness: 60,
             }
         ]
     };
+
 
     return (
         <>
@@ -88,8 +91,24 @@ const DashboardView: React.FC = () => {
             </div>
             {categoriaSelecionada && chamadosPorStatus.length > 0 && (
                 <div className={styles.containerbar}>
-                    <h2>{categorias.find(categoria => categoria.cat_id === categoriaSelecionada)?.cat_titulo}</h2>
-                    <Bar data={data} className={styles.bar} />
+                    <h2  className={styles.texto}>{categorias.find(categoria => categoria.cat_id === categoriaSelecionada)?.cat_titulo}</h2>
+                    <Bar data={data} options={{indexAxis: 'y', scales: {
+                         y: {
+                            beginAtZero: true,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                stepSize: 10
+                            }
+                        },
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }    
+                        }
+                    }}} className={styles.bar}/>
                 </div>
             )}
         </div>
