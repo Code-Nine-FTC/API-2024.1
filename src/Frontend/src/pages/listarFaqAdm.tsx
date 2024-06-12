@@ -38,7 +38,7 @@ const ListagemFaqs = () => {
     <div className={styles.container}>
       <Sidebar />
       <div className={styles.content}>
-        <h2 className={`${styles.center} ${styles.titleLine}`}>FAQs Cadastradas</h2>
+        <h2 className={`${styles.center} ${styles.titleLine}`}>FAQs Cadastrados</h2>
         {loading && <p>Carregando...</p>}
         {error && <p style={{ color: "red", display: 'flex', justifyContent: 'center' }}>{error}</p>}
         <div className={styles.customLayout}>
