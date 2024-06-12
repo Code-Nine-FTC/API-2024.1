@@ -1,10 +1,9 @@
-// components/dashboard/dashboard.tsx
+import styles from '../component/dashboard/dashboard.module.css';
 import React, { useState, useEffect } from 'react';
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { listarChamadosPorCategoriaEStatus, listarCategorias } from '../functions/dashboard/dash';
 import Sidebar from '../component/sidebar/sidebar';
-
 interface ICategoriaView {
     cat_id: number;
     cat_titulo: string;
@@ -59,45 +58,27 @@ const DashboardView: React.FC = () => {
             {
                 label: 'Chamados',
                 data: chamadosPorStatus.map(chamado => chamado.total),
-                backgroundColor: 'rgba(75,192,192,0.6)',
-                borderColor: 'rgba(75,192,192,1)',
+                backgroundColor: chamadosPorStatus.map((chamado, index) => 
+                    index === 0 ? 'rgba(83, 82, 188, 1)' : 
+                    index === chamadosPorStatus.length - 1 ? 'rgba(16,15,92,1)' : 'rgba(41, 39, 226, 1)'),
+                borderColor: 'rgba(16,15,92,1)',
                 borderWidth: 1,
+                barPercentage: 0.5,
+                categoryPercentage: 0.5,
             }
         ]
-    };
-
-    const styles = {
-        container: {
-            padding: '20px'
-        },
-        title: {
-            textAlign: 'center' as 'center',
-            marginBottom: '20px'
-        },
-        selectContainer: {
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: '20px'
-        },
-        select: {
-            padding: '10px',
-            fontSize: '16px'
-        },
-        errorMessage: {
-            color: 'red'
-        }
     };
 
     return (
         <>
         <Sidebar/>
-        <div style={styles.container}>
-            <h2 style={styles.title}>Relatórios de Tickets</h2>
+        <div className={styles.container}>
+            <h2 className={styles.title}>Relatórios de Tickets</h2>
             {loading && <p>Carregando...</p>}
-            {error && <p style={styles.errorMessage}>{error}</p>}
-            <div style={styles.selectContainer}>
-                <select style={styles.select} onChange={(e) => handleCategoriaChange(e.target.value)}>
-                    <option value="">Selecione uma Categoria</option>
+            {error && <p className={styles.errorMessage}>{error}</p>}
+            <div className={styles.selectContainer}>
+                <select className={styles.select} onChange={(e) => handleCategoriaChange(e.target.value)}>
+                    <option disabled selected>Selecione uma Categoria</option>
                     {categorias.map(categoria => (
                         <option key={categoria.cat_id} value={categoria.cat_id}>
                             {categoria.cat_titulo}
@@ -106,9 +87,9 @@ const DashboardView: React.FC = () => {
                 </select>
             </div>
             {categoriaSelecionada && chamadosPorStatus.length > 0 && (
-                <div>
+                <div className={styles.containerbar}>
                     <h2>{categorias.find(categoria => categoria.cat_id === categoriaSelecionada)?.cat_titulo}</h2>
-                    <Bar data={data} />
+                    <Bar data={data} className={styles.bar} />
                 </div>
             )}
         </div>
