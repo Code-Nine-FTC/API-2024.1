@@ -5,73 +5,69 @@ import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 
 export class FuncionarioService {
+    private funcionarioRepository = Connection.getRepository(Funcionario)
+
     public async cadastrarFuncionario(dadosFuncionario: IFuncionarioInput) {
-        const funcionarioRepository = Connection.getRepository(Funcionario);
         try {
-            console.log('Recebendo dados no funcionarioService')
-            console.log(dadosFuncionario)
-            const funcionarioExistente = await funcionarioRepository.findOne({
+            const funcionarioExistente = await this.funcionarioRepository.findOne({
                 where: [
                     { func_cpf: dadosFuncionario.func_cpf },
                     { func_email: dadosFuncionario.func_email }
                 ]
             });
-            if (!funcionarioExistente) {
-                const cpfValidado = this.validarCpf(dadosFuncionario.func_cpf)
-                if (!cpfValidado) {
-                    console.log('CPF invalido')
-                    return { success: false, message: `CPF inválido` }
-                }
-                // Criptografia
-                const senhaCriptografada = await bcrypt.hash(dadosFuncionario.func_senha, 10);
-                dadosFuncionario.func_senha = senhaCriptografada
-                const novoFuncionario = funcionarioRepository.create(dadosFuncionario);
-                await funcionarioRepository.save(novoFuncionario);
-                console.log('Cadastro de funcionário concluído')
-                return { success: true, message: "Funcionário cadastrado com sucesso" };
-            } return { success: false, message: "CPF já cadastrado." };
+            if (funcionarioExistente) {
+                return { success: false, message: "Funcionario já registrado." };
+            }
+            const cpfValidado = this.validarCpf(dadosFuncionario.func_cpf)
+            if (!cpfValidado) {
+                return { success: false, message: `CPF inválido` }
+            }
+            // Criptografia
+            const senhaCriptografada = await bcrypt.hash(dadosFuncionario.func_senha, 10);
+            dadosFuncionario.func_senha = senhaCriptografada
+            // criando novo usuario
+            const novoFuncionario = this.funcionarioRepository.create(dadosFuncionario);
+            await this.funcionarioRepository.save(novoFuncionario);
+
+            return { success: true, message: "Funcionário cadastrado com sucesso" }
         } catch (error) {
             console.error("Erro ao cadastrar funcionário:", error);
             return { success: false, message: "Erro ao cadastrar funcionário!" };
         }
     }
-    public async logginFuncionario(dadosLoggin: IFuncionarioLoggin) {
+    public async loginFuncionario(dadosLoggin: IFuncionarioLoggin) {
         try {
-            console.log('Recebendo dados em /logginFuncionario')
-            console.log(dadosLoggin)
+            // Senhas para criação de token
             const secret2 = process.env.SECRET02
             const secret3 = process.env.SECRET03
-            const funcionarioRepository = Connection.getRepository(Funcionario);
-            const funcionario = await funcionarioRepository.findOne({ where: { func_cpf: dadosLoggin.func_cpf } });
+            // busca funcionario
+            const funcionario = await this.funcionarioRepository.findOne({ where: { func_cpf: dadosLoggin.func_cpf } });
+            // verifica se o funcionario existe
             if (!funcionario) {
                 console.log('Funcionário não encontrado')
                 return { success: false, message: 'Funcionário não encontrado!' };
             }
-            console.log(funcionario)
             // Verifica se o funcionario está ativo
             if (!funcionario.ativo) {
-                console.log('Entrada negada')
                 return { success: false, message: 'Entrada negada' };
             }
-            // Funcionario
+            // Funcionario comum
             if (!funcionario.func_is_admin) {
-                console.log('FUNCIONARIO LOGIN (not adm)')
+                // verificação de senha do usuario
                 if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
-                    console.log('Dados funcionario Errado (not adm)')
                     return { success: false, message: 'Dados inválidos!' };
                 }
-
-                const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'atendente' }, secret2)
-                console.log('Autenticação realizada com sucesso')
-                return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, nivelAcesso: 'atendente' };
+                // criação de token após confirmação de senha
+                const token = jwt.sign({ id: funcionario.func_id }, secret2, { expiresIn: '5h' })
+                return { success: true, message: 'Autenticação realizada com sucesso.', funcionario, token, nivelAcesso: 'atendente' };
             }
             // Admin
+            // Verifica senha
             if (!bcrypt.compareSync(dadosLoggin.func_senha, funcionario.func_senha)) {
-                console.log('Dados invalidos (ADM)')
                 return { success: false, message: 'Dados inválidos!' };
             }
-            const token = jwt.sign({ id: funcionario.func_id, nivelAcesso: 'administrador' }, secret3)
-            console.log('Autenticação realizada com sucesso (ADM)')
+            // Cria token após fazer login
+            const token = jwt.sign({ id: funcionario.func_id }, secret3, { expiresIn: '5h' })
             return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, nivelAcesso: 'administrador' };
         } catch (error) {
             console.error(`Erro ao fazer login: ${error}`);
@@ -80,35 +76,47 @@ export class FuncionarioService {
     }
     public async editarFuncionario(id: number, dadosUpdate: IFuncionarioUpdate) {
         try {
-            const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
+            // busca funcionario
+            const funcionario = await this.funcionarioRepository.findOne({ where: { func_id: id } })
+            // verifica se ele existe
             if (!funcionario) {
                 return { success: false, message: `Funcionário não encontrado!` }
             }
+            // verifica se nos dadosupdate veio o cpf
             if (dadosUpdate.func_cpf) {
+                // valida cpf
                 const cpfValidado = this.validarCpf(dadosUpdate.func_cpf)
-                if (cpfValidado) {
-                    const cpfExistente = await funcionarioRepository.findOne({ where: { func_cpf: dadosUpdate.func_cpf } })
-                    if (cpfExistente && cpfExistente.func_id !== id) {
-                        return { success: false, message: `CPF já registrado` }
-                    }
-                } else {
+                // verifca se o cpf é valido
+                if (!cpfValidado) {
                     return { success: false, message: `CPF inválido` }
                 }
+                // busca o cpf 
+                const cpfExistente = await this.funcionarioRepository.findOne({ where: { func_cpf: dadosUpdate.func_cpf } })
+                // verifica se ele existe
+                if (cpfExistente && cpfExistente.func_id !== id) {
+                    return { success: false, message: `CPF já registrado` }
+                }
             }
+            // verifica se nos dadosUpdate tem email
             if (dadosUpdate.func_email) {
-                const emailExistente = await funcionarioRepository.findOne({ where: { func_email: dadosUpdate.func_email } })
+                // busca email
+                const emailExistente = await this.funcionarioRepository.findOne({ where: { func_email: dadosUpdate.func_email } })
+                // verifica se o email já existe 
                 if (emailExistente && emailExistente.func_id !== id) {
                     return { success: false, message: `E-mail já cadastrado` };
                 }
             }
+            // verifica se nos dadosUpdate tem senha
             if (dadosUpdate.func_senha) {
+                // criptografa senha 
                 const senhaCriptografada = await bcrypt.hash(dadosUpdate.func_senha, 10);
                 dadosUpdate.func_senha = senhaCriptografada;
             }
+            // Mesclando os dados
             const funcionarioUpdate = { ...funcionario, ...dadosUpdate }
             delete funcionarioUpdate.func_id;
-            await funcionarioRepository.update(id, funcionarioUpdate)
+            // atualizando os dados do funcionario
+            await this.funcionarioRepository.update(id, funcionarioUpdate)
             return { success: true, message: `Funcionário atualizado com sucesso!`, funcionarioUpdate }
         } catch (error) {
             console.error(`Erro ao editar funcionário: ${error}`)
@@ -117,13 +125,12 @@ export class FuncionarioService {
     }
     public async visualizarFuncionario(id: number) {
         try {
-            console.log('Recebendo chamado em funcionarioService')
-            const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
+            // Busca funcionario
+            const funcionario = await this.funcionarioRepository.findOne({ where: { func_id: id } })
+            // Verifica se o funcionario existe
             if (!funcionario) {
                 return { success: false, message: `Funcionário não encontrado!` }
             }
-            console.log(funcionario)
             return { success: true, message: 'Funcionário encontrado!', funcionario }
         } catch (error) {
             console.error(`Erro ao encontrar funcionário: ${error}`)
@@ -132,8 +139,9 @@ export class FuncionarioService {
     }
     public async visualizarTodosFuncionarios() {
         try {
-            const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionarios = await funcionarioRepository.find()
+            // Busca os funcinarios
+            const funcionarios = await this.funcionarioRepository.find()
+            // Verifica se existe funcionarios registrados
             if (!funcionarios || funcionarios.length === 0) {
                 return { success: false, message: `Nenhum funcionário encontrado!` }
             }
@@ -146,19 +154,23 @@ export class FuncionarioService {
 
     public async desativarFuncionario(id: number) {
         try {
-            const funcionarioRepository = Connection.getRepository(Funcionario)
-            const funcionario = await funcionarioRepository.findOne({ where: { func_id: id } })
+            // Busca funcionarios
+            const funcionario = await this.funcionarioRepository.findOne({ where: { func_id: id } })
+            // Verifica se o funcionario existe
             if (!funcionario) {
-                return { success: false, message: `funcionario não entrado` }
+                return { success: false, message: `Funcionario não entrado.` }
             }
+            //Desativa o funcionario
             funcionario.ativo = false
-            await funcionarioRepository.save(funcionario)
-            return { success: true, message: `funcionario desativado com sucesso`, funcionario }
+            // Atualiza  
+            await this.funcionarioRepository.update(id,funcionario)
+            return { success: true, message: `Funcionario desativado com sucesso`, funcionario }
         } catch (error) {
             console.error(`Erro ao encontrar funcionario: ${error}`)
             return { success: false, message: `Erro ao encontrar o funcionario` }
         }
     }
+
     private validarCpf(cpf: string): boolean {
         if (cpf.length !== 11) {
             return false

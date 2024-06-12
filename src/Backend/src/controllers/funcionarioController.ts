@@ -9,8 +9,6 @@ export default class FuncionarioController {
     }
 
     async cadastrarFuncionario(req: Request, res: Response) {
-        console.log('Received POST request to /cadastrarFuncionario'); // Corrigido o nome da rota
-        console.log(req.body);
         try {
             const dadosFuncionario: IFuncionarioInput = req.body;
             const resultado = await this.funcionarioService.cadastrarFuncionario(dadosFuncionario);
@@ -28,12 +26,10 @@ export default class FuncionarioController {
     async editarFuncionario(req: Request, res: Response) {
         try {
             const id = Number(req.body.func_id);
-            console.log(id);
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' });
             }
             const dadosUpdate: IFuncionarioUpdate = req.body.dadosUpdate;
-            console.log(dadosUpdate);
             const resultado = await this.funcionarioService.editarFuncionario(id, dadosUpdate);
             if (resultado.success) {
                 return res.status(200).json(resultado);
@@ -48,8 +44,7 @@ export default class FuncionarioController {
 
     async visualizarFuncionario(req: Request, res: Response) {
         try {
-            console.log('Recebendo informações /viewFuncionario')
-            const id = req.body.func_id;  
+            const id = req.params.id;  
             const resultado = await this.funcionarioService.visualizarFuncionario(parseInt(id));
             console.log(resultado);
             if (resultado.success) {
@@ -67,7 +62,6 @@ export default class FuncionarioController {
         try {
             const id=  res.locals.userId;
             const resultado = await this.funcionarioService.visualizarFuncionario(parseInt(id));
-            console.log(resultado);
             if (resultado.success) {
                 return res.status(200).json(resultado);
             } else {
@@ -94,11 +88,10 @@ export default class FuncionarioController {
         }
     }
 
-    async logginFuncionario(req: Request, res: Response) {
+    async loginFuncionario(req: Request, res: Response) {
         try {
             const dadosLoggin: IFuncionarioLoggin = req.body;
-            console.log(dadosLoggin);
-            const resultado = await this.funcionarioService.logginFuncionario(dadosLoggin);
+            const resultado = await this.funcionarioService.loginFuncionario(dadosLoggin);
 
             if (resultado.success) {
                 return res.status(200).json(resultado);
@@ -113,8 +106,7 @@ export default class FuncionarioController {
 
     async desativarFuncionario(req: Request, res: Response) {
         try {
-            const id = Number(req.body.func_id);
-            console.log(id)
+            const id = Number(req.params.id);
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do funcionário inválido' });
             }

@@ -15,27 +15,25 @@ export default class ClienteController {
         try {
             const dadosCliente: IClienteInput = req.body
             const resultado = await this.clienteService.cadastrarCliente(dadosCliente)
-            if (resultado.success) {
-                return res.status(201).json(resultado)
-            } else {
+            if (!resultado.success) {
                 return res.status(400).json(resultado)
-            }
+            } 
+            return res.status(201).json(resultado)
         } catch (error) {
             console.error(`Erro no cadastro do cliente: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
-    async logginCliente(req: Request, res: Response) {
+    async loginCliente(req: Request, res: Response) {
         try {
             const dadosLogin: IClienteLoggin = req.body
             const resultado = await this.clienteService.logginCliente(dadosLogin)
-            if (resultado.success) {
-                return res.status(200).json(resultado)
-            } else {
+            if (!resultado.success) {
                 return res.status(400).json(resultado)
-            }
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
-            console.error(`Erro no logging do cliente: ${error}`)
+            console.error(`Erro na autenticação do cliente: ${error}`)
             return res.status(500).json({ success: false, message: `Erro interno do servidor` })
         }
     }
@@ -43,20 +41,16 @@ export default class ClienteController {
     async editarCliente(req: Request, res: Response) {
         try {
             const id = res.locals.userId;
-    
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' });
             }
-    
             const dadosUpdate: IClienteUpdate = req.body.dadosUpdate;
-            console.log(dadosUpdate)
             const resultado = await this.clienteService.editarCliente(id, dadosUpdate);
     
-            if (resultado.success) {
-                return res.status(200).json(resultado);
-            } else {
-                return res.status(400).json(resultado);
-            }
+            if (!resultado.success) {
+                return res.status(400).json(resultado)
+            } 
+            return res.status(200).json(resultado)
         } catch (error) {
             console.error(`Erro em editar o cliente: ${error}`);
             return res.status(500).json({ success: false, message: `Erro interno do servidor` });
@@ -65,18 +59,15 @@ export default class ClienteController {
     
     async visualizarCliente(req: Request, res: Response) {
         try {
-            console.log('recebendo request /viewCliente')
             const id = res.locals.userId;
-            console.log(id)
             if (isNaN(id) || id <= 0) {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' })
             }
             const resultado = await this.clienteService.visualizarCliente(id)
-            if (resultado.success) {
-                return res.status(200).json(resultado)
-            } else {
+            if (!resultado.success) {
                 return res.status(400).json(resultado)
-            }
+            } 
+            return res.status(200).json(resultado)
         }
         catch (error) {
             console.error(`Erro em visualizar o cliente: ${error}`)
@@ -90,7 +81,6 @@ export default class ClienteController {
                 return res.status(400).json({ success: false, message: 'ID do cliente inválido' })
             }
             const resultado = await this.clienteService.desativarCliente(id, this.chamadoService)
-
             if (!resultado.success) {
                 return res.status(400).json(resultado)
             } 
