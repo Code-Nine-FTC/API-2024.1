@@ -8,7 +8,7 @@ import categorias from "../../assets/sidebar/categorias.svg"
 
 const getAdminNavigationItems = () : NavigationItemInterface[] => {
     return [
-        { label: 'Dashboard', path: '/dashboard', imageUrl: dashboard },
+        { label: 'Dashboard', path: '/dashboard/:id', imageUrl: dashboard },
         { label: 'Tickets', dropdownItems: [
             { label: 'Em atendimento', path: '/ticketsativos' },
             { label: 'Em espera', path: '/ticketsespera' },
