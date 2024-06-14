@@ -56,7 +56,7 @@ const ListagemCategorias: React.FC<Props> = () => {
       <tr key={categoria.cat_id}>
         <td>{categoria.cat_titulo}</td>
         <td>{categoria.cat_horario}</td> 
-        <td>{categoria.cat_prioridade}</td>
+        <td>{categoria.cat_prioridade.charAt(0).toUpperCase() + categoria.cat_prioridade.slice(1)}</td>
         <td>
           <Link
             id={styles.detalheslink}

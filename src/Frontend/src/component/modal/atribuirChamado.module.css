@@ -41,6 +41,6 @@
     margin-top: 1vh;
 }
 
-button:hover {
+.botaoAtribuir:hover {
     background-color: #0056b3;
 }

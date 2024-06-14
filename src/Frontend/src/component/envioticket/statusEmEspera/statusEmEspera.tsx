@@ -60,13 +60,15 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                         <button className={styles.chatButtonAtn} type='button' onClick={ComecarChamado}>Entrar no chat</button>):
                         (
                         <>
-                            <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>
+                            {user === 'usuario' && (
+                                <button className={styles.chatButton2} type='button' disabled >Entrar no chat</button>
+                            )}
                             {user === 'administrador' && (
                                 <button className={styles.chatButtonAtn} type='button' onClick={AtribuirChamado}>Atribuir atendente</button>
                             )}
-                            <button className={styles.esperaButton} type='button'>Em Espera</button>
                             </>
                         )}
+                        <button className={styles.esperaButton} type='button'>Em Espera</button>
                         {user !== 'usuario' && (
                             <Prioridade prioridade = {chamado.cha_prioridade}/>
                         )}      
