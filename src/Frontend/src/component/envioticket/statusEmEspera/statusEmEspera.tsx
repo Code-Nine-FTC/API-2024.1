@@ -57,7 +57,7 @@ function StatusEspera({ chamado } : { chamado: IChamadoView }){
                     </div>
                     <div className={styles.buttonNav}>
                     {user === 'atendente' ? (
-                        <button className={styles.chatButtonAtn} type='button' onClick={ComecarChamado}>Entrar no chat</button>):
+                        <button className={styles.chatButtonAtn} type='button' onClick={ComecarChamado}>Iniciar atendimento</button>):
                         (
                         <>
                             {user === 'usuario' && (
