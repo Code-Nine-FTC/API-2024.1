@@ -524,6 +524,20 @@ class ChamadoService {
             return { success: false, message: 'Erro ao contar chamados por categoria e status' };
         }
     }
+    public async dashboardPesquisaTodosChamados() {
+        try {
+            const chamadosPorCategoria = await this.chamadoRepository.createQueryBuilder("chamado")
+                .select("chamado.cat_id, categoria.cat_titulo, chamado.cha_status, COUNT(chamado.cha_id) AS total")
+                .innerJoin("categoria", "categoria", "chamado.cat_id = categoria.cat_id")
+                .groupBy("chamado.cat_id, chamado.cha_status, categoria.cat_titulo")
+                .getRawMany();
+            return { success: true, chamadosPorCategoria };
+        } catch (error) {
+            console.error(`Erro ao listar todos os chamados por categoria: ${error}`);
+            return { success: false, message: 'Erro ao listar todos os chamados por categoria' };
+        }
+    }
+    
 
     // converter "HH:MM:SS" para horas decimais
     private converterHoraParaDecimal(horario) {

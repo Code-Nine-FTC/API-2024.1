@@ -349,6 +349,20 @@ class ChamadoController {
             return res.status(500).json({ success: false, message: 'Erro interno do Servidor' });
         }
     }
+    
+    public async dashboardPesquisaTodosChamados(req: Request, res: Response) {
+        try {
+            const resultado = await this.chamadoService.dashboardPesquisaTodosChamados();
+            if (!resultado.success) {
+                return res.status(400).json(resultado);
+            }
+            return res.status(200).json(resultado);
+        } catch (error) {
+            console.error(`Erro ao listar todos os chamados por categoria: ${error}`);
+            return res.status(500).json({ success: false, message: 'Erro interno do Servidor' });
+        }
+    }
+    
 
 }
 export default ChamadoController
