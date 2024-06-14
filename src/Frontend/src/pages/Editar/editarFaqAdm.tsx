@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from "react";
-import styles from "../../component/editarCategoria/editarCategoria.module.css"; // Atualize o caminho para o CSS específico, se necessário
+import styles from "../../component/editarCategoria/editarCategoria.module.css";
 import Sidebar from "../../component/sidebar/sidebar";
 import updateFaq from "../../functions/faq/updateFaq";
 import { useNavigate, useParams } from "react-router-dom";
@@ -101,62 +101,51 @@ function EditarFaq() {
         <Toaster position="top-center" reverseOrder={false} />
       </div>
       <Sidebar />
-      <div className={styles.conteudo}>
-        <div className={styles.titulo}>
-          <h1>Editar FAQ</h1>
-        </div>
-        <div className={styles.Container}>
-          <div className={styles.conteudoform} >
-            <div className={styles.Dados1}>
-              <label>
-                <h3 id={styles.subtitle}>Exemplo:</h3>
-                <input
-                  type="text"
-                  name="faq_exemplo"
-                  value={formUpdateFaq.faq_exemplo}
-                  placeholder="Digite o exemplo aqui"
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                <h3 id={styles.subtitle}>Título:</h3>
-                <input
-                  type="text"
-                  name="faq_titulo"
-                  value={formUpdateFaq.faq_titulo}
-                  placeholder="Digite o título aqui"
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                <h3 id={styles.subtitle}>Descrição:</h3>
-                <input
-                  type="text"
-                  value={formUpdateFaq.faq_descricao}
-                  name="faq_descricao"
-                  placeholder="Digite a descrição aqui"
-                  onChange={handleInputChange}
-                />
-              </label>
+      <div className={styles.mainConteudo}>
+        <div className={styles.conteudo}>
+          <div className={styles.titulo}>
+            <h1>Editar FAQ</h1>
+          </div>
+          <div className={styles.Container}>
+            <div className={styles.conteudoform} >
+              <div className={styles.Dados1}>
+                <label>
+                  <h3 id={styles.subtitle}>Exemplo:</h3>
+                  <input
+                    type="text"
+                    name="faq_exemplo"
+                    value={formUpdateFaq.faq_exemplo}
+                    placeholder="Digite o exemplo aqui"
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  <h3 id={styles.subtitle}>Título:</h3>
+                  <input
+                    type="text"
+                    name="faq_titulo"
+                    value={formUpdateFaq.faq_titulo}
+                    placeholder="Digite o título aqui"
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  <h3 id={styles.subtitle}>Descrição:</h3>
+                  <input
+                    type="text"
+                    value={formUpdateFaq.faq_descricao}
+                    name="faq_descricao"
+                    placeholder="Digite a descrição aqui"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+              <div className={styles.botoesFaq}>
+                <button type="submit" className={styles.customButton} onClick={handleSaveChanges}> Salvar </button>
+                <button type="button" className={styles.voltar} onClick={handleDeleteFaq} > Deletar </button>
+                <button type="button" className={styles.voltar} onClick={() => navigate(`/listafaqadm`)}> Voltar </button>
+              </div>
             </div>
-            <button type="submit" className={styles.customButton} onClick={handleSaveChanges}>
-              Salvar
-            </button>
-            <button
-              type="button"
-              className={styles.voltar}
-              onClick={handleDeleteFaq}
-            >
-              Deletar
-            </button>
-
-            <button
-              type="button"
-              className={styles.voltar}
-              onClick={() => navigate(`/listafaqadm`)}
-            >
-              Voltar
-            </button>
           </div>
         </div>
       </div>
