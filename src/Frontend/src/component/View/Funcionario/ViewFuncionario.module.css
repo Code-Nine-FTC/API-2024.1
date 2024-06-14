@@ -1,31 +1,32 @@
 .global{
     display: grid;
-    width: 80%;
+    width: 100%;
     height: fit-content;
+    margin: 0 auto auto 0;
 }
 .linha{
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     border-bottom: 1px solid #ddd;
-    width: 80%;
+    width: 90%;
     height: 0px;
-    margin-left: 13%;
+    margin: auto;
 }
 .img{
     height: 100px;
     width: 100px;
-    padding-left: 33%;
-    padding-bottom: 33%;
+    margin-top: 20%;
+    margin-bottom: 20%;
 }
 
 .containermaior{
     display: flex;
     flex-direction: column;
     justify-items: center;
+    align-items: center;
     height: fit-content;
     width: fit-content;
-    margin-left: 39%;
-    margin-top: 5%;
+    margin: auto;
 }
 .containerspanidentificacao{
     display: flex;
@@ -127,7 +128,7 @@
         margin-left: 3%;
     }
     .linha{
-        width: 100%;
+        width: 80%;
     }
    .containermaior{
         display: flex;
@@ -140,7 +141,7 @@
         margin-right: 2%;
     }
     .linha{
-        width: 100%;
+        width: 85%;
     }
     .containermaior{
         display: flex;

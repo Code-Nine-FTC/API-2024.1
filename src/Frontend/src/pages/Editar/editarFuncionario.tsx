@@ -130,13 +130,14 @@ function EditarFuncionario() {
                 <input type="password" value={senha} placeholder='Digite a nova senha do usuario aqui' onChange={e => setSenha(e.target.value)} />
               </label>
            
-              <label> <h3 id={styles.horario}>Horario de atendimento: </h3>  </label>
-              <select id={styles.seletor} onChange={selecionarHorario} required>
-                        <option disabled selected>Selecione um horário</option>
-                        <option value="valor1">8:00 -- 16:00</option>
-                        <option value="valor2">10:00 -- 18:00 </option>
-                        <option value="valor3">13:00 -- 21:00</option>
-              </select>
+              <label> <h3 id={styles.horario}>Horario de atendimento: </h3>
+                <select id={styles.seletor} onChange={selecionarHorario} required>
+                          <option disabled selected>Selecione um horário</option>
+                          <option value="valor1">8:00 -- 16:00</option>
+                          <option value="valor2">10:00 -- 18:00 </option>
+                          <option value="valor3">13:00 -- 21:00</option>
+                </select>
+              </label>
               </div>
               <button type="submit" className={styles.customButton}>Salvar</button>
             <button className={styles.voltar} onClick={() => navigate(`/visualizarTodosFuncionarios`)}>Voltar</button>
