@@ -17,13 +17,17 @@ const TicketAdm = () => {
         
         try {
            const resultado = await CadastroCategoriaAdm(formData);
-           if (resultado?.message){
+           if (resultado?.success){
             console.log(formData)
             toast.success(resultado.message);
-           }else{
-            toast.error(resultado?.message);
            }
-        } catch (error) {
+           else {
+            let errorMessage = resultado?.message || 'Erro ao adicionar categoria, tente novamente mais tarde.';
+            toast.error(errorMessage);
+           }
+        } catch (error: any) {
+            let errorMessage = error.message || 'Erro ao adicionar categoria, tente novamente mais tarde.';
+            toast.error(errorMessage);
             // alert('Erro ao criar categoria.');
             console.error(error);
         }

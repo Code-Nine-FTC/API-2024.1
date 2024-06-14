@@ -32,23 +32,21 @@ export default function AtribuirChamadoModal({ id } : { id : number}) {
             if (resultado.success) {
                 console.log("Chamado atribuído com sucesso");
                 Swal.fire({
-                    title: "Enviado",
-                    text: "O chamado foi enviado",
+                    title: "Sucesso!",
+                    text: "Atendente atribuído com sucesso!",
                     icon: "success"
                   });
-            } else {
-                console.error("Erro ao atribuir chamado: ", resultado.message);
-                Swal.fire({
-                    title: "Enviado",
-                    text: resultado.message,
-                    icon: "error"
-                  });
             }
-        } catch (error) {
-            console.error("Erro ao atribuir chamado: ", error);
-        }
-    }
-    
+        } catch (error: any) {
+            let errorMessage = error.message || 'Erro ao atribuir atendente. Por favor, tente novamente mais tarde.';
+            Swal.fire({
+                title: 'Erro',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            console.log('Erro ao atribuir atendente. Por favor, tente novamente mais tarde.', errorMessage, error);
+    }};
 
     return (
         <div className={styles.atribuirChamadoModal}>
@@ -62,7 +60,7 @@ export default function AtribuirChamadoModal({ id } : { id : number}) {
                                 <option key={atendente.func_id} value={atendente.func_id}>{atendente.func_nome}</option>
                             ))}
                 </select>
-                <button type="submit" onClick={DirecionarChamado}>Atribuir</button>
+                <button type="submit" className={styles.botaoAtribuir} onClick={DirecionarChamado}>Atribuir</button>
             </form>
         </div>
     )
