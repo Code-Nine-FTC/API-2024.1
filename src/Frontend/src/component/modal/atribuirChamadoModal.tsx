@@ -54,8 +54,7 @@ export default function AtribuirChamadoModal({ id } : { id : number}) {
                 <label htmlFor="atendente" className={styles.labelSelect}>Atendentes disponíveis</label>
                 <select value={funcionarioEscolhido? funcionarioEscolhido : ""} onChange={(event) => setFuncionarioEscolhido((event.target.value))} className={styles.selectAtendente} name="atendente" required>
                     <option value="" disabled>Escolha um atendente</option>
-                    <option value="teste">Escolha um atendente</option>
-
+                    {viewAtendentes.length === 0 && <option value="" disabled>Não há atendentes disponíveis</option>}
                     {viewAtendentes.map((atendente) => (
                                 <option key={atendente.func_id} value={atendente.func_id}>{atendente.func_nome}</option>
                             ))}
