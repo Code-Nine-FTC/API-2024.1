@@ -4,7 +4,7 @@ import Categoria from "../entities/categoria";
 import Chamado from "../entities/chamado";
 import Funcionario from "../entities/funcionario";
 import { IChamadoInput } from "../interfaces/IChamado";
-import { In, LessThan } from "typeorm";
+import { In, LessThan, Not } from "typeorm";
 
 class ChamadoService {
     private chamadoRepository = Connection.getRepository(Chamado)
@@ -398,7 +398,7 @@ class ChamadoService {
             });
 
             if (funcionarioOcupado) {
-                return { success: false, message: `Finalize o atendimento que está sendo realizado antes de iniciar um novo atendimento!` };
+                return { success: false, message: `Funcionario em atendimento! Selecione outro.` };
             }
 
             // Direciona para um atendente o chamado 
@@ -474,42 +474,36 @@ class ChamadoService {
 
     public async listaFuncionarioDisponiveis() {
         try {
-            // Pega o horario atual
             const agora = new Date().getHours();
-            console.log('hora agoraa', agora);
-            // busca todos os funcionarios 
+            
             const funcionarios: Funcionario[] = await this.funcionarioRepository.find({
                 where: {
-                    chamado: null,
                     func_is_admin: false,
                     ativo: true
-                }
+                },
+                relations: ['chamado']
             });
-            // lista que armazena todos os funcionarios disponiveis de acordo com a hora de serviço atual
+    
             let funcionariosDisponiveis: Funcionario[] = [];
-
+    
             for (const funcionario of funcionarios) {
+                const estaAtendendoChamado = funcionario.chamado.some(chamado => chamado.cha_status === 'Em Andamento');
+    
                 const horaInicial = parseInt(funcionario.func_expediente_inicio.split(':')[0], 10);
-                const horaFinal = parseInt(funcionario.func_expediente_final.split(':')[0], 10)
-                console.log('hora inicial', horaInicial, 'hora final', horaFinal)
-
-                // verifica 
-                if (horaInicial <= agora && horaFinal >= agora) {
+                const horaFinal = parseInt(funcionario.func_expediente_final.split(':')[0], 10);    
+                if (
+                    (horaInicial <= agora && agora < horaFinal && !estaAtendendoChamado) || 
+                    (horaInicial > horaFinal && (agora >= horaInicial || agora < horaFinal)) &&
+                    !estaAtendendoChamado
+                ) {
                     funcionariosDisponiveis.push(funcionario);
                 }
-                // Para turnos noturnos 
-                else if (horaInicial > horaFinal) {
-                    if (horaInicial >= agora && horaFinal <= agora) {
-                        funcionariosDisponiveis.push(funcionario);
-                    }
-                }
-                // verifica se existe funcionarios disponiveis
-                if (!funcionariosDisponiveis || funcionariosDisponiveis.length === 0) {
-                    return { success: false, message: `Sem funcionarios disponiveis.` }
-                }
-                console.log(funcionariosDisponiveis)
-                
             }
+    
+            if (funcionariosDisponiveis.length === 0) {
+                return { success: false, message: 'Sem funcionários disponíveis.' };
+            }
+    
             return { success: true, message: 'Funcionários disponíveis encontrados!', data: funcionariosDisponiveis };
         } catch (error) {
             console.error(`Erro ao listar funcionários disponíveis: ${error}`);
