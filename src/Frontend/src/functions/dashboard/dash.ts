@@ -19,4 +19,14 @@ export const listarCategorias = async () => {
         console.error('Erro ao listar categorias: ', error);
         return { success: false, message: 'Erro ao listar categorias.' };
     }
+    
+};
+export const listarTodosChamadosPorCategoria = async () => {
+    try {
+        const resultado = await api.get(`/dashboard/pesquisa/todos-chamados`);
+        return { success: resultado.data.success, chamadosPorCategoria: resultado.data.chamadosPorCategoria };
+    } catch (error) {
+        console.error('Erro ao listar todos os chamados por categoria: ', error);
+        return { success: false, message: 'Erro ao listar todos os chamados por categoria.' };
+    }
 };
