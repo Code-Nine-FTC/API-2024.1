@@ -76,7 +76,7 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               console.log('User Level:', resultadoFuncionario.nivelAcesso);
               switch (resultadoFuncionario.nivelAcesso) {
                 case 'administrador':
-                  navigate('/visualizarTodosFuncionarios')
+                  navigate('/dashboard/:id')
                   break;
                 case 'atendente':
                   navigate('/homesup')

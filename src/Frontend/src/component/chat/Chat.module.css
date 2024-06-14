@@ -2,23 +2,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     height: 100vh;
+    flex: 1;
+    max-width: 84%;
 }
 
 .enviarMensagem {
     background-color: #111686;
     width: 100%;
-    /* height: auto;  Altere a altura inicial para automática */
-    height: 10%; /* Adicione uma altura máxima */
-    transition: max-height 0.5s ease; /* Adicione uma transição suave */
+    height: 10%; 
+    transition: max-height 0.5s ease; 
     position: sticky;
     bottom: 0; 
     margin-top: auto;
+    box-sizing: border-box;
+
 }
 
 .enviarMensagem:focus-within {
-    max-height: 100%; /* Quando em foco, expanda para a altura máxima */
+    max-height: 100%; 
 }
 
 .formMensagem {
@@ -26,9 +28,11 @@
     margin: auto;
     height: 100%;
     width: 100%;
+    align-items: center;
     position: sticky;
     top: 0;
     bottom: auto;
+    box-sizing: border-box;
 }
 
 .formMensagem input {
@@ -37,7 +41,7 @@
     background-color: white;
     min-width: 90%;
     margin-left: 2%;
-    margin-top: 1.2%;
+    /* margin-top: 1.2%; */
     min-height: 60%;
     text-indent: 10px;
     border: none;
@@ -68,7 +72,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: max-content;
+    min-height: fit-content;
     height: 20%;
     position: sticky;
     top: 0;
@@ -176,14 +180,15 @@
     border-radius: 10px;
     padding: 10px ;
     margin-bottom: 10px;
-    max-width: 40%;
-    min-width: 40%;
+    width: 40%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     margin: 3%;
     margin-right: 3%;
     margin-left: auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .otherchatbox{
@@ -192,45 +197,97 @@
     border-radius: 10px;
     padding: 10px ;
     margin-bottom: 10px;
-    max-width: 40%;
-    min-width: 40%;
+    width: 40%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     margin: 3%;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
-@media(max-width: 800px){
+@media (max-width: 769px) {
+    .info {
+        margin-top: 5vh;
+        margin-left: 13vw;
+    }
+     .chatContent {
+        max-width: 100%;
+    }
+    .encerrarChamado {
+        width: 60%;
+        font-size: 0.8em;
+    }
     .header{
-        position: fixed;
-        height: 15%;
+        height: 20%;
     }
-    .chatContent{
-        height: 100vh;
-    }
-
-    .campoMensagens{
-        height: auto;
-    }
-    
-    .formMensagem{
-        height: 3.1rem;
-        align-items: center;
-        }
     
     .formMensagem input{
         font-size: 1rem;
     }
 
+    .chatbox {
+        height: max-content;
+        max-width: 40%;
+        margin-left: auto;
+        right: 0;
+        font-size: 0.9em;
+    }
+
+    .otherchatbox {
+        height: max-content;
+        margin-right: auto;
+        left: 0;
+        max-width: 40%;
+        font-size: 0.9em;
+    }
+
     .campoMensagens{
+        width: 100%;
         margin-top: 1rem;
         height: auto;
     }
-
+    .enviarIcon {
+        width: 20%;
+        height: 20%;
+    }
     .enviarMensagem{
-        position: fixed;
         bottom: 0;
         width: 100%;
-        height: 5vh; 
+        height: 6vh; 
+    }
+}
+
+@media (max-width: 1400px) {
+    .otherchatbox {
+        width: 30%;
+    }
+    .chatbox {
+        width: 30%;
+    }
+    .campoMensagens {
+        width: 100%;
+    }
+    .chatContent {
+        width: 50%;
+    }
+    .encerrarChamado {
+        width: 70%;
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 1401px) and (max-width: 1700px) {
+    .otherchatbox {
+        width: 25%;
+    }
+    .chatbox {
+        width: 25%;
+    }
+    .campoMensagens {
+        width: 100%;
+    }
+    .chatContent {
+        width: 70%;
     }
 }
