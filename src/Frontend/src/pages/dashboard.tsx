@@ -28,6 +28,12 @@ interface IChamadoPorCategoria {
   total: number;
 }
 
+// interface itensLista {
+//   cat_id: number;
+//   cat_titulo: string;
+//   total: number;
+// }
+
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 // // Mova a função getRandomColor para antes do uso
@@ -63,6 +69,8 @@ const DashboardView: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [dataInicial, setDataInicial] = useState("");
   const [dataFinal, setDataFinal] = useState("");
+  // const [lista, setLista] = useState<itensLista[]>([]);
+  // const [listaZerada, setListaZerada] = useState<itensLista[]>([]);
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -70,8 +78,15 @@ const DashboardView: React.FC = () => {
         const response = await listarCategorias();
         if (response.success) {
           setCategorias(response.categorias);
+          // for (let categoria of response.categorias) {
+          //   listaZerada.push({ cat_id: categoria.cat_id, cat_titulo: categoria.cat_titulo, total: 0 });
+          // }
+          // console.log(listaZerada)
+          // console.log('categorias', categorias)
+          // console.log('lista zerada', listaZerada)
           setLoading(false);
           setError("");
+          return true;
         } else {
           setError("Erro ao carregar as categorias");
           setLoading(false);
@@ -82,27 +97,48 @@ const DashboardView: React.FC = () => {
       }
     };
 
-    const fetchTodosChamados = async () => {
-      try {
-        const response = await listarTodosChamadosPorCategoria(dataInicial, dataFinal);
-        if (response.success) {
-          setTodosChamadosPorCategoria(response.data);
-          setLoading(false);
-          setError("");
-        } else {
-          setError("Erro ao carregar todos os chamados");
-          setLoading(false);
-        }
-      } catch (error) {
-        setError("Erro ao carregar todos os chamados");
-        setLoading(false);
-      }
-    };
-
     fetchCategorias();
     fetchTodosChamados();
   }, []);
+
+  // useEffect(() => {
+  //   const buscarDados = async () => {
+  //     if (categorias.length > 0) {
+  //       fetchTodosChamados();
+  //     }
+  //   }
+
+  //   buscarDados();
+  // }, [categorias])
  
+  const fetchTodosChamados = async () => {
+    try {
+      const response = await listarTodosChamadosPorCategoria(dataInicial, dataFinal);
+      if (response.success) {
+        console.log('resposta', response.data)
+        // let novaLista2 = [...listaZerada];
+        // for (let categoria of response.data) {
+        //   for (let item of novaLista2) {
+        //     if (categoria.cat_id === item.cat_id) {
+        //       item.total = categoria.total
+        //     }
+        //   }
+        // }
+        // setLista(novaLista2);
+        // console.log('lista foda', lista)
+        setTodosChamadosPorCategoria(response.data);
+        setLoading(false);
+        setError("");
+      } else {
+        setError("Erro ao carregar todos os chamados");
+        setLoading(false);
+      }
+    } catch (error) {
+      setError("Erro ao carregar todos os chamados");
+      setLoading(false);
+    }
+  };
+
   const fetchChamadosPorCategorias = async (cat_id: number | null, dataInicial: string, dataFinal: string) => {
     if (cat_id) {
       const response = await listarChamadosPorCategoriaEStatus(
@@ -129,11 +165,21 @@ const DashboardView: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchChamadosPorCategorias(categoriaSelecionada, dataInicial, dataFinal)
+    if (!categoriaSelecionada) {
+      fetchTodosChamados()
+    }
+    else {
+      fetchChamadosPorCategorias(categoriaSelecionada, dataInicial, dataFinal)
+    }
   }, [dataFinal]);
 
   useEffect(() => {
-    fetchChamadosPorCategorias(categoriaSelecionada, dataInicial, dataFinal)
+    if (!categoriaSelecionada) {
+      fetchTodosChamados()
+    }
+    else {
+      fetchChamadosPorCategorias(categoriaSelecionada, dataInicial, dataFinal)
+    }
   }, [categoriaSelecionada]);
 
   // useEffect(() => {
@@ -143,11 +189,11 @@ const DashboardView: React.FC = () => {
   // }, [chamadosPorStatus]);
 
   const dataPorCategoria = {
-    labels: todosChamadosPorCategoria.map((chamado) => chamado.cat_titulo),
+    labels: todosChamadosPorCategoria.map((itens) => itens.cat_titulo),
     datasets: [
       {
         label: "Chamados",
-        data: todosChamadosPorCategoria.map((chamado) => chamado.total),
+        data: todosChamadosPorCategoria.map((itens2) => itens2.total),
         backgroundColor: getBlueColor,
         borderColor: getBlueColor,
         borderWidth: 1,
@@ -222,8 +268,13 @@ const DashboardView: React.FC = () => {
             disabled={!dataInicial}
           />
         </div>
-        {categoriaSelecionada === null &&
-          todosChamadosPorCategoria.length > 0 && (
+        {((chamadosPorStatus.length === 0) && (todosChamadosPorCategoria.length === 0)) && (
+          <div className={styles.messageContainer}>
+            <p> Nenhum chamado foi encontrado</p>
+          </div>
+        )}
+        {categoriaSelecionada === null && (
+          todosChamadosPorCategoria.length > 0 ? (
             <div className={styles.containerbar}>
               <h2 className={styles.texto}>Todas as Categorias</h2>
               <Bar
@@ -248,7 +299,10 @@ const DashboardView: React.FC = () => {
                 className={styles.bar}
               />
             </div>
-          )}
+          ): 
+          <div className={styles.mensagemErro}>
+            <p> Nenhum chamado foi encontrado</p>
+          </div>)}
         {categoriaSelecionada && chamadosPorStatus.length > 0 && (
           <div className={styles.containerbar}>
             <h2 className={styles.texto}>

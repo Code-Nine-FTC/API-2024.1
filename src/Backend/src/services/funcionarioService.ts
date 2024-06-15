@@ -59,7 +59,7 @@ export class FuncionarioService {
                     return { success: false, message: 'Dados inválidos!' };
                 }
                 // criação de token após confirmação de senha
-                const token = jwt.sign({ id: funcionario.func_id }, secret2, { expiresIn: '5h' })
+                const token = jwt.sign({ id: funcionario.func_id }, secret2)
                 return { success: true, message: 'Autenticação realizada com sucesso.', funcionario, token, nivelAcesso: 'atendente' };
             }
             // Admin
@@ -68,7 +68,7 @@ export class FuncionarioService {
                 return { success: false, message: 'Dados inválidos!' };
             }
             // Cria token após fazer login
-            const token = jwt.sign({ id: funcionario.func_id }, secret3, { expiresIn: '5h' })
+            const token = jwt.sign({ id: funcionario.func_id }, secret3)
             return { success: true, message: 'Autenticação realizada com sucesso', funcionario, token, nivelAcesso: 'administrador' };
         } catch (error) {
             console.error(`Erro ao fazer login: ${error}`);
