@@ -39,6 +39,16 @@ const Registro = () => {
         else{
             const { senha2, ...formData } = formDataSenha
             try {
+                const verificaCampoVazio = Object.values(formDataSenha).some(
+                    (value) =>
+                      typeof value === "string" &&
+                      (value.trim() === "" || value.trim().length === 0)
+                  );
+            
+                  if (verificaCampoVazio) {
+                    toast.error("Por favor, preencha todos os campos corretamente.");
+                    return;
+                  }
                 const resultado = await CadastroClienteFunc(formData)
                 if (resultado.success) {
                     setErro('')

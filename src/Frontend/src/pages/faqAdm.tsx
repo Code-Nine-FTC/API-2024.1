@@ -4,6 +4,7 @@ import CadastroFaqAdm from "../functions/faq/criarFaq";
 import styles from "../component/chamadoAdm/chamadoAdm.module.css";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2"
 
 interface IFaqInput {
   faq_exemplo: string;
@@ -29,7 +30,7 @@ const FAQAdm: React.FC = () => {
       );
 
       if (verificaCampoVazio) {
-        alert("Por favor, preencha todos os campos corretamente.");
+        toast.error("Por favor, preencha todos os campos corretamente.");
         return;
       }
       const resultado = await CadastroFaqAdm(formData);
@@ -39,9 +40,15 @@ const FAQAdm: React.FC = () => {
       } else {
         alert(resultado?.message || "Erro ao cadastrar FAQ.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erro ao criar FAQ:", error);
-      alert("Erro ao criar FAQ");
+      let errorMessage = error.message || 'Erro ao criar FAQ. Por favor, tente novamente mais tarde.';
+            Swal.fire({
+                title: 'Erro',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
     }
   };
 

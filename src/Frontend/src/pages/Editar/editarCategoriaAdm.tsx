@@ -36,10 +36,21 @@ function EditarCategoria() {
     console.log(dadosUpdate)
     console.log(cat_id)
     try {
+      const verificaCampoVazio = Object.values(dadosUpdate).some(
+        (value) =>
+          typeof value === "string" &&
+          (value.trim() === "" || value.trim().length === 0)
+      );
+
+      if (verificaCampoVazio) {
+        toast.error("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
+
       const resultado = await updateCategoria(cat_id, dadosUpdate);
       if (resultado.success){
         toast.success(resultado.message);
-        console.log('Deu certo!')
+        console.log('Categoria editada!')
       }
       
     } catch (error) {
