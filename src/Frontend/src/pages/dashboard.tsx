@@ -59,7 +59,7 @@ const DashboardView: React.FC = () => {
             try {
                 const response = await listarTodosChamadosPorCategoria();
                 if (response.success) {
-                    setTodosChamadosPorCategoria(response.chamadosPorCategoria);
+                    setTodosChamadosPorCategoria(response.data);
                     setLoading(false);
                     setError("");
                 } else {
