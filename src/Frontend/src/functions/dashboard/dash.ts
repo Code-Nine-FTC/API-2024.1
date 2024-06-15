@@ -4,8 +4,7 @@
 export const listarChamadosPorCategoriaEStatus = async (cat_id: number, dataInicial: string, dataFinal: string) => {
     console.log('Datas: ', dataInicial, dataFinal)
     try {
-        const resultado = await api.get(`/dashboard/pesquisa/chamado/status/${cat_id}`, { 
-            params: { dataInicial, dataFinal } 
+        const resultado = await api.post(`/dashboard/pesquisa/chamado/status/${cat_id}`, {dataInicial, dataFinal
         });
         return { success: resultado.data.success, chamadosPorStatus: resultado.data.data };
     } catch (error) {
@@ -24,9 +23,10 @@ export const listarCategorias = async () => {
     }
     
 };
-export const listarTodosChamadosPorCategoria = async () => {
+export const listarTodosChamadosPorCategoria = async (dataInicial:string, dataFinal: string) => {
     try {
-        const resultado = await api.get(`/dashboard/pesquisa/todos-chamados`);
+        const resultado = await api.post(`/dashboard/pesquisa/todos-chamados`, {dataInicial, dataFinal
+        });
         return { success: resultado.data.success, data: resultado.data.data };
     } catch (error) {
         console.error('Erro ao listar todos os chamados por categoria: ', error);
