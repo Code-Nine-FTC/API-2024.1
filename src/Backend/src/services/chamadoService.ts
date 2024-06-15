@@ -513,12 +513,30 @@ class ChamadoService {
 
     public async dashboardPesquisaChamado(cat_id: number) {
         try {
+            const chamado = [
+                { cha_status: 'Em Aberto', total: '0'},
+                { cha_status: 'Em Andamento', total: '0'},
+                { cha_status: 'Concluido', total: '0'}
+            ]
             const chamadosPorStatus = await this.chamadoRepository.createQueryBuilder("chamado")
                 .select("chamado.cha_status, COUNT(chamado.cha_id) AS total")
                 .where("chamado.cat_id = :cat_id", { cat_id })
                 .groupBy("chamado.cha_status")
-                .getRawMany();
-            return { success: true, chamadosPorStatus };
+                .getRawMany()
+
+            for (const status of chamadosPorStatus){
+                if( status.cha_status === 'Em Aberto'){
+                    chamado[0].total = status.total
+                }
+                else if( status.cha_status === 'Em Andamento'){
+                    chamado[1].total = status.total
+                }
+                else if( status.cha_status === 'Concluido' ){
+                    chamado[2].total = status.total
+                }
+            }
+
+            return { success: true, data: chamado };
         } catch (error) {
             console.error(`Erro em contar chamados por categoria e status: ${error}`);
             return { success: false, message: 'Erro ao contar chamados por categoria e status' };
@@ -527,10 +545,11 @@ class ChamadoService {
     public async dashboardPesquisaTodosChamados() {
         try {
             const chamadosPorCategoria = await this.chamadoRepository.createQueryBuilder("chamado")
-                .select("chamado.cat_id, categoria.cat_titulo, chamado.cha_status, COUNT(chamado.cha_id) AS total")
+                .select("chamado.cat_id, categoria.cat_titulo, COUNT(chamado.cha_id) AS total")
                 .innerJoin("categoria", "categoria", "chamado.cat_id = categoria.cat_id")
-                .groupBy("chamado.cat_id, chamado.cha_status, categoria.cat_titulo")
+                .groupBy("chamado.cat_id, categoria.cat_titulo")
                 .getRawMany();
+            console.log('teste',chamadosPorCategoria)
             return { success: true, chamadosPorCategoria };
         } catch (error) {
             console.error(`Erro ao listar todos os chamados por categoria: ${error}`);
