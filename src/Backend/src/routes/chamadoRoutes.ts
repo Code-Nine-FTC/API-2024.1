@@ -28,8 +28,8 @@ router.get('/todos/chamados/em/atendimento', authAdmin, chamadoController.viewTo
 router.get('/todos/chamados/administrador', authAdmin, chamadoController.viewTodosChamados.bind(chamadoController))
 router.put('/direciona/atendimento', authAdmin, chamadoController.direcionaChamadoController.bind(chamadoController))
 router.get('/todos/funcionarios/disponiveis', authAdmin, chamadoController.listaFuncionarioDisponiveis.bind(chamadoController))
-router.get('/dashboard/pesquisa/chamado/status/:cat_id', authAdmin, chamadoController.dashboardPesquisaChamado.bind(chamadoController))
-router.get('/dashboard/pesquisa/todos-chamados', authAdmin, chamadoController.dashboardPesquisaTodosChamados.bind(chamadoController));
+router.post('/dashboard/pesquisa/chamado/status/:cat_id', authAdmin, chamadoController.dashboardPesquisaChamado.bind(chamadoController))
+router.post('/dashboard/pesquisa/todos-chamados', authAdmin, chamadoController.dashboardPesquisaTodosChamados.bind(chamadoController));
 
 // Para Ambos(Administrador e Atendente)
 router.get('/todos/chamados/em/espera', authAdminOrAtendente, chamadoController.viewChamadosEmEspera.bind(chamadoController))

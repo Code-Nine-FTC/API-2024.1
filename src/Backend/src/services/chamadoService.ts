@@ -511,7 +511,7 @@ class ChamadoService {
         }
     }
 
-    public async dashboardPesquisaChamado(cat_id: number, dataInicio?: any, dataFinal?: any) {
+    public async dashboardPesquisaChamado(cat_id: number, dataInicio?: string, dataFinal?: string) {
         try {
             const chamado = [
                 { cha_status: 'Em Aberto', total: '0' },
@@ -553,13 +553,22 @@ class ChamadoService {
             return { success: false, message: 'Erro ao contar chamados por categoria e status' };
         }
     }
-    public async dashboardPesquisaTodosChamados() {
+    public async dashboardPesquisaTodosChamados(dataInicio?: string, dataFinal?: string) {
         try {
-            const chamadosPorCategoria = await this.chamadoRepository.createQueryBuilder("chamado")
+            let query = await this.chamadoRepository.createQueryBuilder("chamado")
                 .select("chamado.cat_id, categoria.cat_titulo, COUNT(chamado.cha_id) AS total")
                 .innerJoin("categoria", "categoria", "chamado.cat_id = categoria.cat_id")
-                .groupBy("chamado.cat_id, categoria.cat_titulo")
-                .getRawMany();
+
+                if (dataInicio) {
+                    query = query.andWhere("DATE(chamado.cha_data_inicio) >= :dataInicio", { dataInicio });
+                }
+                if (dataFinal) {
+                    query = query.andWhere("DATE(chamado.cha_data_inicio) <= :dataFinal", { dataFinal });
+                }
+                
+            const chamadosPorCategoria = await query.groupBy("chamado.cat_id, categoria.cat_titulo").getRawMany();
+                
+                
             console.log('teste', chamadosPorCategoria)
             return { success: true, data: chamadosPorCategoria };
         } catch (error) {
