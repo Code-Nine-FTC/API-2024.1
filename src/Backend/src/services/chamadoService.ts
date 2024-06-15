@@ -546,7 +546,7 @@ class ChamadoService {
                     chamado[2].total = status.total
                 }
             }
-
+            console.log(chamado)
             return { success: true, data: chamado };
         } catch (error) {
             console.error(`Erro em contar chamados por categoria e status: ${error}`);

@@ -56,15 +56,9 @@ const getBlueColor = [
 
 const DashboardView: React.FC = () => {
   const [categorias, setCategorias] = useState<ICategoriaView[]>([]);
-  const [categoriaSelecionada, setCategoriaSelecionada] = useState<
-    number | null
-  >(null);
-  const [chamadosPorStatus, setChamadosPorStatus] = useState<
-    { cha_status: string; total: number }[]
-  >([]);
-  const [todosChamadosPorCategoria, setTodosChamadosPorCategoria] = useState<
-    IChamadoPorCategoria[]
-  >([]);
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState< number | null >(null);
+  const [chamadosPorStatus, setChamadosPorStatus] = useState< { cha_status: string; total: number }[] >([]);
+  const [todosChamadosPorCategoria, setTodosChamadosPorCategoria] = useState< IChamadoPorCategoria[] >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
   const [dataInicial, setDataInicial] = useState("");
@@ -108,37 +102,11 @@ const DashboardView: React.FC = () => {
     fetchCategorias();
     fetchTodosChamados();
   }, []);
-
-  const handleCategoriaChange = async (cat_id: string) => {
-    if (cat_id === "todas") {
-      setCategoriaSelecionada(null);
-    } else {
-      setCategoriaSelecionada(Number(cat_id));
-      if (cat_id) {
-        const response = await listarChamadosPorCategoriaEStatus(
-          Number(cat_id),
-          dataInicial,
-          dataFinal
-        );
-        if (response.success) {
-          setChamadosPorStatus(response.chamadosPorStatus);
-        } else {
-          setError("Erro ao carregar os chamados por status");
-        }
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (categoriaSelecionada && dataInicial && dataFinal) {
-      fetchCategoriasComData();
-    }
-  }, [dataFinal]);
-
-  const fetchCategoriasComData = async () => {
-    if (categoriaSelecionada) {
+ 
+  const fetchChamadosPorCategorias = async (cat_id: number | null, dataInicial: string, dataFinal: string) => {
+    if (cat_id) {
       const response = await listarChamadosPorCategoriaEStatus(
-        categoriaSelecionada,
+        cat_id,
         dataInicial,
         dataFinal
       );
@@ -147,8 +115,32 @@ const DashboardView: React.FC = () => {
       } else {
         setError("Erro ao carregar os chamados por status");
       }
+    } else {
+      return ('Categoria não selecionada')
+    } 
+  };
+
+  const handleCategoriaChange = async (cat_id: string) => {
+    if (cat_id === "todas") {
+      setCategoriaSelecionada(null);
+    } else {
+      setCategoriaSelecionada(Number(cat_id));
     }
   };
+
+  useEffect(() => {
+    fetchChamadosPorCategorias(categoriaSelecionada, dataInicial, dataFinal)
+  }, [dataFinal]);
+
+  useEffect(() => {
+    fetchChamadosPorCategorias(categoriaSelecionada, dataInicial, dataFinal)
+  }, [categoriaSelecionada]);
+
+  // useEffect(() => {
+  //   if (categoriaSelecionada && dataInicial && dataFinal) {
+  //     listarChamadosPorCategoriaEStatus(categoriaSelecionada, dataInicial, dataFinal);
+  //   }
+  // }, [chamadosPorStatus]);
 
   const dataPorCategoria = {
     labels: todosChamadosPorCategoria.map((chamado) => chamado.cat_titulo),
