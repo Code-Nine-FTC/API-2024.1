@@ -16,18 +16,32 @@ interface IChamadoPorCategoria {
     total: number;
 }
 
-// Registre as escalas e os elementos necessários para Chart.js
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-// Mova a função getRandomColor para antes do uso
-const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-};
+// // Mova a função getRandomColor para antes do uso
+// const getRandomColor = () => {
+//     const letters = '0123456789ABCDEF';
+//     let color = '#';
+//     for (let i = 0; i < 6; i++) {
+//         color += letters[Math.floor(Math.random() * 16)];
+//     }
+//     return color;
+// };
+
+
+const getBlueColor = [
+    'rgba(83, 82, 188, 1)',
+    'rgba(16, 15, 92, 1)',
+    'rgba(41, 39, 226, 1)',
+    'rgba(0, 0, 128, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(30, 144, 255, 1)',
+    'rgba(135, 206, 235, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(131, 111, 255, 1)',
+    'rgba(173, 216, 230, 1)',
+    'rgba(65, 105, 225, 1)'
+];
 
 const DashboardView: React.FC = () => {
     const [categorias, setCategorias] = useState<ICategoriaView[]>([]);
@@ -98,14 +112,10 @@ const DashboardView: React.FC = () => {
             {
                 label: 'Chamados',
                 data: todosChamadosPorCategoria.map(chamado => chamado.total),
-                backgroundColor: todosChamadosPorCategoria.map((chamado, index) =>
-                    index === 0 ? 'rgba(83, 82, 188, 1)' :
-                    index === todosChamadosPorCategoria.length - 1 ? 'rgba(16, 15, 92, 1)' : 'rgba(41, 39, 226, 1)'),
-                borderColor: todosChamadosPorCategoria.map((chamado, index) =>
-                    index === 0 ? 'rgba(83, 82, 188, 1)' :
-                    index === todosChamadosPorCategoria.length - 1 ? 'rgba(16, 15, 92, 1)' : 'rgba(41, 39, 226, 1)'),
+                backgroundColor: getBlueColor,
+                borderColor: getBlueColor,
                 borderWidth: 1,
-                barThickness: 60,
+                barThickness: 45,
             }
         ]
     };
