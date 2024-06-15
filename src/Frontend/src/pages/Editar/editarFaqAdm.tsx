@@ -60,8 +60,8 @@ function EditarFaq() {
       } else {
         toast.error("Erro ao deletar FAQ: " + resultado.message);
       }
-    } catch (error) {
-      toast.error("Erro ao deletar FAQ");
+    } catch (error: any) {
+      toast.error("Erro ao deletar FAQ: ", error.message);
     }
   }
 
@@ -79,7 +79,7 @@ function EditarFaq() {
       );
   
       if (verificaCampoVazio ) {
-        alert("Por favor, preencha todos os campos corretamente.");
+        toast.error("Por favor, preencha todos os campos corretamente.");
         return;
       }
 
@@ -87,11 +87,9 @@ function EditarFaq() {
       if (resultado.success) {
         toast.success("FAQ atualizado com sucesso!");
         navigate("/listafaqadm");
-      } else {
-        toast.error("Erro ao atualizar FAQ: " + resultado.message);
-      }
-    } catch (error) {
-      toast.error("Erro ao atualizar FAQ");
+      } 
+    } catch (error: any) {
+      toast.error("Erro ao atualizar FAQ: ", error.message);
     }
   }
 

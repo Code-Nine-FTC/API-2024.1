@@ -45,3 +45,26 @@ const ChatPage = () => {
 }
 
 export default ChatPage
+
+const dados = [
+    {titulo: 'Em aberto', valor: 0,},
+    {titulo: 'Em andamento', valor: 0,},
+    {titulo: 'Concluido', valor: 0,},
+]
+
+const fetchFoda = [
+    {cha_status: 'Em aberto', valor: 32},
+    {cha_status: 'Em andamento', valor: 10},
+]
+
+fetchFoda.map((item) => {
+    if (item.cha_status === 'Em aberto') {
+        dados[0].valor = item.valor
+    }
+    if (item.cha_status === 'Em andamento') {
+        dados[1].valor = item.valor
+    }
+    if (item.cha_status === 'Concluido') {
+        dados[2].valor = item.valor
+    }
+});

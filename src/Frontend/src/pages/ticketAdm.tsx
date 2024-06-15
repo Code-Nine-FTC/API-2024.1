@@ -16,6 +16,15 @@ const TicketAdm = () => {
         e.preventDefault();
         
         try {
+            const verificaCampoVazio = Object.values(formData).some(value => 
+                typeof value === 'string' && (value.trim() === "" || value.trim().length === 0)
+              );
+          
+              if (verificaCampoVazio ) {
+                toast.error("Por favor, preencha todos os campos corretamente.");
+                return;
+              }
+        
            const resultado = await CadastroCategoriaAdm(formData);
            if (resultado?.success){
             console.log(formData)

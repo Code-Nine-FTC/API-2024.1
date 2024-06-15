@@ -54,6 +54,16 @@ const RegistroSup = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        const verificaCampoVazio = Object.values(formDataSenha).some(
+            (value) =>
+              typeof value === "string" &&
+              (value.trim() === "" || value.trim().length === 0)
+          );
+    
+          if (verificaCampoVazio) {
+            toast.error("Por favor, preencha todos os campos corretamente.");
+            return;
+          }
         if (formDataSenha.func_senha !== formDataSenha.senha2) {
             setErro('Senhas não coincidem')
         }
