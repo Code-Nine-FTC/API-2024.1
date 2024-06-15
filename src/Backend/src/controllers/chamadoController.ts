@@ -336,10 +336,11 @@ class ChamadoController {
     public async dashboardPesquisaChamado(req: Request, res: Response) {
         try {
             const { cat_id } = req.params;
+            const { dataInicio, dataFinal } = req.body
             if (!cat_id) {
                 return res.status(400).json({ success: false, message: 'ID Categoria não fornecida' });
             }
-            const resultado = await this.chamadoService.dashboardPesquisaChamado(Number(cat_id));
+            const resultado = await this.chamadoService.dashboardPesquisaChamado(Number(cat_id), dataInicio, dataFinal);
             if (!resultado.success) {
                 return res.status(400).json(resultado);
             }

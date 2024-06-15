@@ -475,7 +475,7 @@ class ChamadoService {
     public async listaFuncionarioDisponiveis() {
         try {
             const agora = new Date().getHours();
-            
+
             const funcionarios: Funcionario[] = await this.funcionarioRepository.find({
                 where: {
                     func_is_admin: false,
@@ -483,27 +483,27 @@ class ChamadoService {
                 },
                 relations: ['chamado']
             });
-    
+
             let funcionariosDisponiveis: Funcionario[] = [];
-    
+
             for (const funcionario of funcionarios) {
                 const estaAtendendoChamado = funcionario.chamado.some(chamado => chamado.cha_status === 'Em Andamento');
-    
+
                 const horaInicial = parseInt(funcionario.func_expediente_inicio.split(':')[0], 10);
-                const horaFinal = parseInt(funcionario.func_expediente_final.split(':')[0], 10);    
+                const horaFinal = parseInt(funcionario.func_expediente_final.split(':')[0], 10);
                 if (
-                    (horaInicial <= agora && agora < horaFinal && !estaAtendendoChamado) || 
+                    (horaInicial <= agora && agora < horaFinal && !estaAtendendoChamado) ||
                     (horaInicial > horaFinal && (agora >= horaInicial || agora < horaFinal)) &&
                     !estaAtendendoChamado
                 ) {
                     funcionariosDisponiveis.push(funcionario);
                 }
             }
-    
+
             if (funcionariosDisponiveis.length === 0) {
                 return { success: false, message: 'Sem funcionários disponíveis.' };
             }
-    
+
             return { success: true, message: 'Funcionários disponíveis encontrados!', data: funcionariosDisponiveis };
         } catch (error) {
             console.error(`Erro ao listar funcionários disponíveis: ${error}`);
@@ -511,27 +511,38 @@ class ChamadoService {
         }
     }
 
-    public async dashboardPesquisaChamado(cat_id: number) {
+    public async dashboardPesquisaChamado(cat_id: number, dataInicio?: Date, dataFinal?: Date) {
         try {
             const chamado = [
-                { cha_status: 'Em Aberto', total: '0'},
-                { cha_status: 'Em Andamento', total: '0'},
-                { cha_status: 'Concluido', total: '0'}
+                { cha_status: 'Em Aberto', total: '0' },
+                { cha_status: 'Em Andamento', total: '0' },
+                { cha_status: 'Concluido', total: '0' }
             ]
-            const chamadosPorStatus = await this.chamadoRepository.createQueryBuilder("chamado")
-                .select("chamado.cha_status, COUNT(chamado.cha_id) AS total")
-                .where("chamado.cat_id = :cat_id", { cat_id })
-                .groupBy("chamado.cha_status")
-                .getRawMany()
 
-            for (const status of chamadosPorStatus){
-                if( status.cha_status === 'Em Aberto'){
+            // Cria a consulta inicial
+            let query = this.chamadoRepository.createQueryBuilder("chamado")
+                .select("chamado.cha_status, COUNT(chamado.cha_id) AS total")
+                .where("chamado.cat_id = :cat_id", { cat_id });
+
+            // Adiciona filtros de data se fornecidos
+            if (dataInicio) {
+                query = query.andWhere("DATE(chamado.cha_data_inicio) >= :dataInicio", { dataInicio });
+            }
+            if (dataFinal) {
+                query = query.andWhere("DATE(chamado.cha_data_inicio) <= :dataFinal", { dataFinal });
+            }
+
+            // Agrupa e executa a consulta
+            const chamadosPorStatus = await query.groupBy("chamado.cha_status").getRawMany();
+
+            for (const status of chamadosPorStatus) {
+                if (status.cha_status === 'Em Aberto') {
                     chamado[0].total = status.total
                 }
-                else if( status.cha_status === 'Em Andamento'){
+                else if (status.cha_status === 'Em Andamento') {
                     chamado[1].total = status.total
                 }
-                else if( status.cha_status === 'Concluido' ){
+                else if (status.cha_status === 'Concluido') {
                     chamado[2].total = status.total
                 }
             }
@@ -549,14 +560,14 @@ class ChamadoService {
                 .innerJoin("categoria", "categoria", "chamado.cat_id = categoria.cat_id")
                 .groupBy("chamado.cat_id, categoria.cat_titulo")
                 .getRawMany();
-            console.log('teste',chamadosPorCategoria)
+            console.log('teste', chamadosPorCategoria)
             return { success: true, data: chamadosPorCategoria };
         } catch (error) {
             console.error(`Erro ao listar todos os chamados por categoria: ${error}`);
             return { success: false, message: 'Erro ao listar todos os chamados por categoria' };
         }
     }
-    
+
 
     // converter "HH:MM:SS" para horas decimais
     private converterHoraParaDecimal(horario) {
