@@ -50,6 +50,8 @@ const DashboardView: React.FC = () => {
     const [todosChamadosPorCategoria, setTodosChamadosPorCategoria] = useState<IChamadoPorCategoria[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>("");
+    const [dataInicial, setDataInicial] = useState('')
+    const [dataFinal, setDataFinal] = useState('')
 
     useEffect(() => {
         const fetchCategorias = async () => {
@@ -96,7 +98,7 @@ const DashboardView: React.FC = () => {
         } else {
             setCategoriaSelecionada(Number(cat_id));
             if (cat_id) {
-                const response = await listarChamadosPorCategoriaEStatus(Number(cat_id));
+                const response = await listarChamadosPorCategoriaEStatus(Number(cat_id), dataInicial, dataFinal);
                 if (response.success) {
                     setChamadosPorStatus(response.chamadosPorStatus);
                 } else {
@@ -104,7 +106,24 @@ const DashboardView: React.FC = () => {
                 }
             }
         }
-    };
+    }
+
+    useEffect(() => {
+        if (categoriaSelecionada && dataInicial && dataFinal) {
+            fetchCategoriasComData();
+        }
+    }, [dataFinal]);
+
+    const fetchCategoriasComData = async () => {
+        if(categoriaSelecionada) {
+            const response = await listarChamadosPorCategoriaEStatus(categoriaSelecionada, dataInicial, dataFinal);
+            if (response.success) {
+                setChamadosPorStatus(response.chamadosPorStatus);
+            } else {
+                setError("Erro ao carregar os chamados por status");
+            }
+        }
+    }
 
     const dataPorCategoria = {
         labels: todosChamadosPorCategoria.map(chamado => chamado.cat_titulo),
@@ -137,6 +156,7 @@ const DashboardView: React.FC = () => {
             }
         ]
     };
+    
 
     return (
         <>
@@ -155,6 +175,8 @@ const DashboardView: React.FC = () => {
                             </option>
                         ))}
                     </select>
+                    <input className={styles.dataSelect} type="text" placeholder="Data de início" name="dataInicio" onFocus={(event) => event.target.type = 'date'} onChange={(e) => setDataInicial(e.target.value)}/>
+                    <input className={styles.dataSelect} type="text" placeholder="Data de final"  name="dataFinal" onFocus={(event) => event.target.type = 'date'} onChange={(e) => setDataFinal(e.target.value)} disabled={!dataInicial} />
                 </div>
                 {categoriaSelecionada === null && todosChamadosPorCategoria.length > 0 && (
                     <div className={styles.containerbar}>

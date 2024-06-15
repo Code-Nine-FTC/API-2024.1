@@ -511,7 +511,7 @@ class ChamadoService {
         }
     }
 
-    public async dashboardPesquisaChamado(cat_id: number, dataInicio?: Date, dataFinal?: Date) {
+    public async dashboardPesquisaChamado(cat_id: number, dataInicio?: any, dataFinal?: any) {
         try {
             const chamado = [
                 { cha_status: 'Em Aberto', total: '0' },

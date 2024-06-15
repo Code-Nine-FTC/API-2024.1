@@ -1,9 +1,12 @@
  import api from "../../services/api";
 
 
-export const listarChamadosPorCategoriaEStatus = async (cat_id: number) => {
+export const listarChamadosPorCategoriaEStatus = async (cat_id: number, dataInicial: string, dataFinal: string) => {
+    console.log('Datas: ', dataInicial, dataFinal)
     try {
-        const resultado = await api.get(`/dashboard/pesquisa/chamado/status/${cat_id}`);
+        const resultado = await api.get(`/dashboard/pesquisa/chamado/status/${cat_id}`, { 
+            params: { dataInicial, dataFinal } 
+        });
         return { success: resultado.data.success, chamadosPorStatus: resultado.data.data };
     } catch (error) {
         console.error('Erro ao listar chamados por categoria e status: ', error);

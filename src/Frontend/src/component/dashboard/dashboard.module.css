@@ -30,6 +30,15 @@
     padding: 10px;
     font-size: 16px;
 }
+
+.dataSelect{
+    background-color: #ffff;
+    border: 1px solid #000000;
+    padding: 10px;
+    font-size: 16px;
+    width: 17%;
+}
+
 .errorMessage {
     color: red;
 }
