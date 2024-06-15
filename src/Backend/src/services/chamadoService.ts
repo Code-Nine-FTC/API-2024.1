@@ -550,7 +550,7 @@ class ChamadoService {
                 .groupBy("chamado.cat_id, categoria.cat_titulo")
                 .getRawMany();
             console.log('teste',chamadosPorCategoria)
-            return { success: true, chamadosPorCategoria };
+            return { success: true, data: chamadosPorCategoria };
         } catch (error) {
             console.error(`Erro ao listar todos os chamados por categoria: ${error}`);
             return { success: false, message: 'Erro ao listar todos os chamados por categoria' };
