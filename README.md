@@ -58,7 +58,7 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 
 <p> Os links abaixo exibem os manuais de usuário, destinados para cada tipo de usuário do produto.</p>
 
-[Manual Cliente](Docs/docs_tecnicos/manual-do-usuario-administrador.pdf)
+[Manual Cliente](Docs/docs_tecnicos/manual-do-usuario.pdf)
 <br>
 [Manual Atendente](Docs/docs_tecnicos/manual-do-usuario-atendente.pdf)
 <br>
