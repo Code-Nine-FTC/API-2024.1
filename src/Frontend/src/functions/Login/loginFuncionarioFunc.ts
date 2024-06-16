@@ -1,11 +1,9 @@
 import api from "../../services/api"
-import {rotaBase} from "../RotaBase/rotaBase"
-import axios from "axios"
 
 const LoginFuncionarioFunc = async(formData: any) => {
     console.log(formData)
     try {
-        const resultado = await api.post(`/logginFuncionario`, formData)
+        const resultado = await api.post(`/login/funcionario`, formData)
         return {token: resultado.data.token, nivelAcesso: resultado.data.nivelAcesso, success: resultado.data.success, message: resultado.data.message}
     }
     catch (error) {

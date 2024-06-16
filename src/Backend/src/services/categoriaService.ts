@@ -8,9 +8,15 @@ export class CategoriaService {
 
     public async criarCategoria(dadosCategoria: ICategoriaInput){
         try{
+            const categoria = await this.categoriaRepository.findOne({
+                where:{ cat_titulo: dadosCategoria.cat_titulo }
+            })
+            if(categoria){
+                return { success: false, message: `Categoria existente.`}
+            }
             const novaCategoria = await this.categoriaRepository.create(dadosCategoria)
             await this.categoriaRepository.save(novaCategoria)
-            return { success: true, message: `Nova Categoria adicionada com sucesso!`, categoria: novaCategoria}
+            return { success: true, message: `Categoria criada.`, categoria: novaCategoria}
     
         }catch(error){
             console.error(`Erro ao cadastrar categoria: ${error}`)
@@ -31,31 +37,14 @@ export class CategoriaService {
         }
     }
 
-    public async listarTodasCategorias() {
-        try {
-            const categorias = await this.categoriaRepository.find();
-            if (categorias.length === 0) {
-                return { success: false, message: 'Nenhuma categoria encontrada' };
-            }
-            return { success: true, categorias };
-        } catch (error) {
-            console.error(`Erro ao listar categorias: ${error}`);
-            return { success: false, message: 'Erro ao listar categorias' };
-        }
-    }
-    
-
     public async editarCategoria(cat_id: number, categoriaUpdate: ICategoriaUpdate) {
         try {
-            console.log(categoriaUpdate)
-            const categoriaRepository = Connection.getRepository(Categoria)
-            const categoria = await categoriaRepository.findOne({ where: { cat_id: cat_id} })
-            console.log('cheguei aqui')
+            const categoria = await this.categoriaRepository.findOne({ where: { cat_id: cat_id} })
             if (!categoria) {
                 return { success: false, message: `Categoria não encontrada` }
             }
             if (categoriaUpdate.cat_titulo) {
-                const tituloExistente = await categoriaRepository.findOne({ where: { cat_titulo: categoriaUpdate.cat_titulo } })
+                const tituloExistente = await this.categoriaRepository.findOne({ where: { cat_titulo: categoriaUpdate.cat_titulo } })
     
                 if (tituloExistente && tituloExistente.cat_id !== cat_id) {
                     return { success: false, message: `Título já cadastrado` }
@@ -67,7 +56,8 @@ export class CategoriaService {
             }
     
             const categoriaUpdateFinal = { ...categoria, ...categoriaUpdate }
-            await categoriaRepository.update(cat_id, categoriaUpdateFinal)
+            delete categoriaUpdateFinal.cat_id
+            await this.categoriaRepository.update(cat_id, categoriaUpdateFinal)
             return { success: true, message: `Categoria atualizada com sucesso`, categoriaUpdateFinal }
         } catch (error) {
             console.error(`Erro ao editar categoria: ${error}`)

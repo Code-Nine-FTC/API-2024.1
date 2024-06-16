@@ -35,14 +35,16 @@ a {
     background-color: #00046D;
     transform: translateX(0);
     min-width: max-content;
-    min-width: 14vw;
     min-height: 100vh;
     max-height: max-content;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    
+    overflow-y: auto
+}
 
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebarContainer {
@@ -51,6 +53,7 @@ a {
     max-width: max-content;
     max-height: max-content;
     text-align: center;
+    flex: 0 17%;
 }
 
 .sidebar.open {

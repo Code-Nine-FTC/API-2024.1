@@ -2,7 +2,7 @@ import api from "../../services/api";
 
 const ListarFaqs = async () => {
     try {
-        const resultado = await api.get(`/listarFaqs`);
+        const resultado = await api.get(`/todos/faqs`);
         return resultado.data;
     } catch (error) {
         console.error('Erro ao listar FAQs: ', error);

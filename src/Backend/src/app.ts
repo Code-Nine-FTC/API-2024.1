@@ -13,6 +13,7 @@ import chamadoRoutes from './routes/chamadoRoutes'
 import categoriaRoutes from './routes/categoriaRoutes'
 import tarefaSla from './cron';
 import Faqrouter from './routes/faqRoutes';
+
 // Carrega as variáveis de ambiente do arquivo .env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 

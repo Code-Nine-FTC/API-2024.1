@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Navigate, useNavigate, redirect } from "react-router-dom";
+import { Navigate, useNavigate} from "react-router-dom";
 
 const LogoutFunc = () => {
     const navigate = useNavigate()

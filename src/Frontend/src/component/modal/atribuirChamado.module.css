@@ -1,0 +1,46 @@
+.atribuirChamadoModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.atribuirChamadoModal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    height: 90%;
+    width: 90%;
+    margin: auto;
+}
+
+.labelSelect {
+    font-size: 1.5rem;
+    margin-top: 2%;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.selectAtendente {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.atribuirChamadoModal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 1vh;
+}
+
+.botaoAtribuir:hover {
+    background-color: #0056b3;
+}

@@ -47,9 +47,6 @@ export class ClienteService {
             // Salvando novo cliente
             await this.clienteRepository.save(novoCliente)
             return { success: true, message: `Cliente cadastrado com sucesso` }
-
-
-
         } catch (error) {
             console.error(`Erro ao cadastrar cliente:`, error)
             return { success: false, message: `Erro ao cadastrar cliente` }
@@ -163,7 +160,7 @@ export class ClienteService {
             // muda para desativado
             cliente.ativo = false;
             // dalva as informações
-            await this.clienteRepository.save(cliente);
+            await this.clienteRepository.update(id,cliente);
             // chama cancelar chamado do chamado service
             await chamadoService.cancelarChamado(id);
 
@@ -181,8 +178,6 @@ export class ClienteService {
             console.log(cpf)
             return false
         }
-        // console.log(cpf)
-        // Remove todos os elementos que não seja númerico
         // Verifica se o cpf tem tamanho igual a 11
         if (cpf.length !== 11) {
             console.log('Deu erro no length')

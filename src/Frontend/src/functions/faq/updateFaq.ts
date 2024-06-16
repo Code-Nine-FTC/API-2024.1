@@ -3,7 +3,7 @@ import { IFaqUpdate } from "../../../../Backend/src/interfaces/IFaq";
 
 const updateFaq = async (faq_id: number, dadosUpdate: IFaqUpdate) => {
     try {
-        const resultado = await api.put(`/editarFaq/${faq_id}`, dadosUpdate);
+        const resultado = await api.put(`/editar/faq/${faq_id}`, dadosUpdate);
         return { updateFaq: resultado.data.updateFaq, message: resultado.data.message, success: resultado.data.success };
     } catch (error) {
         console.error('Erro ao editar FAQ: ', error);

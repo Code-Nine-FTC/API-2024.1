@@ -48,19 +48,23 @@ const TodosTickets = () => {
         <Sidebar/>
         <div className={styles.container}>
             <h1 className={styles.title}>Todos os Tickets</h1>
-            {chamados.map((chamado: IChamadoView) => (
-                <div className={styles.ticketcampo}>
-                    {chamado.cha_status === 'Em Andamento' ? (
-                            <StatusEmAndamento chamado={chamado} />
-                        ) : chamado.cha_status === 'Em Aberto' ? (
-                            <StatusEmEspera chamado={chamado} />
-                        ) : chamado.cha_status === 'Concluido' ? (
-                            <StatusConcluido chamado={chamado} />
-                        ) : (
-                            <StatusCancelado chamado={chamado} />
-                        )}
-                </div>
-            ))}
+            {chamados.length === 0 ? (
+                <p style={{ display: 'flex', justifyContent: 'center' }}>Nenhum ticket ativo encontrado.</p>
+            ) : (
+                chamados.map((chamado: IChamadoView) => (
+                    <div className={styles.ticketcampo}>
+                        {chamado.cha_status === 'Em Andamento' ? (
+                                <StatusEmAndamento chamado={chamado} />
+                            ) : chamado.cha_status === 'Em Aberto' ? (
+                                <StatusEmEspera chamado={chamado} />
+                            ) : chamado.cha_status === 'Concluido' ? (
+                                <StatusConcluido chamado={chamado} />
+                            ) : (
+                                <StatusCancelado chamado={chamado} />
+                            )}
+                    </div>
+                ))
+            )}
         </div>
         </>
     );

@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 
 
 const EditarCliente: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [cli_nome, setNome] = useState<string>();
   const [cli_email, setEmail] = useState<string>();
   const [cli_senha, setSenha] = useState<string>();
@@ -20,6 +20,16 @@ const EditarCliente: React.FC = () => {
     event.preventDefault();
     const user = { cli_email, cli_nome, cli_senha};
     try {
+      const verificaCampoVazio = Object.values(user).some(
+        (value) =>
+          typeof value === "string" &&
+          (value.trim() === "" || value.trim().length === 0)
+      );
+
+      if (verificaCampoVazio) {
+        toast.error("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
       const token = getToken(); // Obtenha o token JWT do localStorage
       if (token) {
         await updateCliente(user);
@@ -49,7 +59,6 @@ const handleDelete = async () => {
         if (token) {
           await desativarCliente();
           logout();
-          toast.success('Conta desativada');
           navigate('/login');
           Swal.fire({
             title: "Desativado!",
@@ -57,8 +66,15 @@ const handleDelete = async () => {
             icon: "success"
           });
         }
-      } catch (error) {
-        console.log(`Erro ao desativar conta`, error);
+      } catch (error: any) {
+            console.error("Erro ao desativar a conta:", error);
+            let errorMessage = error.message || 'Erro ao desativar o cliente. Por favor, tente novamente mais tarde.';
+            Swal.fire({
+                title: 'Erro',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
       }
     }
   });

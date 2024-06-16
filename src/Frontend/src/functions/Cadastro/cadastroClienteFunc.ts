@@ -1,11 +1,10 @@
-import { rotaBase } from "../RotaBase/rotaBase";
-import axios from "axios";
 import { AxiosError } from "axios";
+import api from "../../services/api";
 
 const CadastroClienteFunc = async (formData: any) => {
     console.log(formData)
     try {
-        const resultado = await axios.post(`${rotaBase}/cadastroCliente`, formData,)
+        const resultado = await api.post(`/cadastro/cliente`, formData)
         if (!resultado.data.success) {
             throw new Error(resultado.data.message);
         }

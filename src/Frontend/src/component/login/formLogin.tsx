@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import logo from "./projeto9999.png"
 import styles from './Login.module.css'
-import {Link, useNavigate, redirect} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {toast, Toaster} from 'react-hot-toast';
 import LoginClienteFunc from '../../functions/Login/loginClienteFunc';
 import LoginFuncionarioFunc from '../../functions/Login/loginFuncionarioFunc';
 import { login } from '../../services/auth';
 import { useContext } from 'react';
+import InputMask from 'react-input-mask';
 import { AuthContext } from '../../services/context';
 
 const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
@@ -75,7 +76,7 @@ const LoginForm = ({ tipoCadastro }: {tipoCadastro: string }) => {
               console.log('User Level:', resultadoFuncionario.nivelAcesso);
               switch (resultadoFuncionario.nivelAcesso) {
                 case 'administrador':
-                  navigate('/visualizarTodosFuncionarios')
+                  navigate('/dashboard/:id')
                   break;
                 case 'atendente':
                   navigate('/homesup')

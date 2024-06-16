@@ -1,97 +1,150 @@
-import React, { useState, useEffect, FormEvent } from 'react';
-import styles from "../../component/editarCategoria/editarCategoria.module.css"; // Atualize o caminho para o CSS específico, se necessário
-import Sidebar from '../../component/sidebar/sidebar';
-import updateFaq from '../../functions/faq/updateFaq';
-import { useNavigate, useParams } from 'react-router-dom';
-import { IFaqUpdate } from '../../../../Backend/src/interfaces/IFaq';
-import { toast, Toaster } from 'react-hot-toast';
+import React, { useState, useEffect, FormEvent } from "react";
+import styles from "../../component/editarCategoria/editarCategoria.module.css";
+import Sidebar from "../../component/sidebar/sidebar";
+import updateFaq from "../../functions/faq/updateFaq";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast, Toaster } from "react-hot-toast";
+import deletarFaq from "../../functions/faq/deletarFaq";
+import verFaq from "../../functions/faq/verFaq";
 
 function EditarFaq() {
   const navigate = useNavigate();
   const { id } = useParams<{ id?: string }>();
+  const [formUpdateFaq, setFormUpdateFaq] = useState({
+    faq_exemplo: "",
+    faq_titulo: "",
+    faq_descricao: "",
+  });
+  // recupera as informações do faq
+  useEffect(() => {
+    async function buscaFaq() {
+      if (!id) {
+        navigate("/notfound");
+        return;
+      }
 
-  // Estados para armazenar os dados do formulário
-  const [exemplo, setExemplo] = useState<string>('');
-  const [titulo, setTitulo] = useState<string>('');
-  const [descricao, setDescricao] = useState<string>('');
+      const faq_id: number = parseInt(id, 10);
+      try {
+        const resultado = await verFaq(faq_id);
+        if (resultado.success) {
+          setFormUpdateFaq(resultado.faq);
+        }
+      } catch (error) {
+        toast.error("Erro ao ver FAQ");
+      }
+    }
+    buscaFaq();
+  }, [id]);
 
-  // Função para lidar com o envio do formulário
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  // Atuaiza os valores do form
+  function handleInputChange(e : React.ChangeEvent<HTMLInputElement>){
+    const { name, value } = e.target
+    setFormUpdateFaq((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+  // Deleta o faq
+  async function handleDeleteFaq() {
     if (!id) {
-      navigate('/notfound');
+      navigate("/notfound");
       return;
     }
 
     const faq_id: number = parseInt(id, 10);
-
-    const dadosUpdate: IFaqUpdate = {
-      faq_exemplo: exemplo,
-      faq_titulo: titulo,
-      faq_descricao: descricao,
-    };
-
     try {
-      const resultado = await updateFaq(faq_id, dadosUpdate);
+      const resultado = await deletarFaq(faq_id);
       if (resultado.success) {
-        toast.success('FAQ editado com sucesso!');
-        navigate('/listafaqadm');
+        toast.success("FAQ deletado com sucesso!");
+        navigate("/listafaqadm");
       } else {
-        toast.error('Erro ao editar FAQ: ' + resultado.message);
+        toast.error("Erro ao deletar FAQ: " + resultado.message);
       }
-    } catch (error) {
-      toast.error('Erro ao editar FAQ');
+    } catch (error: any) {
+      toast.error("Erro ao deletar FAQ: ", error.message);
     }
-  };
+  }
+
+  // Atualiza com as novas informações
+  async function handleSaveChanges() {
+    if (!id) {
+      navigate("/notfound");
+      return;
+    }
+
+    const faq_id: number = parseInt(id, 10);
+    try {
+      const verificaCampoVazio = Object.values(formUpdateFaq).some(value => 
+        typeof value === 'string' && (value.trim() === "" || value.trim().length === 0)
+      );
+  
+      if (verificaCampoVazio ) {
+        toast.error("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
+
+      const resultado = await updateFaq(faq_id, formUpdateFaq);
+      if (resultado.success) {
+        toast.success("FAQ atualizado com sucesso!");
+        navigate("/listafaqadm");
+      } 
+    } catch (error: any) {
+      toast.error("Erro ao atualizar FAQ: ", error.message);
+    }
+  }
 
   return (
     <>
       <div>
-        <Toaster 
-          position="top-center"
-          reverseOrder={false}
-        />
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
       <Sidebar />
-      <div className={styles.conteudo}>
-        <div className={styles.titulo}>
-          <h1>Editar FAQ</h1>
-        </div>
-        <div className={styles.Container}>
-          <form className={styles.conteudoform} onSubmit={handleSubmit}>
-            <div className={styles.Dados1}>
-              <label>
-                <h3 id={styles.subtitle}>Novo exemplo:</h3>
-                <input
-                  type="text"
-                  value={exemplo}
-                  placeholder="Digite o novo exemplo aqui"
-                  onChange={e => setExemplo(e.target.value)}
-                />
-              </label>
-              <label>
-                <h3 id={styles.subtitle}>Novo título:</h3>
-                <input
-                  type="text"
-                  value={titulo}
-                  placeholder="Digite o novo título aqui"
-                  onChange={e => setTitulo(e.target.value)}
-                />
-              </label>
-              <label>
-                <h3 id={styles.subtitle}>Nova descrição:</h3>
-                <input
-                  type="text"
-                  value={descricao}
-                  placeholder="Digite a nova descrição aqui"
-                  onChange={e => setDescricao(e.target.value)}
-                />
-              </label>
+      <div className={styles.mainConteudo}>
+        <div className={styles.conteudo}>
+          <div className={styles.titulo}>
+            <h1>Editar FAQ</h1>
+          </div>
+          <div className={styles.Container}>
+            <div className={styles.conteudoform} >
+              <div className={styles.Dados1}>
+                <label>
+                  <h3 id={styles.subtitle}>Exemplo:</h3>
+                  <input
+                    type="text"
+                    name="faq_exemplo"
+                    value={formUpdateFaq.faq_exemplo}
+                    placeholder="Digite o exemplo aqui"
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  <h3 id={styles.subtitle}>Título:</h3>
+                  <input
+                    type="text"
+                    name="faq_titulo"
+                    value={formUpdateFaq.faq_titulo}
+                    placeholder="Digite o título aqui"
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  <h3 id={styles.subtitle}>Descrição:</h3>
+                  <input
+                    type="text"
+                    value={formUpdateFaq.faq_descricao}
+                    name="faq_descricao"
+                    placeholder="Digite a descrição aqui"
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
+              <div className={styles.botoesFaq}>
+                <button type="submit" className={styles.customButton} onClick={handleSaveChanges}> Salvar </button>
+                <button type="button" className={styles.voltar} onClick={handleDeleteFaq} > Deletar </button>
+                <button type="button" className={styles.voltar} onClick={() => navigate(`/listafaqadm`)}> Voltar </button>
+              </div>
             </div>
-            <button type="submit" className={styles.customButton}>Salvar</button>
-            <button type="button" className={styles.voltar} onClick={() => navigate(`/listafaqadm`)}>Voltar</button>
-          </form>
+          </div>
         </div>
       </div>
     </>

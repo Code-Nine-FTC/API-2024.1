@@ -1,137 +1,123 @@
 .container {
-    display: flex;;
-  }
-  .nomeColumn a, .cpfColumn a, .emailColumn a {
+    display: flex;
+}
+
+.nomeColumn a, .cpfColumn a, .emailColumn a {
     color: black; 
     text-decoration: none; 
-  }
-  
-  .content {
+}
+
+.content {
     flex: 1;
     margin: auto;
     padding-left: 20vw;
     padding-bottom: 20vw; 
-  }
-  
-  .center {
+}
+
+.center {
     text-align: center;
-  }
-  
-  .customLayout {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-left: 2vw;
-  }
-  
-  .nomeColumn, .cpfColumn {
-    flex: 1;
+}
+
+.customLayout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    margin-top: 25px;
+}
+
+.nomeColumn, .cpfColumn {
     padding-left: 2vw;
-  }
-  
-  .nomeColumn > p, .cpfColumn > p {
-    text-align: flex;
+}
+
+.nomeColumn > p, .cpfColumn > p {
     padding-right: 0vw;
-  }
-  
-  
-  .nomeColumn > p, .cpfColumn > p {
+}
+
+.nomeColumn > p, .cpfColumn > p {
     margin-bottom: 5px; 
-    margin-top:5px;
-  }
-  
-  .titleLine {
-  
+    margin-top: 5px;
+}
+
+.titleLine {
     border-bottom: 1px solid rgb(0, 0, 0); 
     width: 40vw;
+    margin-top: 100px;
     padding-bottom: 1vw;
     color: rgb(6, 6, 150);
     padding-top: 20px;
-    
-  }
-  .buttonContainer {
+}
+
+.buttonContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 5vw;
     padding-left: 0vw;
-  }
-  
-  .buttonContainer button {
+}
+
+.buttonContainer button {
     padding: 10px 20px;
-    background-color: blue; 
+    background-color: #00046D; 
     color: white; 
-    border: 1px solid blue; 
+    border: 1px solid #00046D; 
     border-radius: 5px; 
     font-size: 16px;
     cursor: pointer; 
+}
+
+.categoryTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.categoryTable th,.categoryTable td {
+  border: 1px solid #00046D;
+  padding: 10px;
+  text-align: left;
+}
+
+.categoryTable th {
+  background-color: #00046D;
+  color: white;
+  text-align: center;
+}
+
+.categoryTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.categoryTable tr:hover {
+  background-color: #ccc;
+}
+
+.categoryTable td a {
+  color: black;
+  text-decoration: none;
+}
+
+.categoryTable td a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+    padding: 0;
+    
   }
-  
-  .buttonContainer button:hover {
-    background-color: #04048a; 
-    border-color: darkblue; 
+  .nomeColumn, .cpfColumn, .emailColumn {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
   }
-  .nomeColumn, .cpfColumn, .emailColumn{
-    padding-left: 3vw; /* Espaçamento à esquerda */
-    padding-right: 3vw; /* Espaçamento à direita */
+  .titleLine {
+    width: 80vw;
   }
-  
-  
-  .customLayout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-    grid-gap: 10px; /* Espaçamento entre linhas */
-   margin-top: 25px;
-  }
-  
-  .userData {
-    color: black;
+  .buttonContainer {
     display: flex;
-    flex-direction: column;
-    border: 1px solid #000000; /* Adiciona uma borda sólida de 1px com a cor cinza */
-    padding: 10px; /* Adiciona um espaçamento interno de 10px para melhorar a aparência */
-    
-    
+    justify-content: center;
+    padding-right: 0;
+    padding-top: 15vw;
   }
-  
-  
-  @media (max-width: 768px) {
-    .content {
-      width: 90vw; 
-      padding: px; 
-    }
-    .customLayout {
-      flex-direction: row; 
-      justify-content: space-between; 
-      align-items: center; 
-    }
-    .nomeColumn, .cpfColumn, .emailColumn {
-      width: 45vw; 
-      max-width: none; 
-      padding-left: 0; 
-      padding-right: 30vw; 
-      margin-bottom: 0;
-    }
-    .titleLine {
-      width: 60vw;
-    }
-  
-    .buttonContainer {
-      display: flex;
-      justify-content: center;
-      padding-right: 50vw;
-      padding-top: 15vw;
-    }
-  
-    .customLayout {
-      display: flex;
-      flex-direction: column; 
-      justify-content: space-around; 
-      align-items: center;
-      margin-left: 2vw;
-    }
-    .verdetalheslink {
-      position: center;
-      padding-top: 23vw;    
-    }
-  }
+}

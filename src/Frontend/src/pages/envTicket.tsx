@@ -53,6 +53,20 @@ const Ticket = () => {
     const enviarTicket = async (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault();
         try {
+            const verificaCampoVazio = Object.values(dadosChamado).some(value => 
+                typeof value === 'string' && (value.trim() === "" || value.trim().length === 0)
+              );
+          
+              if (verificaCampoVazio ) {
+                Swal.fire({
+                    title: 'Erro',
+                    text: 'Preencha todos os campos corretamente',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+              }
+        
            const resultado = await EnviarTicket(dadosChamado);
             if (resultado.success) {
                 const dataAtual = getDate()
@@ -70,11 +84,18 @@ const Ticket = () => {
                     icon: "success"
                   });
                 } else {
-                    console.log('Falha ao enviar mensagem: ', resultadoMensagem.message);
+                    console.error(resultadoMensagem.message);
                 }
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Erro ao enviar o ticket:", error);
+            let errorMessage = error.message || 'Erro ao criar o chamado. Por favor, tente novamente mais tarde.';
+            Swal.fire({
+                title: 'Erro',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     }
 

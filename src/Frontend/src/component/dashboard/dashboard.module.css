@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    padding: 2%;
+}
+.bar{
+    max-width: 80%;
+}
+.containerbar{
+    margin-left: 16%;
+}
+.title{
+    display: flex;
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 3%;
+    color: #00046D;
+    justify-content: center;
+    font-size: 38px;
+}
+.selectContainer {
+    display: flex;
+    justify-content: center;
+    margin-right: 7%;
+    
+}
+.select{
+    padding: 10px;
+    font-size: 16px;
+}
+
+.dataSelect{
+    background-color: #ffff;
+    border: 1px solid #000000;
+    padding: 10px;
+    font-size: 16px;
+    width: 17%;
+}
+
+.errorMessage {
+    color: red;
+}
+.texto{
+    display: flex;
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    margin-right: 20%;
+    color: #00046D;
+    justify-content: center;
+}
+
+.mensagemErro {
+    color: red;
+    margin: auto;
+}

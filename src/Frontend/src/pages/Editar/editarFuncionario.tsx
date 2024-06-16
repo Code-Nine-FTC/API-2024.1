@@ -60,10 +60,21 @@ function EditarFuncionario() {
 
     console.log(dadosUpdate);
     try {
+      const verificaCampoVazio = Object.values(dadosUpdate).some(
+        (value) =>
+          typeof value === "string" &&
+          (value.trim() === "" || value.trim().length === 0)
+      );
+
+      if (verificaCampoVazio) {
+        toast.error("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
       const funcionarioUpdate = await updateFuncionario(func_id, dadosUpdate);
       toast.success('Alteração concluída')
-    } catch (error) {
+    } catch (error: any) {
       console.log(`Erro ao editar Funcionario!`, error);
+      toast.error('Erro ao editar funcinário: ', error.message)
     }
   };
   const handleDelete = async () => {
@@ -91,11 +102,17 @@ function EditarFuncionario() {
               text: "O funcionario foi desativado.",
               icon: "success"
             });
-            toast.success(resultado.message)
             navigate('/visualizarTodosFuncionarios')
           }
-        } catch (error) {
-          console.log(`Erro ao desativar Funcionario!`, error);
+        } catch (error: any) {
+            console.error("Erro ao desativar o funcionário:", error);
+            let errorMessage = error.message || 'Erro ao desativar funcionário. Por favor, tente novamente mais tarde.';
+            Swal.fire({
+                title: 'Erro',
+                text: errorMessage,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
       }
     });
@@ -130,13 +147,14 @@ function EditarFuncionario() {
                 <input type="password" value={senha} placeholder='Digite a nova senha do usuario aqui' onChange={e => setSenha(e.target.value)} />
               </label>
            
-              <label> <h3 id={styles.horario}>Horario de atendimento: </h3>  </label>
-              <select id={styles.seletor} onChange={selecionarHorario} required>
-                        <option disabled selected>Selecione um horário</option>
-                        <option value="valor1">8:00 -- 16:00</option>
-                        <option value="valor2">10:00 -- 18:00 </option>
-                        <option value="valor3">13:00 -- 21:00</option>
-              </select>
+              <label> <h3 id={styles.horario}>Horario de atendimento: </h3>
+                <select id={styles.seletor} onChange={selecionarHorario} required>
+                          <option disabled selected>Selecione um horário</option>
+                          <option value="valor1">8:00 -- 16:00</option>
+                          <option value="valor2">10:00 -- 18:00 </option>
+                          <option value="valor3">13:00 -- 21:00</option>
+                </select>
+              </label>
               </div>
               <button type="submit" className={styles.customButton}>Salvar</button>
             <button className={styles.voltar} onClick={() => navigate(`/visualizarTodosFuncionarios`)}>Voltar</button>

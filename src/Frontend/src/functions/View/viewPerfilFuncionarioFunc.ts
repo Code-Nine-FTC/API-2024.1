@@ -2,7 +2,7 @@ import api from '../../services/api';
 
 const viewPerfilFuncionario = async () => {
   try {
-    const response = await api.get(`/viewPerfilFuncionario`);// envia o id do funcionario que deseja ver
+    const response = await api.get(`/ver/perfil/funcionario`)
     return response.data.funcionario;
   } catch (error) {
     throw new Error('Erro ao buscar funcionários. Por favor, tente novamente mais tarde.');

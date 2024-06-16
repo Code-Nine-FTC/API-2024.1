@@ -1,7 +1,4 @@
 import styles from '../component/faq/Faq.module.css'
-import Map from '../component/map/map';
-import Delivery from '../component/delivery/delivery';
-import Trolley from '../component/trolley/trolley';
 import Status from '../component/status/status';
 import Textostatus from '../component/textostatus/textostatus';
 import Textostatus2 from '../component/textostatus/textoStatus2';
@@ -66,11 +63,7 @@ function Home() {
   return (
   <>
   <Sidebar/>
-  {modalOpen && (
-  <Modal onClose = {handleButtonClick}>
-    <h1>This is the modal title</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque obcaecati eius pariatur nulla, quaerat architecto necessitatibus id aliquam voluptatem quasi nisi molestiae labore incidunt amet. Maiores totam consequuntur dicta temporibus?</p>
-  </Modal>)}
+
   <div className={styles.conteudo}>
   {!autenticacao && (
     <h1 className={styles.titulo}> Cadastre-se para ver seus chamados recentes!</h1>

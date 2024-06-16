@@ -4,7 +4,7 @@ import { AxiosError } from "axios"
 const LoginClienteFunc = async(formData: any) => {
     console.log(formData)
     try {
-        const resultado = await api.post(`/logginCliente`, formData)
+        const resultado = await api.post(`/login/cliente`, formData)
         if (!resultado.data.success) {
             throw new Error(resultado.data.message);
         }

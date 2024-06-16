@@ -166,6 +166,17 @@
         border-radius: 5px;
         margin-left: auto;
       }
+
+      .canceladoButton{
+        width: 160px;
+        height: 35px;
+        background-color: #978f8f;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        margin-left: auto;
+      }
       
       .prioridadeButton {
         width: 160px;

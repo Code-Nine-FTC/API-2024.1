@@ -12,9 +12,11 @@
     "@types/react": "^18.2.77",
     "@types/react-dom": "^18.2.25",
     "axios": "^1.6.8",
+    "chart.js": "^4.4.3",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.23.0",
@@ -48,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.6"
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/react-input-mask": "^3.0.5"
   }
 }

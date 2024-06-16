@@ -1,10 +1,10 @@
 import api from "../../services/api";
 import { AxiosError } from "axios";
 
-const IniciarTicket = async (id: number | null) => {
+const IniciarTicket = async (id: number| null) => {
     try {
         // envia o id 
-        const resposta = await api.get(`/iniciarChamado/${id}`);
+        const resposta = await api.put(`/iniciar/chamado/${id}`);
         console.log(resposta.data.chamados)
 
         if (!resposta.data.success) {

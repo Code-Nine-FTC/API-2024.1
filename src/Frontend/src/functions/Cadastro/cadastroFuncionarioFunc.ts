@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 
 const CadastroFuncionarioFunc = async (formData: any) => {
     try {
-        const resultado = await api.post(`/cadastroFuncionario`, formData)
+        const resultado = await api.post(`/cadastro/funcionario`, formData)
         
         if (!resultado.data.success) {
             throw new Error(resultado.data.message);

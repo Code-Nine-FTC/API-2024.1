@@ -9,12 +9,12 @@ interface IFaqInput {
 interface ApiResponse {
     success: boolean;
     message: string;
-    faq?: any;  // Substitua 'any' pelo tipo apropriado se disponível
+    faq?: any;  
 }
 
 const CadastroFaqAdm = async (formData: IFaqInput): Promise<ApiResponse> => {
     try {
-        const resultado = await api.post('/criarFaq', formData);
+        const resultado = await api.post('/criar/faq', formData);
         return { success: resultado.data.success, message: resultado.data.message, faq: resultado.data.faq };
     } catch (error: any) {
         console.error('Erro no cadastro de FAQ: ', error);

@@ -4,7 +4,7 @@ import { rotaBase } from "../RotaBase/rotaBase";
 
 const ListarCategorias = async () => {
     try {
-        const resultado = await api.get(`/listarCategorias`);
+        const resultado = await api.get(`/todas/categorias`);
         return {success: resultado.data.success, categorias: resultado.data.categorias};
     } catch (error) {
         console.error('Erro ao listar categorias: ', error);

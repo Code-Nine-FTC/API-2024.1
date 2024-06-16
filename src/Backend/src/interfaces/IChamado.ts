@@ -12,7 +12,7 @@ export interface IChamadoView{
     cha_data_inicio: Date
     cha_topico_chamado: string
     cliente: Cliente
-    funcionario?: Funcionario
+    funcionario?: Funcionario | null
     resposta: Resposta[]
 }
 

@@ -2,7 +2,7 @@ import api from "../../services/api";
 
 export default async function desativarCliente() {
     try {
-        const resultado = await api.get(`/desativarCliente`);
+        const resultado = await api.put(`/desativar/cliente`);
         console.log(resultado.data.success, resultado.data.message)
         return { success: resultado.data.success, message: resultado.data.message };
     } catch (error) {

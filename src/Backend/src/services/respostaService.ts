@@ -9,15 +9,13 @@ import Categoria from "../entities/categoria";
 
 
 export default class RespostaService {
+    private respostaRepository = Connection.getRepository(Resposta)
+    private chamadoRepository = Connection.getRepository(Chamado)
+
     public async enviarMensagem(dadosMensagem: IRespostaInput) {
         try{
-            console.log('Recebendo dados no mensagemService')
-            console.log(dadosMensagem)
-            const respostaRepository = Connection.getRepository(Resposta)
-            const novaMensagem = respostaRepository.create(dadosMensagem)
-            console.log(novaMensagem)
-            await respostaRepository.save(novaMensagem)
-            console.log('Mensagem enviada')
+            const novaMensagem = await this.respostaRepository.create(dadosMensagem)
+            await this.respostaRepository.save(novaMensagem)
             return { success: true}
         }
         catch(error) {
@@ -25,12 +23,10 @@ export default class RespostaService {
             return { success: false}
         }
     }
+    
     public async buscarChamado(id: number){
         try{
-            console.log('Recebendo dados')
-            console.log(id)
-            const chamadoRepository = Connection.getRepository(Chamado)
-            const chamado = await chamadoRepository.createQueryBuilder("chamado")
+            const chamado = await this.chamadoRepository.createQueryBuilder("chamado")
             .leftJoin("chamado.cliente", "cliente")
             .addSelect(["cliente.cli_id", "cliente.cli_nome"])
             .leftJoin("chamado.funcionario", "funcionario")
@@ -41,8 +37,7 @@ export default class RespostaService {
             .addSelect("categoria.cat_titulo")
             .where("chamado.cha_id = :id", { id: id })
             .getOne();
-            // console.log(chamado)
-            console.log('Result of buscarChamado:', chamado);
+
             if (!chamado) {
                 return { success: false, message: `Chamado não encontrado` }
             }
@@ -50,26 +45,18 @@ export default class RespostaService {
             } 
             catch (error) {
             console.error('Error in buscarChamado:', error);
-            // console.error(`Erro ao encontrar chamado: ${error}`)
             return { success: false, message: `Erro ao encontrar o chamado` }
         }
     }
 
     public async buscarMensagens(id: number){
         try{
-            console.log('Recebendo mensagens')
-            console.log(id)
-            const respostaRepository = Connection.getRepository(Resposta)
-            const respostas = await respostaRepository.find({
+            const respostas = await this.respostaRepository.find({
                 where: {
                     chamado: { cha_id: id } 
                 },
                 relations: ['chamado']
             });
-            console.log(respostas)
-            // if(!respostas){
-            //     return{success: false, message: `Mensagem não encontrada`}
-            // }
             return {success: true, message: `Mensagem encontrada`, respostas}
         }
         catch(error) {

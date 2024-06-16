@@ -59,16 +59,17 @@ input{
 .customButton {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 10px 20px;
   background-color: #1818b9;
   color: white;
   border: 1px solid #1818b9;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1.2em;
   cursor: pointer;
-  height: 7vh;
-  width: 20vh;
-  margin-left:32%;
+  height: 4vh;
+  width: 12vh;
+  margin: auto;
 }
 .voltar{
     padding: 10px;
@@ -129,10 +130,8 @@ input{
     padding: 5px;
 }
 #horario{
-    padding-left: 31.5%;
-    display: flex;
+    margin-left: 7.7%;
     color: #0b0b5f;
-    
 }
 #seletor{
   width: 56.5vh; 
@@ -143,7 +142,6 @@ input{
   background-color: #d6d4d4; 
   color: #555;
   font-weight: lighter;
-  margin-left: 25%;
   height: 5.5vh;
   display: flex;
   
@@ -161,9 +159,6 @@ input{
         height: 40%;
 
     }
-    .customButton{
-
-    }
 }
 @media (max-width: 900px) {
     input {
@@ -173,10 +168,10 @@ input{
         width: 27.9vh;
     }
     #horario{
-        padding-left: 25%;
     }
-    .custombutton{
-        padding-right: 50%;
+    .customButton{
+        height: 6vh;
+        width: 19vw;
     }
 }
 
@@ -189,14 +184,7 @@ input{
         margin-bottom: 3%;
     }
 }
-@Media (max-width: 1580px){
-    #horario{
-        margin-left: -45%;
-        display: flex;
-        color: #0b0b5f;
-        
-    }
-}
+
 @media (max-width: 1920px) {
     .conteudoform {
         flex-direction: column;

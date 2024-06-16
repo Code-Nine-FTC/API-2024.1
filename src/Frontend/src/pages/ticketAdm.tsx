@@ -16,14 +16,27 @@ const TicketAdm = () => {
         e.preventDefault();
         
         try {
+            const verificaCampoVazio = Object.values(formData).some(value => 
+                typeof value === 'string' && (value.trim() === "" || value.trim().length === 0)
+              );
+          
+              if (verificaCampoVazio ) {
+                toast.error("Por favor, preencha todos os campos corretamente.");
+                return;
+              }
+        
            const resultado = await CadastroCategoriaAdm(formData);
-           if (resultado?.message){
+           if (resultado?.success){
             console.log(formData)
             toast.success(resultado.message);
-           }else{
-            toast.error(resultado?.message);
            }
-        } catch (error) {
+           else {
+            let errorMessage = resultado?.message || 'Erro ao adicionar categoria, tente novamente mais tarde.';
+            toast.error(errorMessage);
+           }
+        } catch (error: any) {
+            let errorMessage = error.message || 'Erro ao adicionar categoria, tente novamente mais tarde.';
+            toast.error(errorMessage);
             // alert('Erro ao criar categoria.');
             console.error(error);
         }
@@ -77,9 +90,9 @@ const TicketAdm = () => {
                             required
                         >
                             <option disabled value="">Horário</option>
-                            <option value="01:00:00">01:00:00</option>
-                            <option value="02:00:00">02:00:00</option>
-                            <option value="03:00:00">03:00:00</option>
+                            <option value="00:03:00">00:03:00</option>
+                            <option value="00:02:00">00:02:00</option>
+                            <option value="00:01:00">00:01:00</option>
                         </select>
                     </div>
                     <br />
