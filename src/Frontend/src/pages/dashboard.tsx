@@ -28,12 +28,6 @@ interface IChamadoPorCategoria {
   total: number;
 }
 
-// interface itensLista {
-//   cat_id: number;
-//   cat_titulo: string;
-//   total: number;
-// }
-
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 // // Mova a função getRandomColor para antes do uso
@@ -69,8 +63,6 @@ const DashboardView: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [dataInicial, setDataInicial] = useState("");
   const [dataFinal, setDataFinal] = useState("");
-  // const [lista, setLista] = useState<itensLista[]>([]);
-  // const [listaZerada, setListaZerada] = useState<itensLista[]>([]);
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -78,12 +70,6 @@ const DashboardView: React.FC = () => {
         const response = await listarCategorias();
         if (response.success) {
           setCategorias(response.categorias);
-          // for (let categoria of response.categorias) {
-          //   listaZerada.push({ cat_id: categoria.cat_id, cat_titulo: categoria.cat_titulo, total: 0 });
-          // }
-          // console.log(listaZerada)
-          // console.log('categorias', categorias)
-          // console.log('lista zerada', listaZerada)
           setLoading(false);
           setError("");
           return true;
@@ -101,31 +87,11 @@ const DashboardView: React.FC = () => {
     fetchTodosChamados();
   }, []);
 
-  // useEffect(() => {
-  //   const buscarDados = async () => {
-  //     if (categorias.length > 0) {
-  //       fetchTodosChamados();
-  //     }
-  //   }
-
-  //   buscarDados();
-  // }, [categorias])
- 
   const fetchTodosChamados = async () => {
     try {
       const response = await listarTodosChamadosPorCategoria(dataInicial, dataFinal);
       if (response.success) {
         console.log('resposta', response.data)
-        // let novaLista2 = [...listaZerada];
-        // for (let categoria of response.data) {
-        //   for (let item of novaLista2) {
-        //     if (categoria.cat_id === item.cat_id) {
-        //       item.total = categoria.total
-        //     }
-        //   }
-        // }
-        // setLista(novaLista2);
-        // console.log('lista foda', lista)
         setTodosChamadosPorCategoria(response.data);
         setLoading(false);
         setError("");
@@ -182,12 +148,6 @@ const DashboardView: React.FC = () => {
     }
   }, [categoriaSelecionada]);
 
-  // useEffect(() => {
-  //   if (categoriaSelecionada && dataInicial && dataFinal) {
-  //     listarChamadosPorCategoriaEStatus(categoriaSelecionada, dataInicial, dataFinal);
-  //   }
-  // }, [chamadosPorStatus]);
-
   const dataPorCategoria = {
     labels: todosChamadosPorCategoria.map((itens) => itens.cat_titulo),
     datasets: [
@@ -234,7 +194,6 @@ const DashboardView: React.FC = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Relatórios de Tickets</h2>
         {loading && <p>Carregando...</p>}
-        {error && <p className={styles.errorMessage}>{error}</p>}
         <div className={styles.selectContainer}>
           <select
             className={styles.select}
@@ -268,11 +227,6 @@ const DashboardView: React.FC = () => {
             disabled={!dataInicial}
           />
         </div>
-        {((chamadosPorStatus.length === 0) && (todosChamadosPorCategoria.length === 0)) && (
-          <div className={styles.messageContainer}>
-            <p> Nenhum chamado foi encontrado</p>
-          </div>
-        )}
         {categoriaSelecionada === null && (
           todosChamadosPorCategoria.length > 0 ? (
             <div className={styles.containerbar}>
