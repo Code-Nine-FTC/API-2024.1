@@ -64,13 +64,13 @@ Entrega final do produto
 
 ### Sprint 4
 
-- Dashboard para o administrador
+- Dashboard para o administrador ✔
 
-- Análise dos chamados representada em gráficos
+- Análise dos chamados representada em gráficos ✔
+ 
+- Visualização de funcionários disponíveis ✔
 
-- Visualização de funcionários disponíveis
-
-- Atribuição de funcionários aos chamados em espera
+- Atribuição de funcionários aos chamados em espera ✔
 
 <br>
 
