@@ -141,13 +141,16 @@ Entrega final do produto
 
 <h3> Cliente </h3>
 
-
+https://github.com/Code-Nine-FTC/API-2024.1/assets/142221456/882e3ae0-a8f2-45f0-b9a8-df2bb346b67c
 
 <h3> Atendente </h3>
 
-
+https://github.com/Code-Nine-FTC/API-2024.1/assets/142221456/09b3f60c-29c0-4aeb-a043-8e48e86bd429
 
 <h3> Administrador </h3>
+
+https://github.com/Code-Nine-FTC/API-2024.1/assets/142221456/65ff23f7-71f9-42a2-be92-cc62746b95ae
+
 
 
 
