@@ -9,6 +9,7 @@
 - [Metodologia Utilizada](#metodologias)
 - [Tecnologias Utilizadas](#tecnologias)
 - [Manual do Usuário](#manual)
+- [Como executar o Projeto](#iniciar)
 - [MVP](#mvp)
 - [Requisitos do Cliente](#requisitoscliente)
 - [Product Backlog](#productbacklog)
@@ -63,6 +64,65 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 [Manual Atendente](Docs/docs_tecnicos/manual-do-usuario-atendente.pdf)
 <br>
 [Manual Administrador](Docs/docs_tecnicos/manual-do-usuario-administrador.pdf)
+
+<h2>Para executar o Projeto:</h2><a name='iniciar'></a>
+ - Clone este repositório.
+>
+    git clone https://github.com/Code-Nine-FTC/API-2024.1.git
+>
+
+ - Abra um terminal para cada diretório
+
+<h2> Frontend </h2>
+
+1. Acesse o diretorio `Frontend`.
+>
+    cd src/Frontend
+>
+
+2. Execute `npm install` para instalar as dependências do projeto.
+>
+    npm install
+>
+
+3. Execute `npm start` para iniciar o servidor.
+>
+    npm start
+>
+
+<h2> Backend </h2>
+
+1. Acesse o diretorio `Backend`.
+>
+    cd src/Backend
+>
+
+2. Configure o arquivo `.env` dentro da pasta `src/database`. Com base nesse exemplo:
+>
+    # deixar o arquivo como .env(retirar exemplo) e mudar os dados de acordocom o seu banco de dados!
+    DB_HOST=localhost
+    DB_PORT=3306
+    DB_USER=usuario do sql
+    DB_PASSWORD=senha do sql
+    DB_NAME= nome do banco
+    PORT = 5000
+    SECRET = chave1
+    SECRET02 = chave2
+    SECRET03 = chave3
+>
+
+4. Execute `npm install` para instalar as dependências do projeto.
+
+>
+    npm install
+>
+
+4. Execute `npm run dev:app` para iniciar o servidor.
+>
+    npm run dev:app
+>
+
+
 
 <h2> 🏆 MVP </h2><a name="mvp"></a>
 
