@@ -124,8 +124,8 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 | :----: | :--------: | :--------: | :---------------------------------------------------------------------------------: | :----: |
 |   01   | 25/03/2024 | 14/04/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-1"> 1° Relatório </a> |   ✅   |
 |   02   | 15/05/2024 | 05/05/2024 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-2"> 2° Relatório </a> |  ✅  |
-|   03   | 06/05/2023 | 26/06/2024 |  <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-3"> 3° Relatório </a> |    ✅   |
-|   04   | 27/05/2023 | 06/06/2023 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-4"> 4° Relatório </a> |   ✅   |
+|   03   | 06/05/2023 | 26/05/2024 |  <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-3"> 3° Relatório </a> |    ✅   |
+|   04   | 27/05/2023 | 16/06/2023 | <a href="https://github.com/Code-Nine-FTC/API-2024.1/tree/Sprint-4"> 4° Relatório </a> |   ✅   |
 
 <br>
 
