@@ -8,6 +8,7 @@
 - [Sobre o Projeto](#sobre)
 - [Metodologia Utilizada](#metodologias)
 - [Tecnologias Utilizadas](#tecnologias)
+- [Manual do Usuário](#manual)
 - [MVP](#mvp)
 - [Requisitos do Cliente](#requisitoscliente)
 - [Product Backlog](#productbacklog)
@@ -52,6 +53,16 @@ Entre as ferramentas utilizadas no Scrum, uma é a divisão do projeto em Sprint
 
 <br>
 <br>
+
+<h2> Manual do Usuário </h2><a name="manual"></a>
+
+<p> Os links abaixo exibem os manuais de usuário, destinados para cada tipo de usuário do produto.</p>
+
+[Manual Cliente](Docs/docs_tecnicos/manual-do-usuario-administrador.pdf)
+<br>
+[Manual Atendente](Docs/docs_tecnicos/manual-do-usuario-atendente.pdf)
+<br>
+[Manual Administrador](Docs/docs_tecnicos/manual-do-usuario-administrador.pdf)
 
 <h2> 🏆 MVP </h2><a name="mvp"></a>
 
